@@ -138,3 +138,9 @@ sympy-plots-for-*.tex/
 
 ## My gitignore files (haim cohen):
 thesis.texnicle
+thesis.aux
+thesis.lof
+thesis.log
+thesis.lot
+thesis.pdf
+thesis.synctex.gz
