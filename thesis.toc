@@ -1,26 +1,26 @@
 \select@language {english}
 \contentsline {chapter}{Abstract}{\@@number {1}}{chapter*.4}
 \contentsline {chapter}{\numberline {\@@number {1}}Introduction}{\@@number {3}}{chapter.1}
-\contentsline {subsection}{\numberline {\@@number {\@@number {\@@number {1}.\@@number {0}}.\@@number {1}}}Online learning}{\@@number {3}}{subsection.1.0.1}
-\contentsline {subsection}{\numberline {\@@number {\@@number {\@@number {1}.\@@number {0}}.\@@number {2}}}Selective Sampling}{\@@number {4}}{subsection.1.0.2}
-\contentsline {section}{\numberline {\@@number {\@@number {1}.\@@number {1}}}Prolem Setting}{\@@number {5}}{section.1.1}
-\contentsline {chapter}{\numberline {\@@number {2}}SHMPO (SHared Annotator for Multiple Problems) Algorithms}{\@@number {7}}{chapter.2}
-\contentsline {section}{\numberline {\@@number {\@@number {2}.\@@number {1}}}SHAMPO perceptron}{\@@number {7}}{section.2.1}
-\contentsline {paragraph}{Parameters:}{\@@number {8}}{section*.6}
-\contentsline {paragraph}{Initialize:}{\@@number {8}}{section*.7}
-\contentsline {paragraph}{For}{\@@number {8}}{section*.8}
-\contentsline {paragraph}{End for}{\@@number {8}}{section*.9}
-\contentsline {paragraph}{Output}{\@@number {8}}{section*.10}
-\contentsline {section}{\numberline {\@@number {\@@number {2}.\@@number {2}}}Aggressive version}{\@@number {15}}{section.2.2}
-\contentsline {paragraph}{Parameters:}{\@@number {16}}{section*.11}
-\contentsline {paragraph}{Initialize:}{\@@number {16}}{section*.12}
-\contentsline {paragraph}{For}{\@@number {16}}{section*.13}
-\contentsline {paragraph}{End for}{\@@number {16}}{section*.14}
-\contentsline {paragraph}{Output}{\@@number {16}}{section*.15}
-\contentsline {section}{\numberline {\@@number {\@@number {2}.\@@number {3}}}prior distribution over tasks}{\@@number {19}}{section.2.3}
-\contentsline {section}{\numberline {\@@number {\@@number {2}.\@@number {4}}}SHAMPO perceptron with Adaptive $b$ parameter}{\@@number {22}}{section.2.4}
-\contentsline {section}{\numberline {\@@number {\@@number {2}.\@@number {5}}}to do}{\@@number {33}}{section.2.5}
-\contentsline {chapter}{\numberline {\@@number {3}}Second Order SHAMPO}{\@@number {34}}{chapter.3}
-\contentsline {section}{\numberline {\@@number {\@@number {3}.\@@number {1}}}From Multi-task to Contextual Bandits}{\@@number {39}}{section.3.1}
-\contentsline {subsection}{\numberline {\@@number {\@@number {\@@number {3}.\@@number {1}}.\@@number {1}}}One-vs-Rest}{\@@number {40}}{subsection.3.1.1}
-\contentsline {subsection}{\numberline {\@@number {\@@number {\@@number {3}.\@@number {1}}.\@@number {2}}}One-vs-One}{\@@number {41}}{subsection.3.1.2}
+\contentsline {section}{\numberline {\@@number {\@@number {1}.\@@number {1}}}Online learning}{\@@number {3}}{section.1.1}
+\contentsline {section}{\numberline {\@@number {\@@number {1}.\@@number {2}}}Selective Sampling}{\@@number {4}}{section.1.2}
+\contentsline {chapter}{\numberline {\@@number {2}}The Shared Annotator Setting}{\@@number {6}}{chapter.2}
+\contentsline {chapter}{\numberline {\@@number {3}}SHMPO (SHared Annotator for Multiple Problems) Algorithms}{\@@number {9}}{chapter.3}
+\contentsline {section}{\numberline {\@@number {\@@number {3}.\@@number {1}}}SHAMPO perceptron}{\@@number {9}}{section.3.1}
+\contentsline {paragraph}{Parameters:}{\@@number {10}}{section*.6}
+\contentsline {paragraph}{Initialize:}{\@@number {10}}{section*.7}
+\contentsline {paragraph}{For}{\@@number {10}}{section*.8}
+\contentsline {paragraph}{End for}{\@@number {10}}{section*.9}
+\contentsline {paragraph}{Output}{\@@number {10}}{section*.10}
+\contentsline {section}{\numberline {\@@number {\@@number {3}.\@@number {2}}}Aggressive version}{\@@number {17}}{section.3.2}
+\contentsline {paragraph}{Parameters:}{\@@number {18}}{section*.11}
+\contentsline {paragraph}{Initialize:}{\@@number {18}}{section*.12}
+\contentsline {paragraph}{For}{\@@number {18}}{section*.13}
+\contentsline {paragraph}{End for}{\@@number {18}}{section*.14}
+\contentsline {paragraph}{Output}{\@@number {18}}{section*.15}
+\contentsline {section}{\numberline {\@@number {\@@number {3}.\@@number {3}}}prior distribution over tasks}{\@@number {21}}{section.3.3}
+\contentsline {section}{\numberline {\@@number {\@@number {3}.\@@number {4}}}SHAMPO perceptron with Adaptive $b$ parameter}{\@@number {24}}{section.3.4}
+\contentsline {section}{\numberline {\@@number {\@@number {3}.\@@number {5}}}to do}{\@@number {35}}{section.3.5}
+\contentsline {chapter}{\numberline {\@@number {4}}Second Order SHAMPO}{\@@number {36}}{chapter.4}
+\contentsline {section}{\numberline {\@@number {\@@number {4}.\@@number {1}}}From Multi-task to Contextual Bandits}{\@@number {41}}{section.4.1}
+\contentsline {subsection}{\numberline {\@@number {\@@number {\@@number {4}.\@@number {1}}.\@@number {1}}}One-vs-Rest}{\@@number {42}}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {\@@number {\@@number {\@@number {4}.\@@number {1}}.\@@number {2}}}One-vs-One}{\@@number {43}}{subsection.4.1.2}
