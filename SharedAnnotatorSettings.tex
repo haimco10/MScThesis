@@ -1,33 +1,30 @@
 \chapter{The Shared Annotator Setting}
 
-%\label{sec:setting}
+%\label{sec:setting} 
 
-This work deals with multi-task problem where $K$ learners are sharing a single annotator with 
-limited bandwidth. This limitation allow only one task to get feedback from the annotator at a time. 
-For example, there is a need to label annotate news items from few agencies, one person can not 
-handle all of them, and some can just be annotated. 
-Our setting is designed to handle exactly this problem, and specifically, how to make best usage of 
-annotation time. 
-
-We study online multi-task learning with a shared annotator. In our setting, there are
-$K$  binary classification tasks to be learned simultaneously. 
-No dependency between the tasks is assumed during the analysis, but the tasks can be dependent as well. 
-Learning is performed in rounds as an online learning algorithm, as following: 
+In our setting, there are $K$  binary classification tasks to be learned simultaneously. 
+In opposed to the common multi-task classification settings, here, no dependency between the tasks 
+is assumed during the analysis, but the tasks can be dependent as well. 
+The model learning is performed in rounds as an online learning algorithm, as following: 
 On each round $t$, there are $K$ input-label pairs
-$(\vxi{i,t},\yi{i,t})$ where $i=1,2\comdots K$ is the task index and $t$ is the step index. The inputs $\vxi{i,t}\in\reals^{d_i}$ are
-vectors, and labels  $\yi{i,t}\in\{-1,+1\}$ are binary. In the general
-case, the input-spaces for each problem may be different, and inputs may
-have different number of elements. Yet, in order to  simplify the notation and without loss of generality,  from now
-on, for our analysis we assume that for all of the tasks, $\vxi{i,t}\in\reals^{d}$. i.e. all the tasks are in the same dimension and   $d_i = d$ holds for all tasks . 
+$(\vxi{i,t},\yi{i,t})$, one for each classification tast, where $i=1,2\comdots K$ is the task index and $t$ is the 
+step index. The inputs $\vxi{i,t}\in\reals^{d_i}$ are vectors, and the labels  $\yi{i,t}\in\{-1,+1\}$ are binary. 
+In the general case, the input-spaces for each problem may be different, and inputs may
+have different number of elements. Yet, in order to  simplify the notation and without loss of generality,  
+from now on, in our analysis we assume that for all of the tasks, $\vxi{i,t}\in\reals^{d}$. 
+i.e. all the tasks are in the same dimension and   $d_i = d$ holds for all tasks . 
+In practice, since the proposed algorithms use the margin that is affected by the vector norm, 
+there is a need to scale all the vectors into a ball.
 
 
-On round $t$, the learning algorithm receives $K$ inputs $\vxi{i,t}$
-for $i=1 \comdots K$ tasks and outputs $K$ binary-labels $\hyi{i,t}$, where
+On round $t$, the learning algorithm receives $K$ input vectors $\vxi{i,t}$
+for $i=1 \comdots K$ tasks and produce  $K$  binary-labels output $\hyi{i,t}$, where
 $\hyi{i,t}\in\{-1,+1\}$ is the label predicted for the input
 $\vxi{i,t}$ of task $i$. The algorithm then chooses a task $J_t \in\
-\{1 \comdots K\}$ and receives from an annotator its true-label
-$\yi{J_t,t}$ for that task $J_t$. Unlike the usual online multi-task setting, it  does not observe any other
-label. Then, the algorithm updates its models, using the received feedback, and proceeds to the
+\{1 \comdots K\}$ and asks from an annotator its true-label
+$\yi{J_t,t}$ for that task $J_t$. Unlike the usual online multi-task setting, and due to the limitation of our
+setting, it  does not observe any other label. 
+Then, the algorithm updates its models, using the received feedback, and proceeds to the
 next round (and inputs).  For the ease of calculations below, we denote
 by $K$ indicators $Z_t=\paren{ Z_{1,t} \comdots Z_{K,t}}$, the
 identity of the task which was queried on round $t$, and set

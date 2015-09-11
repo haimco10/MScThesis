@@ -4,7 +4,7 @@
 Machine learning is a  field of computer science that concerned with data processing and the ability
 of the computer to learn from this data. 
 One main objective of this field is the development of algorithms capable of inference based on 
-observable data, such as text documents, pictures, audio, video etc.. 
+observable data, such as text documents, pictures, audio, video etc\ldots 
  
 In the \textit{Supervised Learning} setting, the input of the learning algorithm are input-label pairs. 
 The goal of the algorithm is to learn the underlying connection between the inputs and their labels, 
@@ -12,8 +12,8 @@ thus being able to \textit{predict} a label for a previously unseen input.
 When the possible label values are from a discrete finite set, this learning problem is called
  \textit{classification}. The basic classification problem is the \textit{binary classification}, i.e. classifying 
  each data instance into one of only two possible classes. In contradiction to 
- the , the classification task in the binary 
- case is more simple because, eliminating one class , gives you the correct one 
+ the multiclass classification task, in the binary 
+ case is more simple because, eliminating one class, gives you the correct one 
  straightforward. However, this is more difficult in the \textit{multiclass 
  classification}, when even when we eliminate one possible class, we yet have 
  some more classes the we need to decide which of these classes  is the correct one. 
@@ -49,8 +49,8 @@ the learner perception about the classification task become stronger when the ti
 
 The \textit{Online Learning} is performed in rounds, where in each round $t$, 
 the algorithm gets an input instance $\vxii$ in some domain $\mathcal{X}$  and predicts a  correspond 
-measure, $\hat{p_t}$ based on the algorithm decision  rule. This measure can be in the label domain, 
-$\mathcal{Y}$ , or can be mapped into $\hat{y_t}$ which is the predicted label in $\mathcal{Y}$ .   
+measure, $\hat{p_t}$ based on the algorithm decision rule. This measure can be in the label domain, 
+$\mathcal{Y}$, or can be mapped into $\hat{y_t}$ which is the predicted label in $\mathcal{Y}$ .   
 After predicting the label , the true label ( $y_t$ in the labels domain, $\mathcal{Y}$)  is revealed 
 and the learner suffers a non negative loss of $\l\paren{\hat{p_t},y_t}$ that measures how much the 
 prediction is compatible with the true label. The desired property of such function is to generate low 
@@ -75,7 +75,7 @@ This approach, that queries labels only for selected examples is called \textit{
 \fbox{to do - background in multi-armed bandits. and show the simple perceptron
 }
 
-\section{Multi Task Shared Annotator}
+\section{Multi Task with Shared Annotator}
 \label{sec:selective_sampling}
 
  In supervised learning setting, the main bottleneck is the need to annotate data. A common protocol is 
@@ -92,6 +92,9 @@ This approach, that queries labels only for selected examples is called \textit{
  For example, sometimes there is a need to annotate news items from few agencies. One person cannot 
  handle all of them, and only some items can be annotated, which ones? Our setting is designed to handle 
  exactly this problem, and specifically, how to make best usage of annotation time.
+ This settings can also handle with the case when we want to limit the updates number, 
+ for example if we have a lot of of clients that generate data, but only one server with a limited computation 
+ power is allocated to process the received data and we want to limit the amount of updates for all tasks.
  
  We propose a new framework of online multi-task learning with a shared annotator. 
  Here, algorithms are learning few tasks simultaneously, yet they receive feedback using a central 

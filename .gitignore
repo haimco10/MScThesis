@@ -1,3 +1,4 @@
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
@@ -134,3 +135,6 @@ sympy-plots-for-*.tex/
 # WinEdt
 *.bak
 *.sav
+
+## My gitignore files (haim cohen):
+thesis.texnicle

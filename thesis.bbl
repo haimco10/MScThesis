@@ -1,8 +1,57 @@
-\begin{thebibliography}{0}
+\begin{thebibliography}{8}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Avner et~al.(2012)Avner, Mannor, and Shamir]{DBLP:conf/icml/AvnerMS12}
+Orly Avner, Shie Mannor, and Ohad Shamir.
+\newblock Decoupling exploration and exploitation in multi-armed bandits.
+\newblock In \emph{ICML}, 2012.
+
+\bibitem[Cesa-Bianchi et~al.(2006)Cesa-Bianchi, Gentile, and
+  Zaniboni]{cesa2006worst}
+Nicol{\`o} Cesa-Bianchi, Claudio Gentile, and Luca Zaniboni.
+\newblock Worst-case analysis of selective sampling for linear classification.
+\newblock \emph{The Journal of Machine Learning Research}, 7:\penalty0
+  1205--1230, 2006.
+
+\bibitem[Crammer and Gentile(2013)]{DBLP:journals/ml/CrammerG13}
+Koby Crammer and Claudio Gentile.
+\newblock Multiclass classification with bandit feedback using adaptive
+  regularization.
+\newblock \emph{Machine Learning}, 90\penalty0 (3):\penalty0 347--383, 2013.
+
+\bibitem[F{\"u}rnkranz(2002)]{DBLP:journals/jmlr/Furnkranz02}
+Johannes F{\"u}rnkranz.
+\newblock Round robin classification.
+\newblock \emph{Journal of Machine Learning Research}, 2:\penalty0 721--747,
+  2002.
+
+\bibitem[Hazan and Kale(2011)]{hazan2011newtron}
+Elad Hazan and Satyen Kale.
+\newblock Newtron: an efficient bandit algorithm for online multiclass
+  prediction.
+\newblock \emph{Advances in Neural Information Processing Systems (NIPS)},
+  2011.
+
+\bibitem[Kakade et~al.(2008)Kakade, Shalev-Shwartz, and
+  Tewari]{kakade2008efficient}
+Sham~M Kakade, Shai Shalev-Shwartz, and Ambuj Tewari.
+\newblock Efficient bandit algorithms for online multiclass prediction.
+\newblock In \emph{Proceedings of the 25th international conference on Machine
+  learning}, pages 440--447. ACM, 2008.
+
+\bibitem[Tong and Koller(2000)]{DBLP:conf/icml/TongK00}
+Simon Tong and Daphne Koller.
+\newblock Support vector machine active learning with application sto text
+  classification.
+\newblock In \emph{ICML}, pages 999--1006, 2000.
+
+\bibitem[Yu and Mannor(2009)]{DBLP:conf/icml/YuM09}
+Jia~Yuan Yu and Shie Mannor.
+\newblock Piecewise-stationary bandit problems with side observations.
+\newblock In \emph{ICML}, 2009.
 
 \end{thebibliography}
