@@ -16,26 +16,35 @@ When the possible label values are from a discrete finite set, this learning pro
  the , the classification task in the binary 
  case is more simple because, eliminating one class , gives you the correct one 
  straightforward. However, this is more difficult in the \textit{multiclass 
- classification}, when even when we eliminate one possible class, we still have 
- some more classes the we need to decide which is the correct one. 
+ classification}, when even when we eliminate one possible class, we yet have 
+ some more classes the we need to decide which of these classes  is the correct one. 
  
 
 \subsection{Online learning}
 
 One of the main features of the classification problem is the way how the data is been collected. 
-Assume you want to buy a house. There are two ways to do that. 
-You can pay all the house cost at once and you get the house, or, 
-if you don't have all the money right now but you do want to get into the house as soon as possible, 
- you can pay a mortgage every month and become closer and closer to a full ownership each month. 
- Collecting a data as  collecting money can be done in two ways. 
- In the \textit{Batch learning} setting we collect a certain amount of data first, and  than, 
- we want to use this data in order to learn how to classify the incoming data instances. 
- However, in a lot of applications there is a flow of data that is transmitted in sequence  
- and we would like to learn on the flow how to classify the data instances. 
- The last method is called \textit{Online Learning}.
-
+In some application, the labeled data is been collected first, such that we have an access to entire training
+ dataset at once. Then we use this whole examples collection as an input to 
+ a \textit{Batch learning} algorithm and learn a classification model about this problem. 
+However, in a lot of real life application this is not the case. In some problems like spam filtering, there is
+ a flow of data that is transmitted in sequence and it takes time to collect the a large amount of data to learn
+ from it and we don't want to wait too long before we can have a decent prediction about the continuing
+  incoming examples. For those application we use  
+\textit{Online Learning} based algorithms.
 Unlike the \textit{Batch learning}, in \textit{Online Learning} 
- the learner perception about the classification task become stronger when the time is pass by.
+the learner perception about the classification task become stronger when the time is pass by.
+ 
+%Assume you want to buy a house. There are two ways to do that. 
+%You can pay all the house cost at once and you get the house, or, 
+%if you don't have all the money right now but you do want to get into the house as soon as possible, 
+% you can pay a mortgage every month and become closer and closer to a full ownership each month. 
+% Collecting a data as  collecting money can be done in two ways. 
+% In the \textit{Batch learning} setting we collect a certain amount of data first, and  than, 
+% we want to use this data in order to learn how to classify the incoming data instances. 
+% However, in a lot of applications there is a flow of data that is transmitted in sequence  
+% and we would like to learn on the flow how to classify the data instances. 
+% The last method is called \textit{Online Learning}.%
+
 
 The \textit{Online Learning} is performed in rounds, where in each round $t$, 
 the algorithm gets an input instance $\vxii$ in some domain $\mathcal{X}$  and predicts a  correspond 
