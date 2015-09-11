@@ -1,0 +1,118 @@
+% options are:
+% PhD, MSc (choose one)
+% beforeExam (to make the personal thanks invisible)
+\documentclass[MSc]{iitcsthesis}
+
+\usepackage{times}
+\usepackage{latexsym}
+\usepackage{graphicx} % more modern
+\usepackage{graphics}
+\usepackage{subfigure}
+\usepackage{natbib}
+
+\usepackage{algorithm}
+\usepackage{hyperref}
+
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amstext}
+\usepackage{latexsym}
+\usepackage{amssymb}
+\setcounter{tocdepth}{3}
+\usepackage{epstopdf}
+\usepackage{url}
+\usepackage{color}
+\usepackage{wrapfig}
+\usepackage{fancyvrb}
+\usepackage{rotating}
+\usepackage{enumerate}
+\usepackage{tabulary}
+
+
+% For some reason, the hebrew package clashes with the amsthm package. If you need a proof environment, you can uncomment the following:
+%\usepackage{amssymb} %Needed for \blacksquare. Take care not to add this package twice...
+%\newenvironment{proof}[1][Proof]{\par \textbf{#1.} }{\hspace{10pt}\hfill$\blacksquare$\par}
+\begin{document}
+
+\authorEnglish{Edward Moroshko}
+
+\titleEnglish{New Min-Max Algorithms and Analysis for Online Regression}
+
+\supervisorEnglish{The Research Thesis Was Done Under The Supervision
+of Prof.~Koby Crammer in the Faculty of Electrical Engineering.}
+
+\PublicationEnglish{\\Parts of this work were published in
+\\Weighted Last-Step Min-Max Algorithm with Improved Sub-Logarithmic Regret.
+\\Edward Moroshko and Koby Crammer. 2012. In ALT.
+\\A Last-Step Regression Algorithm for Non-Stationary Online Learning.
+\\Edward Moroshko and Koby Crammer. 2013. In AISTATS.}
+
+\GregorianDateEnglish{June 2013}
+\JewishDateEnglish{Tammuz, 5773}
+
+\personalThanksEnglish{I would like to thank Koby for his remarkable guidance and support. I also thank Koby for funding my travels to ALT 2012 and AISTATS 2013 conferences.\\
+Thanks to my family for the support.\\
+Special thanks to my fiancee Ephrath for her love, support and patience along the way.
+}
+%\financialThanksEnglish{The generous financial support of the Technion is gratefully acknowledged.}
+
+\maketitleEnglish
+
+% The English abstract should be 200-500 words long.
+\abstractEnglish
+In online learning the performance of an algorithm is typically compared to the performance of a fixed function from some class, using a quantity called regret. The purpose of a learning algorithm is to have a regret as small as possible. About a decade ago, the last-step min-max approach has been proposed for online regression, where the algorithm tries to minimize the maximal (worst-case) regret with respect to the best-performing linear function.
+In fact, to make the min-max optimization problem well defined it has been assumed that the choices of the adversary are bounded, yielding artificially only extreme cases. In this work we introduce a new algorithm that weighs the examples in such a way that the min-max problem will be well defined. We provide analysis of the algorithm and develop new regret bounds that are better in some situations than other state-of-the-art bounds.
+
+In many real-world problems there is no fixed best target function during the runtime of the algorithm. Instead, the best (local) target function is drifting over time. In this work we extend the last-step min-max approach to the drifting setting and introduce a new algorithm which is a last-step min-max optimal in context of a drift. We analyze the algorithm in the worst-case regret framework and show that it maintains an average loss close to that of the best slowly changing sequence of linear functions, as long as the total of drift is sublinear. We show formally that in some situations our bound is better than existing bounds, and
+%We also rely on the $H_\infty$ filter and its bound, and develop and analyze another algorithm for the drifting setting.
+synthetic simulations demonstrate the advantages of our algorithm over previous approaches, especially in a worst-case constant drift setting.
+
+\input{prela}
+
+\chapter*{Abbreviations and Notations}
+\begin{tabular}{lcl}
+$AA$ & --- & Aggregating Algorithm\\
+$AAR$ & --- & Aggregating Algorithm for Regression\\
+$ARCOR$ & --- & Adaptive Regularization with Covariance Reset\\
+$AROW$ & --- & Adaptive Regularization Of Weights\\
+$AROWR$ & --- & Adaptive Regularization Of Weights for Regression\\
+$CR-RLS$ & --- & Covariance Reset Recursive Least Squares\\
+$LASER$ & --- & Last-Step Adaptive Regressor\\
+$NLMS$ & --- & Normalized Least Mean Square\\
+$RLS$ & --- & Recursive Least Squares\\
+$WEMM$ & --- & Weighted Min-Max\\
+$\Vert\vu \Vert$ & --- & $\ell_2$-norm of the vector $\vu$\\
+\end{tabular}
+
+%Or, if your tables are long, ``\usepackage{longtable}'' at the beginning, and then  ``\begin{longtable}[l]{lcl} ... \end{longtable}''
+
+\allowdisplaybreaks[1]
+
+\input{introduction}
+\input{Online_Learning}
+\input{Stationary_Regression}
+\input{WEMM_analysis}
+\input{Non_Stationary_Regression}
+\input{LASER_analysis}
+%\input{H_inf}
+\input{simulations}
+\input{related_work}
+\input{summary}
+
+%\section*{Appendix}
+%\addcontentsline{toc}{section}{Appendix}
+%For some reason, you need to manually add stared sections to the the index file.
+
+% Put the path to your bib file (or whatever else you use) here
+\clearpage
+%\bibliographystyle{fullname}
+\bibliographystyle{plainnat}
+\bibliography{bib}
+
+% ********************** ADD THIS BACK ********************************
+%\include{hebrewPart}
+% *********************************************************************
+
+% Actually, I found it much easier to have each chapter in a file of its own. Except for the Hebrew part, I put it all together in this example just to make things clear.
+
+\end{document}

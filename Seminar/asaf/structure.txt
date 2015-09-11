@@ -1,0 +1,78 @@
+
+1. outline (chapters of thesis).
+
+2. Overview:
+   0. binary classification defs+ page about expected loss and advantages.
+   a. PAC-Bayes theory (mcallister th+ GMM+ SVM(herbirc)+ training prior+[15]-not directt lp norms).
+   b. Boosting algorithms (just mention the 'modern definition', ada+logit+singerBoost)
+   c. The huber fuction and robust statistics (always used as loss).
+
+- ASK: maybe the problem (heavy-tailed noise) is also the solution?
+
+3. Background to our paper- the PAC-Bayes theorem by Cantoni, advantages(take  from germain paper/empirical+complexity+probably-correct terms).
+                            -algorithms that minimize might be more robust.
+                            - goal: to produce robust_boosting algorithms.
+                            - always just examined known ones- we make new algs.
+                            - that's a theorem for linear classifiers.
+
+3.5- goal of thesis- PAC-Bayes theorems+algorithms+examining properties theoretically and empirically.
+   - no time to get into details for all the four, so the quadratic won't be discussed, and the exp will be discussed shortly. 
+
+4. A Laplace-like Family of Distributions (def+maxEntropy(proposition-lemma2 in thesis)+KL lemma+ huber-like(remark1+plot)) 
+   -one dim- is laplace, but for higher- not as the l2-laplace.
+   - analytic KL is not trivial.
+   - smooth+convex (disadvantages of huber).
+   - huber used only as loss.
+   - heavy tailed in comparison to gaussian- talk about advantages from our paper..
+
+5. plug the LL and talk about the two aproaches (shown in the functions-3 plots-just cdf-bounds-exact).
+   - easy to see that never convex since a CDF.
+   - the better the bound- better algorithms, especialy with noise.
+
+6. Bounding the 0/1 (show calculation with Di's def, req:x_infty<1..).
+   - Goal: trying to Boost with the huber fucntion, get forward algorithms.
+   - expLoss is easyer to analyze, logLoss is tighter.
+   - theorem: both are separately convex in mu/sigma (?).
+   - the Di's are like the adaboost weights.
+
+7. the ExpLoss: (show calc in dots+ page for forward algortihm.)
+   - simple boosting-like algorithm (isotropical and not-robust).
+   - might have week-to-strong, not really interesting- that's only linear classifiers.
+   - slightly better that adaboost, but both are breaking when there's noise.
+
+8. the LogLoss: (cite theorems+write the different objectives+solution+ coparison to Singer's+logit).
+   - better performance than singers (show just them in a table), but singer is sparse..
+   - better than explosse when there's noise- better bound over the objective.
+
+9. bounding the CDF approach- (direct calculation of CDF page (+alphas graph) + objective 5.8 in thesis + change of variables)
+                             (+ convex for separable(+lemma for proof)+jointly convex theorem,
+   
+   - complicated, but better results. 
+   - so we can choose any convex loss for good properties (convexity)- not happening in gaussian distributions!
+
+10. The linear loss (definition(+objective) + artificial lemma) 
+   - the tightest convex bound over the concave part.
+
+11. RobuCop (present algorithm + O() lemma to choose C..)
+    - in robucop we could just optimize over mu+sigma together (convex), but when
+  optimizing separately we're getting quick convergence (the objective for mu is sum of exps).
+    - try to insert picture with the PAC-Bayes bound and the objective. 
+
+12. simulations ( synthetic graphs for showing robucop's robustness)
+                (+ explain what is VG and show simulations for std/fraction outliers
+                (+full performence table).
+ 
+13. Multi-task setting (picture to explain(mails) + state multi-task PAC-BAYES th )
+                       (+ general objective + general algorithm + robucop algorithm)
+
+    - the actual begining of the thesis.
+    - using PAC-Bayes to find a natural clustering.
+    - like K-means- can't be convex, but alterante.
+    - mention SHAMO at the begining.
+    - maybe insert the th of boxes allocation (as a PAC-Bayes insight).
+    - not separately convex with gaussian dists.
+    - now we're optimizing over weights also.
+    - these days working on comparing to algorithms like SHAMO.
+
+
+The End

@@ -1,0 +1,224 @@
+\chapter{An $H_\infty$ Algorithm for Online Regression}
+\label{H8_sec}
+
+Adaptive filtering is an active and well established area of research
+in signal processing. Formally, it is equivalent to online learning. On
+each iteration $t$ the filter receives an input $\vxi{t}\in\reals^d$ and
+predicts a corresponding output $\hyi{t}$. It then receives the true
+desired output $\yi{t}$ and updates its internal model. Many adaptive
+filtering algorithms employ linear models, that is, at time $t$ they
+output $\hyi{t} = \vwti{t}\vxi{t}$. For
+example, a well known online learning algorithm~\citep{WidrowHoff}
+for regression, which is basically a gradient-descent algorithm with
+the squared-loss, is known as the {\em least mean-square (LMS)}
+algorithm in the adaptive filtering
+literature~\citep{Sayed:2008:AF:1370975}.
+
+One possible difference between adaptive filtering and online learning
+can be viewed in the interpretation of algorithms, and as a
+consequence, of their analysis. In online learning, the goal of an
+algorithm is to make {\em predictions} $\hyi{t}$, and the predictions are
+compared to the predictions of some function from a
+known class (e.g. linear, parameteized
+by $\vu$). Thus, a typical online performance bound relates the quality of the
+algorithm's predictions with the quality of some function's $g(\vx)=\vut\vx$
+predictions, using some non-negative loss measure $\ell(\vwti{t}\vxi{t},\yi{t})$. Such
+bounds often have the following shape,
+\begin{align*}
+\overbrace{\sum_t \ell(\vwti{t}\vxi{t},\yi{t})}^{\textrm{algorithm
+    loss with respect to observation}} &\leq&
+A \overbrace{\sum_t \ell( \vut\vxi{t}, \yi{t})}^{\textrm{function $\vu$ loss}} ~+~~ B,
+\end{align*}
+for some multiplicative-factor $A$ and an additive factor $B$.
+% \begin{figure}[t!]
+% {
+% \paragraph{Parameters:} $1<a$ ~,~ $ 0<b,c$
+% \paragraph{Initialize:} Set
+% $\mathbf{P}_{0}=b^{-1}\mi\in\reals^{d\times d}$ and $\mathbf{w}_0=\vzero\in\reals^d$\\
+% {\bf For $t=1 \comdots T$} do
+% \begin{itemize}
+% \nolineskips
+% \item Receive an instance $\vxi{t}$
+% \item Output  prediction $\hyi{t}=\mathbf{x}_{t}^{\top}\mathbf{w}_{t-1}$
+% \item Receive the correct label $\yi{t}$
+% \item Compute $ \tilde{\mathbf{P}}_{t}\!=\!\left( \!\mathbf{P}_{t-1}^{-1}  \!+\! (a-1)\vxi{t}\vxti{t}\!\right)^{-1}$
+% \item
+% Update $\mathbf{w}_{t}=\mathbf{w}_{t-1} + a\tilde{\mathbf{P}}_{t}
+% (\yi{t}-\hyi{t}) \vxi{t}$
+% \item Update $\mathbf{P}_t = \tilde{\mathbf{P}}_t + c^{-1}\mi$
+% \end{itemize}
+% \paragraph{Output:}  $\mathbf{w}_{T} \ ,\ \mathbf{P}_{T}$\\
+% }
+% \figline
+% \caption{An $H_\infty$ algorithm for online regression.}
+% \label{algorithm:hi}
+% \end{figure}
+
+Adaptive filtering is similar to the realizable setting in machine
+learning, where it is assumed the existence of some filter and
+the goal is to recover it using {\em noisy} observations. Often it is assumed that the output is a corrupted version of the output
+of some function, $y=f(\vx)+n$, with some noise $n$. Thus a
+typical bound relates the quality of an algorithm's predictions {\em
+  with respect to the target filter} $\vu$ and the amount of noise in the problem,
+\begin{align*}
+\overbrace{\sum_t
+  \ell(\vwti{t}\vxi{t},\vut\vxi{t})}^{\textrm{algorithm loss with
+    respect to a reference}} &\leq &
+A \overbrace{\sum_t \ell( \vut\vxi{t}, \yi{t})}^{\textrm{amount of
+    noise}} ~+~~ B ~.
+\end{align*}
+
+
+The $H_\infty$ filters~(see e.g.~\citep{Simon:2006:OSE:1146304,DBLP:journals/tsp/Simon06})
+ are a family of (robust) linear filters developed based on a min-max approach, like \texttt{LASER}, and analyzed in the worst
+case setting. These filters are reminiscent of the celebrated Kalman
+filter~\citep{Kalman60}, which was motivated and analyzed in a stochastic
+setting with Gaussian noise. A pseudocode of one such filter we {\em modified }to online linear
+regression appears in \figref{algorithm:hi}.
+
+
+\begin{figure}[t!]
+{
+\paragraph{Parameters:} $1<a$ ~,~ $ 0<b,c$
+\paragraph{Initialize:} Set
+$\mathbf{P}_{0}=b^{-1}\mi\in\reals^{d\times d}$ and $\mathbf{w}_0=\vzero\in\reals^d$\\
+{\bf For $t=1 \comdots T$} do
+\begin{itemize}
+\nolineskips
+\item Receive an instance $\vxi{t}$
+\item Output  prediction $\hyi{t}=\mathbf{x}_{t}^{\top}\mathbf{w}_{t-1}$
+\item Receive the correct label $\yi{t}$
+\item Compute $ \tilde{\mathbf{P}}_{t}=\left( \mathbf{P}_{t-1}^{-1}  + (a-1)\vxi{t}\vxti{t}\!\right)^{-1}$
+\item
+Update $\mathbf{w}_{t}=\mathbf{w}_{t-1} + a\tilde{\mathbf{P}}_{t}
+(\yi{t}-\hyi{t}) \vxi{t}$
+\item Update $\mathbf{P}_t = \tilde{\mathbf{P}}_t + c^{-1}\mi$
+\end{itemize}
+\paragraph{Output:}  $\mathbf{w}_{T} \ ,\ \mathbf{P}_{T}$\\
+}
+\figline
+\caption{An $H_\infty$ algorithm for online regression.}
+\label{algorithm:hi}
+\end{figure}
+
+%Theory of $H_\infty$ filters states~\citep[Section 11.3]{Simon:2006:OSE:1146304} the
+%following bound on its performance as a filter.
+%\begin{theorem}
+%Assume the filter is executed with parameters $a>1$ and $b,c>0$.
+%Then, for all input-output pairs $(\vxi{t},\yi{t})$ and for all
+%reference vectors $\vui{t}$ the following bound holds on the filter's performance,
+%\begin{align*}
+%%L_T(H_\infty)
+%\sum_{t=1}^{T}\left(\mathbf{x}_{t}^{\top}\mathbf{w}_{t}-\vxti{t}\mathbf{u}_{t}\right)^{2}
+%\leq
+%a L_T(\{\vui{t}\})
+%%\sum_{t=1}^{T}\left(y_{t}-\mathbf{x}_{t}^{\top}\mathbf{u}_{t}\right)^{2}
+%+b\left\Vert
+%  \mathbf{u}_{1}\right\Vert
+%^{2}+c
+%V_T\paren{\braces{\vui{t}}}%\sum_{t=1}^{T-1}\left\Vert
+%                           %\mathbf{u}_{t+1}-\mathbf{u}_{t}\right\Vert
+%                           %^{2}
+%~.
+%\end{align*}
+%\label{theorem_h8}
+%\end{theorem}
+%From the theorem we establish a regret bound for the $H_\infty$
+%algorithm to online learning.
+%\begin{corollary}
+%Fix $\alpha>0$.
+%The total squared-loss suffered by the algorithm  %\sum_{t=1}^{T}\left(y_{t}-\mathbf{x}_{t}^{\top}\mathbf{w}_{t}\right)^{2} $
+%is bounded by
+%\begin{align}
+%L_T(H_\infty)\leq\left(1+{1}/{\alpha}+\left(1+\alpha\right)a\right) L_T(\braces{\vui{t}})
+%% \sum_{t=1}^{T}\left(y_{t}-\mathbf{x}_{t}^{\top}\mathbf{u}_{t}\right)^{2}
+%+\left(1+\alpha\right)b\left\Vert
+%   \mathbf{u}_{1}\right\Vert ^{2} +\left(1+\alpha\right)c
+%V_T\paren{\braces{\vui{t}}} ~.%\sum_{t=1}^{T-1}\left\Vert
+%                           %\mathbf{u}_{t+1}-\mathbf{u}_{t}\right\Vert
+%                           %^{2}
+%\label{bound_h8}
+%\end{align}
+%
+%\end{corollary}
+%\begin{proof}
+%Using a bound of~\cite[Lemma 4]{HassibiKa97} we have that for all $\alpha>0$,
+%\(
+%\left(y_{t}-\mathbf{x}_{t}^{\top}\mathbf{w}_{t}\right)^{2}\leq\left(1+\frac{1}{\alpha}\right)\left(y_{t}-\mathbf{x}_{t}^{\top}\mathbf{u}_{t}\right)^{2}+\left(1+\alpha\right)\left[\mathbf{x}_{t}^{\top}\left(\mathbf{w}_{t}-\mathbf{u}_{t}\right)\right]^{2}
+%\).
+%Plugging \thmref{theorem_h8} into this inequality and collecting the terms we get the
+%desired bound.
+%% \begin{eqnarray*}
+%% L_T(H_\infty)
+%% % \sum_{t=1}^{T}\left(y_{t}-\mathbf{x}_{t}^{\top}\mathbf{w}_{t}\right)^{2}
+%% & \leq & \left(1+\frac{1}{\alpha}\right)
+%% L_T(\{\vui{t}\})%\sum_{t=1}^{T}\left(y_{t}-\mathbf{x}_{t}^{\top}\mathbf{u}_{t}\right)^{2}
+%% +\left(1+\alpha\right)\sum_{t=1}^{T}\left[\mathbf{x}_{t}^{\top}\left(\mathbf{w}_{t}-\mathbf{u}_{t}\right)\right]^{2}\\
+%%  & \leq &
+%%  \left(1+\frac{1}{\alpha}+\left(1+\alpha\right)a\right)
+%% L_T(\{\vui{t}\})%\sum_{t=1}^{T}\left(y_{t}-\mathbf{x}_{t}^{\top}\mathbf{u}_{t}\right)^{2}
+%% +\left(1+\alpha\right)b\left\Vert
+%%    \mathbf{u}_{1}\right\Vert ^{2}\\
+%% &&+\left(1+\alpha\right)c V_T\paren{\braces{\vui{t}}}
+%% %\sum_{t=1}^{T-1}\left\Vert
+%% %  \mathbf{u}_{t+1}-\mathbf{u}_{t}\right\Vert ^{2}
+%%  ~.
+%% \end{eqnarray*}
+%\QED
+%\end{proof}
+%The bound holds for any $\alpha>0$. We plug
+%$\alpha = \sqrt{{L_T\paren{\braces{\vui{t}}}}/\paren{a L_T\paren{\braces{\vui{t}}} + cV + b \normt{\vui{1}}}}$
+%%
+%% We next minimize it with respite to
+%% $\alpha$. Computing the derivative of \eqref{bound_h8} with respect to
+%% $\alpha$ we get,
+%% \[
+%% -\frac{1}{\alpha^2}L_T\paren{\braces{\vui{t}}}
+%% + \paren{a L_T\paren{\braces{\vui{t}}} + cV + b \normt{\vui{1}}}=0
+%% ~\Rightarrow~\alpha = \sqrt{\frac{L_T\paren{\braces{\vui{t}}}}{a L_T\paren{\braces{\vui{t}}} + cV + b \normt{\vui{1}}}}
+%% \]
+%%Substituting the last equation
+%in \eqref{bound_h8} minimizing the bound, and get,
+%\begin{align*}
+%L_T(H_\infty)
+%\leq&~ (1+a)  L_T\paren{\braces{\vui{t}}} + cV + b
+%\normt{\vui{1}} + 2 \sqrt{\paren{a L_T\paren{\braces{\vui{t}}} + cV + b
+%    \normt{\vui{1}}}{L_T\paren{\braces{\vui{t}}}}}\\
+%\leq&~ (1+a+2\sqrt{a})  L_T\paren{\braces{\vui{t}}} + cV + b
+%\normt{\vui{1}} + 2 \sqrt{\paren{cV + b
+%    \normt{\vui{1}}}{L_T\paren{\braces{\vui{t}}}}} ~.
+%\end{align*}
+Intuitively, we expect the $H_\infty$ algorithm to perform better when
+the data is close to linear, that is when
+$L_T\paren{\braces{\vui{t}}}$ is small, as, conceptually, it was
+designed to minimize a loss with respect to weights $\{\vui{t}\}$.  On
+the other hand, \texttt{LASER} is expected to perform better when the data is
+hard to predict with linear models, as it is not motivated from this
+assumption.
+%Indeed, the bounds reflect these observations.
+%
+%Comparing the last bound with \eqref{bound1} we note a few
+%differences. First, the factor $\paren{1+a+2\sqrt{a}}\geq4$ of
+%$L_T\paren{\braces{\vui{t}}}$ is worse for $H_\infty$ than for
+%\texttt{LASER}, which is a unit. Second, \texttt{LASER} has worse
+%dependency in the drift $T^{2/3}V^{1/3}$, while  for $H_\infty$ it is
+%about $cV + 2 \sqrt{{cV }{L_T\paren{\braces{\vui{t}}}}}$. Third, the
+%$H_\infty$ has an additive factor $\sim
+%\sqrt{L_T\paren{\braces{\vui{t}}}}$, while \texttt{LASER} has an
+%additive
+%logarithmic factor, at most.
+%
+%Hence, the bound of the $H_\infty$ based algorithm is
+%better when the cumulative loss $L_T\paren{\braces{\vui{t}}}$ is
+%small. In this case, $4 L_T\paren{\braces{\vui{t}}}$ is not a large
+%quantity, and as all the other quantities behave like
+%$\sqrt{L_T\paren{\braces{\vui{t}}}}$ they are small as well. On the other
+%hand, if $L_T\paren{\braces{\vui{t}}}$ is large, and is linear in $T$, the first term of the
+%bound becomes dominant, and thus the factor of $4$ for the $H_\infty$
+%algorithm makes its bound higher than that of \texttt{LASER}. Both bounds were obtained from a min-max approach, either directly (\texttt{LASER}) or
+%via-reduction from filtering ($H_\infty$). The bound of the former is
+%lower in hard problems.~\cite{KivinenWaHa03} proposed
+% another approach for filtering with a bound depending on $\sum_t
+% \Vert \vui{t} \!-\! \vui{t-1} \Vert$ and not the sum of squares as we
+% have both for \texttt{LASER} and the $H_\infty$-based algorithm.
+%

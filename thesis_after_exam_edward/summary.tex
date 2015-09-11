@@ -1,0 +1,20 @@
+\chapter{Summary and Conclusions}
+
+We proposed a modification of the last-step min-max algorithm~\citep{Forster} using weights over examples (\texttt{WEMM}), and showed how to choose these weights for the problem to be well defined -- convex -- which enabled us to develop the last-step min-max predictor, without requiring the labels to be bounded. Our algorithmic formulations depend on inner- and outer-products and thus can be employed with kernel functions. Our analysis bounds the regret with quantities that depend only on the loss of the competitor, with no need for any knowledge of the problem.
+
+We also proposed a novel algorithm (\texttt{LASER}) for non-stationary online regression designed and
+analyzed with the squared loss. The algorithm was developed from the
+last-step min-max predictor for {\em non-stationary} problems, and we
+showed an exact recursive form of its solution.
+% We also described an algorithm based on the $H_\infty$ filter, that is motivated from a
+%min-max approach as well, yet for filtering, and bounded its regret.
+ Simulations showed the superior performance of our algorithm, especially in a worst-case (constant per iteration) drift.
+
+An interesting future direction is to extend the algorithms for general loss functions rather than the squared loss, or to classification tasks. Additionally, for the \texttt{LASER}
+algorithm to perform well, the amount of drift $V$ or a bound over it
+should be known in advance. An interesting direction
+is to design algorithms that automatically detect the
+level of drift, or do not need this information before run-time.
+
+The derivation of the \texttt{LASER} algorithm does not use the notation of weighted loss. An interesting direction
+is to try to incorporate in the derivation of the \texttt{LASER} algorithm the technique of weighted loss used for the derivation of the \texttt{WEMM} algorithm.

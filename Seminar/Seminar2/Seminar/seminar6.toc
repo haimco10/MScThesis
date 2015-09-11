@@ -1,0 +1,6 @@
+\beamer@endinputifotherversion {3.19pt}
+\select@language {english}
+\beamer@sectionintoc {1}{Introduction}{2}{0}{1}
+\beamer@sectionintoc {2}{Classification Setting}{12}{0}{2}
+\beamer@sectionintoc {3}{Regression Setting}{51}{0}{3}
+\beamer@sectionintoc {4}{Summary}{57}{0}{4}

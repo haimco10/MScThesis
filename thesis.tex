@@ -1,0 +1,108 @@
+% options are:
+% PhD, MSc (choose one)
+% beforeExam (to make the personal thanks invisible)
+\documentclass[MSc,beforeExam]{iitcsthesis}
+
+\usepackage{times}
+\usepackage{latexsym}
+\usepackage{graphicx} % more modern
+\usepackage{graphics}
+\usepackage{subfigure}
+\usepackage{natbib}
+
+\usepackage{algorithm}
+\usepackage{hyperref}
+
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amstext}
+\usepackage{latexsym}
+\usepackage{amssymb}
+\setcounter{tocdepth}{3}
+\usepackage{epstopdf}
+\usepackage{url}
+\usepackage{color}
+\usepackage{wrapfig}
+\usepackage{fancyvrb}
+\usepackage{rotating}
+\usepackage{enumerate}
+\usepackage{tabulary}
+%\usepackage{algpseudocode}
+%\usepackage{algorithmic}
+
+
+% For some reason, the hebrew package clashes with the amsthm package. If you need a proof environment, you can uncomment the following:
+%\usepackage{amssymb} %Needed for \blacksquare. Take care not to add this package twice...
+%\newenvironment{proof}[1][Proof]{\par \textbf{#1.} }{\hspace{10pt}\hfill$\blacksquare$\par}
+\begin{document}
+
+\authorEnglish{Haim Cohen}
+
+\titleEnglish{Multi-task Learning with a Shared Annotator}
+
+\supervisorEnglish{The Research Thesis Was Done Under The Supervision
+of Prof.~Koby Crammer in the Faculty of Electrical Engineering.}
+
+\PublicationEnglish{\\Parts of this work were published in ...}
+
+\GregorianDateEnglish{December 2015}
+\JewishDateEnglish{Tammuz, 5773}  
+
+\personalThanksEnglish{I would like to thank Koby for his remarkable guidance and support. \\
+Thanks to my family for the support....}
+%\financialThanksEnglish{The generous financial support of the Technion is gratefully acknowledged.}
+
+\maketitleEnglish
+
+% The English abstract should be 200-500 words long.
+\abstractEnglish
+We introduce a new multi-task framework, in which $K$ online
+learners are sharing a single annotator with limited bandwidth. On
+each round, each of the $K$ learners receives an input, and makes a
+prediction about the label of that input. Then, a shared
+(stochastic) mechanism decides which of the $K$ inputs will be
+annotated. The learner that receives the feedback (label) may update
+its prediction rule, and we proceed to the next round. We develop 
+online algorithms for multi-task binary classification that learns in
+this setting, and bound its performances in the worst-case
+setting. The algorithms apply an exploration-exploitation approach in order to allocate the limited feedback in the way that reduces the total number of errors.  
+Additionally, we show that our algorithm can be used to
+solve two bandits problems: contextual bandits, and dueling bandits
+with context, both allowed to decouple exploration and
+exploitation. Empirical study with OCR data , vowel prediction (VJ
+project) and NLP -sentiment analysis data shows that our algorithms outperforms algorithms that use
+uniform allocation, and essentially makes more (accuracy) for the
+same labour of the annotator.
+\input{prela}
+
+\chapter*{Abbreviations and Notations}
+\begin{tabular}{lcl}
+$SHAMPO$ & --- & SHared Annotator for Multiple PrOblems\\
+$\Vert\vu \Vert$ & --- & $\ell_2$-norm of the vector $\vu$\\
+\end{tabular}
+
+%Or, if your tables are long, ``\usepackage{longtable}'' at the beginning, and then  ``\begin{longtable}[l]{lcl} ... \end{longtable}''
+
+\allowdisplaybreaks[1]
+
+\input{introduction}
+\input{SHAMPO}
+\input{Second_Order_SHAMPO}
+
+%\section*{Appendix}
+%\addcontentsline{toc}{section}{Appendix}
+%For some reason, you need to manually add stared sections to the the index file.
+
+% Put the path to your bib file (or whatever else you use) here
+\clearpage
+%\bibliographystyle{fullname}
+\bibliographystyle{plainnat}
+\bibliography{bib}
+
+% ********************** ADD THIS BACK ********************************
+%\include{hebrewPart}
+% *********************************************************************
+
+% Actually, I found it much easier to have each chapter in a file of its own. Except for the Hebrew part, I put it all together in this example just to make things clear.
+
+\end{document}

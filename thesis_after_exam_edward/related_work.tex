@@ -1,0 +1,72 @@
+\chapter{Related work}
+
+The problem of predicting reals in an online manner was studied for more than five decades. Clearly we cannot cover all previous work here, and the reader
+is refered to the encyclopedic book of~\cite{CesaBiGa06}
+ for a full survey.
+
+\cite{WidrowHoff} studied a gradient descent algorithm for the squared loss. Many variants of the algorithm were studied since then. A notable example is the normalized least mean squares algorithm (NLMS)~\citep{Bitmead,Bershad} that adapts to the input's scale. More gradient descent based algorithms and bounds for regression with the squared loss were proposed by~\cite{Nicolo_Warmuth} about two decades ago. These algorithms were generalized and extended by~\cite{Kiv_War} using additional regularization functions.
+
+An online version of the ridge regression algorithm in the worst-case
+setting was proposed and analyzed by~\cite{Foster91}. A related
+algorithm called the Aggregating Algorithm (AA) was studied by~\cite{vovkAS}, and later applied to the problem of linear regression with square loss~\citep{Vovk97,Vovk01}. See also the work of~\cite{AzouryWa01}.
+
+
+The recursive least squares (RLS)~\citep{Hayes} is a
+similar algorithm proposed for adaptive filtering. A variant of the RLS algorithm (AROW for regression~\citep{VaitsCr11}) was analysed by~\cite{CrammerKuDr12}. All algorithms
+make use of second order information, as they maintain a weight-vector
+and a covariance-like positive semi-definite (PSD) matrix used to
+re-weight the input. The eigenvalues of this covariance-like matrix
+grow with time $t$, a property which is used to prove logarithmic
+regret bounds.~\cite{OrabonaCBG12} showed
+that beyond logarithmic regret bound can be achieved when the total
+best linear model loss is sublinear in $T$. We derive a similar bound,
+with a multiplicative factor that depends on the worst-loss of the competitor $\vu$, rather than a bound $Y$ on the labels.
+
+In the context of online linear optimization,~\cite{DBLP:conf/colt/HazanK08} developed regret
+bounds that depend on the variance of the side information used to define the loss sequence. Formally, they considered the case in
+which the loss functions have a small variation, defined by $V=\sum_{t=1}^T \|f_t-\mu\|^2$, where $\mu=\sum_{t=1}^T f_t/T$ is the average of the loss functions. For this, they showed that a regret of $\mcal{O}(\sqrt{V})$ can be achieved, and they also have an analogous result for the prediction with expert advice problem. Later,~\cite{HazanK09a} considered the portfolio management problem, in which the loss functions are restricted to a specific form, and showed better regret of $\mcal{O}(\log{V})$. A natural question that arises from these bounds is whether it is possible to get tighter variance-based bounds where the variance is $V_1=\sum_{t=1}^T \|f_t-f_{t-1}\|^2$. This question solved recently by~\cite{DBLP:journals/jmlr/ChiangYLMLJZ12} which showed a regret of $\mcal{O}(\sqrt{V_1})$. More tighter variance-based bounds for online linear optimization were proved by~\cite{DBLP:journals/corr/abs-1208-3728}. These bounds take advantage of benign (as opposed to worst-case) sequences that can be described well by a known "predictable process". It is important to note that in the regression case that we consider in this thesis, these variance-based bounds correspond to bounds that depend on the variance of the instance vectors $\mathbf{x}_t$, rather than on the loss of the competitor, as the bound of~\cite{OrabonaCBG12} and our bound. In addition, our bounds are valid in the worst-case, under no assumptions on the mechanism generating the sequence of instances.
+
+The derivation of the \texttt{WEMM} algorithm shares similarities with the work of~\cite{Forster}. Both algorithms are motivated from the
+last-step min-max predictor. Yet, the formulation of~\cite{Forster} yields a convex optimization for which the max
+operation over $\yi{t}$ is not bounded, and thus he used an
+artificial clipping operation to avoid unbounded solutions. With a
+proper tuning of the weight $a_t$, we are able to obtain a
+problem that is convex in $\hyi{t}$ and concave in $\yi{t}$, and thus
+well defined.
+
+The derivation of the \texttt{LASER} algorithm also shares similarities with the work of~\cite{Forster}. While the algorithm of~\cite{Forster} is
+designed for the stationary setting, \texttt{LASER} algorithm is primarily designed
+for the non-stationary setting. This algorithm is mostly close to a recent
+algorithm~\citep{VaitsCr11} called ARCOR (Adaptive Regularization with Covariance Reset). The ARCOR algorithm
+is based on the AROWR algorithm with an additional projection step, and
+it controls the eigenvalues of a covariance-like matrix using scheduled resets.  The Covariance Reset RLS algorithm
+(CR-RLS)~\citep{Chen,Salgado,Goodhart}
+is another example of an
+algorithm that resets a covariance matrix but every fixed amount of
+data points, as opposed to ARCOR that performs these resets adaptively.  All
+of these algorithms that were designed to have numerically stable computations, perform
+covariance reset from time to time. Our algorithm, \texttt{LASER}, is simpler
+as it does not involve these steps, and it controls the increase of the
+eigenvalues of the covariance matrix implicitly rather
+than explicitly by ``averaging'' it with a fixed diagonal matrix (see
+\eqref{D}). The Kalman filter~\citep{Kalman60}
+and the $H_\infty$
+algorithm~(e.g. \citep{Simon:2006:OSE:1146304}) %,DBLP:journals/tsp/Simon06}
+designed for filtering take a similar approach, yet the exact algebraic
+form is different.
+
+ARCOR also controls explicitly the norm of the weight vector, which is
+used for its analysis, by projecting it into a bounded set, as was
+also proposed by~\cite{HerbsterW01}. Other approaches to control its
+norm are to shrink it multiplicatively~\citep{KivinenSW01} or by removing old
+examples~\citep{CavallantiCG07}. Some of these algorithms were
+designed to have sparse functions in the kernel space~(e.g.
+\citep{CrammerKS03,Dekel05theforgetron}). Note that our algorithm
+\texttt{LASER} is simpler as it does not
+perform any of these operation explicitly.
+%
+Finally, few algorithms that employ second order information
+were recently proposed for
+classification~\citep{CesaBianchiCoGe05,CrammerKuDr09,Crammer:2012:CLC:2343676.2343704}, %DredzeCrPe08,
+and later in the online convex programming framework
+\citep{DuchiHS10,McMahanS10}.

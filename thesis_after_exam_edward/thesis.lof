@@ -1,0 +1,15 @@
+\select@language {english}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {\@@number {\@@number {3}.\@@number {1}}}{\ignorespaces An illustration of the min-max objective function $G(y_{T},\mathaccentV {hat}05E{y}_{T})$ Eq.~(\ref {minmax_objective}). The black line is the value of the objective as a function of $y_{T}$ for the optimal predictor $\mathaccentV {hat}05E{y}_{T}$. Left: Forster's optimization function (convex in $y_{T}$). Center: our optimization function (strictly concave in $y_{T}$, case 1 in Theorem~\ref {thm:theorem1}). Right: our optimization function (invariant to $y_{T}$, case 2 in Theorem~\ref {thm:theorem1}).}}{\@@number {13}}{figure.3.1}
+\contentsline {figure}{\numberline {\@@number {\@@number {3}.\@@number {2}}}{\ignorespaces WEMM: weighted min-max prediction.}}{\@@number {17}}{figure.3.2}
+\contentsline {figure}{\numberline {\@@number {\@@number {3}.\@@number {3}}}{\ignorespaces Kernel WEMM.}}{\@@number {21}}{figure.3.3}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {\@@number {\@@number {5}.\@@number {1}}}{\ignorespaces LASER: last-step adaptive regression algorithm.}}{\@@number {37}}{figure.5.1}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {\@@number {\@@number {7}.\@@number {1}}}{\ignorespaces Cumulative squared loss for NLMS, AROWR, ARCOR, CR-RLS and LASER vs iteration. }}{\@@number {51}}{figure.7.1}
+\addvspace {10\p@ }
+\addvspace {10\p@ }

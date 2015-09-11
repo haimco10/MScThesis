@@ -1,0 +1,1052 @@
+\chapter{SHMPO (SHared Annotator for Multiple Problems) Algorithms}
+
+
+
+\label{sec:alg}
+\begin{figure}[t]
+\paragraph{Parameters:}$b\in\mathbb{R}>0$.
+\paragraph{Initialize:} $\vwi{i,0}=\vzero$ for $i=1\comdots K$
+\paragraph{For}  {$t=1,2, ..., n$} 
+\begin{enumerate}
+\nolineskips
+\item Observe $K$ instance vectors, $\vxiit$, ($i=1 \comdots K$).
+\item Compute margins $\hat{p}_{i,t}=\vwti{i,t-1} \vxiit$.
+\item Predict $K$ labels, $\hyi{i,t}=\sign(\hat{p}_{i,t})$.
+\item Draw problem $J_t$  with the distribution:
+\begin{align}
+\pr{J_t=j} &=
+\frac{\paren{b+\abs{\hat{p}_{j,t}}-\min_{m=1}^K\abs{\hat{p}_{m,t}}}^{-1}}{D_{t}}, \eqref{prob}\nonumber\\
+D_t &=
+\sum_i \paren{b+\abs{\hat{p}_{i,t}}-\min_{m=1}^K\abs{\hat{p}_{m,t}}}^{-1}. \nonumber
+\end{align}
+\item Query the true label ,$\yi{J_t,t}\in\{-1,1\}$.
+\item Set the indicator $M_{J_t, t}=1$ iff $\yi{J_t,t} \neq \hyi{J_t,t}$.
+\item Update with the perceptron rule:
+\begin{align}
+&\vwi{J_t,t} = \vwi{J_t,t-1}+M_{J_t,t} \, \yi{J_t,t}\, \vxi{J_t,t} \label{perc_update}\\
+&\vwi{i,t} ~~= \vwi{i,t-1}  \textrm{ for } i \neq J_t \nonumber
+\end{align}
+\end{enumerate}
+\paragraph{End for} 
+\paragraph{Output}: $\vwi{i,n}$ for $i=1 \comdots K$.
+\caption{SHAMPO: SHared Annotator for Multiple PrOblems. \label{alg:SHAMPO_FO}}
+\end{figure}        
+
+
+
+We now describe algorithms for multi-task learning with
+a shared annotator setting, that uses linear models. Two steps are
+yet to be specified: how to pick a task to be labeled  and how to
+perform an update, once the true label for that task is given.
+Our first algorithm is based on the perceptron algorithm 
+\
+
+\section{SHAMPO perceptron}
+
+We focus now on linear-functions of the form $f(\vx)=\sign(p)$ for the
+quantity $p=\vwt\vx$, $\vw\in\reals^d$,  which often called the
+\textit{margin}. Specifically, the algorithm maintains a set of $K$ weight
+vectors, $\vwi{i,t},~i\in\braces{1\comdots K}$. On round $t$, the algorithm predicts a label for each one of the tasks, $\hyi{i,t}=\sign(\hat{p}_{i,t})$ where $\hat{p}_{i,t}=\vwti{i,t-1}\vxii$. On rounds for which the label of
+some problem $J_t$ is queried, the algorithm update the model of the queried task only, such that for the rest of the tasks   we have
+$\vwi{i,t}=\vwi{i,t-1}$ for $i\neq J_t$ and no update is made for the unqueried tasks. 
+
+We say that the algorithm has a prediction mistake on task $i$ in round $t$ if
+$\yi{i,t} \neq \hyi{i,t}$, and denote this event by the indicator $M_{i,t}=1$,
+otherwise, if there is no mistake, we set $M_{i,t}=0$. The goal of the
+algorithm is to minimize the cumulative mistakes, $\sum_t \sum_i
+M_{i,t}$. Models are also evaluated using the
+{\em Hinge-loss}. Specifically, let $\vui{i}\in\reals^d$ be some vector
+associated with problem $i$. We denote the Hinge-loss \fbox{show hinge loss plot} of it, with respect
+to some input-label by,
+$\lossp{\gamma,i,t}(\vui{i})= \paren{\gamma-\yiit
+  \vuti{i}\vxiit}_{+}$, where, $(x)_+=\max\{x,0\}$, and $\gamma>0$ is
+some parameter. The cumulative loss over all problems and a sequence of
+$n$ inputs, is,
+$ %\begin{equation}
+L_{\gamma,n} =L_{\gamma}(\{ \vui{i} \})=\sum_{t=1}^{n} \sum_{i=1}^{K}\ {\lossp{\gamma,i,t}(\vui{i})}
+$. %\end{equation}  
+We also use the following expected hinge-loss over the random queried choices
+of the algorithm, 
+$ % \begin{equation}
+\bar{L}_{\gamma,n}=\bar{L}_{ \{ \vui{i}\}}=\mathbb{E}{\sum_t^n \sum_{i=1}^{K}{M_{i,t}Z_{i,t}\lossp{\gamma,i,t}(\vui{i})}}
+$.  %\end{equation}
+Now, we proceed by  describing our algorithm     and specify how to choose a problem to query its label, and how to perform an update.
+
+
+
+In order to select a problem, the algorithm uses the absolute margin
+$\hat{p}_{i,t}$, intuitively. We can see $\abs{\hat{p}_{i,t}}$ as the certainty measure of the label prediction.  If $\abs{\hat{p}_{i,t}}$ is small,
+then there is uncertainty about the labeling of $\vxi{i,t}$, and
+when $\abs{\hat{p}_{i,t}}$ is large, we say that we have high certainty in our label prediction. Similar argument was used by Tong and Koller~\cite{DBLP:conf/icml/TongK00} for picking an example to be labeled in batch active learning. Prima facie, under this claim, at each point we should query the true label for the task that corresponds to the smallest margin.  Yet, if the
+model $\vwi{i,t-1}$ is not accurate enough, due to small number of
+observed examples, this estimation may be rough, and may lead to a wrong
+conclusion. We thus perform an exploration-exploitation strategy, and
+query problems randomly, with a bias towards problems with low 
+$\vert \hat{p}_{i,t} \vert$. 
+
+\begin{figure}[h]
+\begin{centering}
+\includegraphics[width=0.5\textwidth]{figs/margin.eps}
+\caption{Example for the using of the margin as a certainty measure. The circles and crosses represent two different classes and the separate hyperplane is shown. One of the circles examples have lower margin than the other, so its label can easily been replaced with the other one.}
+\label{fig:margin}
+\end{centering}
+\end{figure}
+
+
+To the best of our knowledge,
+exploration-exploitation usage in this context of choosing an examples
+to be labeled (eg in settings such as semi-supervised learning or
+selective sampling) is novel and new.  In order to get this property, we induced a
+distribution over the tasks in the time step $t$, such that the probability to issue a query on the task $j$ is:
+\begin{equation}
+\begin{aligned}
+\pr{J_t=j}&=\frac{\paren{b+\abs{\hat{p}_{j,t}}-\min_{m=1}^K\abs{\hat{p}_{m,t}}}^{-1}}{D_t}\\
+~ \textrm { for } ~
+D_{t}&=\sum_{i=1}^{K}{\paren{b+\abs{\hat{p}_{i,t}}-\min_{m}\abs{\hat{p}_{m,t}}}^{-1}}.
+\label{prob}
+\end{aligned}
+\end{equation} 
+where $b\geq 0, b\in\reals$ is a tradeoff parameter, between exploration and
+exploitation. Clearly, it is a distribution, since $\pr{J_t=j}\geq 0$ and $\sum_j \pr{J_t=j}=1$. When we examine the extream cases  of $b$ we see that  for $b\rightarrow0$
+we have $\pr{J_t=j}\rightarrow1$ and  for the task with minimal margin, $J_t=\arg\min_{i=1}^K\abs{\hat{p}_{i,t}}$,  and $\pr{J_t=j}\rightarrow0$ for all the rest. In this case , pure exploitation is being made. The pure exploration happens when   $b\rightarrow \infty$
+, then the distribution is uniform, $ \pr{J_t=j}= 1/K,~~ \forall j $.  
+
+As noted above we denote by $Z_{i,t}=1$ iff $i=J_t$.
+The update of the algorithm is performed with the perceptron rule,
+that is $\vwi{J_t,t} = \vwi{J_t,t-1}+M_{J_t,t} \, \yi{J_t,t}\,
+\vxi{J_t,t}$ and $\vwi{i,t} = \vwi{i,t-1}$ for $i \neq J_t$. 
+For simplicity of presentation we write the update for all of the tasks in one term  as, $\vwi{i,t} =
+\vwi{i,t-1} + Z_{i,t}\, M_{i,t} \, \yi{i,t}\, \vxi{i,t}$. One can notice that although
+this notation uses labels for all tasks,  %(via $M_{i,t}$)
+ only
+the label of the task $J_t$ is used in practice, as for other problems $Z_{i,t}=0$.
+
+
+
+We call this algorithm {\em SHAMPO} for SHared Annotator for Multiple PrOblems. The pseudo-code of this algorithm appears  in \figref{alg:SHAMPO_FO}.
+
+
+
+
+\fbox{We conclude}
+this section by noting that the algorithm can be incorporated with
+Mercer-kernels as all operations depend implicitly on inner-product
+between inputs.
+
+The following theorem states that the expected cumulative number of mistakes
+that the algorithm makes, may not be higher than for an algorithm that
+observes the labels of all inputs. 
+\begin{theorem}
+  If SHAMPO algorithm runs on $K$ problems with $K$ parallel example pair
+  sequences
+  $(\vxi{i,1},y_{i,1}),...(\vxi{i,n},y_{i,n})\in\mathbb{R}^d\times\{-1,1\}$,
+  $i=1,...,K$ with input parameter $b>0$, then for all $\gamma>0$, all
+  $\vui{i}\in\mathbb{R}^d$ and all $n\ge1$,
+  
+\begin{displaymath}
+\mathbb{E}\left[ \sum_{i=1}^{K}\sum_{t=1}^{n}{M_{i,t}} \right]
+\le \frac{K}{\gamma}\left(1+\frac{X^2}{2b} \right){\bar L}_{\gamma,n}
++\frac{K\left({2b+X^2}\right)^2\tilde{U}^2}{8{\gamma}^2b}~,
+\label{bound_FO_SHAMPO}
+\end{displaymath}
+ where $X=\max_{i,t}\Vert\vxiit\Vert$,
+$\tilde{U}^2=\sum_{i=1}^{K}\normt{\vui{i}}$ and the expectation is over the
+random choices of the algorithm.
+\end{theorem} \label{thm:FO_bound}
+
+\begin{proof}
+Fix $n$ examples sequences, $(\vxi{i,1},y_{i,1}),...,(\vxi{i,n},y_{i,n})$ for each of the $K$ tasks. Let $t$ be certain trial and $i$ to be an update task on this trial, such that $M_{i,t}=1.$ We can write,
+\begin{align*}
+\gamma-\lossp{\gamma,i,t}(\vu_i)&=\gamma-\paren{\gamma-y_{i,t}\vu_i^T\vxiit}_+\\
+ ~&\le~  y_{i,t}\vu_i^T\vxiit \\
+&= y_{i,t}\paren{\vu_i+\vwi{i,t-1}-\vwi{i,t-1}}^T\vxiit\\
+&= y_{i,t}\vwi{i,t-1}^T\vxiit+\paren{\vu_i-\vwi{i,t-1}}^Ty_{i,t}\vxiit\\
+&= y_{i,t}\vwi{i,t-1}^T\vxiit+\paren{\vu_i-\vwi{i,t-1}}^T\paren{\vwi{i,t}-\vwi{i,t-1}}\\
+&=  y_{i,t}\vwi{i,t-1}^T\vxiit+\frac{1}{2}{\normt{\vu_{i}-\vwi{i,t-1}}}
+        -\frac{1}{2}{\normt{\vu_i-\vwiit}}+\frac{1}{2}{\normt{\vwi{i,t-1}-\vwiit}}\\
+&=  y_{i,t}\hat{p}_{i,t}+\frac{1}{2}{\normt{\vu_{i}-\vwi{i,t-1}}}
+        -\frac{1}{2}{\normt{\vu_i-\vwiit}}+\frac{1}{2}{\normt{\vwi{i,t-1}-\vwiit}}~.
+\end{align*}
+The last inequality holds for all $\gamma>0$ and for all
+$\vu_i\in\mathbb{R}^d$, so we can replace $\gamma$ and $\vu_i$ by their
+scaling $\alpha\gamma$ and $\alpha \vu_i$ respectively, where $\alpha>0$
+is a scaling parameter that will be determined shortly. Since the inequality is computed on an update task,
+$y_{i,t}\hat{p}_{i,t}\le0$ holds , i.e. $y_{i,t}\hat{p}_{i,t}=-\abs{\hat{p}_{i,t}}$ , and we get
+\begin{equation*}
+\begin{split}
+\alpha\gamma  +&\abs{\hat{p}_{i,t}} \le\\
+&\alpha\lossp{\gamma,i,t}(\vu_i)+\frac{1}{2}{\normt{\alpha \vu_i-\vwi{i,t-1}}}-\frac{1}{2}{\normt{\alpha \vu_i-\vwiit}}+\frac{1}{2}{\normt{\vwi{i,t-1}-\vwiit}} .\end{split}
+\end{equation*}
+Now, in order to generalize the inequality, we multiply it by the indicator $M_{i,t}Z_{i,t}$ , which means that the inequality holds for  trials and tasks where there is an update, as stated above.
+\begin{equation*}
+\begin{split}
+M_{i,t}&Z_{i,t}{\paren{\alpha\gamma \!-\!\abs{\hat{p}_{i,t}}}} \!\le\! M_{i,t}Z_{i,t}\alpha \lossp{\gamma,i,t}(\vu_i)
++\\ &\frac{M_{i,t}Z_{i,t}}{2}\normt{\alpha \vu_i\!-\!\vwi{i,t\!-\!1}}\!-\!\frac{M_{i,t}Z_{i,t}}{2}\normt{\alpha \vu_i\!-\!\vwiit}\!+\!
+\frac{M_{i,t}Z_{i,t}}{2}\normt{\vwi{i,t\!-\!1}\!-\!\vwiit}\!.
+\end{split}
+\end{equation*} 
+ Yet, in the other cases,  when,  $M_{i,t}Z_{i,t}=0$,
+the equality $\vwiit=\vwi{i,t-1}$ holds as well, so we can rid off the indicator for the last three terms and we have
+\begin{equation}
+\begin{split}
+M_{i,t}Z_{i,t}{\paren{\alpha\gamma +\abs{\hat{p}_{i,t}}}} \le M_{i,t}&Z_{i,t}\alpha \lossp{\gamma,i,t}(\vu_i)+\\ 
+\frac{1}{2}\normt{\alpha \vu_i-\vwi{i,t-1}}&-\frac{1}{2}\normt{\alpha \vu_i-\vwiit}+
+\frac{M_{i,t}Z_{i,t}}{2}\normt{\vwi{i,t-1}-\vwiit}.
+\end{split}
+\end{equation}\label{step_1_in_proof} 
+Next, we sum the inequality above, over $t$,  recall the facts that
+$\vwi{i,0}=0$ and $\normt{\vwi{i,t-1}-\vwiit}\le X^2$ to get,
+\begin{equation}
+\begin{split}
+\sum_{t=1}^{n}{M_{i,t}Z_{i,t}{\paren{\alpha\gamma+\abs{\hat{p}_{i,t}}-\frac{X^2}{2}}}}
+\le\alpha\sum_{t=1}^{n}{ M_{i,t}Z_{i,t}
+  \lossp{\gamma,i,t}(\vu_i)}&+\frac{\alpha^2}{2}\normt{\vu_i}.
+\end{split}
+\label{step_2_in_proof}
+\end{equation}
+Substituting $\alpha=(2b+X^2)/2\gamma$ (where $b\in\mathbb{R},~~b>0$)
+in \eqref{step_2_in_proof}, we get
+\begin{equation*}
+\begin{split}
+\sum_{t=1}^{n}{M_{i,t}Z_{i,t}{\paren{b +\abs{\hat{p}_{i,t}}}}}
+\le \frac{2b+X^2}{2\gamma}\sum_{t=1}^{n}{ M_{i,t}Z_{i,t}\lossp{\gamma,i,t}(\vu_i)}
++\frac{\left({2b+X^2}\right)^2}{8{\gamma}^2}\normt{\vu_i}.
+\end{split}
+\end{equation*} 
+We subtract a non negative quantity $\sum_{t=1}^{n}M_{i,t}Z_{i,t}
+{{\min_j{\abs{\hat{p}_{j,t}}}}}$ from the l.h.s. and get,
+\begin{equation}
+\begin{split}
+\sum_{t=1}^{n}M_{i,t}Z_{i,t}{\paren{b +\abs{\hat{p}_{i,t}}-\min_j{\abs{\hat{p}_{j,t}}}}}&\le\\
+\frac{2b+X^2}{2\gamma}\sum_{t=1}^{n}{ M_{i,t}Z_{i,t}}&\lossp{\gamma,i,t}(\vu_i)
++\frac{\left({2b+X^2}\right)^2}{8{\gamma}^2}\normt{\vu_i}.
+\label{step_2_in_proof}
+\end{split}
+\end{equation}
+At this point we take  the expectation of all the terms.  Recall that the conditional expectation of $Z_{i,t}$ is 
+$(b+|\hat{p}_{i,t}|-\min_j| \hat{p}_{j,t}|)^{-1}/D_{t}$
+and that $M_{i,t}$ and $\hat{p}_{i,t}$ are measurable with respect to the $\sigma$-algebra that generated by $Z_1,...Z_{t-1}$. 
+We start with the left term,
+\begin{align*}
+\begin{split}
+&\mathbb{E}\brackets{\sum_{t=1}^{n}M_{i,t}Z_{i,t}{\paren{{b
+        +\abs{\hat{p}_{i,t}}}-\min_{j}{\abs{ \hat{p}_{j,t}}}}}}= \\
+        &\mathbb{E}\brackets{\mathbb{E}_{t-1}\brackets{{\sum_{t=1}^{n}{M_{i,t}Z_{i,t}{\left({b +\abs{\hat{p}_{i,t}}}-\min_{j}{\abs{\hat{p}_{j,t}}}\right)}}}}}= \\
+&\mathbb{E}\brackets{{\sum_{t=1}^{n}M_{i,t}{\left({b +\left\vert{\hat{p}_{i,t}}\right\vert}-\min_{j}{\left\vert \hat{p}_{j,t} \right\vert}\right)}\mathbb{E}_{t-1}\brackets{ Z_{i,t}}}}=\\
+&\mathbb{E}\brackets{\sum_{t=1}^{n}{\frac{M_{i,t}}{D_{t}}}}~.
+\end{split}
+\end{align*}
+Substituting the last term in the expectation of
+\eqref{step_2_in_proof}, % we get,
+\begin{equation}
+\mathbb{E}\left[ \sum_{t=1}^{n}{\frac{M_{i,t}}{D_{t}}} \right]
+\le \frac{2b+X^2}{2\gamma}{\bar
+  L}_{\gamma,i,n}(u_i)+\frac{\left({2b+X^2}\right)^2}{8{\gamma}^2}{\left\Vert
+    \vui{i} \right\Vert}^2~.
+\label{step_3_in_proof}
+\end{equation} 
+Since that the normalization factor is a sum of positive components,
+hence $D_t$ is maximal when each of the components gets its maximal
+value. This happens when $\left\vert \hat{p}_{m,t}
+\right\vert=\left\vert \hat{p}_{j,t} \right\vert ~~  \forall
+m,j \in\{1,..,K\}$. This allows us to bound the normalization factor as
+follows,
+\begin{equation}
+\begin{split}
+D_{t}=\sum_{m=1}^{K}{\left({b+\left\vert \hat{p}_{m,t}
+      \right\vert-\min_{j}{\left\vert \hat{p}_{j,t}
+        \right\vert}}\right)^{-1}}& \le \\ \sum_{m=1}^{K}{b^{-1}}&=K/b~.
+\end{split}
+\label{bound_D}
+\end{equation}
+Plugging \eqref{bound_D} in \eqref{step_3_in_proof} we get,
+\begin{equation}\label{eq:bound_for_i}
+\mathbb{E}\left[ \sum_{t=1}^{n}{M_{i,t}\frac{b}{K}} \right]
+\le \frac{2b+X^2}{2\gamma}{\bar L}_{\gamma,i,n}(\vui{i})+\frac{\left({2b+X^2}\right)^2}{8{\gamma}^2}{\left\Vert \vui{i} \right\Vert}^2.
+\end{equation}
+Summing up the last inequality over all $K$ tasks concludes the proof.
+\begin{equation}
+\begin{split}
+\frac{1}{K}\mathbb{E}\left[ \sum_{i=1}^{K}\sum_{t=1}^{n}{M_{i,t}} \right]
+\le\frac{1}{\gamma}\left(1+\frac{X^2}{2b} \right){\bar L}_{\gamma,n}+
+\frac{\left({2b+X^2}\right)^2}{8{\gamma}^2b}\sum_{i=1}^{K}{{\left\Vert \vui{i} \right\Vert}^2}~.
+\end{split}
+\label{final_eq}
+\end{equation}
+\QED
+\end{proof}
+
+One can use the bound to tune the algorithm for a good  value of
+$b$. However, this may not be possible as unfortunately ${\bar L}_{\gamma,n}$ depends
+implicitly on the value of $b$\footnote{Similar issue appears also
+  after the discussion of Theorem~1 in a different context~\cite{cesa2006worst}.}.
+ Alternatively, we can take a
+loose estimate of ${\bar L}_{\gamma,n}$, and replace it with
+$L_{\gamma,n}$ (which is $\sim K$ times larger). The optimal value of
+$b$ can be now calculated, 
+\begin{displaymath}
+b=\frac{X^2}{2}{\sqrt{1+\frac{4\gamma L_{\gamma,n}}{U^{2}X^2}}}.
+\end{displaymath}
+Substituting this value in the bound of \eqref{bound} with
+$L_{\gamma,n}$ leads to the following bound, 
+\begin{equation*}
+\mathbb{E}\brackets{\sum_{i=1}^{K}\sum_{t=1}^{n}{M_{i,t}}}
+\le\frac{K}{\gamma}\brackets{L_{\gamma,n}+\frac{U^{2}X^2}{2\gamma}+\frac{U^{2}}{2\gamma}\sqrt{1+\frac{4\gamma L_{\gamma,n}}{U^{2}X^2}}}
+\end{equation*}
+which has the same dependency in the number of inputs $n$ as algorithm
+that observes all of them.
+
+
+We conclude this section with an analysis of an extension of our
+algorithm that allows more than a single query per round. In this setting the ability  of the annotator to annotate data instances is less limited. Here, we
+allow the algorithm to query $\kappa$ labels at a time, instead of one. On each
+iteration $t$, the modified algorithm samples without repetitions
+$\kappa$ labels to be annotated, and perform the same update as of
+\eqref{perc_update}. Formally, on each round we have $\sum_i
+Z_{i,t}=\kappa$ for $Z_{i,t}\in\{0,1\}$ where the first problem-index to
+be queried is
+drawn according to \eqref{prob}. The second problem is drawn from the
+same distribution, eliminating the first choice and adjusting the normalization factor, and so on. Once
+$\kappa$ problems are drawn, the algorithm receives $\kappa$ labels for
+the $\kappa$ corresponding inputs, and updates the $\kappa$ models
+according to \eqref{perc_update}.
+\begin{corollary}
+  If SHAMPO algorithm gets feedback for $\kappa$ tasks on each round,
+  instead of only a single problem, the expected cumulative weighted
+  mistakes is bounded as follows
+\begin{displaymath}
+\mathbb{E}\left[ \sum_{i=1}^{K}\sum_{t=1}^{n}{M_{i,t}} \right] 
+\le \frac{1}{C(\kappa,K)}\paren{\frac{1}{\gamma}\left(1+\frac{X^2}{2b} \right){\bar L}^\kappa_{\gamma,n}
++\kappa\frac{\left({2b+X^2}\right)^2}{8{\gamma}^2b}\tilde{U}^2}~,
+\end{displaymath}
+where $C(\kappa,K) = \sum_{j=K-\kappa+1}^{K}\frac{1}{j}$ , and
+${\bar L}^\kappa_{\gamma,n}$ is the expected loss of $K$ models
+$\{\vui{i}\}$ over the $\kappa$ instances that are annotated per round
+$t$.
+\end{corollary}
+\begin{proof}
+  We follow the proof of \thmref{thm:bound} until \eqref{final_eq}. We
+  repeat the process $\kappa$ times, and get the equivalent inequality
+  for sampling $\kappa$ problems without repetitions,
+\begin{equation}
+\begin{split}
+  \paren{\sum_{j=K-\kappa+1}^{K}\frac{1}{j}}\mathbb{E}\left[ \sum_{i=1}^{K}\sum_{t=1}^{n}{M_{i,t}} \right]
+\le \frac{1}{\gamma}\left(1+\frac{X^2}{2b} \right){\bar L}^\kappa_{\gamma,n}
++\kappa\frac{\left({2b+X^2}\right)^2}{8{\gamma}^2b} U^2~,
+\end{split}
+\label{final_eq_k}
+\end{equation}
+where all expectations are now with respect to the sampling \fbox{without}
+repetitions, and specifically ${\bar L}^\kappa_{\gamma,n}$ is the
+expected loss of a set of linear models $\{ \vui{i} \}$ where $\kappa$
+problems are sampled rather than a single one.
+\QED
+%
+% in \eqref{eq:bound_for_i} we saw a bound for the expectation of the sum of errors for the case of $K$ tasks. After we chose one task and got it's feedback, we want to choose another task to issue a query on in the same way. Now we have $K-1$ tasks and the bound
+% \begin{equation}
+% \sum_{t=1}^{n}\Exp{M_{i,t}\frac{b}{K-1}}
+% \le \frac{2b+X^2}{2\gamma}{\bar L}_{\gamma,i,n}(\vui{i})+\frac{\left({2b+X^2}\right)^2}{8{\gamma}^2}{\left\Vert \vui{i} \right\Vert}^2
+% \end{equation}
+% when $i\ne J_t$. Now we can choose another task out of the $K-2$ tasks and so on. summing over all of the tasks we get the bound expectation of the weight errors over time and tasks
+% \begin{equation}
+% \Exp{\sum_{t=1}^{n}\brackets{\sum_{J=1}^{\kappa-1}M_{J,t}\frac{1}{K+1-J}+\sum_{i=\kappa }^{K}M_{i,t}\frac{1}{K+1-\kappa}}}
+% \le \frac{2b+X^2}{2b\gamma}{\bar L}_{\gamma,n}+\frac{\left({2b+X^2}\right)^2}{8b{\gamma}^2}U.
+% \end{equation}
+ %
+\end{proof}
+It can be shown that this bound  is a generalized form of \thmref{thm:bound}. For $\kappa=1$ we get the bound of \thmref{thm:bound}, while for
+$\kappa=K$ we have $C(\kappa,K)\approx\log(K)$, thus recovering the
+bound of $K$ Perceptron trained in parallel, with a sightly ($log K$)
+worse dependency in the number of tasks.
+
+\section{Aggressive version}
+
+So far we used the margin to build the distribution over the tasks,  but in the update stage we used the regular perceptron update rule, that makes an update only when there is a prediction mistake. However, we already said that the margin can tells us about the uncertainty in the prediction, so it may be helpful to proceed with this approach in the update stage as well. 
+
+In this  version of SHAMPO algorithm, the update is been preformed not only when there is mistake, but also in the case of correct prediction with low margin. We set this margin to be $\lambda$. In addition to the previous mistake indicator, $M_{i,t}$,  we introduce one more  indicator,   $A_{i,t}$. we keep the notation of  $M_{i,t}=1$ when there is wrong prediction on the task $i$ in round $t$ and $M_{i,t}=0$ otherwise ,  and set $A_{i,t}=1$ when there is no prediction mistake on the task $i$ in round $t$, but the margin is low, i.e. $\abs{p_{i,t}}<\lambda,$ therefore , an aggressive update takes place, and zero otherwise. We  also define the update indicator which is $U_{i,t}=M_{i,t}+A_{i,t}$. This indicator is  $U_{i,t}=1$ on update trials and  $U_{i,t}=1$ for the rest of the cases.
+
+The theorem below, states that when the update is aggressive, the bound on the expected number of errors can be tighter than the non aggressive algorithm because we have added a new term term to the bound which can be negative.     
+
+\label{sec:FO_aggressive_alg}
+\begin{figure}[h]
+\paragraph{Parameters:}$b, \lambda \in\mathbb{R}>0$.
+\paragraph{Initialize:} $\vwi{i,0}=\vzero$ for $i=1\comdots K$
+\paragraph{For}  {$t=1,2, ..., n$} 
+\begin{enumerate}
+\nolineskips
+\item Observe $K$ instance vectors, $\vxiit$, ($i=1 \comdots K$).
+\item Compute margins $\hat{p}_{i,t}=\vwti{i,t-1} \vxiit$.
+\item Predict $K$ labels, $\hyi{i,t}=\sign(\hat{p}_{i,t})$.
+\item Draw problem $J_t$  with the distribution:
+\begin{align}
+\pr{J_t=j} &=
+\frac{\paren{b+\abs{\hat{p}_{j,t}}-\min_{m=1}^K\abs{\hat{p}_{m,t}}}^{-1}}{D_{t}}, \eqref{prob}\nonumber\\
+D_t &=
+\sum_i \paren{b+\abs{\hat{p}_{i,t}}-\min_{m=1}^K\abs{\hat{p}_{m,t}}}^{-1}. \nonumber
+\end{align}
+\item Query the true label ,$\yi{J_t,t}\in\{-1,1\}$.
+\item Set the indicator $M_{J_t, t}=1$ iff $\yi{J_t,t} \neq \hyi{J_t,t}$.
+\item Iff $M_{J_t, t}=0$ and $\abs{p_{J_t,t}}<\lambda$, set  the indicator $A_{J_t,t}=1$
+\item Update with the perceptron rule:
+\begin{align}
+&\vwi{J_t,t} = \vwi{J_t,t-1}+U_{J_t,t} \, \yi{J_t,t}\, \vxi{J_t,t} \label{perc_update}\\
+&\vwi{i,t} ~~= \vwi{i,t-1}  \textrm{ for } i \neq J_t \nonumber
+\end{align}
+\end{enumerate}
+\paragraph{End for} 
+\paragraph{Output}: $\vwi{i,n}$ for $i=1 \comdots K$.
+\caption{SHAMPO aggressive perceptron. \label{alg:SHAMPO_FO}}
+\end{figure}        
+
+
+\begin{theorem}
+  If Aggressive SHAMPO algorithm runs on $K$ problems with $K$ parallel example pair
+  sequences
+  $(\vxi{i,1},y_{i,1}),...(\vxi{i,n},y_{i,n})\in\mathbb{R}^d\times\{-1,1\}$,
+  $i=1,...,K$ with input parameters $b>0$, and $\lambda>0$ then for all $\gamma>0$, all
+  $\vui{i}\in\mathbb{R}^d$ and all $n\ge1$,
+  
+\begin{displaymath}
+\begin{split}
+\mathbb{E}\left[ \sum_{i=1}^{K}\sum_{t=1}^{n}{M_{i,t}} \right]
+\le& \frac{K}{\gamma}\left(1+\frac{X^2}{2b} \right){\bar L}_{\gamma,n}+
+\frac{K\left({2b+X^2}\right)^2\tilde{U}^2}{8{\gamma}^2b}\\ 
++&\paren{2\frac{\lambda}{b}-1}\mathbb{E}\brackets{\sum_{i=1}^{K}\sum_{t=1}^{n}{A_{i,t}}}~,
+\label{bound_aggressive_FO_SHAMPO}
+\end{split}
+\end{displaymath}
+ where $X=\max_{i,t}\Vert\vxiit\Vert$,
+$\tilde{U}^2=\sum_{i=1}^{K}\normt{\vui{i}}$ and the expectation is over the
+random choices of the algorithm.
+\end{theorem} \label{thm:FO_bound_aggressive}
+
+In order to achieve tighter bound on the expected cumulative mistakes than we had in the regular SHAMPO perceptron algorithm (\sthmref{bound_FO_SHAMPO}), we need to restrict the aggressive margin  $\lambda$ to be $\lambda<b/2$. Indeed, one can say that this bound shows that the best choice of $\lambda$ is $\lambda=0$, i.e. it seems that aggressive update is not a good idea. However, in this case, $A_{i,t}=0,~ \forall i,t$ which means that this would not be the best choice. This discrimination actually shows  that there is a sweet point where $0<\lambda<b/2$ such that the bound will be the  tightest as this bound allows . 
+\\
+
+\begin{proof}
+We follow the proof of $\sthmref{thm:FO_bound}$ on an update trial, reminding that now the update indicator is  $U_{i,t}=1, $ until we get,  
+% Fix $n$ examples sequences, $(\vxi{i,1},y_{i,1}),...,(\vxi{i,n},y_{i,n})$ for each of the $K$ tasks. Let $t$ be certain trial and $i$ to be an update task on this trial, such that $M_{i,t}=1.$ We can write,
+\begin{align*}
+\gamma-&\lossp{\gamma,i,t}(\vu_i)\le \\
+&y_{i,t}\hat{p}_{i,t}+\frac{1}{2}{\normt{\vu_{i}-\vwi{i,t-1}}}
+        -\frac{1}{2}{\normt{\vu_i-\vwiit}}+\frac{1}{2}{\normt{\vwi{i,t-1}-\vwiit}}~.
+\end{align*}
+Whereas in the non aggressive version proof we claimed that $y_{i,t}\hat{p}_{i,t}=-\abs{\hat{p}_{i,t}}$ in an update trial, here, it is not true when an aggressive update takes place since we update when the prediction is correct as well. For this reason, we  remain with the term $y_{i,t}\hat{p}_{i,t}$ as is for now and we will deal with it later. In addition, in this proof,  we change the update indicator from $M_{i,t}$ to $U_{i,t}$. Considering these two changes, we proceed the proof until $\eqref{step_2_in_proof}$. Now we have,
+
+
+ 
+% \begin{equation*}
+% \begin{split}
+% \alpha\gamma  -&y_{i,t}\hat{p}_{i,t} \le\\
+% &\alpha\lossp{\gamma,i,t}(\vu_i)+\frac{1}{2}{\normt{\alpha \vu_i-\vwi{i,t-1}}}-\frac{1}{2}{\normt{\alpha \vu_i-\vwiit}}+\frac{1}{2}{\normt{\vwi{i,t-1}-\vwiit}} .\end{split}
+% \end{equation*}
+% Now, in order to generalize the inequality, we multiply it by the indicator $M_{i,t}Z_{i,t}$ , which means that the inequality holds for  trials and tasks where there is an update, as stated above.
+% \begin{equation*}
+% \begin{split}
+% U_{i,t}&Z_{i,t}{\paren{\alpha\gamma \!-\!y_{i,t}\hat{p}_{i,t}}} \!\le\! U_{i,t}Z_{i,t}\alpha \lossp{\gamma,i,t}(\vu_i)
+% +\\ &\frac{U_{i,t}Z_{i,t}}{2}\normt{\alpha \vu_i\!-\!\vwi{i,t\!-\!1}}\!-\!\frac{U_{i,t}Z_{i,t}}{2}\normt{\alpha \vu_i\!-\!\vwiit}\!+\!
+% \frac{U_{i,t}Z_{i,t}}{2}\normt{\vwi{i,t\!-\!1}\!-\!\vwiit}\!.
+% \end{split}
+% \end{equation*} 
+%  Yet, in the other cases,  when,  $U_{i,t}Z_{i,t}=0$,
+% the equality $\vwiit=\vwi{i,t-1}$ holds as well, so we can rid off the indicator for the last three terms and we have
+% \begin{equation}
+% \begin{split}
+% U_{i,t}Z_{i,t}{\paren{\alpha\gamma -y_{i,t}\hat{p}_{i,t}}} \le U_{i,t}&Z_{i,t}\alpha \lossp{\gamma,i,t}(\vu_i)+\\ 
+% \frac{1}{2}\normt{\alpha \vu_i-\vwi{i,t-1}}&-\frac{1}{2}\normt{\alpha \vu_i-\vwiit}+
+% \frac{U_{i,t}Z_{i,t}}{2}\normt{\vwi{i,t-1}-\vwiit}.
+% \end{split}
+% \end{equation}\label{step_1_in_proof} 
+% Next, we sum the inequality above, over $t$,  recall the facts that
+% $\vwi{i,0}=0$ and $\normt{\vwi{i,t-1}-\vwiit}\le X^2$ to get,
+% \begin{equation}
+% \begin{split}
+% \sum_{t=1}^{n}{U_{i,t}Z_{i,t}{\paren{\alpha\gamma-y_{i,t}\hat{p}_{i,t}-\frac{X^2}{2}}}}
+% \le\alpha\sum_{t=1}^{n}{ U_{i,t}Z_{i,t}
+%   \lossp{\gamma,i,t}(\vu_i)}&+\frac{\alpha^2}{2}\normt{\vu_i}.
+% \end{split}
+% \label{step_2_in_proof}
+% \end{equation}
+% Substituting $\alpha=(2b+X^2)/2\gamma$ (where $b\in\mathbb{R},~~b>0$)
+% in \eqref{step_2_in_proof}, we get
+% \begin{equation*}
+% \begin{split}
+% \sum_{t=1}^{n}{U_{i,t}Z_{i,t}{\paren{b -y_{i,t}\hat{p}_{i,t}}}}
+% \le \frac{2b+X^2}{2\gamma}\sum_{t=1}^{n}{ U_{i,t}Z_{i,t}\lossp{\gamma,i,t}(\vu_i)}
+% +\frac{\left({2b+X^2}\right)^2}{8{\gamma}^2}\normt{\vu_i}.
+% \end{split}
+% \end{equation*} 
+% We subtract a non negative quantity $\sum_{t=1}^{n}U_{i,t}Z_{i,t}
+% {{\min_j{\abs{\hat{p}_{j,t}}}}}$ from the l.h.s. and get,
+\begin{equation}
+\begin{split}
+\sum_{t=1}^{n}U_{i,t}Z_{i,t}{\paren{b -y_{i,t}\hat{p}_{i,t}-\min_j{\abs{\hat{p}_{j,t}}}}}&\le\\
+\frac{2b+X^2}{2\gamma}\sum_{t=1}^{n}U_{i,t}Z_{i,t}&\lossp{\gamma,i,t}(\vu_i)+\frac{\left({2b+X^2}\right)^2}{8{\gamma}^2}\normt{\vu_i}.
+\label{eq:step_3_in_proof_agressive}
+\end{split}
+\end{equation}
+ Since the inequality is computed on an update task, there is a need to discriminate between   the two possible options: either 
+$y_{i,t}\hat{p}_{i,t}\le0$ holds  when there is prediction mistake ($M_{i,t}=1$), i.e. $y_{i,t}\hat{p}_{i,t}=-\abs{\hat{p}_{i,t}}$  ,  or $0\le y_{i,t}\hat{p}_{i,t}\le\lambda$ holds  when the prediction is correct,  but an aggressive update occurs ($A_{i,t}=1$) and  in that case  $y_{i,t}\hat{p}_{i,t}=\abs{\hat{p}_{i,t}}$.
+
+At this point we take  the expectation of all the terms as before taking into consideration the two cases.  Recall that the conditional expectation of $Z_{i,t}$ is
+$(b+|\hat{p}_{i,t}|-\min_j| \hat{p}_{j,t}|)^{-1}/D_{t}$
+and that $M_{i,t}$ and $A_{i,t}$ (therefor also $U_{i,t}$) and $\hat{p}_{i,t}$ are measurable with respect to the $\sigma$-algebra that generated by $Z_1,...Z_{t-1}$. 
+We start with the left term,
+\begin{align*}
+\begin{split}
+&\mathbb{E}\brackets{\sum_{t=1}^{n}U_{i,t}Z_{i,t}{\paren{b-y_{i,t}\hat{p}_{i,t}-\min_{j}{\abs{ \hat{p}_{j,t}}}}}}\\
+&=\mathbb{E}\brackets{\mathbb{E}_{t-1}\brackets{{\sum_{t=1}^{n}{U_{i,t}Z_{i,t}{\left(b-y_{i,t}\hat{p}_{i,t}-\min_{j}{\abs{\hat{p}_{j,t}}}\right)}}}}} \\
+&=\mathbb{E}\brackets{{\sum_{t=1}^{n}U_{i,t}{\left({b -y_{i,t}\hat{p}_{i,t}}-\min_{j}{\left\vert \hat{p}_{j,t} \right\vert}\right)}\mathbb{E}_{t-1}\brackets{ Z_{i,t}}}}\\
+&=\mathbb{E}\brackets{\sum_{t=1}^{n}\frac{\paren{M_{i,t}+A_{i,t}}}{D_{t}}\frac{\paren{b -y_{i,t}\hat{p}_{i,t}-\min_{j}\abs{\hat{p}_{j,t}}}}{b+\abs{\hat{p}_{j,t}}-\min_{j}{\abs{\hat{p}_{j,t}}}}}\\
+&=\mathbb{E}\brackets{\sum_{t=1}^{n}{\frac{1}{D_{t}}\paren{M_{i,t}+\frac{b-\abs{\hat{p}_{j,t}}-\min_{j}{\abs{\hat{p}_{j,t}} }}{b+\abs{\hat{p}_{j,t}}-\min_{j}{\abs{\hat{p}_{j,t}}}}A_{i,t} }}}~.
+\end{split}
+\end{align*}
+Substituting the last term in the expectation of
+\eqref{eq:step_3_in_proof_agressive} we get,
+\begin{equation}
+\begin{split}
+\mathbb{E}\left[ \sum_{t=1}^{n}{\frac{1}{D_{t}}}\paren{M_{i,t}+\frac{b-\abs{\hat{p}_{j,t}}-\min_{j}{\abs{\hat{p}_{j,t}} }}{b+\abs{\hat{p}_{j,t}}-\min_{j}{\abs{\hat{p}_{j,t}}}}A_{i,t} } \right]
+&\le \\ \frac{2b+X^2}{2\gamma}{\bar
+  L}_{\gamma,i,n}(u_i)+&\frac{\left({2b+X^2}\right)^2}{8{\gamma}^2}{\left\Vert
+    \vui{i} \right\Vert}^2~.
+\label{step_3_in_proof_aggressive}
+\end{split}
+\end{equation} 
+Now we bound the factor that is multiplied by $A_{i,t}$,
+\begin{equation}
+\paren{1-2\frac{\lambda}{b}}=\frac{b-2\lambda}{b} \le\frac{b-\abs{\hat{p}_{j,t}}-\min_{j}{\abs{\hat{p}_{j,t}} }}{b+\abs{\hat{p}_{j,t}}-\min_{j}{\abs{\hat{p}_{j,t}}}}\le1.
+\end{equation}
+As stated before, the normalization factor can be bounded as
+follows,
+$D_{t}\le K/b$.
+Plugging this bound in \eqref{step_3_in_proof_aggressive} we get,
+\begin{equation}\label{eq:bound_for_i_aggressive}
+\begin{split}
+\mathbb{E}\brackets{\sum_{t=1}^{n}{M_{i,t}\frac{b}{K}}}
+&\le \frac{2b+X^2}{2\gamma}{\bar L}_{\gamma,i,n}(\vui{i})\\
++&\frac{\left({2b+X^2}\right)^2}{8{\gamma}^2}{\left\Vert \vui{i} \right\Vert}^2+ \paren{2\frac{\lambda}{b}-1}\mathbb{E}\brackets{\sum_{t=1}^{n}{A_{i,t}\frac{b}{K}}}.
+\end{split}
+\end{equation}
+Summing up the last inequality over all $K$ tasks concludes the proof.
+\begin{equation*}
+\begin{split}
+\frac{1}{K}\mathbb{E}\left[ \sum_{i=1}^{K}\sum_{t=1}^{n}{M_{i,t}} \right]
+\le&\frac{1}{\gamma}\left(1+\frac{X^2}{2b} \right){\bar L}_{\gamma,n}\\
++\frac{\left({2b+X^2}\right)^2}{8{\gamma}^2b}&\sum_{i=1}^{K}{{\left\Vert \vui{i} \right\Vert}^2}+ \frac{1}{K}\paren{2\frac{\lambda}{b}-1}\mathbb{E}\brackets{\sum_{i=1}^{K}\sum_{t=1}^{n}{A_{i,t}}}
+\end{split}
+\end{equation*}
+
+\begin{equation}
+\begin{split}
+\mathbb{E}\left[ \sum_{i=1}^{K}\sum_{t=1}^{n}{M_{i,t}} \right]
+\le&\frac{K}{\gamma}\left(1+\frac{X^2}{2b} \right){\bar L}_{\gamma,n}\\
++\frac{K\left({2b+X^2}\right)^2}{8{\gamma}^2b}&\sum_{i=1}^{K}{{\left\Vert \vui{i} \right\Vert}^2}+\paren{2\frac{\lambda}{b}-1}\mathbb{E}\brackets{\sum_{i=1}^{K}\sum_{t=1}^{n}{A_{i,t}}}.
+\end{split}
+\label{final_eq}
+\end{equation}
+\QED
+\end{proof}
+
+\section{prior distribution over tasks}
+
+We saw before that $b$ is a tradeoff parameter between  exploitation and uniform  distribution over the tasks (exploration). It is possible that we have prior knowledge about the tasks, which tasks are harder than the others. In this case, we would like to add this prior knowledge to the distribution such that in the exploration will be done with  a prior distribution.       
+
+In order to do that we change the probability to be 
+
+\begin{equation*}
+\pr{J_t=j} =
+\frac{1}{D_{t}}\frac{a_{j}}{\paren{b+\abs{\hat{p}_{j,t}}-\min_{m=1}^K\abs{\hat{p}_{m,t}}}} \end{equation*}
+where $a_j>1~~\forall j\in\braces{1,\cdots,K}$ and  $D_t$ is the normalization factor. We can use this distribution with the SHAMPO perceptron algorithm, but we would like to analyse the bound of the SHAMPO aggressive perceptron algorithm because it's more global. 
+
+\begin{theorem}
+  If Aggressive SHAMPO algorithm with prior runs on $K$ problems with $K$ parallel example pair
+  sequences
+  $(\vxi{i,1},y_{i,1}),...(\vxi{i,n},y_{i,n})\in\mathbb{R}^d\times\{-1,1\}$,
+  $i=1,...,K$ with input parameters $b>0$, and $\lambda>0$  and $a_i>1~\forall i\in\braces{1,\cdots,K}$ then for all $\gamma>0$, all
+  $\vui{i}\in\mathbb{R}^d$ and all $n\ge1$,
+  
+\begin{displaymath}
+\begin{split}
+\mathbb{E}\left[ \sum_{i=1}^{K}\sum_{t=1}^{n}{M_{i,t}} \right]
+\le\frac{\sum_{j=1}^Ka_{j}}{\gamma}\brackets{\left(1+\frac{X^2}{2b} \right){\bar L}_{\gamma,n}+
+\frac{\left({2b+X^2}\right)^2\tilde{U}^2}{8{\gamma}b}}\\ 
++
+\paren{2\frac{\lambda}{b}-1}\mathbb{E}\brackets{\sum_{i=1}^{K}\sum_{t=1}^{n}{a_{i}A_{i,t}}},
+\label{bound_FO_SHAMPO_prior}
+\end{split}
+\end{displaymath}
+ where $X=\max_{i,t}\Vert\vxiit\Vert$,
+$\tilde{U}^2=\sum_{i=1}^{K}\normt{\vui{i}}$ and the expectation is over the
+random choices of the algorithm.
+\end{theorem} \label{thm:FO_bound_aggressive}
+This bound brings an advantage and disadvantage. We can reduce the last term in the bound choosing the right weights for $a_i$, but then, we suffer the factor of $\sum_{j=1}^Ka_{j}$ in rest part of the bound. 
+\\
+\begin{proof}
+We follow the proof of \sthmref{bound_aggressive_FO_SHAMPO} until \eqref{eq:step_3_in_proof_agressive}, than we take the expectation of this term.First, we take the expectation of the left hand side where now the conditional expectation of $Z_{i,t}$ is $\brackets{a_{i}(b+|\hat{p}_{i,t}|-\min_j| \hat{p}_{j,t}|)^{-1}}/D_{t}$. Doing that, the expectation becomes 
+\begin{align*}
+\begin{split}
+&\mathbb{E}\brackets{\sum_{t=1}^{n}U_{i,t}Z_{i,t}{\paren{b-y_{i,t}\hat{p}_{i,t}-\min_{j}{\abs{ \hat{p}_{j,t}}}}}} \\
+        &=\mathbb{E}\brackets{\mathbb{E}_{t-1}\brackets{{\sum_{t=1}^{n}{U_{i,t}Z_{i,t}{\left(b-y_{i,t}\hat{p}_{i,t}-\min_{j}{\abs{\hat{p}_{j,t}}}\right)}}}}} \\
+&=\mathbb{E}\brackets{\sum_{t=1}^{n}{\frac{a_{i}}{D_{t}}\paren{M_{i,t}+\frac{b-\abs{\hat{p}_{j,t}}-\min_{j}{\abs{\hat{p}_{j,t}} }}{b+\abs{\hat{p}_{j,t}}-\min_{j}{\abs{\hat{p}_{j,t}}}}A_{i,t} }}}~.
+\end{split}
+\end{align*}
+Reminding that $a_{i} >0$ we can bound $M_{i,t} \le M_{i,t}a_{i}$ and get 
+\begin{equation}
+\begin{split}
+\mathbb{E}\left[ \sum_{t=1}^{n}{\frac{1}{D_{t}}}\paren{M_{i,t}+\frac{b-\abs{\hat{p}_{j,t}}-\min_{j}{\abs{\hat{p}_{j,t}} }}{b+\abs{\hat{p}_{j,t}}-\min_{j}{\abs{\hat{p}_{j,t}}}}A_{i,t}a_{i} } \right]
+&\le \\ \frac{2b+X^2}{2\gamma}{\bar
+  L}_{\gamma,i,n}(u_i)+&\frac{\left({2b+X^2}\right)^2}{8{\gamma}^2}{\left\Vert
+    \vui{i} \right\Vert}^2~.
+\label{step_3_in_proof_prior}
+\end{split}
+\end{equation}
+Now we bound the factor that is multiplied by $A_{i,t}$ as follows,
+\begin{equation*}
+\paren{1-2\frac{\lambda}{b}}a_{i}=\frac{b-2\lambda}{b} a_{i}\le\frac{b-\abs{\hat{p}_{j,t}}-\min_{j}{\abs{\hat{p}_{j,t}} }}{b+\abs{\hat{p}_{j,t}}-\min_{j}{\abs{\hat{p}_{j,t}}}}a_{i}.
+\end{equation*}
+
+As stated before, the    normalization factor can be bounded as
+follows,
+\begin{equation*}
+D_{t}=\sum_{j=1}^K\frac{a_{j}}{\paren{b+\abs{\hat{p}_{j,t}}-\min_{m=1}^K\abs{\hat{p}_{m,t}}}}\le \frac{\sum_{j=1}^Ka_{j}}{b}.
+\end{equation*}
+Plugging \eqref{bound_D} in \eqref{step_3_in_proof} we get,
+\begin{equation}\label{eq:bound_for_i}
+\begin{split}
+\mathbb{E}\left[ \sum_{t=1}^{n}{M_{i,t}\frac{b}{\sum_{j=1}^Ka_{j}}} \right]
+\le& \frac{2b+X^2}{2\gamma}{\bar L}_{\gamma,i,n}(\vui{i})\\
++\frac{\left({2b+X^2}\right)^2}{8{\gamma}^2}{\left\Vert \vui{i} \right\Vert}^2&+\paren{2\frac{\lambda}{b}-1}a_{i}\mathbb{E}\brackets{\sum_{t=1}^{n}{A_{i,t}\frac{b}{\sum_{j=1}^Ka_{j}}}}.
+\end{split}
+\end{equation}
+Summing up the last inequality over all $K$ tasks concludes the proof.
+\begin{equation}
+\begin{split}
+\frac{1}{\sum_{j=1}^Ka_{j}}\mathbb{E}\left[ \sum_{i=1}^{K}\sum_{t=1}^{n}{M_{i,t}} \right]
+\le\frac{1}{\gamma}\left(1+\frac{X^2}{2b} \right){\bar L}_{\gamma,n}+
+\frac{\left({2b+X^2}\right)^2}{8{\gamma}^2b}\sum_{i=1}^{K}{{\left\Vert \vui{i} \right\Vert}^2}+\\ \frac{1}{\sum_{j=1}^Ka_{j}}\paren{2\frac{\lambda}{b}-1}\mathbb{E}\brackets{\sum_{i=1}^{K}a_{i}\sum_{t=1}^{n}{A_{i,t}}}~.
+\end{split}
+\label{final_eq}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\mathbb{E}\left[ \sum_{i=1}^{K}\sum_{t=1}^{n}{M_{i,t}} \right]
+\le\frac{\sum_{j=1}^Ka_{j}}{\gamma}\brackets{\left(1+\frac{X^2}{2b} \right){\bar L}_{\gamma,n}+
+\frac{\left({2b+X^2}\right)^2}{8{\gamma}b}\sum_{i=1}^{K}{{\left\Vert \vui{i} \right\Vert}^2}}\\ 
++
+\paren{2\frac{\lambda}{b}-1}\mathbb{E}\brackets{\sum_{i=1}^{K}\sum_{t=1}^{n}{a_{i}A_{i,t}}}~.
+\end{split}
+\label{final_eq_prior}
+\end{equation}
+We see that when this  bound is a global bound for the last two algorithms. If we set $a_i=1, ~~\forall i\in\braces{1,\cdots,K}$ we get the same bound as  SHAMPO aggressive algorithm and if we update only when a prediction mistake ia accours, it means that $A_{i,t}=0,~~\forall i\in\braces{a,\cdots,K},t>0$ and we get the bound of  the ordinary SHAMPO perceptron algorithm  .
+\QED
+\end{proof}
+
+
+\section{SHAMPO perceptron with Adaptive $b$ parameter}
+
+As it has been proved in the analysis and will be shown in the experiments, $b$ can tune the distribution over the tasks from exploration to exploitation, yet, there is still a need to supply the algorithm with this input parameter. So far, all of the tasks sheared the same parameter $b$ which was determined at the beginning of the algorithm and remained constant all the time. For this reason, the margin was the only factor that had an influence on the distribution. Now, we would like to suggest another algorithm that allow us to  dominate the distribution using the number of updates. The adaptive version of the  SHAMPO perceptron algorithm is  described in  ??? . The algorithm still have a parameter $\beta$ to be determined, however, it has much less influence on the distribution than the parameter $b$ in  \figref{sec:alg}.
+
+The adaptive algorithm is similar to the one in \figref{sec:alg} with two variation. Here we introduce two more variables per task. First, the scalar $N_{i,t}$ that holds the number of updates that has been done for the $i^{th}$ task  up to time $t$. The second variable is $X_{i,t}$ which is holds at the end of each cycle,  the maximal norm of the input vectors that were involved in the updates. I
+
+We assume as in Cesa-Bianchi et al  ~\cite{cesa2006worst} that when  In order to solve this problem we propose the adaptive SHAMPO algorithm 
+The proof here is more  extended version of the proof in \thmref{thm:bound} . We will start here from \eqref{step_2_in_proof}. here, we will replace the constant scaling parameter, with a time varying factor $c_{i,t-1}/\gamma$, where $c_{i,t}\ge0$  is defined as following 
+\begin{equation*}
+c_{i,t-1}=\half\paren{\max{\braces{X_{i,t-1},\abs{\abs{\vxiit}}}}}+b_{i,t-1}.
+\end{equation*}
+In addition, we define $X_i=\max_t{\Vert\vxiit\Vert}$ . Plugging the new scaling factor into the given inequality we get 
+\begin{equation*}
+\begin{split}
+M_{i,t}Z_{i,t}{\paren{c_{i,t-1} +\abs{\hat{p}_{i,t}}}} \le M_{i,t}&Z_{i,t}\frac{c_{i,t-1}}{\gamma} \lossp{\gamma,i,t}(\vu_i)+\\ 
+\frac{1}{2}\normt{\frac{c_{i,t-1}}{\gamma} \vu_i-\vwi{i,t-1}}&-\frac{1}{2}\normt{\frac{c_{i,t-1}}{\gamma} \vu_i-\vwiit}+
+\frac{M_{i,t}Z_{i,t}}{2}\normt{\vwi{i,t-1}-\vwiit}.
+\end{split}
+\end{equation*}
+ From the update rule of the  algorithm we can bound $\normt{\vwi{i,t-1}-\vwiit}\le \normt{\vxiit}$. This inequality holds for any time step, and particular for an update iteration. Using this bound and dividing the inequality by in  $b_{t-1}$ yields
+\begin{equation}
+\begin{split}
+M_{i,t}Z_{i,t}&{\paren{\frac{c_{i,t-1} +\abs{\hat{p}_{i,t}}-\normt{\vxiit}/2}{b_{i,t-1}}}} \le M_{i,t}Z_{i,t}\frac{c_{i,t-1}}{b_{i,t-1}}\frac{\lossp{\gamma,i,t}(\vu_i)}{\gamma} \\ 
+&+\frac{1}{2b_{i,t-1
+}}\paren{\normt{\frac{c_{i,t-1}}{\gamma} \vu_i-\vwi{i,t-1}}-\normt{\frac{c_{i,t-1}}{\gamma} \vu_i-\vwiit}}.
+\label{eq:adaptive_b_first_step}
+\end{split}
+\end{equation}
+Now, we decompose the last term of the inequality to two  differences,
+\begin{equation*}
+\begin{split}
+\frac{1}{2b_{i,t-1}}
+\paren{\normt{\frac{c_{i,t-1}}{\gamma} \vu_i-\vwi{i,t-1}}-\normt{\frac{c_{i,t-1}}{\gamma} \vu_i-\vwiit}}= \\
+\frac{1}{2b_{i,t-1}}\normt{\frac{c_{i,t-1}}{\gamma} \vu_i-\vwi{i,t-1}}-\frac{1}{2b_{i,t}}\normt{\frac{c_{i,t}}{\gamma} \vu_i-\vwi{i,t}}+\\
+\frac{1}{2b_{i,t}}\normt{\frac{c_{i,t}}{\gamma} \vu_i-\vwi{i,t}}-\frac{1}{2b_{i,t-1}}\normt{\frac{c_{i,t-1}}{\gamma} \vu_i-\vwiit}.
+\end{split}
+\end{equation*}
+At this point  expand the last two terms and  set   
+
+and we get
+\begin{equation*}
+\begin{split}
+\frac{1}{2b_{i,t}}\normt{\frac{c_{i,t}}{\gamma} \vu_i-\vwi{i,t}}&-\frac{1}{2b_{i,t-1}}\normt{\frac{c_{i,t-1}}{\gamma} \vu_i-\vwiit}\\
+=&\frac{\normt{\vu_i}}{2\gamma^2}\paren{\frac{c_{i,t}^2}{b_{i,t}}-\frac{c_{i,t-1}^2}{b_{i,t-1}}}+
+\frac{\vu_i^T\vwiit}{\gamma}\paren{\frac{c_{i,t-1}}{b_{i,t-1}}-\frac{c_{i,t}}{b_{i,t}}}\\
+&+\frac{\normt{\vwiit}}{2}\paren{\frac{1}{b_{i,t}}-\frac{1}{b_{i,t-1}}}
+\end{split}
+\end{equation*}
+The definition of $b_{i,t}$ we know that $b_{i,t}$ is non decreasing over time such that the last term is always negative and can be waved. In addition,  the definition of $c_{i,t}$ we leads to the fact that  
+\begin{equation*}
+\frac{c_{i,t}}{b_{i,t}}=\frac{1}{2\beta\sqrt{1+N_{i,t}}}+1
+\end{equation*}
+which, combining with the fact that $N_{i,t}$ is nondecreasing over time as well, we get the inequality 
+\begin{equation*}
+\frac{c_{i,t}}{b_{i,t}}\le\frac{c_{i,t-1}}{b_{i,t-1}}
+\end{equation*}
+Combining these facts and using $Cauchy-Schwarz$ the inequality becomes,
+
+\begin{equation}
+\begin{split}
+\frac{1}{2b_{i,t}}\normt{\frac{c_{i,t}}{\gamma} \vu_i-\vwi{i,t}}&-\frac{1}{2b_{i,t-1}}\normt{\frac{c_{i,t-1}}{\gamma} \vu_i-\vwiit}\\
+\le&\frac{\normt{\vu_i}}{2\gamma^2}\paren{\frac{c_{i,t}^2}{b_{i,t}}-\frac{c_{i,t-1}^2}{b_{i,t-1}}}+
+\frac{\Vert\vu_i\Vert~\Vert\vwiit\Vert}{\gamma}\paren{\frac{c_{i,t-1}}{b_{i,t-1}}-\frac{c_{i,t}}{b_{i,t}}}.
+\end{split}
+\label{eq:difference_of_norm_ineq}
+\end{equation}
+Here, recall that on an update trial $y_{i,t}\vw_{i,t-1}^{T}\vxiit\le0$, we use again the update rule and  bound the weight vector norm with the number of updates, 
+\begin{equation*}
+\begin{split}
+\normt{\vwiit}&=\normt{\vw_{i,t-1}+M_{i,t}Z_{i,t}y_{i,t}\vxiit}\\
+&=\normt{\vw_{i,t-1}}+ 2M_{i,t}Z_{i,t}y_{i,t}\vw_{i,t-1}^{T}\vxiit+M_{i,t}Z_{i,t}\normt{\vxiit}\\
+&\le\normt{\vw_{i,t-1}}+M_{i,t}Z_{i,t}\normt{\vxiit}\\
+&\le\normt{\vw_{i,t-1}}+M_{i,t}Z_{i,t}X_i^2
+\end{split}
+\end{equation*}
+This inequality, combined with the initial value $\vw_{i,0}=0$ leads us to
+\begin{equation}
+\Vert\vwiit\Vert\le X_i\sqrt{N_{i,t}}
+\label{eq:bound_on_w}
+\end{equation}
+which holds for any $i$ and $t$. Combining the last inequality into   \eqref{eq:difference_of_norm_ineq} we get
+\begin{equation}
+\begin{split}
+\frac{1}{2b_{i,t}}\normt{\frac{c_{i,t}}{\gamma} \vu_i-\vwi{i,t}}-\frac{1}{2b_{i,t-1}}\normt{\frac{c_{i,t-1}}{\gamma} \vu_i-\vwiit}\le\\
+\frac{\normt{\vu_i}}{2\gamma^2}\paren{\frac{c_{i,t}^2}{b_{i,t}}-\frac{c_{i,t-1}^2}{b_{i,t-1}}}+
+\frac{\Vert\vu_i\Vert~ X_i\sqrt{ N_{i,t}}}{\gamma}\paren{\frac{c_{i,t-1}}{b_{i,t-1}}-\frac{c_{i,t}}{b_{i,t}}}.
+\label{eq:difference_of_norm_ineq_2}
+\end{split}
+\end{equation}
+We will write now, a simpler bound on the last term. First we note that on $t$ that $M_{i,t}Z_{i,t}=1$, i.e. in the case of update, $N_{i,t}=N_{i,t-1}+1$. Using the bound $\sqrt{1+x}-\sqrt{x}\le\frac{1}{2\sqrt{x}}$, yields 
+\begin{equation*}
+\begin{split}
+\sqrt{N_{i,t}}\paren{\frac{c_{t-1}}{b_{t-1}}-\frac{c_t}{b_t}}&=\frac{\sqrt{N_{i,t}}}{2\beta}\paren{\frac{1}{\sqrt{1+N_{i,t-1}}}-\frac{1}{\sqrt{1+N_{i,t}}}}\\
+&=\frac{\sqrt{N_{i,t}}}{2\beta}\paren{\frac{1}{\sqrt{N_{i,t}}}-\frac{1}{\sqrt{1+N_{i,t}}}}\\
+&=\frac{1}{2\beta}\frac{\sqrt{1+N_{i,t}}-\sqrt{N_{i,t}}}{\sqrt{1+N_{i,t}}}\\
+&\le\frac{1}{4\beta}\frac{1}{\sqrt{N_{i,t}}\sqrt{1+N_{i,t}}}\\
+&\le\frac{1}{4\beta}\frac{1}{N_{i,t}}.
+\end{split}
+\end{equation*} 
+If $M_{i,t}Z_{i,t}=0$ , the left hand side becomes $0$ because in such case, $c_{i,t}=c_{i,t-1}$ and $b_{i,t}=b_{i,t-1}$, which means that this bound holds for all $i$ and $t$ and we can write it as  
+\begin{equation*}
+\begin{split}
+\sqrt{N_{i,t}}\paren{\frac{c_{t-1}}{b_{t-1}}-\frac{c_t}{b_t}}
+&\le\frac{M_{i,t}Z_{i,t}}{4\beta}\frac{1}{N_{i,t}}.
+\end{split}
+\end{equation*}
+Plugging the  last bound and \eqref{eq:difference_of_norm_ineq_2} into \eqref{eq:adaptive_b_first_step} gives us the next inequality that holds for any $i,t,\gamma>0,$ and $u_i\in\reals^d$,
+\begin{equation*}
+\begin{split}
+M_{i,t}Z_{i,t}&{\paren{\frac{c_{i,t-1} +\abs{\hat{p}_{i,t}}-\normt{\vxiit}/2}{b_{i,t-1}}}} \le M_{i,t}Z_{i,t}\frac{c_{i,t-1}}{b_{i,t-1}}\frac{\lossp{\gamma,i,t}(\vu_i)}{\gamma}\\
+&+\frac{1}{2b_{i,t-1}}\normt{\frac{c_{i,t-1}}{\gamma} \vu_i-\vwi{i,t-1}}-\frac{1}{2b_{i,t}}\normt{\frac{c_{i,t}}{\gamma} \vu_i-\vwi{i,t}}\\
+&+\frac{\normt{\vu_i}}{2\gamma^2}\paren{\frac{c_{i,t}^2}{b_{i,t}}-\frac{c_{i,t-1}^2}{b_{i,t-1}}}+
+\frac{\Vert\vu_i\Vert~ X_i}{\gamma}\frac{M_{i,t}Z_{i,t}}{4\beta}\frac{1}{N_{i,t}}.
+\end{split}
+\end{equation*}
+Recall the definition of $c_{i,t}$, we can write $c_{i,t-1}-\normt{\vxiit}/2\ge b_{i,t-1}$ and the ineqality gets the form
+\begin{equation*}
+\begin{split}
+M_{i,t}Z_{i,t}&{\paren{\frac{b_{i,t-1} +\abs{\hat{p}_{i,t}}}{b_{i,t-1}}}} \le M_{i,t}Z_{i,t}\frac{c_{i,t-1}}{b_{i,t-1}}\frac{\lossp{\gamma,i,t}(\vu_i)}{\gamma}\\
+&+\frac{1}{2b_{i,t-1}}\normt{\frac{c_{i,t-1}}{\gamma} \vu_i-\vwi{i,t-1}}-\frac{1}{2b_{i,t}}\normt{\frac{c_{i,t}}{\gamma} \vu_i-\vwi{i,t}}\\
+&+\frac{\normt{\vu_i}}{2\gamma^2}\paren{\frac{c_{i,t}^2}{b_{i,t}}-\frac{c_{i,t-1}^2}{b_{i,t-1}}}+
+\frac{\Vert\vu_i\Vert~ X_i}{\gamma}\frac{M_{i,t}Z_{i,t}}{4\beta}\frac{1}{N_{i,t}}.
+\end{split}
+\end{equation*}
+Summing  both sides over $t=1,\cdots,n$, and taking into consideration the initialization,   $w_0=0$ we obtain,
+\begin{equation}
+\begin{split}
+\sum_{t=1}^{n}M_{i,t}Z_{i,t}&{\paren{\frac{b_{i,t-1} +\abs{\hat{p}_{i,t}}}{b_{i,t-1}}}} \le \frac{1}{\gamma}\sum_{t=1}^{n}{M_{i,t}Z_{i,t}\frac{c_{i,t-1}}{b_{i,t-1}}\lossp{\gamma,i,t}(\vu_i)}\\
+&+\frac{\normt{\vu_i}}{2\gamma^2}\frac{c_{i,n}^2}{b_{i,n}}-\frac{1}{2b_{i,n}}\normt{\frac{c_{i,n}}{\gamma} \vu_i-\vwi{i,n}}
++\frac{\Vert\vu_i\Vert~ X_i}{4\beta\gamma}\sum_{t=1}^{n}{\frac{M_{i,t}Z_{i,t}}{N_{i,t}}}.
+\label{eq:first_sum}
+\end{split}
+\end{equation}
+Now, we will bound the terms in the right hand side. The first term can be bounded as following,
+\begin{equation*}
+\begin{split}
+\frac{1}{\gamma}\frac{c_{i,t-1}}{b_{i,t-1}}\lossp{\gamma,i,t}(\vu_i)&=\frac{1}{\gamma}\paren{\frac{1}{2\beta\sqrt{1+N_{i,t-1}}}+1}\lossp{\gamma,i,t}(\vu_i)\\
+&\le \frac{1}{2\gamma\beta\sqrt{1+N_{i,t-1}}}\paren{\gamma+\Vert u_i\Vert X_i}+\frac{\lossp{\gamma,i,t}(\vu_i)}{\gamma}\\
+&=\frac{1}{2\beta\sqrt{1+N_{i,t-1}}}\paren{1+\frac{\Vert u_i\Vert X_i}{\gamma}}+\frac{\lossp{\gamma,i,t}(\vu_i)}{\gamma}
+\end{split}
+\end{equation*}
+Here, we used  the fact that $\lossp{\gamma,i,t}(\vu_i)\le \gamma+\Vert u_i\Vert X_i$.
+Now we proceed  with  the two middle terms of \eqref{eq:first_sum} and get the bound
+\begin{equation*}
+\begin{split}
+\frac{\normt{\vu_i}}{2\gamma^2}\frac{c_{i,n}^2}{b_{i,n}}-\frac{1}{2b_{i,n}}\normt{\frac{c_{i,n}}{\gamma} \vu_i-\vwi{i,n}}
+&=\frac{c_{i,n}u_i^T\vwi{i,n}}{b_{i,n}\gamma}-\frac{\normt{\vw_{i,n}}}{2b_{i,n}}\\
+&\le \frac{c_{i,n}u_i^T\vwi{i,n}}{b_{i,n}\gamma}\\
+&\le\frac{c_{i,n}}{b_{i,n}}\frac{{\Vert u_i\Vert}~{\Vert\vwi{i,n}\Vert}}{\gamma}\\
+&\le\paren{\frac{1}{2\beta\sqrt{1+N_{i,n}}}+1}\frac{{\Vert u_i\Vert}X_i\sqrt{N_{i,n}}}{\gamma},
+\end{split}
+\end{equation*}
+where we used \eqref{eq:bound_on_w} in the last step.
+Putting all together in \eqref{eq:first_sum}  gives us
+\begin{equation*}
+\begin{split}
+\sum_{t=1}^{n}M_{i,t}Z_{i,t}&{\paren{\frac{b_{i,t-1} +\abs{\hat{p}_{i,t}}}{b_{i,t-1}}}}\\
+\le &\frac{1}{2\beta}\paren{1+\frac{\Vert u_i\Vert X_i}{\gamma}}\sum_{t=1}^{n}{\frac{M_{i,t}Z_{i,t}}{\sqrt{1+N_{i,t-1}}}}
++\frac{1}{\gamma}\sum_{t=1}^{n}{M_{i,t}Z_{i,t}}\lossp{\gamma,i,t}(\vu_i)\\
++&\paren{\frac{1}{2\beta\sqrt{1+N_{i,n}}}+1}\frac{{\Vert u_i\Vert}X_i\sqrt{N_{i,n}}}{\gamma}
++\frac{\Vert\vu_i\Vert~ X_i}{4\beta\gamma}\sum_{t=1}^{n}{\frac{M_{i,t}Z_{i,t}}{N_{i,t}}}.
+\end{split}
+\end{equation*} 
+The first and the last sums in the right hand side can get more elegant form. Recall $M_{i,t}Z_{i,t}=1$ implies $N_{i,t}=N_{i,t-1}+1$ , we can write  
+\begin{equation*}
+\begin{split}
+\sum_{t=1}^{n}{\frac{M_{i,t}Z_{i,t}}{\sqrt{1+N_{i,t-1}}}}
+=\sum_{t=1}^{n}{\frac{M_{i,t}Z_{i,t}}{\sqrt{N_{i,t}}}}
+=\sum_{r=1}^{N_{i,n}}{\frac{1}{\sqrt{r}}} 
+\le 2\sqrt{N_{i,n}}.
+\end{split}
+\end{equation*}
+Now, we apply the same bound on the second sum, but with more loose bound, \begin{equation*}
+\begin{split}
+\sum_{t=1}^{n}{\frac{M_{i,t}Z_{i,t}}{N_{i,t}}}
+\le\sum_{t=1}^{n}{\frac{M_{i,t}Z_{i,t}}{\sqrt{N_{i,t}}}} 
+\le 2\sqrt{N_{i,n}}. 
+\end{split}
+\end{equation*}
+Defining $R_i=\paren{\Vert u_i\Vert X_i}/{\gamma}$, and combining the last three bounds together we get
+\begin{equation*}
+\begin{split}
+\sum_{t=1}^{n}M_{i,t}Z_{i,t}&{\paren{\frac{b_{i,t-1} +\abs{\hat{p}_{i,t}}}{b_{i,t-1}}}}\\
+\le &\frac{1}{\gamma}\sum_{t=1}^{n}{M_{i,t}Z_{i,t}}\lossp{\gamma,i,t}(\vu_i)
++\frac{1}{\beta}\paren{1+\frac{3R_{i}}{2}}\sqrt{N_{i,n}}
+\\
++&\frac{R_i}{2\beta}+R_{i}\sqrt{N_{i,n}}.
+\end{split}
+\end{equation*}
+Now, we subtract non negative term from the left side and take an  expectation .
+\begin{equation*}
+\begin{split}  
+\mathbb{E}&\brackets{\sum_{t=1}^{n}M_{i,t}Z_{i,t}{\paren{\frac{b_{i,t-1} +\abs{\hat{p}_{i,t}}-\min_j\abs{\hat{p}_{j,t}}}{b_{i,t-1}}}}}\\
+\le &\frac{1}{\gamma}\mathbb{E}\brackets{\sum_{t=1}^{n}{M_{i,t}Z_{i,t}}\lossp{\gamma,i,t}(\vu_i)}
++\mathbb{E}\brackets{\paren{R_{i}+\frac{2+3R_{i}}{2\beta}}\sqrt{N_{i,n}}}
++\mathbb{E}\brackets{\sum_{i=1}^{K}\frac{R_i}{2\beta}}.
+\end{split}
+\end{equation*}
+and take the expectation of the inequality. First we look at the left hand side of the inequality.
+
+\begin{equation*}
+\begin{split}
+\mathbb{E}&\brackets{\sum_{i=1}^{K}\sum_{t=1}^{n}M_{i,t}Z_{i,t}{\paren{\frac{b_{i,t-1} +\abs{\hat{p}_{i,t}}-\min_j\abs{\hat{p}_{j,t}}}{b_{i,t-1}}}}}\\
+&~
+\end{split}
+\end{equation*}
+\QED
+
+
+
+In addition, we define $X_i=\max_t{\Vert\vxiit\Vert}$ . Plugging the new scaling factor, $b_{i,t-1}$ into the given inequality we get 
+\begin{equation*}
+\begin{split}
+M_{i,t}Z_{i,t}{\paren{b_{i,t-1} +\abs{\hat{p}_{i,t}}}} \le M_{i,t}&Z_{i,t}\frac{b_{i,t-1}}{\gamma} \lossp{\gamma,i,t}(\vu_i)+\\ 
+\frac{1}{2}\normt{\frac{b_{i,t-1}}{\gamma} \vu_i-\vwi{i,t-1}}&-\frac{1}{2}\normt{\frac{b_{i,t-1}}{\gamma} \vu_i-\vwiit}+
+\frac{M_{i,t}Z_{i,t}}{2}\normt{\vwi{i,t-1}-\vwiit}.
+\end{split}
+\end{equation*}
+ From the update rule of the  algorithm we can bound $\normt{\vwi{i,t-1}-\vwiit}\le \normt{\vxiit}$. This inequality holds for any time step, and particular for an update iteration. Using this bound and dividing the inequality by in  $b_{t-1}$ yields
+\begin{equation}
+\begin{split}
+M_{i,t}Z_{i,t}&{\paren{\frac{b_{i,t-1} +\abs{\hat{p}_{i,t}}-\normt{\vxiit}/2}{b_{i,t-1}}}} \le M_{i,t}Z_{i,t}\frac{\lossp{\gamma,i,t}(\vu_i)}{\gamma} \\ 
+&+\frac{1}{2b_{i,t-1
+}}\paren{\normt{\frac{b_{i,t-1}}{\gamma} \vu_i-\vwi{i,t-1}}-\normt{\frac{b_{i,t-1}}{\gamma} \vu_i-\vwiit}}.
+\label{eq:adaptive_b_first_step}
+\end{split}
+\end{equation}
+Now, we decompose the last term of the inequality to two  differences,
+\begin{equation*}
+\begin{split}
+\frac{1}{2b_{i,t-1}}
+\paren{\normt{\frac{c_{i,t-1}}{\gamma} \vu_i-\vwi{i,t-1}}-\normt{\frac{c_{i,t-1}}{\gamma} \vu_i-\vwiit}}= \\
+\frac{1}{2b_{i,t-1}}\normt{\frac{b_{i,t-1}}{\gamma} \vu_i-\vwi{i,t-1}}-\frac{1}{2b_{i,t}}\normt{\frac{b_{i,t}}{\gamma} \vu_i-\vwi{i,t}}+\\
+\frac{1}{2b_{i,t}}\normt{\frac{b_{i,t}}{\gamma} \vu_i-\vwi{i,t}}-\frac{1}{2b_{i,t-1}}\normt{\frac{b_{i,t-1}}{\gamma} \vu_i-\vwiit}.
+\end{split}
+\end{equation*}
+At this point  expand the last two terms and  set   
+
+and we get
+\begin{equation*}
+\begin{split}
+\frac{1}{2b_{i,t}}\normt{\frac{b_{i,t}}{\gamma} \vu_i-\vwi{i,t}}&-\frac{1}{2b_{i,t-1}}\normt{\frac{b_{i,t-1}}{\gamma} \vu_i-\vwiit}\\
+=&\frac{\normt{\vu_i}}{2\gamma^2}\paren{b_{{i,t}}-b_{{i,t-}}}
++\frac{\normt{\vwiit}}{2}\paren{\frac{1}{b_{i,t}}-\frac{1}{b_{i,t-1}}}
+\end{split}
+\end{equation*}
+The definition of $b_{i,t}$ we know that $b_{i,t}$ is non decreasing over time such that the last term is always negative and can be waved,the inequality becomes,
+
+\begin{equation}
+\begin{split}
+\frac{1}{2b_{i,t}}\normt{\frac{b_{i,t}}{\gamma} \vu_i-\vwi{i,t}}&-\frac{1}{2b_{i,t-1}}\normt{\frac{b_{i,t-1}}{\gamma} \vu_i-\vwiit}
+\le\frac{\normt{\vu_i}}{2\gamma^2}\paren{b_{{i,t}}-b_{{i,t-}}}
+.
+\end{split}
+\label{eq:difference_of_norm_ineq}
+\end{equation}
+Here, recall that on an update trial $y_{i,t}\vw_{i,t-1}^{T}\vxiit\le0$, we use again the update rule and  bound the weight vector norm with the number of updates, 
+\begin{equation*}
+\begin{split}
+\normt{\vwiit}&=\normt{\vw_{i,t-1}+M_{i,t}Z_{i,t}y_{i,t}\vxiit}\\
+&=\normt{\vw_{i,t-1}}+ 2M_{i,t}Z_{i,t}y_{i,t}\vw_{i,t-1}^{T}\vxiit+M_{i,t}Z_{i,t}\normt{\vxiit}\\
+&\le\normt{\vw_{i,t-1}}+M_{i,t}Z_{i,t}\normt{\vxiit}\\
+&\le\normt{\vw_{i,t-1}}+M_{i,t}Z_{i,t}X_i^2
+\end{split}
+\end{equation*}
+This inequality, combined with the initial value $\vw_{i,0}=0$ leads us to
+\begin{equation}
+\Vert\vwiit\Vert\le X_i\sqrt{N_{i,t}}
+\label{eq:bound_on_w}
+\end{equation}
+which holds for any $i$ and $t$. 
+
+Plugging the  last bound and \eqref{eq:difference_of_norm_ineq_2} into \eqref{eq:adaptive_b_first_step} gives us the next inequality that holds for any $i,t,\gamma>0,$ and $u_i\in\reals^d$,
+\begin{equation*}
+\begin{split}
+M_{i,t}Z_{i,t}&{\paren{\frac{b_{i,t-1} +\abs{\hat{p}_{i,t}}-\normt{\vxiit}/2}{b_{i,t-1}}}} \le M_{i,t}Z_{i,t}\frac{\lossp{\gamma,i,t}(\vu_i)}{\gamma}\\
+&+\frac{1}{2b_{i,t-1}}\normt{\frac{b_{i,t-1}}{\gamma} \vu_i-\vwi{i,t-1}}-\frac{1}{2b_{i,t}}\normt{\frac{b_{i,t}}{\gamma} \vu_i-\vwi{i,t}}\\
+&+\frac{\normt{\vu_i}}{2\gamma^2}\paren{b_{{i,t}}-b_{{i,t-1}}}
+.
+\end{split}
+\end{equation*}
+Recall the definition of $c_{i,t}$, we can write $c_{i,t-1}-\normt{\vxiit}/2\ge b_{i,t-1}$ and the ineqality gets the form
+\begin{equation*}
+\begin{split}
+M_{i,t}Z_{i,t}&{\paren{\frac{b_{i,t-1} +\abs{\hat{p}_{i,t}}}{b_{i,t-1}}}} \le M_{i,t}Z_{i,t}\frac{c_{i,t-1}}{b_{i,t-1}}\frac{\lossp{\gamma,i,t}(\vu_i)}{\gamma}\\
+&+\frac{1}{2b_{i,t-1}}\normt{\frac{c_{i,t-1}}{\gamma} \vu_i-\vwi{i,t-1}}-\frac{1}{2b_{i,t}}\normt{\frac{c_{i,t}}{\gamma} \vu_i-\vwi{i,t}}\\
+&+\frac{\normt{\vu_i}}{2\gamma^2}\paren{\frac{c_{i,t}^2}{b_{i,t}}-\frac{c_{i,t-1}^2}{b_{i,t-1}}}+
+\frac{\Vert\vu_i\Vert~ X_i}{\gamma}\frac{M_{i,t}Z_{i,t}}{4\beta}\frac{1}{N_{i,t}}.
+\end{split}
+\end{equation*}
+Summing  both sides over $t=1,\cdots,n$, and taking into consideration the initialization,   $w_0=0$ we obtain,
+\begin{equation}
+\begin{split}
+\sum_{t=1}^{n}M_{i,t}Z_{i,t}&{\paren{\frac{b_{i,t-1} +\abs{\hat{p}_{i,t}}}{b_{i,t-1}}}} \le \frac{1}{\gamma}\sum_{t=1}^{n}{M_{i,t}Z_{i,t}\frac{c_{i,t-1}}{b_{i,t-1}}\lossp{\gamma,i,t}(\vu_i)}\\
+&+\frac{\normt{\vu_i}}{2\gamma^2}\frac{c_{i,n}^2}{b_{i,n}}-\frac{1}{2b_{i,n}}\normt{\frac{c_{i,n}}{\gamma} \vu_i-\vwi{i,n}}
++\frac{\Vert\vu_i\Vert~ X_i}{4\beta\gamma}\sum_{t=1}^{n}{\frac{M_{i,t}Z_{i,t}}{N_{i,t}}}.
+\label{eq:first_sum}
+\end{split}
+\end{equation}
+Now, we will bound the terms in the right hand side. The first term can be bounded as following,
+\begin{equation*}
+\begin{split}
+\frac{1}{\gamma}\frac{c_{i,t-1}}{b_{i,t-1}}\lossp{\gamma,i,t}(\vu_i)&=\frac{1}{\gamma}\paren{\frac{1}{2\beta\sqrt{1+N_{i,t-1}}}+1}\lossp{\gamma,i,t}(\vu_i)\\
+&\le \frac{1}{2\gamma\beta\sqrt{1+N_{i,t-1}}}\paren{\gamma+\Vert u_i\Vert X_i}+\frac{\lossp{\gamma,i,t}(\vu_i)}{\gamma}\\
+&=\frac{1}{2\beta\sqrt{1+N_{i,t-1}}}\paren{1+\frac{\Vert u_i\Vert X_i}{\gamma}}+\frac{\lossp{\gamma,i,t}(\vu_i)}{\gamma}
+\end{split}
+\end{equation*}
+Here, we used  the fact that $\lossp{\gamma,i,t}(\vu_i)\le \gamma+\Vert u_i\Vert X_i$.
+Now we proceed  with  the two middle terms of \eqref{eq:first_sum} and get the bound
+\begin{equation*}
+\begin{split}
+\frac{\normt{\vu_i}}{2\gamma^2}\frac{c_{i,n}^2}{b_{i,n}}-\frac{1}{2b_{i,n}}\normt{\frac{c_{i,n}}{\gamma} \vu_i-\vwi{i,n}}
+&=\frac{c_{i,n}u_i^T\vwi{i,n}}{b_{i,n}\gamma}-\frac{\normt{\vw_{i,n}}}{2b_{i,n}}\\
+&\le \frac{c_{i,n}u_i^T\vwi{i,n}}{b_{i,n}\gamma}\\
+&\le\frac{c_{i,n}}{b_{i,n}}\frac{{\Vert u_i\Vert}~{\Vert\vwi{i,n}\Vert}}{\gamma}\\
+&\le\paren{\frac{1}{2\beta\sqrt{1+N_{i,n}}}+1}\frac{{\Vert u_i\Vert}X_i\sqrt{N_{i,n}}}{\gamma},
+\end{split}
+\end{equation*}
+where we used \eqref{eq:bound_on_w} in the last step.
+Putting all together in \eqref{eq:first_sum}  gives us
+\begin{equation*}
+\begin{split}
+\sum_{t=1}^{n}M_{i,t}Z_{i,t}&{\paren{\frac{b_{i,t-1} +\abs{\hat{p}_{i,t}}}{b_{i,t-1}}}}\\
+\le &\frac{1}{2\beta}\paren{1+\frac{\Vert u_i\Vert X_i}{\gamma}}\sum_{t=1}^{n}{\frac{M_{i,t}Z_{i,t}}{\sqrt{1+N_{i,t-1}}}}
++\frac{1}{\gamma}\sum_{t=1}^{n}{M_{i,t}Z_{i,t}}\lossp{\gamma,i,t}(\vu_i)\\
++&\paren{\frac{1}{2\beta\sqrt{1+N_{i,n}}}+1}\frac{{\Vert u_i\Vert}X_i\sqrt{N_{i,n}}}{\gamma}
++\frac{\Vert\vu_i\Vert~ X_i}{4\beta\gamma}\sum_{t=1}^{n}{\frac{M_{i,t}Z_{i,t}}{N_{i,t}}}.
+\end{split}
+\end{equation*} 
+The first and the last sums in the right hand side can get more elegant form. Recall $M_{i,t}Z_{i,t}=1$ implies $N_{i,t}=N_{i,t-1}+1$ , we can write  
+\begin{equation*}
+\begin{split}
+\sum_{t=1}^{n}{\frac{M_{i,t}Z_{i,t}}{\sqrt{1+N_{i,t-1}}}}
+=\sum_{t=1}^{n}{\frac{M_{i,t}Z_{i,t}}{\sqrt{N_{i,t}}}}
+=\sum_{r=1}^{N_{i,n}}{\frac{1}{\sqrt{r}}} 
+\le 2\sqrt{N_{i,n}}.
+\end{split}
+\end{equation*}
+Now, we apply the same bound on the second sum, but with more loose bound, \begin{equation*}
+\begin{split}
+\sum_{t=1}^{n}{\frac{M_{i,t}Z_{i,t}}{N_{i,t}}}
+\le\sum_{t=1}^{n}{\frac{M_{i,t}Z_{i,t}}{\sqrt{N_{i,t}}}} 
+\le 2\sqrt{N_{i,n}}. 
+\end{split}
+\end{equation*}
+Defining $R_i=\paren{\Vert u_i\Vert X_i}/{\gamma}$, and combining the last three bounds together we get
+\begin{equation*}
+\begin{split}
+\sum_{t=1}^{n}M_{i,t}Z_{i,t}&{\paren{\frac{b_{i,t-1} +\abs{\hat{p}_{i,t}}}{b_{i,t-1}}}}\\
+\le &\frac{1}{\gamma}\sum_{t=1}^{n}{M_{i,t}Z_{i,t}}\lossp{\gamma,i,t}(\vu_i)
++\frac{1}{\beta}\paren{1+\frac{3R_{i}}{2}}\sqrt{N_{i,n}}
+\\
++&\frac{R_i}{2\beta}+R_{i}\sqrt{N_{i,n}}.
+\end{split}
+\end{equation*}
+Now, we subtract non negative term from the left side and take an  expectation .
+\begin{equation*}
+\begin{split}  
+\mathbb{E}&\brackets{\sum_{t=1}^{n}M_{i,t}Z_{i,t}{\paren{\frac{b_{i,t-1} +\abs{\hat{p}_{i,t}}-\min_j\abs{\hat{p}_{j,t}}}{b_{i,t-1}}}}}\\
+\le &\frac{1}{\gamma}\mathbb{E}\brackets{\sum_{t=1}^{n}{M_{i,t}Z_{i,t}}\lossp{\gamma,i,t}(\vu_i)}
++\mathbb{E}\brackets{\paren{R_{i}+\frac{2+3R_{i}}{2\beta}}\sqrt{N_{i,n}}}
++\mathbb{E}\brackets{\sum_{i=1}^{K}\frac{R_i}{2\beta}}.
+\end{split}
+\end{equation*}
+and take the expectation of the inequality. First we look at the left hand side of the inequality.
+
+\begin{equation*}
+\begin{split}
+\mathbb{E}&\brackets{\sum_{i=1}^{K}\sum_{t=1}^{n}M_{i,t}Z_{i,t}{\paren{\frac{b_{i,t-1} +\abs{\hat{p}_{i,t}}-\min_j\abs{\hat{p}_{j,t}}}{b_{i,t-1}}}}}\\
+\le &\frac{1}{\gamma}\mathbb{E}\brackets{\sum_{i=1}^{K}\sum_{t=1}^{n}{M_{i,t}Z_{i,t}}\lossp{\gamma,i,t}(\vu_i)}
++\mathbb{E}\brackets{\sum_{i=1}^{K}\paren{R_{i}+\frac{2+3R_{i}}{2\beta}}\sqrt{N_{i,n}}}
++\mathbb{E}\brackets{\sum_{i=1}^{K}\frac{R_i}{2\beta}}\\
+\le & \frac{1}{\gamma}{\bar L}_{\gamma,n}+\paren{R+\frac{2+3R}{2\beta}}\mathbb{E}\brackets{\sum_{i=1}^{K}\sqrt{N_{i,n}}}
++\frac{KR}{2\beta}\\
+\le & \frac{1}{\gamma}{\bar L}_{\gamma,n}+\paren{R+\frac{2+3R}{2\beta}}\mathbb{E}\brackets{\sum_{i=1}^{K}\sqrt{N_{i,n}}}
++\frac{KR}{2\beta}\\
+\le & \frac{1}{\gamma}{\bar L}_{\gamma,n}+\paren{R+\frac{2+3R}{2\beta}}\mathbb{E}\brackets{\sqrt{Kn}}
++\frac{KR}{2\beta}\\
+\le & \frac{1}{\gamma}{\bar L}_{\gamma,n}+\paren{R+\frac{2+3R}{2\beta}}\sqrt{Kn}
++\frac{KR}{2\beta}
+\end{split}
+\end{equation*}
+
+Where $R=\max_i\paren{\Vert u_i\Vert X_i}/{\gamma}$
+
+
+\begin{equation*}
+\mathbb{E}\left[ \sum_{i=1}^{K}\sum_{t=1}^{n}{M_{i,t}} \right]
+\le  \frac{K}{\gamma}{\bar L}_{\gamma,n}+K^{3/2}\paren{R+\frac{2+3R}{2\beta}}\sqrt{n}
++\frac{K^{2}R}{2\beta}
+\end{equation*}
+
+\section{to do}
+\begin{itemize}
+\item 
+to write a code that can find one optimal b for all of the tasks. (to find the knee area.
+\item
+to write analysis and run a version of the different betas (as in the ss).
+\item
+to write algorithm and run for beat as a function of updates and queries, like $F(u,q) = u^\alpha q^\beta$. to try in powers ($\alpha,\beta =-2,:0.5:2)$ the private case is the upper case where the $\alpha=0.5$ and $\beta = 0$.
+\item
+ try to make a quadratic function of the fraction $\frac{\alpha}{\beta}$.
+\end{itemize}
+
+
+
+

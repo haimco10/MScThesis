@@ -1,0 +1,265 @@
+\begin{thebibliography}{43}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Auer and Warmuth(2000)]{ECCC-TR00-070}
+Peter Auer and Manfred~K. Warmuth.
+\newblock Tracking the best disjunction.
+\newblock \emph{Electronic Colloquium on Computational Complexity (ECCC)},
+  7\penalty0 (70), 2000.
+
+\bibitem[Azoury and Warmuth(2001)]{AzouryWa01}
+Katy~S. Azoury and Manfred~K. Warmuth.
+\newblock Relative loss bounds for on-line density estimation with the
+  exponential family of distributions.
+\newblock \emph{Machine Learning}, 43\penalty0 (3):\penalty0 211--246, 2001.
+
+\bibitem[Bershad(1986)]{Bershad}
+Neil~J. Bershad.
+\newblock Analysis of the normalized lms algorithm with gaussian inputs.
+\newblock \emph{IEEE Transactions on Acoustics, Speech, and Signal Processing},
+  34(4):\penalty0 793--806, 1986.
+
+\bibitem[Bitmead and Anderson(1980)]{Bitmead}
+Robert~R. Bitmead and Brian D.~O. Anderson.
+\newblock Performance of adaptive estimation algorithms in dependent random
+  environments.
+\newblock \emph{IEEE Transactions on Automatic Control}, 25:\penalty0 788--794,
+  1980.
+
+\bibitem[Busuttil and Kalnishkan(2007)]{BusuttilK07}
+Steven Busuttil and Yuri Kalnishkan.
+\newblock Online regression competitive with changing predictors.
+\newblock In \emph{ALT}, pages 181--195, 2007.
+
+\bibitem[Cavallanti et~al.(2007)Cavallanti, Cesa-Bianchi, and
+  Gentile]{CavallantiCG07}
+Giovanni Cavallanti, Nicol{\`o} Cesa-Bianchi, and Claudio Gentile.
+\newblock Tracking the best hyperplane with a simple budget perceptron.
+\newblock \emph{Machine Learning}, 69\penalty0 (2-3):\penalty0 143--167, 2007.
+
+\bibitem[Cesa-Bianchi and Lugosi(2006)]{CesaBiGa06}
+Nicol{\`o} Cesa-Bianchi and Gabor Lugosi.
+\newblock \emph{Prediction, Learning, and Games}.
+\newblock Cambridge University Press, New York, NY, USA, 2006.
+
+\bibitem[Cesa-Bianchi et~al.(1993)Cesa-Bianchi, Long, and
+  Warmuth]{Nicolo_Warmuth}
+Nicol{\`o} Cesa-Bianchi, Philip~M. Long, and Manfred~K. Warmuth.
+\newblock Worst case quadratic loss bounds for on-line prediction of linear
+  functions by gradient descent.
+\newblock Technical Report IR-418, University of California, Santa Cruz, CA,
+  USA, 1993.
+
+\bibitem[Cesa-Bianchi et~al.(2005)Cesa-Bianchi, Conconi, and
+  Gentile]{CesaBianchiCoGe05}
+Nicol\'{o} Cesa-Bianchi, Alex Conconi, and Claudio Gentile.
+\newblock A second-order perceptron algorithm.
+\newblock \emph{Siam Journal of Commutation}, 34\penalty0 (3):\penalty0
+  640--668, 2005.
+
+\bibitem[Chen and Yen(1999)]{Chen}
+Min-Shin Chen and Jia-Yush Yen.
+\newblock Application of the least squares algorithm to the observer design for
+  linear time-varying systems.
+\newblock \emph{Automatic Control, IEEE Transactions on}, 44\penalty0
+  (9):\penalty0 1742 --1745, sep 1999.
+
+\bibitem[Chiang et~al.(2012)Chiang, Yang, Lee, Mahdavi, Lu, Jin, and
+  Zhu]{DBLP:journals/jmlr/ChiangYLMLJZ12}
+Chao-Kai Chiang, Tianbao Yang, Chia-Jung Lee, Mehrdad Mahdavi, Chi-Jen Lu, Rong
+  Jin, and Shenghuo Zhu.
+\newblock Online optimization with gradual variations.
+\newblock \emph{Journal of Machine Learning Research - Proceedings Track},
+  23:\penalty0 6.1--6.20, 2012.
+
+\bibitem[Crammer et~al.(2003)Crammer, Kandola, and Singer]{CrammerKS03}
+Koby Crammer, Jaz~S. Kandola, and Yoram Singer.
+\newblock Online classification on a budget.
+\newblock In \emph{NIPS}, 2003.
+
+\bibitem[Crammer et~al.(2009)Crammer, Kulesza, and Dredze]{CrammerKuDr09}
+Koby Crammer, Alex Kulesza, and Mark Dredze.
+\newblock Adaptive regularization of weighted vectors.
+\newblock In \emph{Advances in Neural Information Processing Systems 23}, 2009.
+
+\bibitem[Crammer et~al.(2012{\natexlab{a}})Crammer, Dredze, and
+  Pereira]{Crammer:2012:CLC:2343676.2343704}
+Koby Crammer, Mark Dredze, and Fernando Pereira.
+\newblock Confidence-weighted linear classification for text categorization.
+\newblock \emph{J. Mach. Learn. Res.}, 98888:\penalty0 1891--1926, June
+  2012{\natexlab{a}}.
+\newblock ISSN 1532-4435.
+
+\bibitem[Crammer et~al.(2012{\natexlab{b}})Crammer, Kulesza, and
+  Dredze]{CrammerKuDr12}
+Koby Crammer, Alex Kulesza, and Mark Dredze.
+\newblock New $\mathcal{H}\infty$ bounds for the recursive least squares
+  algorithm exploiting input structure.
+\newblock In \emph{ICASSP}, pages 2017--2020, 2012{\natexlab{b}}.
+
+\bibitem[Dekel et~al.(2005)Dekel, Shalev-shwartz, and
+  Singer]{Dekel05theforgetron}
+Ofer Dekel, Shai Shalev-shwartz, and Yoram Singer.
+\newblock The forgetron: A kernel-based perceptron on a fixed budget.
+\newblock In \emph{In Advances in Neural Information Processing Systems 18},
+  pages 259--266. MIT Press, 2005.
+
+\bibitem[Dekel et~al.(2007)Dekel, Long, and Singer]{DekelLoSi07}
+Ofer Dekel, Philip~M. Long, and Yoram Singer.
+\newblock Online learning of multiple tasks with a shared loss.
+\newblock \emph{Journal of Machine Learning Research}, 8:\penalty0 2233--2264,
+  2007.
+
+\bibitem[Duchi et~al.(2010)Duchi, Hazan, and Singer]{DuchiHS10}
+John Duchi, Elad Hazan, and Yoram Singer.
+\newblock Adaptive subgradient methods for online learning and stochastic
+  optimization.
+\newblock In \emph{COLT}, pages 257--269, 2010.
+
+\bibitem[Forster(1999)]{Forster}
+Jurgen Forster.
+\newblock On relative loss bounds in generalized linear regression.
+\newblock In \emph{Fundamentals of Computation Theory (FCT)}, 1999.
+\newblock ISBN 3-540-66412-2.
+
+\bibitem[Foster(1991)]{Foster91}
+Dean~P. Foster.
+\newblock Prediction in the worst case.
+\newblock \emph{The Annals of Statistics}, 19\penalty0 (2):\penalty0
+  1084--1090, 1991.
+
+\bibitem[Golub and Van~Loan(1996)]{Golub:1996:MC:248979}
+Gene~H. Golub and Charles~F. Van~Loan.
+\newblock \emph{Matrix computations (3rd ed.)}.
+\newblock Johns Hopkins University Press, Baltimore, MD, USA, 1996.
+\newblock ISBN 0-8018-5414-8.
+
+\bibitem[Goodhart et~al.(1991)Goodhart, Burnham, and James]{Goodhart}
+Sean~G. Goodhart, Keith~J. Burnham, and D.~J.~G. James.
+\newblock Logical covariance matrix reset in self-tuning control.
+\newblock \emph{Mechatronics}, 1\penalty0 (3):\penalty0 339 -- 351, 1991.
+
+\bibitem[Goodwin et~al.(1983)Goodwin, Teoh, and Elliott]{Goodwin}
+Graham~C. Goodwin, Eam~K. Teoh, and H.~Elliott.
+\newblock Deterministic convergence of a self-tuning regulator with covariance
+  resetting.
+\newblock \emph{Control Theory and App., IEE Proc. D}, 130\penalty0
+  (1):\penalty0 6 --8, 1983.
+
+\bibitem[Hayes(1996)]{Hayes}
+Monson~H. Hayes.
+\newblock 9.4: Recursive least squares.
+\newblock In \emph{Statistical Digital Signal Processing and Modeling}, page
+  541, 1996.
+\newblock ISBN 0-471-59431-8.
+
+\bibitem[Hazan and Kale(2008)]{DBLP:conf/colt/HazanK08}
+Elad Hazan and Satyen Kale.
+\newblock Extracting certainty from uncertainty: Regret bounded by variation in
+  costs.
+\newblock In \emph{COLT}, pages 57--68, 2008.
+
+\bibitem[Hazan and Kale(2009)]{HazanK09a}
+Elad Hazan and Satyen Kale.
+\newblock On stochastic and worst-case models for investing.
+\newblock In \emph{NIPS}, pages 709--717, 2009.
+
+\bibitem[Hazan et~al.(2006)Hazan, Kalai, Kale, and
+  Agarwal]{Hazan06logarithmicregret}
+Elad Hazan, Adam Kalai, Satyen Kale, and Amit Agarwal.
+\newblock Logarithmic regret algorithms for online convex optimization.
+\newblock In \emph{COLT}, pages 499--513, 2006.
+
+\bibitem[Herbster and Warmuth(2001)]{HerbsterW01}
+Mark Herbster and Manfred~K. Warmuth.
+\newblock Tracking the best linear predictor.
+\newblock \emph{Journal of Machine Learning Research}, 1:\penalty0 281--309,
+  2001.
+
+\bibitem[Kalman(1960)]{Kalman60}
+Rudolf~E. Kalman.
+\newblock A new approach to linear filtering and prediction problems.
+\newblock \emph{Transactions of the ASME--Journal of Basic Engineering},
+  82\penalty0 (Series D):\penalty0 35--45, 1960.
+
+\bibitem[Kivinen and Warmuth(1997)]{Kiv_War}
+Jyrki Kivinen and Manfred~K. Warmuth.
+\newblock Exponential gradient versus gradient descent for linear predictors.
+\newblock \emph{Information and Computation}, 132:\penalty0 132--163, 1997.
+
+\bibitem[Kivinen et~al.(2001)Kivinen, Smola, and Williamson]{KivinenSW01}
+Jyrki Kivinen, Alex~J. Smola, and Robert~C. Williamson.
+\newblock Online learning with kernels.
+\newblock In \emph{NIPS}, pages 785--792, 2001.
+
+\bibitem[McMahan and Streeter(2010)]{McMahanS10}
+Hugh~B. McMahan and Matthew~J. Streeter.
+\newblock Adaptive bound optimization for online convex optimization.
+\newblock In \emph{COLT}, pages 244--256, 2010.
+
+\bibitem[Orabona et~al.(2012)Orabona, Cesa-Bianchi, and Gentile]{OrabonaCBG12}
+Francesco Orabona, Nicol{\`o} Cesa-Bianchi, and Claudio Gentile.
+\newblock Beyond logarithmic bounds in online learning.
+\newblock In \emph{AISTATS}, 2012.
+
+\bibitem[Rakhlin and Sridharan(2012)]{DBLP:journals/corr/abs-1208-3728}
+Alexander Rakhlin and Karthik Sridharan.
+\newblock Online learning with predictable sequences.
+\newblock \emph{CoRR}, abs/1208.3728, 2012.
+
+\bibitem[Salgado et~al.(1988)Salgado, Goodwin, and Middleton]{Salgado}
+Mario~E. Salgado, Graham~C. Goodwin, and Richard~H. Middleton.
+\newblock Modified least squares algorithm incorporating exponential resetting
+  and forgetting.
+\newblock \emph{International Journal of Control}, 47\penalty0 (2):\penalty0
+  477 --491, 1988.
+
+\bibitem[Simon(2006)]{Simon:2006:OSE:1146304}
+Dan Simon.
+\newblock \emph{Optimal State Estimation: Kalman, H Infinity, and Nonlinear
+  Approaches}.
+\newblock Wiley-Interscience, 2006.
+\newblock ISBN 0471708585.
+
+\bibitem[Takimoto and Warmuth(2000)]{TakimotoW00}
+Eiji Takimoto and Manfred~K. Warmuth.
+\newblock The last-step minimax algorithm.
+\newblock In \emph{ALT}, 2000.
+
+\bibitem[Vaits and Crammer(2011)]{VaitsCr11}
+Nina Vaits and Koby Crammer.
+\newblock Re-adapting the regularization of weights for non-stationary
+  regression.
+\newblock In \emph{ALT}, 2011.
+
+\bibitem[Vovk(1990)]{vovkAS}
+Volodimir~G. Vovk.
+\newblock Aggregating strategies.
+\newblock In \emph{Proceedings of the Third Annual Workshop on Computational
+  Learning Theory}, pages 371--383. Morgan Kaufmann, 1990.
+
+\bibitem[Vovk(1997)]{Vovk97}
+Volodya Vovk.
+\newblock Competitive on-line linear regression.
+\newblock In \emph{NIPS}, 1997.
+
+\bibitem[Vovk(2001)]{Vovk01}
+Volodya Vovk.
+\newblock Competitive on-line statistics.
+\newblock \emph{International Statistical Review}, 69, 2001.
+
+\bibitem[Widrow and Hoff(1960)]{WidrowHoff}
+Bernard Widrow and Marcian~E. Hoff.
+\newblock Adaptive switching circuits.
+\newblock 1960.
+
+\bibitem[Zinkevich(2003)]{Zinkevich03onlineconvex}
+Martin Zinkevich.
+\newblock Online convex programming and generalized infinitesimal gradient
+  ascent, 2003.
+
+\end{thebibliography}

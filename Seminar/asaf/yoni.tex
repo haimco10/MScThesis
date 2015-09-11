@@ -1,0 +1,1201 @@
+%
+\documentclass[mathserif]{beamer}
+
+
+% This file is a solution template for:
+
+% - Giving a talk on some subject.
+% - The talk is between 15min and 45min long.
+% - Style is ornate.
+
+% Copyright 2004 by Till Tantau <tantau@users.sourceforge.net>.
+%
+% In principle, this file can be redistributed and/or modified under
+% the terms of the GNU Public License, version 2.
+%
+% However, this file is supposed to be a template to be modified
+% for your own needs. For this reason, if you use this file as a
+% template and not specifically distribute it as part of a another
+% package/program, I grant the extra permission to freely copy and
+% modify this file as you see fit and even to delete this copyright
+% notice.
+\usepackage{graphicx, graphics}
+\usepackage[english]{babel}
+
+
+%------------------------------------------------------------------------
+\newcommand {\ebd} {\stackrel{\Delta} {=}}
+\newcommand {\exe} {\stackrel{\cdot} {=}}
+\newcommand{\eqa}{\stackrel{\mbox{(a)}}{=}}
+\newcommand{\eqb}{\stackrel{\mbox{(b)}}{=}}
+\newcommand{\eqc}{\stackrel{\mbox{(c)}}{=}}
+\newcommand{\eqd}{\stackrel{\triangle}{=}}
+\newcommand{\eqe}{\stackrel{\mbox{(e)}}{=}}
+\newcommand{\eqf}{\stackrel{\mbox{(f)}}{=}}
+\newcommand{\lea}{\stackrel{\mbox{(a)}}{\le}}
+\newcommand{\leb}{\stackrel{\mbox{(b)}}{\le}}
+\newcommand{\lec}{\stackrel{\mbox{(c)}}{\le}}
+\newcommand{\led}{\stackrel{\mbox{(d)}}{\le}}
+\newcommand{\lee}{\stackrel{\mbox{(e)}}{\le}}
+\newcommand{\lef}{\stackrel{\mbox{(f)}}{\le}}
+\newcommand{\gea}{\stackrel{\mbox{(a)}}{\ge}}
+\newcommand{\geb}{\stackrel{\mbox{(b)}}{\ge}}
+\newcommand{\gec}{\stackrel{\mbox{(c)}}{\ge}}
+\newcommand{\ged}{\stackrel{\mbox{(d)}}{\ge}}
+\newcommand{\gee}{\stackrel{\mbox{(e)}}{\ge}}
+\newcommand{\gef}{\stackrel{\mbox{(f)}}{\ge}}
+\newcommand {\reals} {{\rm I\!R}}
+\newcommand {\ba} {\mbox{\boldmath $a$}}
+\newcommand {\bb} {\mbox{\boldmath $b$}}
+\newcommand {\bc} {\mbox{\boldmath $c$}}
+\newcommand {\bd} {\mbox{\boldmath $d$}}
+%\newcommand {\be} {\mbox{\boldmath $e$}}
+\newcommand {\Bf} {\mbox{\boldmath $f$}}
+\newcommand {\bg} {\mbox{\boldmath $g$}}
+\newcommand {\bh} {\mbox{\boldmath $h$}}
+\newcommand {\bi} {\mbox{\boldmath $i$}}
+\newcommand {\bj} {\mbox{\boldmath $j$}}
+\newcommand {\bk} {\mbox{\boldmath $k$}}
+\newcommand {\bl} {\mbox{\boldmath $l$}}
+\newcommand {\bm} {\mbox{\boldmath $m$}}
+\newcommand {\bn} {\mbox{\boldmath $n$}}
+\newcommand {\bo} {\mbox{\boldmath $o$}}
+\newcommand {\bp} {\mbox{\boldmath $p$}}
+\newcommand {\bq} {\mbox{\boldmath $q$}}
+\newcommand {\br} {\mbox{\boldmath $r$}}
+%\newcommand {\bs} {\mbox{\boldmath $s$}}
+\newcommand {\bt} {\mbox{\boldmath $t$}}
+\newcommand {\bu} {\mbox{\boldmath $u$}}
+\newcommand {\bv} {\mbox{\boldmath $v$}}
+\newcommand {\bw} {\mbox{\boldmath $w$}}
+\newcommand {\bx} {\mbox{\boldmath $x$}}
+\newcommand {\by} {\mbox{\boldmath $y$}}
+\newcommand {\bz} {\mbox{\boldmath $z$}}
+\newcommand {\bA} {\mbox{\boldmath $A$}}
+\newcommand {\bB} {\mbox{\boldmath $B$}}
+\newcommand {\bC} {\mbox{\boldmath $C$}}
+\newcommand {\bD} {\mbox{\boldmath $D$}}
+\newcommand {\bE} {\mbox{\boldmath $E$}}
+\newcommand {\bF} {\mbox{\boldmath $F$}}
+\newcommand {\bG} {\mbox{\boldmath $G$}}
+\newcommand {\bH} {\mbox{\boldmath $H$}}
+\newcommand {\bI} {\mbox{\boldmath $I$}}
+\newcommand {\bJ} {\mbox{\boldmath $J$}}
+\newcommand {\bK} {\mbox{\boldmath $K$}}
+\newcommand {\bL} {\mbox{\boldmath $L$}}
+\newcommand {\bM} {\mbox{\boldmath $M$}}
+\newcommand {\bN} {\mbox{\boldmath $N$}}
+\newcommand {\bO} {\mbox{\boldmath $O$}}
+\newcommand {\bP} {\mbox{\boldmath $P$}}
+\newcommand {\bQ} {\mbox{\boldmath $Q$}}
+\newcommand {\bR} {\mbox{\boldmath $R$}}
+\newcommand {\bS} {\mbox{\boldmath $S$}}
+\newcommand {\bT} {\mbox{\boldmath $T$}}
+\newcommand {\bU} {\mbox{\boldmath $U$}}
+\newcommand {\bV} {\mbox{\boldmath $V$}}
+\newcommand {\bW} {\mbox{\boldmath $W$}}
+\newcommand {\bX} {\mbox{\boldmath $X$}}
+\newcommand {\bY} {\mbox{\boldmath $Y$}}
+\newcommand {\bZ} {\mbox{\boldmath $Z$}}
+\newcommand{\calA}{{\cal A}}
+\newcommand{\calB}{{\cal B}}
+\newcommand{\calC}{{\cal C}}
+\newcommand{\calD}{{\cal D}}
+\newcommand{\calE}{{\cal E}}
+\newcommand{\calF}{{\cal F}}
+\newcommand{\calG}{{\cal G}}
+\newcommand{\calH}{{\cal H}}
+\newcommand{\calI}{{\cal I}}
+\newcommand{\calJ}{{\cal J}}
+\newcommand{\calK}{{\cal K}}
+\newcommand{\calL}{{\cal L}}
+\newcommand{\calM}{{\cal M}}
+\newcommand{\calN}{{\cal N}}
+\newcommand{\calO}{{\cal O}}
+\newcommand{\calP}{{\cal P}}
+\newcommand{\calQ}{{\cal Q}}
+\newcommand{\calR}{{\cal R}}
+\newcommand{\calS}{{\cal S}}
+\newcommand{\calT}{{\cal T}}
+\newcommand{\calU}{{\cal U}}
+\newcommand{\calV}{{\cal V}}
+\newcommand{\calW}{{\cal W}}
+\newcommand{\calX}{{\cal X}}
+\newcommand{\calY}{{\cal Y}}
+\newcommand{\calZ}{{\cal Z}}
+
+\newcommand {\sgn}{\textrm{sgn}}
+\newcommand {\vol}{\textrm{Vol}}
+\newcommand {\sumi} {\sum_{i=1}^n}
+\newcommand {\sumt} {\sum_{t=1}^n}
+\newcommand {\btheta} {\boldsymbol{\theta}}
+\newcommand {\hsigma} {\hat{\sigma}}
+\newcommand {\hmu} {\hat{\mu}}
+\newcommand {\hbtheta} {\hat{\boldsymbol{\theta}}}
+\newcommand {\tby} {\tilde{\boldsymbol{y}}}
+\newcommand{\eqde}{\stackrel{\triangle}{=}}
+\newcommand {\bs} {\boldsymbol}
+\newcommand {\hrho} {\hat{\rho}}
+
+\newcommand {\bhE}{\hat{\textbf{E}}}
+\newcommand {\hH}{\hat{H}}
+\newcommand {\hQ}{\hat{Q}}
+
+\newcommand{\lb}{\left(}
+\newcommand{\rb}{\right)}
+\newcommand{\frn}{\frac 1 n}
+\newcommand {\rl} {\rho\lambda}
+\newcommand {\nt} {\notag}
+
+\def\be{\begin{eqnarray}}
+\def\ee{\end{eqnarray}}
+\def\ben{\begin{eqnarray*}}
+\def\een{\end{eqnarray*}}
+
+\def\argmax{\mathop{\rm argmax}}%{\rm arg\,max}}
+%--------------------------------------------------------------------
+
+
+
+\mode<presentation>
+{
+%  \setbeamertemplate{background canvas}[vertical shading][bottom=red!10,top=blue!10]
+  \usetheme{Warsaw}
+  \useoutertheme{infolines}
+  %\useoutertheme{default}
+
+  \usefonttheme[onlysmall]{structurebold}
+}
+
+
+%\mode<presentation>
+%{
+%  \usetheme{Warsaw}
+%  % or ...
+%  \setbeamercovered{transparent}
+%  % or whatever (possibly just delete it)
+%
+%  \usecolortheme{crane}
+%}
+
+
+% or whatever
+
+%\usepackage[latin1]{inputenc}
+% or whatever
+
+%\usepackage{times}
+%\usepackage{concrete}
+%\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+
+\title[]
+{Error Exponents of the Degraded Broadcast Channel with Degraded Message Sets}
+
+\subtitle{Graduate Seminar}
+
+\author[Y. Kaspi and N. Merhav]{Yonatan Kaspi and Neri Merhav}
+
+\institute[Technion] % (optional, but mostly needed)
+   {Department of Electrical Engineering \\ Technion - Israel Institute of Technology\\ Haifa, Israel\bigskip\\}
+
+\date[March 19th, 2009]{March 19th, 2009}
+
+
+\hypersetup{%
+    pdftitle={Error Exponents of the Degraded Broadcast Channel},
+    pdfsubject={Error Exponents/Broadcast Channel},
+    pdfauthor={Yonatan Kaspi},
+    pdfkeywords={Error Exponent, Broadcast Channel},
+    pdfpageduration=500, % Max value
+}%
+
+% If you have a file called "university-logo-filename.xxx", where xxx
+% is a graphic format that can be processed by latex or pdflatex,
+% resp., then you can add a logo as follows:
+
+% \pgfdeclareimage[height=0.5cm]{university-logo}{university-logo-filename}
+% \logo{\pgfuseimage{university-logo}}
+
+
+
+%% Delete this, if you do not want the table of contents to pop up at
+%% the beginning of each subsection:
+%\AtBeginSubsection[]
+%{
+%  \begin{frame}<beamer>
+%    \frametitle{Outline}
+%    \tableofcontents[currentsection,currentsubsection]
+%  \end{frame}
+%}
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+%\beamerdefaultoverlayspecification{<+->}
+
+
+\addtolength{\abovedisplayskip}{-1.5mm}
+\addtolength{\belowdisplayskip}{-1.5mm}
+
+
+\begin{document}
+
+%---------------------------------------------------------------------- COVER -
+\begin{frame}
+  \titlepage
+\end{frame}
+
+%---------------------------------------------------------------------- SLIDE -
+
+
+%---------------------------------------------------------------------- OUTLINE -
+\begin{frame}
+  \frametitle{Outline}
+  \tableofcontents[pausesections]
+%  \tableofcontents
+\end{frame}
+%%
+%
+
+%%-------------------------------------------------------------------- SECTION -
+\section{Introduction}
+%
+\subsection{Review of the Degraded Broadcast Channel}
+%%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{The Degraded Broadcast Channel}
+\begin{figure}
+    \centering
+    \includegraphics[width=3in]{images/channel.pdf}
+\end{figure}
+
+\begin{itemize}
+%\small
+\item Channel: $P(\by,\bz|\bx)=\prod_{t=1}^n
+P_1(y_t|x_t)P(z_t|y_t)$
+\pause
+\item $R_{yz}$ - The rate for both users.
+\pause
+\item $R_y$ - The rate for the strong user.
+\pause
+\end{itemize}
+\begin{exampleblock}{Capacity Region:}
+\begin{columns}
+\column{.5\textwidth}
+Convex hull of the closure of all $(R_y, R_{yz})$ satisfying
+\begin{align*}
+    R_{yz} &\leq I(Z;U)\\
+    R_y &\leq I(X;Y|U)
+\end{align*}
+For some $P(u)P(x|u)P(y,z|x)$
+\column{.5\textwidth}
+\includegraphics[width=\textwidth, height=1in]{images/CapacityRegion.pdf}
+\end{columns}
+\end{exampleblock}
+\end{frame}
+\subsection{Coding Scheme}
+\begin{frame}
+\frametitle{Coding for the Broadcast Channel}
+\begin{exampleblock}{Bergmans (73) capacity achieving scheme:}
+\begin{columns}
+\column{.7\textwidth}
+\begin{itemize}
+    \item<1-> First, draw $e^{nR_{yz}}$ "cloud centers" $\sim P(u)$.
+   % \pause
+    \item<2-> Draw a "cloud" of $e^{nR_y}$ codewords $\sim P(x|u)$.
+   % \pause
+    \item<3-> To send message $m$ to both users and message $i$ to the strong user, send the $i$-th codeword from the $m$-th cloud.
+\end{itemize}
+\column{.3\textwidth}
+\begin{overprint}
+%\begin{figure}[htp]
+\includegraphics<1>[width=\textwidth]{images/cloudcentersonly3.pdf}
+%\end{figure}
+%\begin{figure}[htp]
+\includegraphics<2->[width=\textwidth]{images/cloudcenters3.pdf}
+%\end{figure}
+
+\end{overprint}
+\end{columns}
+\end{exampleblock}
+\begin{itemize}
+    \item<4-> Weak decoder determines only the cloud.
+    \item<5-> Strong decoder also determines the specific message within the cloud.
+\end{itemize}
+\end{frame}
+\subsection{Previous Work}
+\begin{frame}
+\frametitle{Previous Work}
+\begin{itemize}
+\item Gallager, 74'. By averaging over the cloud structure, a direct channel from cloud center to the weak decoder is computed. The error exponents are given for the computed direct channel. Therefore, the error exponent for the weak decoder depends only on the common message rate.
+\begin{figure}
+    \centering
+    \includegraphics[width=3in]{images/DirectChnlIlls.pdf}
+\end{figure}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Previous Work. Cont.}
+
+\begin{itemize}
+\item K\"orner and Sgarro, 80'. Used a maximum mutual information decoder. They derived universally achievable exponents that depend on both rates.
+\pause
+\item Sokolovski and Bross. 05'. Gave attainable error exponents for the Poisson BC with degraded message sets.
+\pause
+\item Weng et. al. 08'. Gave bounds for Gaussian broadcast and MAC channels. Defined the "Error Exponents Region".
+\pause
+\end{itemize}
+\begin{block}{In this work}
+    Our exponents pertain to \underline{optimal} (ML) decoding. Namely:
+    \begin{itemize}
+     \item Strong decoder: $(\hat{m}(\by),\hat{i}(\by))=\arg\max_{m,i}P(\by|\bx_{m,i})$.
+     \item Weak decoder:   $\tilde{m}(\bz)=\arg\max_m\frac{1}{M_y}\sum_{i=1}^{M_y}P(\bz|\bx_{m,i})$.
+    \end{itemize}
+    \pause
+    The exponents depend on both rates.
+\end{block}
+\end{frame}
+%%-------------------------------
+
+\section{First Approach - Gallager-Type Bounding }
+\begin{frame}
+    \huge
+\begin{center}
+    Part I:\\
+    Gallager type bounding Method
+\end{center}
+\end{frame}
+\subsection{Deriving the Exponents}
+\begin{frame}
+\frametitle{Deriving the Exponents}
+\begin{block}{The weak decoder}
+For the weak decoder, we start with Gallager's upper bound to the ``channel`` $P(\bz|m)=\frac{1}{M_y}\sum_{i=1}^{M_y}P(\bz|\bx_{m,i})$
+\scriptsize\begin{align*}
+    \overline{P_{E_m}^z}\le
+    \sum_{\bz}\bE\left[\frac{1}{M_y}\sum_{i=1}^{M_y}P(\bz|\bx_{m,i})\right]^{1-\rho\lambda}\cdot
+    \bE\left[\sum_{m'\ne m}\left(\frac{1}{M_y}\sum_{j=1}^{M_y}P(\bz|\bx_{m',j})\right)^\lambda
+    \right]^\rho.
+\end{align*}
+\end{block}
+\pause
+\normalsize We now continue with each expectation separately using Forney's method:
+\scriptsize
+\begin{align*}
+    \sum_{\bz}\bE\left[\sum_{i=1}^{M_y}P(\bz|\bx_{m,i})\right]^{1-\rho\lambda}
+    &= \sum_{\bz}\bE\left[\lb\sum_{i=1}^{M_y}P(\bz|\bx_{m,i})\rb^{\alpha}\right]^{\frac{1-\rho\lambda} {\alpha}}\\
+\uncover<3->{    &\leq  \sum_{\bz}\bE\left[\sum_{i=1}^{M_y}P^{\alpha}(\bz|\bx_{m,i}) \right]^{\frac{1-\rho\lambda} {\alpha}}}
+\end{align*}
+\normalsize \uncover<3->{We finally get:}
+\end{frame}
+
+%---------------------------------------------------------------------
+
+\subsection{The Weak Decoder}
+\begin{frame}
+\frametitle{The Weak Decoder}
+\begin{block}{The weak decoder error exponent}
+\begin{align*}
+    E_z(R_y,R_{yz})=\max_{0\le\rho\le 1}\max_{0\le\lambda\le 1}\max_{\lambda\le\mu\le 1}\max_{
+    1-\rho\lambda\le\alpha\le 1}\\
+    \left\{E_0(\rho,\lambda,\alpha,\mu)-(\alpha+\rho\mu-1)R_y-\rho
+    R_{yz}\right\}
+\end{align*}
+\end{block}
+where,
+\footnotesize
+\begin{align*}
+     E_0(\rho,\lambda,\alpha,\mu) &= -\log\sum_z\left\{\sum_{u}Q(u)\left[\sum_xQ(x|u) P(z|x)^{1-\rho\lambda/\alpha}\right]^\alpha\right.\times\\
+     &~~~~~~~~\left.\left[\sum_{u'}Q(u')\left[\sum_xQ(x|u') P(z|x)^{\lambda/\mu}\right]^\mu\right]^{\rho}\right\}
+\end{align*}
+
+\normalsize We will look into three special cases:
+\pause
+\begin{enumerate}
+\item $\alpha=\mu$
+\pause
+\item $\alpha=\mu=1$
+\item $\alpha=\mu=\frac 1 {1+\rho}$
+\end{enumerate}
+\end{frame}
+
+%---------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{The Weak Decoder, Cont.}
+\begin{exampleblock}{\footnotesize $\alpha = \mu$}
+\footnotesize The optimal value of $\lambda$ is $\frac 1 {1+\rho}$. We get an exponent with only two parameters.
+\begin{align*}
+  %  E_z(R_y,R_{yz})&=\max_{0\le\rho\le 1}\max_{
+%    \frac 1 {1+\rho}\le\alpha\le 1}
+%    -log\sum_z\left\{\sum_{u}Q(u)\left[\sum_xQ(x|u) P(z|x)^{\frac 1{\alpha(1+\rho)}}\right]^\alpha
+%     \right\}^{1+\rho}\\
+%     &~~~~~~~~~~~~~~~~ -[\alpha(1+\rho)-1]R_y-\rho R_{yz}
+     E_z(R_y,R_{yz})=\max_{0\le\rho\le 1}\max_{
+    \frac 1 {1+\rho}\le\alpha\le 1}
+    \left\{E_0(\rho,\frac 1 {1+\rho},\alpha,\alpha)-(\alpha(1+\rho)-1)R_y-\rho
+    R_{yz}\right\}
+\end{align*}
+\end{exampleblock}
+\pause
+\begin{exampleblock}{\footnotesize $\alpha = \mu = 1$}
+\footnotesize In this case, there is no dependence on the coding parameter $P(x|u)$.
+\begin{align*}
+    E_z(R_y,R_{yz})=-\log\left\{\sum_z\left[\sum_xQ(x)P(z|x)^{1/(1+\rho)}\right]^{1+\rho}\right\}-\rho(
+    R_{yz}+R_y)
+\end{align*}
+\end{exampleblock}
+\pause
+\begin{exampleblock}{\footnotesize $\alpha = \mu = \frac 1 {1+\rho}$}
+\footnotesize In this case, we return to the same exponent in Gallager's 74' work.
+\begin{align*}
+    E_z(R_y,R_{yz})&=-\log\left\{\sum_z\left[\sum_uQ(u)P(z|u)^{1/(1+\rho)}\right]^{1+\rho}\right\}-\rho
+    R_{yz}
+\end{align*}
+\end{exampleblock}
+\end{frame}
+
+\subsection{The Strong Decoder}
+\begin{frame}
+\frametitle{The Strong Decoder}
+The strong decoder can be wrong in two ways:
+\pause
+\begin{enumerate}
+    \item Can choose the wrong private message from the correct cloud.
+    \pause
+    \item Can choose a wrong cloud.
+\end{enumerate}
+\pause
+\begin{block}{The strong decoder}
+The Exponent is the worst exponent of the above events.
+\begin{align*}
+    &E_y(R_y, R_{yz}) = \min \lb \max_{0<\rho<1}E_{y1}(R_y, \rho),\max_{0<\rho<1}E_{y2}(R_y,R_{yz},\rho)\rb
+\end{align*}
+\end{block}
+Where, \footnotesize
+\begin{align*}
+    E_{y1}(R_y,\rho) &=-\rho R_y -\log \sum_{y}\sum_{u}Q(u)\left[\sum_x Q(x|u)P(y|x)^{\frac 1 {1+\rho}}
+        \right]^{1+\rho} \\
+    E_{y2}(R_y,R_{yz},\rho) &= -\rho(R_y+R_{yz})-\log\left\{\sum_{y} \left[\sum_{x}Q(x)P(y|x)^{\frac 1 {1+\rho}}\right]^{1+\rho}\right\}
+\end{align*}
+
+\end{frame}
+
+\subsection{Numerical Results}
+\subsubsection*{Setup}
+\begin{frame}
+\frametitle{Numerical Results}
+\begin{block}{}
+Memoryless binary symmetric channel
+\end{block}
+\begin{figure}
+\centering
+\includegraphics[width=0.4\textwidth]{images/DegradedBSCModelGraph.pdf}
+\end{figure}
+\pause
+\begin{itemize}
+\item Only one coding parameter ($\beta$). $Q(u) = \frac 1 2$ is optimal
+\pause
+\item The capacity region is:
+\begin{columns}[c] % the "c" option specifies center vertical alignment
+\column{.5\textwidth}
+\begin{align*}
+    R_{yz} &\le 1-h(\beta\ast p_z)\\
+    R_y &\le h(\beta\ast p_y)-h(p_y)
+\end{align*}
+\column{.5\textwidth}
+\begin{figure}[htp]
+\centering
+\includegraphics[width=\textwidth, height=0.35\textheight]{images/CapacityRegion.pdf}
+\end{figure}
+\end{columns}
+\item We fix one rate and plot the exponent as a function of the other rate.
+\end{itemize}
+\end{frame}
+
+
+\subsubsection*{The Results}
+\begin{frame}
+\frametitle{Results for the Broadcast BSC}
+\begin{block}{}
+Numerical results of the exponents under the constraint that both are greater then zero. We show the best $E_z
+$ and $E_y$ (weak, strong decoder exponents respectively) while the pair $(E_z,E_y)$ is attainable, compared to Gallager's 74' results ($E_{g,z}, E_{g,y}$).
+\end{block}
+\begin{columns}[c] % the "c" option specifies center vertical alignment
+
+\column{.5\textwidth} % column designated by a command
+
+\begin{figure}[htp]
+\centering
+\includegraphics[width=\textwidth]{images/EzMaximizedBeta.pdf} \label{fig:EzMaxBeta}
+\end{figure}
+
+\column{.5\textwidth}
+\begin{figure}[htp]
+\includegraphics[width=\textwidth]{images/EyMaximizedBeta_DisConti.pdf}\label{fig:EyMaxBeta}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{Results for the Broadcast BSC. Cont.}
+\begin{block}{}
+    Instead of requiring that the other (the one which is not drawn in each plot) exponent be positive, we can require that it will be greater then some constant value. In this case, we required that the other exponent will be greater then $\frac 1 4$ of its maximal attainable value.
+\end{block}
+\begin{columns}[c] % the "c" option specifies center vertical alignment
+
+\column{.5\textwidth} % column designated by a command
+
+\begin{figure}[htp]
+\centering
+\includegraphics[width=\textwidth]{images/EzMaximizedBetaEy_fourth.pdf}
+\end{figure}
+
+\column{.5\textwidth}
+\begin{figure}[htp]
+\includegraphics[width=\textwidth]{images/EyMaximizedBetaEz_fourth_DisConti.pdf}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+\subsubsection{Discussion}
+\begin{frame}
+\frametitle{Discussion}
+\begin{block}{Why is $E_y$ discontinuous?}
+%\begin{columns}[c]
+%\column{.7\textwidth}
+\begin{itemize}
+    \item<1-> We look for: $\max_{\beta}E_y$ s.t $E_z >E_z^{min}$
+    \item<1-> If we look at $E_z$ as a function of $\beta:$
+\begin{columns}
+\column{0.5\textwidth}
+    \begin{figure}[htbp]
+    \begin{center}
+   % \begin{overprint}
+    \includegraphics<1->[width=2in]{images/illustration.pdf}
+   % \includegraphics<4->[width=2in, height=1in]{images/illustration2.pdf}
+    %\end{overprint}
+    \end{center}
+    \end{figure}
+\column{0.5\textwidth}
+    \begin{figure}[htbp]
+    \begin{center}
+   % \begin{overprint}
+    %\includegraphics[width=2in]{images/illustration.pdf}
+    \includegraphics<2->[width=2in]{images/illustration2.pdf}
+    %\end{overprint}
+    \end{center}
+    \end{figure}
+\end{columns}
+%    \item For large enough $\beta$, $E_z$ behaves like the error exponent of the channel $X\to Z$, and is constant in $\beta$ for all $\beta\geq \beta_c(R_y)$ (denote this constant as $E_{z_0}(R_y)$).
+%    \pause
+%    \item For small enough $R_y$, $E_{z_0}(R_y) >$ some positive constant.
+%    \pause
+%    \item<3-> If the plateau height $>E_z^{min}$, the maximization over $\beta$ of $E_y$ is unconstrained.
+\item<3-> For all $R_y > R_{y0}$ the maximization is constrained.
+\end{itemize}
+\end{block}
+\end{frame}
+%----------------------------------------------------------------------------------------------
+%\begin{frame}
+%\frametitle{Discussion. Cont.}
+%\begin{block}{Why is $E_y$ discontinuous?}
+%%\begin{columns}[c]
+%%\column{.7\textwidth}
+%\begin{itemize}
+%    \item As we increase $R_y$, $E_z(\beta)$ graph moves down.
+%    \begin{figure}[htbp]
+%    \begin{center}
+%   % \begin{overprint}
+%    %\includegraphics[width=2in]{images/illustration.pdf}
+%    \includegraphics[width=2in]{images/illustration2.pdf}
+%    %\end{overprint}
+%    \end{center}
+%    \end{figure}
+%    \pause
+%    \item When the plateau height reaches $E_z^{min}$ , only a subset of $\beta 's$ is feasible and hence the sudden drop.
+%\end{itemize}
+%
+%%\column{.3\textwidth}
+%
+%
+%%\end{columns}
+%\end{block}
+%\end{frame}
+%\section{Conclusions and newer results}
+%\begin{frame}
+%\frametitle{Conclusions}
+%\begin{itemize}
+%    \item The numerical results show that the new exponents are always better than those of the previous work (Gallager 74').
+%\pause
+%    \item For the general case, the new exponents are greater or equal to the previous results. (in fact, the previous results are a special case of our results.
+%\pause
+%   % \item Current work
+%\bigskip
+%
+%\bigskip
+%
+%\begin{center}
+%\huge Thank you!
+%\end{center}
+%
+%\end{itemize}
+%\end{frame}
+
+
+\section{Second Approach - Type Class Enumerator Method}
+\begin{frame}
+    \huge
+    \center{Part II:\\Type Class Enumerator Method}
+
+\end{frame}
+\subsection{Type Class Enumerator Method - Introduction}
+\begin{frame}
+\frametitle{Type Class Enumerator Method - Motivation}
+\begin{block}{A question}
+    In the previous section (and numerous works) Jensen's inequality is used.
+    \begin{align*}
+        A = \bE\left[\sum_m P(\by|X_m)\right]^{\textcolor{red}{\textbf{$s$}}} \leq \left[\bE\sum_m P(\by|X_m)\right]^{\textcolor{red}{\textbf{$s$}}} = B
+    \end{align*}
+    Did we lose exponential tightness here? is $A\exe B$? ($\lim_{n\to\infty} \frn log\frac A B  = 0$)
+\end{block}
+\pause
+\begin{exampleblock}{Partial answer}
+    For random coding, Gallager's exponent is tight - in his case $A\exe B$.\\
+\begin{itemize}
+    \item    Was Gallager "lucky"?
+\pause
+    \item  We will return to this question later.
+\end{itemize}
+\end{exampleblock}
+\end{frame}
+%-------------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{A Simple Case First}
+\begin{block}{BSC(p)  ~~~~    $\beta = \log\frac {1-p} p$}
+\begin{align*}
+    \bE\left[\sum_{m=1}^{e^{nR}}P(\bz|\bX_m)\right]^{\textcolor{red}{\textbf{$s$}}}
+    &=(1-p)^{n\textcolor{red}{\textbf{$s$}}}\bE \left[
+    \sum_{d=0}^n N(d)e^{-d\beta}\right]^{\textcolor{red}{\textbf{$s$}}}\nt\\
+\uncover<2->{    &\exe (1-p)^{n\textcolor{red}{\textbf{$s$}}} \bE  \left[\sum_{d=0}^n N^{\textcolor{red}{\textbf{$s$}}}(d)e^{-n\textcolor{red}{\textbf{$s$}}\beta\frac d n}\right]\\}
+\uncover<3->{    &= (1-p)^{n\textcolor{red}{\textbf{$s$}}} \sum_{d=0}^n \bE N^{\textcolor{red}{\textbf{$s$}}}(d)e^{-n\textcolor{red}{\textbf{$s$}}\beta\frac d n}}
+\end{align*}
+\end{block}
+\begin{itemize}
+\item<1-> $\bz$ is the "zero" word.
+\item<1-> $N(d)$ - \# codewords around with Hamming weight $d$.
+\item<4-> We need to evaluate the moments of $N(d)$.
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Some Observations}
+We draw $e^{nR}$ codewords independently and uniformly over \{0,1\}.\\
+Let $N(d)$ count the number of codewords with Hamming weight $d$.
+\begin{block}{The Expected number of such codewords}
+\begin{columns}[c] % the "c" option specifies center vertical alignment
+\column{.6\textwidth}
+\begin{align*}
+    \bE N(d) \exe e^{nR}e^{n(h(\frac d n) - \log 2)}\eqd e^{n\cdot g(R,d)}
+\end{align*}
+\column{.4\textwidth}
+\begin{figure}[htp]
+\centering
+\includegraphics[width=0.6\textwidth,height=0.15\textheight]{images/EnumExponent.pdf}
+\end{figure}
+\end{columns}
+\end{block}
+\begin{itemize}
+\item \textit{sub-exponential} number of possible $d$'s
+\item $g(R,d)>0 \Rightarrow N(d)$ converges to its expectation d.e.f
+\item $g(R,d) < 0 \Rightarrow \Pr(N(d)=1)= e^{n\cdot g(R,d)}$
+\item Moments of $N(d)$
+\begin{align*}
+    \bE N^{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{$s$}}}(d) = \left\{
+    \begin{array}{ll}
+        e^{n\textcolor[rgb]{1.00,0.00,0.00}{\textbf{$s$}}\cdot g(R,d)} & g(R,d) > 0\\
+        e^{n\cdot g(R,d)} & g(R,d) \leq 0
+    \end{array}\right.
+\end{align*}
+\end{itemize}
+\end{frame}
+
+
+\subsection{Using the Type Class Enumerator Method}
+\begin{frame}
+\frametitle{Deriving the Exponent}
+\begin{block}{The weak decoder}
+For the weak decoder, we start with Gallager's upper bound to the ``channel`` $P(\bz|m)=\frac{1}{M_y}\sum_{i=1}^{M_y}P(\bz|\bx_{m,i})$
+\small\begin{align*}
+    \overline{P_{E_m}^z}\le
+    \sum_{\bz}\bE\left[\frac{1}{M_y}\sum_{i=1}^{M_y}P(\bz|\bx_{m,i})\right]^{1-\rho\lambda}
+    \bE\left[\sum_{m'\ne m}\left(\frac{1}{M_y}\sum_{j=1}^{M_y}P(\bz|\bx_{m',j})\right)^\lambda
+    \right]^\rho
+\end{align*}
+\end{block}
+\normalsize
+\begin{exampleblock}{Type class enumerators approach:}
+    Unlike previous works that use Jensen's inequality, after this initial step, our analysis is exponentially tight.
+\end{exampleblock}
+%\normalsize We now continue with each expectation separately using Forney's method:
+%\scriptsize
+%\begin{align*}
+%    \bE\sum_{\bz}\left[\sum_{i=1}^{M_y}P(\bz|\bx_{m,i})\right]^{1-\rho\lambda}
+%    &= \bE\sum_{\bz}\left[\lb\sum_{i=1}^{M_y}P(\bz|\bx_{m,i})\rb^{\alpha}\right]^{\frac{1-\rho\lambda} {\alpha}}\\
+%    &\leq  \bE\sum_{\bz}\left[\sum_{i=1}^{M_y}P^{\alpha}(\bz|\bx_{m,i}) \right]^{\frac{1-\rho\lambda} {\alpha}}
+%\end{align*}
+%\normalsize We finally get:
+\end{frame}
+
+%---------------------------------------------------------------------
+\subsubsection*{The First Expectation}
+\begin{frame}
+\frametitle{Deriving the Exponent}
+\begin{block}{The weak decoder}
+For the weak decoder, we start with Gallager's upper bound to the ``channel`` $P(\bz|m)=\frac{1}{M_y}\sum_{i=1}^{M_y}P(\bz|\bx_{m,i})$
+\small\begin{align*}
+    \overline{P_{E_m}^z}\le
+    \sum_{\bz}\textcolor{red}{\bE\left[\frac{1}{M_y}\sum_{i=1}^{M_y}P(\bz|\bx_{m,i})\right]^{1-\rho\lambda}}
+    \bE\left[\sum_{m'\ne m}\left(\frac{1}{M_y}\sum_{j=1}^{M_y}P(\bz|\bx_{m',j})\right)^\lambda
+    \right]^\rho
+\end{align*}
+\end{block}
+\normalsize
+\begin{exampleblock}{Type class enumerators approach:}
+    Unlike previous works that use Jensen's inequality, after this initial step, our analysis is exponentially tight.
+\end{exampleblock}
+%\normalsize We now continue with each expectation separately using Forney's method:
+%\scriptsize
+%\begin{align*}
+%    \bE\sum_{\bz}\left[\sum_{i=1}^{M_y}P(\bz|\bx_{m,i})\right]^{1-\rho\lambda}
+%    &= \bE\sum_{\bz}\left[\lb\sum_{i=1}^{M_y}P(\bz|\bx_{m,i})\rb^{\alpha}\right]^{\frac{1-\rho\lambda} {\alpha}}\\
+%    &\leq  \bE\sum_{\bz}\left[\sum_{i=1}^{M_y}P^{\alpha}(\bz|\bx_{m,i}) \right]^{\frac{1-\rho\lambda} {\alpha}}
+%\end{align*}
+%\normalsize We finally get:
+\end{frame}
+%-----------------------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Deriving the Exponent. Cont.}
+\begin{block}{The First Expectation}
+\begin{align*}
+    &\bE\left[\sum_{i=1}^{e^{nR_y}}P(z|x_{m,i})\right]^{\textcolor{red}{\textbf{$s$}}} \notag\\
+    &=\bE_u\bE_{x|u} \left[
+    \sum_{\hQ_{\bx|\bz,\bu}}N_{z,m}(\hQ_{\bx|\bz,\bu})e^{n\bhE_{\bz\bx}\log P(z|x)}\right]^{\textcolor{red}{\textbf{$s$}}}\nt\\
+\uncover<2->   { &\exe \bE_u \bE_{x|u}\left[
+    \sum_{\hQ_{\bx|\bz,\bu}}N_{z,m}^{\textcolor{red}{\textbf{$s$}}}(\hQ_{\bx|\bz,\bu})e^{n\textcolor{red}{\textbf{$s$}}\bhE_{\bz\bx}\log
+    P(z|x)}\right]}
+\end{align*}
+\end{block}
+
+\begin{itemize}
+\item $N_{z,m}(\hQ_{\bx|\bz,\bu})$ - \# codewords around cloud $m$ belonging to $T_{\bx|\bz,\bu}$. We need to evaluate its moments.
+\item $\hQ_{\bx|\bz,\bu}$ plays the role of $d$ in the binary example.
+\end{itemize}
+\end{frame}
+
+%---------------------------------------------------------------------------------------
+%\begin{frame}
+%\frametitle{The enumerator $N_{z,m}(T_{x|z})$ Properties}
+%\begin{exampleblock}{}
+%\footnotesize
+%For a given $\bu^n$, the probability of drawing a codeword of type $T_{x|z,u}$ is
+%\begin{align*}
+%    &e^{-n(\bhE\log\frac 1 {P(x|u)}-\hH(x|z,u))}
+%\end{align*}
+%Therefore\\
+%\begin{align*}
+%    &\bE_{x|u} N_{z,m}(T_{x|z,u}) \exe e^{nR_y}\cdot e^{-n(\bhE\log\frac 1 {P(x|u)}-\hH(x|z,u))}
+%\end{align*}
+%Denote
+%\footnotesize
+%\begin{align*}
+%    \calG_{R_y}(u) = \left\{T_{x|z,u} : R_y + \bhE\log P(x|u)+\hH(x|z,u) >0\right\}
+%\end{align*}
+%    For $T_{x|z,u}\in\calG_{R_y}(u)$, $N_{z,m}(T_{x|z})$ converges to its expectation double exponentially fast.
+%\end{exampleblock}
+%
+%\pause
+%\small
+%\begin{exampleblock}{Evaluating the moments}
+%\begin{align*}
+%    &\bE_{x|u} N_{z,m}^s(T_{x|u,z})
+%    \exe \left\{\begin{array}{ll}
+%    e^{n\textcolor[rgb]{1.00,0.00,0.00}{\textbf{s}}(R_y + \bhE\log P(x|u)+\hH(x|z,u))} &T_{x|u,z} \in \calG_{R_y}(u) \\
+%    e^{n(R_y + \bhE\log P(x|u)+\hH(x|z,u))} & T_{x|u,z} \in \calG_{R_y}^c(u)
+%    \end{array}\right.
+%\end{align*}
+%\normalsize
+%\end{exampleblock}
+%\end{frame}
+
+
+\begin{frame}
+\frametitle{The Enumerator $N_{z,m}(T_{x|z})$ Properties}
+\begin{block}{}
+Given cloud $\bu$, the expected number of codewords of type $T_{\bx|\bz,\bu}$ is:
+\begin{align*}
+     \bE_{x|u} N_{z,m}(\hQ_{\bx|\bz,\bu}) &\exe e^{nR_y}\cdot e^{-n(\bhE_{\bx\bu}\log\frac 1 {P(x|u)}-\hH(\bx|\bz,\bu))}\\
+      &\eqd e^{n\cdot g(R_y, \hQ_{\bx|\bz,\bu})}
+\end{align*}
+Denote
+\begin{align*}
+    \calG_{R_y}(u) = \left\{\hQ_{\bx|\bz,\bu} : g(R_y, \hQ_{\bx|\bz,\bu}) >0\right\}
+\end{align*}
+and the moments of the enumerators are:
+\begin{align*}
+    &\bE_{x|u} N_{z,m}^{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{s}}}(\hQ_{\bx|\bz,\bu})
+    \exe \left\{\begin{array}{ll}
+    e^{n\textcolor[rgb]{1.00,0.00,0.00}{\textbf{s}}\cdot g(R_y, \hQ_{\bx|\bz,\bu})} &\hQ_{\bx|\bz,\bu} \in \calG_{R_y}(u) \\
+    e^{n\cdot g(R_y, \hQ_{\bx|\bz,\bu})} & \hQ_{\bx|\bz,\bu} \in \calG_{R_y}^c(u)
+    \end{array}\right.
+\end{align*}
+\end{block}
+\pause
+Now, split the sum over $\hQ_{\bx|\bz,\bu}$ into sums over $\calG_{R_y}$, $\calG^c_{R_y}$
+%\begin{exampleblock}{Evaluating the moments}
+%
+%\end{exampleblock}
+\end{frame}
+%%---------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Deriving the Exponent. Cont.}
+\begin{block}{}
+\begin{align*}
+    \bE\left[\sum_{i=1}^{M_y}P(z|x_{m,i})\right]^{\textcolor{red}{\textbf{$s$}}}
+    &\exe \bE_u \left[
+    \sum_{\hQ_{\bx|\bz,\bu}\in \calG_{R_y}}e^{n\textcolor{red}{\textbf{s}}\lb g(R_y, \hQ_{\bx|\bz,\bu})+\bhE_{\bz\bx}\log
+    P(z|x)\rb}\right.\\
+    &~~~~~~+\left.\sum_{\hQ_{\bx|\bz,\bu}\in \calG^c_{R_y}}e^{n\lb g(R_y, \hQ_{\bx|\bz,\bu})+\textcolor{red}{\textbf{$s$}}\bhE_{\bz\bx}\log
+    P(z|x)\rb}\right]\\
+    &\exe \bE_u\left[e^{n\max_{\calG_R}A(u,\textcolor{red}{\textbf{$s$}})}+e^{n\max_{\calG^c_R}B(u,\textcolor{red}{\textbf{$s$}})} \right]
+\end{align*}
+\end{block}
+\begin{exampleblock}{Observations:}
+\begin{itemize}
+\item In Jensen's ineq, we take $\max A(u,\textcolor{red}{\textbf{$s$}})$ ($\geq \max_{\calG^c_R}B(u,\textcolor{red}{\textbf{$s$}}),0\leq\textcolor{red}{\textbf{$s$}}\leq 1$).
+%\item The global maximum of $A(u,\textcolor{red}{\textbf{$s$}})$ $\geq \max_{\calG^c_R}B(u,\textcolor{red}{\textbf{$s$}})$.
+\item if $\max A(u,\textcolor{red}{\textbf{$s$}})=\max\left\{\max_{\calG_R}A(u,\textcolor{red}{\textbf{$s$}}), \max_{\calG^c_R}B(u,\textcolor{red}{\textbf{$s$}})\right\}$ $\Rightarrow$ Jensen's ineq is tight.
+\end{itemize}
+\end{exampleblock}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\subsubsection{Revisiting Gallager's Single User Bound}
+\begin{frame}
+\frametitle{Revisiting Gallager's Single User Bound}
+\begin{block}{The 2nd expectation of Gallager's Bound}
+\begin{columns}
+\column{0.45\textwidth}
+\begin{exampleblock}{Our approach:}
+\begin{align*}
+    &\bE \left[\sum_{m'}P^{\frac 1 {1+\rho}}(\by|\bx_m')\right]^{\rho}\\
+    &\exe e^{n\max_{\calG_R}A(\textcolor{red}{\textbf{$\rho$}})} + e^{n\max_{\calG^c_R}B(\textcolor{red}{\textbf{$\rho$}})}
+\end{align*}
+\end{exampleblock}
+\column{0.45\textwidth}
+\begin{exampleblock}{Jensen's inequality:}
+\begin{align*}
+    &\bE \left[\sum_{m'}P^{\frac 1 {1+\rho}}(\by|\bx_m')\right]^{\rho}\\
+    &\leq e^{n\max A(\textcolor{red}{\textbf{$\rho$}})}
+\end{align*}
+\end{exampleblock}
+\end{columns}
+\end{block}
+\begin{itemize}
+\item    Let $\rho^*(R)$ be Gallager's optimizing $\rho$ for each $R$.
+\item   Different behavior for $R>R_c$ and $R<R_c$
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{$R>R_c$}
+$\bE \left[\sum_{m'}P^{\frac 1 {1+\rho}}(\by|\bx_m')\right]^{\rho} \exe e^{n\max_{\calG_R}A(\textcolor{red}{\textbf{$\rho$}})}+e^{n\max_{\calG^c_R}B(\textcolor{red}{\textbf{$\rho$}})}$
+\begin{block}{Behavior of $A$ and $B$}
+\begin{figure}[htp]
+\centering
+\includegraphics[width=0.8\textwidth, height=1.8in]{images/AvsB-BigR.pdf}
+\end{figure}
+\end{block}
+\begin{itemize}
+\item $\max_{\calG_R}A(\rho)\geq\max_{\calG^c_R}B(\rho)$.
+\item The global maximizer of $A(\rho)\in\calG_R$ for $\rho\geq\rho_0$.
+\item Gallager's bound is tight $\Rightarrow\rho^*(R)\geq \rho_0$
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{$R<R_c$    ($\rho^*(R) = 1$)}
+$\bE \left[\sum_{m'}P^{\frac 1 {1+\rho}}(\by|\bx_m')\right]^{\rho} \exe e^{n\max_{\calG_R}A(\textcolor{red}{\textbf{$\rho$}})}+e^{n\max_{\calG^c_R}B(\textcolor{red}{\textbf{$\rho$}})}$
+\begin{block}{Behavior of $A$ and $B$}
+\begin{overprint}
+%\begin{figure}[htp]
+\centering
+\includegraphics<1-3>[width=0.9\textwidth, height=1.6in]{images/AvsB-SmallR.pdf}
+\includegraphics<4->[width=0.9\textwidth, height=1.6in]{images/AvsB-SmallR-BigRho.pdf}
+%\end{figure}
+\end{overprint}
+\end{block}
+\begin{itemize}
+\item<1-> $\max_{\calG_R}A(\rho)\leq\max_{\calG^c_R}B(\rho)\leq \max A(\rho)$ (?!)
+\item<2-> However, Gallager's bound is tight because:
+    \begin{enumerate}
+    \item<2-> $\max_{\calG^c_R} B(1) = \max A(1)$.
+    \item<3-> Searching above $\rho=1$ doesn't improve the overall bound.
+    \end{enumerate}
+\end{itemize}
+
+
+\end{frame}
+
+
+\subsubsection*{The Second Expectation}
+\begin{frame}
+\frametitle{Deriving the Exponent}
+\begin{block}{The weak decoder}
+For the weak decoder, we start with Gallager's upper bound to the ``channel`` $P(\bz|m)=\frac{1}{M_y}\sum_{i=1}^{M_y}P(\bz|\bx_{m,i})$
+\small\begin{align*}
+    \overline{P_{E_m}^z}\le
+    \sum_{\bz}\bE\left[\frac{1}{M_y}\sum_{i=1}^{M_y}P(\bz|\bx_{m,i})\right]^{1-\rho\lambda}
+    \textcolor{red}{\bE\left[\sum_{m'\ne m}\left(\frac{1}{M_y}\sum_{j=1}^{M_y}P(\bz|\bx_{m',j})\right)^\lambda
+    \right]^\rho}
+\end{align*}
+\end{block}
+\normalsize
+\begin{exampleblock}{Type class enumerators approach:}
+    Unlike previous works that use Jensen's inequality, after this initial step, our analysis is exponentially tight.
+\end{exampleblock}
+%\normalsize We now continue with each expectation separately using Forney's method:
+%\scriptsize
+%\begin{align*}
+%    \bE\sum_{\bz}\left[\sum_{i=1}^{M_y}P(\bz|\bx_{m,i})\right]^{1-\rho\lambda}
+%    &= \bE\sum_{\bz}\left[\lb\sum_{i=1}^{M_y}P(\bz|\bx_{m,i})\rb^{\alpha}\right]^{\frac{1-\rho\lambda} {\alpha}}\\
+%    &\leq  \bE\sum_{\bz}\left[\sum_{i=1}^{M_y}P^{\alpha}(\bz|\bx_{m,i}) \right]^{\frac{1-\rho\lambda} {\alpha}}
+%\end{align*}
+%\normalsize We finally get:
+\end{frame}
+%-----------------------------------------------------------------------------
+
+
+\begin{frame}
+\frametitle{The Second Expectation}
+The Second Expectation - Binary example $\lb\beta = \log\frac {1-p} p \rb$.
+\begin{align*}
+    \bE\left[\sum_{m'\neq m} \lb  \sum _{j=1} ^{M_y}P(\bz|\bx_{m',j})\rb ^{\lambda} \right]^{\rho}
+    &=\bE\left[\sum_{m'\neq m} \lb  \sum _{d=0}^{n}N_{\bz,m'}(d)e^{-d\beta}\rb ^{\lambda} \right]^{\rho}\\
+\uncover<2->{&\exe\bE\left[\sum_{m'\neq m} \sum _{d=0}^{n}N^{\lambda}_{\bz,m'}(d)e^{-d\beta\lambda} \right]^{\rho}\\}
+\uncover<3->{&\exe\sum _{d=0}^{n}e^{-d\beta\lambda\rho} \bE\left[\sum_{m'\neq m}N^{\lambda}_{\bz,m'}(d)\right]^{\rho}}
+\end{align*}
+\normalsize
+\pause\pause\pause
+\begin{block}{Problems:}
+\begin{enumerate}
+\item<4-> There is an exponential number of $m'$.
+\item<5-> For every $m'$, $N_{m'}(d)$ is distributed differently.
+\end{enumerate}
+\end{block}
+\end{frame}
+%%-------------------------------------------------------------------------------------------------------
+%\begin{frame}
+%\frametitle{The Second Expectation. Cont.}
+%\begin{exampleblock}{Rearrange the cloud centers}
+%\begin{columns}
+%\column{0.8\textwidth}
+%\begin{itemize}
+%\item<2-> For $\bu_{m'}$ with $d_H(\bu_{m'},\bz)=l_{\bu\bz}$, $N_{\bz,m'}(d)$ are i.d
+%\item<3-> $M(l_{\bu\bz})$ - set of cloud centers distanced $l_{\bu\bz}$ from $\bz$
+%\end{itemize}
+%    \column{0.2\textwidth}
+%%    \begin{figure}[htp]
+% %   \centering
+%    \includegraphics<1->[width=\textwidth]{images/CirclesAroundZ.pdf}
+%  %  \end{figure}
+%\end{columns}
+%\end{exampleblock}
+%\pause\pause\pause
+%\begin{align*}
+%    \bE\left[\sum_{m'\neq m}N^{\lambda}_{m'}(d)\right]^{\rho}&= \bE\left[\sum_{l_{uz}=0}^n \sum_{\bu_{m'}\in M(l_{uz})} N^{\lambda}_{m'}(d)\right]^{\rho}\\
+%    &= \sum_{l_{\bu\bz}=0}^n \bE\left[\sum_{\bu_{m'}\in M(l_{\bu\bz})} N^{\lambda}_{m'}(d)\right]^{\rho}
+%\end{align*}
+%\pause
+%$|M(l_{\bu\bz})|$ is an enumerator - behaves similarly to $N(d)$.
+%\end{frame}
+
+%\begin{frame}
+%\frametitle{The Second Expectation}
+%The Second Expectation
+%\begin{align*}
+%    \bE\left[\sum_{m'\neq m} \lb  \sum _{j=1} ^{M_y}P(\bz|\bx_{m',j})\rb ^{\lambda} \right]^{\rho}
+%    \exe  \sum_{T_{x|z}}e^{n\lambda\rho\bhE\log P(z|x)}\bE\left[\sum_{m'\neq m} N_{z,m'}^{\lambda}(T_{x|z}) \right]^{\rho}
+%\end{align*}
+%\normalsize
+%\pause
+%\begin{block}{Two main obstacles:}
+%\begin{enumerate}
+%\item There is an exponential number of $m'$.
+%\pause
+%\item For every $m'$, $N_{z,m'}(T_{x|z})$ is generally distributed differently.
+%\end{enumerate}
+%\end{block}
+%%\footnotesize
+%%\pause
+%%\begin{exampleblock}{Continuing}
+%%\begin{align*}
+%%    \bE\left[\sum_{m'\neq m} N_{z,m'}^{\lambda}(T_{x|z}) \right]^{\rho}
+%%    &\exe \sum_{A\geq 0}^{R_{yz}}e^{n\lambda\rho A}\bE\left[\sum_{m'\neq m}\textbf{1}\lb N_{z,m'}(T_{x|z})\exe e^{n A} \rb \right]^{\rho}\\
+%%    &\exe \sum_{T_{u|z}}\bE\left[\sum_{m': \bu_{m'}\in T_{u|z}}\textbf{1}\lb N_{z,m'}(T_{x|z})\exe e^{n A} \rb \right]^{\rho}
+%%\end{align*}
+%%\normalsize
+%%\end{exampleblock}
+%
+%\end{frame}
+%%%--------------------------------------------------------------------------------------------
+%\begin{frame}
+%\frametitle{The Second Expectation. cont.}
+%\begin{align*}
+%    \exe \sum_{T_{u|z}}\bE\left[\sum_{m': \bu_{m'}\in T_{u|z}}\textbf{1}\lb N_{z,m'}(T_{x|z})\exe e^{n A} \rb \right]^{\rho}
+%\end{align*}
+%\normalsize
+%\pause
+%\begin{exampleblock}{For each $T_{u|z}$ We can show that:}
+%\begin{enumerate}
+%    \item $|m': \bu_{m'}\in T_{u|z}|$ either converges to a specific exponential value or is sub-exponential.
+%    \pause
+%    \item $Pr\left\{\textbf{1}\lb N_{z,m'}(T_{x|z})\exe e^{n A} \rb=1\right\}$ converges to unity double exponentially fast for a specific $A^*>0$ or vanishes exponentially fast if $A^*=0$.
+%\end{enumerate}
+%\end{exampleblock}
+%\end{frame}
+%%%-------------------------------------------------------------------
+
+\subsection{Numerical Results}
+%\subsection{Setup}
+%\begin{frame}
+%\frametitle{Numerical Results}
+%\begin{block}{}
+%Memoryless binary symmetric channel
+%\end{block}
+%\begin{figure}
+%\centering
+%\includegraphics[width=0.4\textwidth]{images/DegradedBSCModelGraph.pdf}
+%\end{figure}
+%\pause
+%\begin{itemize}
+%\item Only one coding parameter ($\beta$). $Q(u) = \frac 1 2$ is optimal
+%\pause
+%\item The capacity region is:
+%\begin{columns}[c] % the "c" option specifies center vertical alignment
+%\column{.5\textwidth}
+%\begin{align*}
+%    R_{yz} &\le 1-h(\beta\ast p_z)\\
+%    R_y &\le h(\beta\ast p_y)-h(p_y)
+%\end{align*}
+%\column{.5\textwidth}
+%\begin{figure}[htp]
+%\centering
+%\includegraphics[width=0.6\textwidth, height=0.3\textheight]{images/CapacityRegion.png}
+%\end{figure}
+%\end{columns}
+%\item We fix $R_y$ and plot the exponent as a function of $R_{yz}$.
+%\end{itemize}
+%\end{frame}
+
+
+%\subsection{The Results}
+\begin{frame}
+\frametitle{Results for the Broadcast BSC}
+\begin{block}{Same setup as before}
+Numerical results of the weak decoder error exponent. We show the best $E_z$ while the pair $(E_z,E_y)$ is attainable, compared to the previous section and to Gallager 74' result. We show numerical results for two values of $R_y$.
+\end{block}
+\begin{columns} % the "c" option specifies center vertical alignment
+\column{.5\textwidth} % column designated by a command
+\begin{figure}[htp]
+\centering
+\includegraphics[width=\textwidth, height=1.75in]{images/ResultsWGalRy=005.pdf} \label{fig:EzMaxBeta}
+\end{figure}
+
+\column{.5\textwidth}
+\begin{figure}[htp]
+\centering
+\includegraphics[width=\textwidth, height=1.75in]{images/ResultsWGalRy=03_2.pdf}\label{fig:EyMaxBeta}
+\end{figure}
+
+\end{columns}
+\end{frame}
+
+
+\section{Summary and Conclusions}
+\begin{frame}
+\frametitle{Summary and Conclusions}
+\begin{itemize}
+\item New and improved lower bounds to the error exponents of \textit{optimum decoding} were given.
+\pause
+\item The dependence on both rates reveled the discontinuity we saw.
+\pause
+\item An exponentially tight analysis technique was introduced.
+\pause
+\item The new technique gives insight into the tightness of Jensen's inequality.
+\pause
+\item The new technique is applicable to other cases as well. eg. the interference channel.
+\end{itemize}
+\pause
+\begin{center}
+\huge Thank you!
+\end{center}
+\end{frame}
+%%%%%Extras.
+\begin{frame}
+\frametitle{The Second Expectation. Cont.}
+\begin{exampleblock}{Rearrange the cloud centers}
+\begin{columns}
+\column{0.8\textwidth}
+\begin{itemize}
+\item<2-> For $\bu_{m'}$ with $d_H(\bu_{m'},\bz)=l_{\bu\bz}$, $N_{\bz,m'}(d)$ are i.d
+\item<3-> $M(l_{\bu\bz})$ - set of cloud centers distanced $l_{\bu\bz}$ from $\bz$
+\end{itemize}
+    \column{0.2\textwidth}
+%    \begin{figure}[htp]
+ %   \centering
+    \includegraphics<1->[width=\textwidth]{images/CirclesAroundZ.pdf}
+  %  \end{figure}
+\end{columns}
+\end{exampleblock}
+\pause\pause\pause
+\begin{align*}
+    \bE\left[\sum_{m'\neq m}N^{\lambda}_{m'}(d)\right]^{\rho}&= \bE\left[\sum_{l_{uz}=0}^n \sum_{\bu_{m'}\in M(l_{uz})} N^{\lambda}_{m'}(d)\right]^{\rho}\\
+    &= \sum_{l_{\bu\bz}=0}^n \bE\left[\sum_{\bu_{m'}\in M(l_{\bu\bz})} N^{\lambda}_{m'}(d)\right]^{\rho}
+\end{align*}
+\pause
+$|M(l_{\bu\bz})|$ is an enumerator - behaves similarly to $N(d)$.
+\end{frame}
+
+%\begin{frame}
+%\frametitle{Other works that demonstrate this method}
+%\pause
+%\begin{itemize}
+%    \item N. Merhav, ``Relations between random coding exponents and the statistical physics of random codes,'' to appear n IEEE Trans. on Inform. Theory, January, 2009.
+%        \pause
+%    \item R. Etkin, N. Merhav, and E. Ordentlich, ``Error exponents of optimum decoding for the interference channel,'' in Proc. ISIT 2008, Toronto, Canada, July 2008. Submitted to IEEE Trans. on Inform. Theory.
+%        \pause
+%    \item N. Merhav, ``Error exponents of erasure/list decoding revisited via moments of distance enumerators,'' IEEE Trans. Inform. Theory, , October 2008.
+%\bigskip
+%
+%\bigskip
+%\pause
+%\begin{center}
+%\huge Thank you!
+%\end{center}
+%
+%%\end{itemize}
+%\end{frame}
+
+\end{document} 

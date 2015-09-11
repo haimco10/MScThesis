@@ -1,0 +1,561 @@
+\chapter{Analysis of the WEMM algorithm}
+\label{chap:WEMM_analysis}
+
+In this chapter we analyze the \texttt{WEMM} algorithm in two steps. First, in
+\thmref{thm:theorem2} we show that the algorithm suffers a {\em
+  constant} regret
+compared with the optimal
+weight vector $\vu$ evaluated using {\em the weighted} loss,
+$L^{\boldsymbol{a}}(\vu)$. Second, in \thmref{thm:theorem3} and \thmref{thm:theorem4} we
+show that the difference of the weighted-loss $L^{\boldsymbol{a}}(\vu)$ to the true loss
+$L(\vu)$ is only logarithmic in $T$ or in $L_T(\vu)$.
+\begin{theorem}
+\label{thm:theorem2}
+Assume $1+a_{t}\mathbf{x}_{t}^{\top}\mathbf{A}_{t-1}^{-1}\mathbf{x}_{t}-a_{t}\leq0$
+for $t = 1 \dots T$ (which is satisfied by our choice later). Then,
+the loss of \texttt{WEMM},
+$\hat{y}_{t}=\mathbf{b}_{t-1}^{\top}\mathbf{A}_{t-1}^{-1}\mathbf{x}_{t}$ for $t=1 \dots T$, is upper bounded by,
+\begin{align*}
+L_{T}(\texttt{WEMM})\leq\inf_{\mathbf{u}\in\mathbb{R}^{d}}\left(b\left\Vert
+    \mathbf{u}\right\Vert
+  ^{2}+L_{T}^{\boldsymbol{a}}(\mathbf{u})\right) ~.
+\end{align*}
+Furthermore, if
+$1+a_{t}\mathbf{x}_{t}^{\top}\mathbf{A}_{t-1}^{-1}\mathbf{x}_{t}-a_{t}
+= 0$, then the last inequality is in fact an equality.
+\end{theorem}
+\begin{proof}
+Using the Woodbury matrix identity we get
+\begin{eqnarray}
+\mathbf{A}_{t}^{-1} & = & \mathbf{A}_{t-1}^{-1}-\frac{\mathbf{A}_{t-1}^{-1}\mathbf{x}_{t}\mathbf{x}_{t}^{\top}\mathbf{A}_{t-1}^{-1}}{\frac{1}{a_{t}}+\mathbf{x}_{t}^{\top}\mathbf{A}_{t-1}^{-1}\mathbf{x}_{t}}\label{woodbury}~,
+\end{eqnarray}
+therefore
+\begin{align}
+\mathbf{A}_{t}^{-1}\mathbf{x}_{t}
+& =  \mathbf{A}_{t-1}^{-1}\mathbf{x}_{t}-\frac{\mathbf{A}_{t-1}^{-1}\mathbf{x}_{t}\mathbf{x}_{t}^{\top}\mathbf{A}_{t-1}^{-1}\mathbf{x}_{t}}{\frac{1}{a_{t}}+\mathbf{x}_{t}^{\top}\mathbf{A}_{t-1}^{-1}\mathbf{x}_{t}}%\nonumber \\
+  =  \frac{\mathbf{A}_{t-1}^{-1}\mathbf{x}_{t}}{1+a_{t}\mathbf{x}_{t}^{\top}\mathbf{A}_{t-1}^{-1}\mathbf{x}_{t}}\label{t4}~.
+\end{align}
+For $t = 1 \dots T$ we have
+\begin{eqnarray*}
+ &  & \ell_{t}(\texttt{WEMM})+\inf_{\mathbf{u}\in\mathbb{R}^{d}}\left(b\left\Vert \mathbf{u}\right\Vert ^{2}+L_{t-1}^{\boldsymbol{a}}(\mathbf{u})\right)-\inf_{\mathbf{u}\in\mathbb{R}^{d}}\left(b\left\Vert \mathbf{u}\right\Vert ^{2}+L_{t}^{\boldsymbol{a}}(\mathbf{u})\right)\\
+ & = &
+ \left(y_{t}-\hat{y}_{t}\right)^{2}+\inf_{\mathbf{u}\in\mathbb{R}^{d}}\left(b\left\Vert
+     \mathbf{u}\right\Vert
+   ^{2}+\sum_{s=1}^{t-1}a_{s}\left(y_{s}-\mathbf{u}^{\top}\mathbf{x}_{s}\right)^{2}\right)\\
+   &&-\inf_{\mathbf{u}\in\mathbb{R}^{d}}\left(b\left\Vert
+     \mathbf{u}\right\Vert
+   ^{2}+\sum_{s=1}^{t}a_{s}\left(y_{s}-\mathbf{u}^{\top}\mathbf{x}_{s}\right)^{2}\right)\\
+%\end{eqnarray*}
+%
+%\begin{eqnarray*}
+ & \overset{\eqref{optimal_solution}}{=} & \left(y_{t}-\hat{y}_{t}\right)^{2}+\sum_{s=1}^{t-1}a_{s}y_{s}^{2}-\mathbf{b}_{t-1}^{\top}\mathbf{A}_{t-1}^{-1}\mathbf{b}_{t-1}-\sum_{s=1}^{t}a_{s}y_{s}^{2}+\mathbf{b}_{t}^{\top}\mathbf{A}_{t}^{-1}\mathbf{b}_{t}\\
+ & = & \left(y_{t}-\hat{y}_{t}\right)^{2}-a_{t}y_{t}^{2}-\mathbf{b}_{t-1}^{\top}\mathbf{A}_{t-1}^{-1}\mathbf{b}_{t-1}+\mathbf{b}_{t}^{\top}\mathbf{A}_{t}^{-1}\mathbf{b}_{t}\\
+ &\overset{\eqref{t3}}{=}  & \left(y_{t}-\hat{y}_{t}\right)^{2}-a_{t}y_{t}^{2}-\mathbf{b}_{t-1}^{\top}\mathbf{A}_{t-1}^{-1}\mathbf{b}_{t-1}+\mathbf{b}_{t-1}^{\top}\mathbf{A}_{t}^{-1}\mathbf{b}_{t-1}+2a_{t}y_{t}\mathbf{b}_{t-1}^{\top}\mathbf{A}_{t}^{-1}\mathbf{x}_{t}+a_{t}^{2}y_{t}^{2}\mathbf{x}_{t}^{\top}\mathbf{A}_{t}^{-1}\mathbf{x}_{t}\\
+ & = & \left(y_{t}-\hat{y}_{t}\right)^{2}-a_{t}y_{t}^{2}-\mathbf{b}_{t-1}^{\top}\left(\mathbf{A}_{t-1}^{-1}-\mathbf{A}_{t}^{-1}\right)\mathbf{b}_{t-1}+2a_{t}y_{t}\mathbf{b}_{t-1}^{\top}\mathbf{A}_{t}^{-1}\mathbf{x}_{t}+a_{t}^{2}y_{t}^{2}\mathbf{x}_{t}^{\top}\mathbf{A}_{t}^{-1}\mathbf{x}_{t}\\
+ & \overset{\eqref{t2}}{=}  &\left(y_{t}-\hat{y}_{t}\right)^{2}-a_{t}y_{t}^{2}-\mathbf{b}_{t-1}^{\top}\mathbf{A}_{t}^{-1}a_{t}\mathbf{x}_{t}\mathbf{x}_{t}^{\top}\mathbf{A}_{t-1}^{-1}\mathbf{b}_{t-1}+2a_{t}y_{t}\mathbf{b}_{t-1}^{\top}\mathbf{A}_{t}^{-1}\mathbf{x}_{t}+a_{t}^{2}y_{t}^{2}\mathbf{x}_{t}^{\top}\mathbf{A}_{t}^{-1}\mathbf{x}_{t}\\
+&=  & \left(y_{t}-\hat{y}_{t}\right)^{2}-a_{t}y_{t}^{2}+a_{t}\left(-\hat{y}_{t}\mathbf{b}_{t-1}^{\top}+2y_{t}\mathbf{b}_{t-1}^{\top}+a_{t}y_{t}^{2}\mathbf{x}_{t}^{\top}\right)\mathbf{A}_{t}^{-1}\mathbf{x}_{t}\\
+ &\overset{\eqref{t4}}{=}  & \left(y_{t}-\hat{y}_{t}\right)^{2}-a_{t}y_{t}^{2}+a_{t}\left(-\hat{y}_{t}\mathbf{b}_{t-1}^{\top}+2y_{t}\mathbf{b}_{t-1}^{\top}+a_{t}y_{t}^{2}\mathbf{x}_{t}^{\top}\right)\frac{\mathbf{A}_{t-1}^{-1}\mathbf{x}_{t}}{1+a_{t}\mathbf{x}_{t}^{\top}\mathbf{A}_{t-1}^{-1}\mathbf{x}_{t}}\\
+ & = & \left(y_{t}-\hat{y}_{t}\right)^{2}+a_{t}\frac{-y_{t}^{2}-y_{t}^{2}a_{t}\mathbf{x}_{t}^{\top}\mathbf{A}_{t-1}^{-1}\mathbf{x}_{t}-\hat{y}_{t}^{2}+2y_{t}\hat{y}_{t}+a_{t}y_{t}^{2}\mathbf{x}_{t}^{\top}\mathbf{A}_{t-1}^{-1}\mathbf{x}_{t}}{1+a_{t}\mathbf{x}_{t}^{\top}\mathbf{A}_{t-1}^{-1}\mathbf{x}_{t}}\\
+ & = & \left(y_{t}-\hat{y}_{t}\right)^{2}-a_{t}\frac{\left(y_{t}-\hat{y}_{t}\right)^{2}}{1+a_{t}\mathbf{x}_{t}^{\top}\mathbf{A}_{t-1}^{-1}\mathbf{x}_{t}}\\
+&
+=&\frac{1+a_{t}\mathbf{x}_{t}^{\top}\mathbf{A}_{t-1}^{-1}\mathbf{x}_{t}-a_{t}}{1+a_{t}\mathbf{x}_{t}^{\top}\mathbf{A}_{t-1}^{-1}\mathbf{x}_{t}}\left(y_{t}-\hat{y}_{t}\right)^{2}
+\leq0 ~.
+\end{eqnarray*}
+Summing over $t\in\left\{ 1,\ldots,T\right\} $
+%and using \eqref{LT}
+yields
+\[
+L_{T}(\texttt{WEMM})-\inf_{\mathbf{u}\in\mathbb{R}^{d}}\left(b\left\Vert
+    \mathbf{u}\right\Vert
+  ^{2}+L_{T}^{\boldsymbol{a}}(\mathbf{u})\right)\leq 0~.
+\]
+ \QED
+\end{proof}
+%\begin{proofsketch}
+%Long algebraic manipulation given in \ref{proof_theorem2}  yields,
+%\begin{align*}
+%\ell_{t}(\texttt{WEMM})+\inf_{\mathbf{u}\in\mathbb{R}^{d}}\left(b\left\Vert \mathbf{u}\right\Vert ^{2}+L_{t-1}^{\boldsymbol{a}}(\mathbf{u})\right)-\inf_{\mathbf{u}\in\mathbb{R}^{d}}\left(b\left\Vert \mathbf{u}\right\Vert ^{2}+L_{t}^{\boldsymbol{a}}(\mathbf{u})\right)
+%=\frac{1+a_{t}\mathbf{x}_{t}^{\top}\mathbf{A}_{t-1}^{-1}\mathbf{x}_{t}-a_{t}}{1+a_{t}\mathbf{x}_{t}^{\top}\mathbf{A}_{t-1}^{-1}\mathbf{x}_{t}}\left(y_{t}-\hat{y}_{t}\right)^{2}\leq0 ~.
+%\end{align*}
+%Summing over $t$ gives the desired bound.
+%\QED
+%\end{proofsketch}
+
+Next we decompose the weighted loss
+$L_{T}^{\boldsymbol{a}}(\mathbf{u})$ into a sum of the actual loss
+$L_T(\vu)$ and a logarithmic term. We give two bounds - one is logarithmic in $T$ (\thmref{thm:theorem3}), and the second is logarithmic in $L_T(\vu)$ (\thmref{thm:theorem4}).
+We use the following notation of the loss suffered by $\vu$ over the
+worst example,
+\begin{align*}
+S=S(\vu)= \sup_{1\leq t\leq T}\ell_{t}(\mathbf{u}),
+%\label{sup_loss}
+\end{align*}
+where clearly $S$ depends explicitly on $\vu$, which is omitted for
+simplicity. We now turn to state our first result.
+\begin{theorem}
+\label{thm:theorem3}
+Assume $\left\Vert \mathbf{x}_{t}\right\Vert \leq1$ for $t=1 \dots T$,
+and $b>1$. Assume further that $a_{t}=\frac{1}{1-\mathbf{x}_{t}^{\top}\mathbf{A}_{t-1}^{-1}\mathbf{x}_{t}}$
+for $t=1 \dots T$. Then
+\begin{align*}
+L_{T}^{\boldsymbol{a}}(\mathbf{u})\leq L_{T}(\mathbf{u})+
+\frac{b}{b-1}S\ln\left|\frac{1}{b}\mathbf{A}_{T}\right| ~.
+\end{align*}
+\end{theorem}
+%The proof follows similar steps to~\cite{Forster}.
+%A detailed proof is given in \ref{proof_theorem3}.
+\begin{proof}
+We decompose the weighted loss,
+\begin{equation}
+L_{T}^{\boldsymbol{a}}(\mathbf{u}) =
+L_{T}(\mathbf{u})+ \sum_t (a_t-1) \ell_{t}(\mathbf{u})  \leq
+L_{T}(\mathbf{u})+ S \sum_t (a_t-1)~.
+\label{decomposition}
+\end{equation}
+Next we bound the term $\sum_t (a_t-1)$. From \eqref{woodbury} we see that $\mathbf{A}_{t}^{-1}\prec\mathbf{A}_{t-1}^{-1}$
+and because $\mathbf{A}_{0}=b\mathbf{I}$ we get
+\[
+\mathbf{x}_{t}^{\top}\mathbf{A}_{t}^{-1}\mathbf{x}_{t}<\mathbf{x}_{t}^{\top}\mathbf{A}_{t-1}^{-1}\mathbf{x}_{t}<\mathbf{x}_{t}^{\top}\mathbf{A}_{t-2}^{-1}\mathbf{x}_{t}<\ldots<\mathbf{x}_{t}^{\top}\mathbf{A}_{0}^{-1}\mathbf{x}_{t}=\frac{1}{b}\left\Vert \mathbf{x}_{t}\right\Vert ^{2}\leq\frac{1}{b}~,
+\]
+therefore $1\leq a_{t}\leq\frac{1}{1-\frac{1}{b}}=\frac{b}{b-1}$.
+From \eqref{t4} we have
+\begin{eqnarray*}
+\mathbf{x}_{t}^{\top}\mathbf{A}_{t}^{-1}\mathbf{x}_{t}
+ &=&
+ \frac{\mathbf{x}_{t}^{\top}\mathbf{A}_{t-1}^{-1}\mathbf{x}_{t}}{1+a_{t}\mathbf{x}_{t}^{\top}\mathbf{A}_{t-1}^{-1}\mathbf{x}_{t}}\\
+&=&\frac{1-\frac{1}{a_{t}}}{1+a_{t}\left(1-\frac{1}{a_{t}}\right)} ~=~\frac{a_{t}-1}{a_{t}^{2}}~,
+\end{eqnarray*}
+so we can bound the term $a_{t}-1$ as following
+\begin{equation}
+a_{t}-1=a_{t}^{2}\mathbf{x}_{t}^{\top}\mathbf{A}_{t}^{-1}\mathbf{x}_{t}\leq\frac{b}{b-1}a_{t}\mathbf{x}_{t}^{\top}\mathbf{A}_{t}^{-1}\mathbf{x}_{t}~. \label{t6}
+\end{equation}
+%
+% Next, we derive a logarithmic bound for the term
+% $a_{t}\mathbf{x}_{t}^{\top}\mathbf{A}_{t}^{-1}\mathbf{x}_{t}$.
+% Since $\mathbf{A}_{t}$ is PD, there is a PD matrix $\mathbf{A}\in\mathbb{R}^{d\times d}$
+% such that $\mathbf{A}_{t}=\mathbf{A}\mathbf{A}.$ Let
+% $\mathbf{\xi}=\sqrt{a_{t}}\mathbf{A}^{-1}\mathbf{x}_{t}$. We use the
+% convexity of the exponent to bound,
+% \begin{align}
+% \left|\mathbf{I}-\mathbf{\xi}\mathbf{\xi}^{\top}\right| = 1
+% -\mathbf{\xi}^{\top} \mathbf{\xi} \leq
+% e^{-\mathbf{\xi}^{\top}\mathbf{\xi}} ~\label{bound1}
+% \end{align}
+% %\edward{We can write that it is similar to Forster to reduce space if needed}
+% Since
+% \(
+% a_{t}\mathbf{x}_{t}^{\top}\mathbf{A}_{t}^{-1}\mathbf{x}_{t}=\frac{a_{t}-1}{a_{t}}<1
+% \)
+% we have
+% $a_{t}\mathbf{x}_{t}^{\top}\mathbf{A}_{t}^{-1}\mathbf{x}_{t}<1$ and
+% thus
+% $\mathbf{\xi}^{\top}\mathbf{\xi}=a_{t}\mathbf{x}_{t}^{\top}\mathbf{A}_{t}^{-1}\mathbf{x}_{t}<1$.
+% Substituting in \eqref{bound1} we get,
+% % we know that $\mathbf{I}-\mathbf{\xi}\mathbf{\xi}^{\top}$ is positive
+% % definite and we get
+% % \[
+% % \left|\mathbf{I}-\mathbf{\xi}\mathbf{\xi}^{\top}\right|\leq\prod_{i=1}^{d}\left(1-\xi_{i}^{2}\right)\leq\prod_{i=1}^{d}e^{-\xi_{i}^{2}}=e^{-\mathbf{\xi}^{\top}\mathbf{\xi}}
+% % \]
+% % where the first inequlity holds because the determinant of a positive
+% % semidefinite matrix is bounded by the product of the entries on the
+% % diagonal of the matrix (e.g., see {[}2{]}, Theorem 7 in Chapter 2).
+% % It follows that
+% \[
+% a_{t}\mathbf{x}_{t}^{\top}\mathbf{A}_{t}^{-1}\mathbf{x}_{t}=\mathbf{\xi}^{\top}\mathbf{\xi}\leq\ln\frac{1}{\left|\mathbf{I}-\mathbf{\xi}\mathbf{\xi}^{\top}\right|}=\ln\frac{\left|\mathbf{A}\mathbf{A}\right|}{\left|\mathbf{A}\mathbf{A}-\mathbf{A}\mathbf{\xi}\mathbf{\xi}^{\top}\mathbf{A}\right|}=\ln\frac{\left|\mathbf{A}_{t}\right|}{\left|\mathbf{A}_{t}-a_{t}\mathbf{x}_{t}\mathbf{x}_{t}^{\top}\right|}=\ln\frac{\left|\mathbf{A}_{t}\right|}{\left|\mathbf{A}_{t-1}\right|} ~.
+% \]
+With an argument similar to~\cite{Forster} we have,
+ \[
+ a_{t}\mathbf{x}_{t}^{\top}\mathbf{A}_{t}^{-1}\mathbf{x}_{t}
+%=\mathbf{\xi}^{\top}\mathbf{\xi}
+%\leq\ln\frac{1}{\left|\mathbf{I}-\mathbf{\xi}\mathbf{\xi}^{\top}\right|}
+%=\ln\frac{\left|\mathbf{A}\mathbf{A}\right|}{\left|\mathbf{A}\mathbf{A}-\mathbf{A}\mathbf{\xi}\mathbf{\xi}^{\top}\mathbf{A}\right|}
+\leq\ln\frac{\left|\mathbf{A}_{t}\right|}{\left|\mathbf{A}_{t}-a_{t}\mathbf{x}_{t}\mathbf{x}_{t}^{\top}\right|}
+=\ln\frac{\left|\mathbf{A}_{t}\right|}{\left|\mathbf{A}_{t-1}\right|} ~.
+ \]
+%
+Summing the last inequality over $t$ and using the initial value
+$\ln\left|\frac{1}{b}\mathbf{A}_{0}\right|=0$ we get
+\[
+\sum_{t=1}^{T}a_{t}\mathbf{x}_{t}^{\top}\mathbf{A}_{t}^{-1}\mathbf{x}_{t}\leq\ln\left|\frac{1}{b}\mathbf{A}_{T}\right|~.
+% \label{t7}
+\]
+Substituting the last inequality in
+%\eqref{t7} in
+\eqref{t6} we get the logarithmic bound
+\[
+\sum_{t=1}^{T}\left(a_{t}-1\right)\leq\frac{b}{b-1}\ln\left|\frac{1}{b}\mathbf{A}_{T}\right| ~,
+\]
+as required.
+% \begin{eqnarray*}
+% L_{T}^{\boldsymbol{a}}(\mathbf{u}) & = & L_{T}(\mathbf{u})+\sum_{t=1}^{T}\left(a_{t}-1\right)\ell_{t}(\mathbf{u})\leq L_{T}(\mathbf{u})+\frac{b}{b-1}S\ln\left|\frac{1}{b}\mathbf{A}_{T}\right|
+% \end{eqnarray*}
+\QED
+\end{proof}
+%\begin{proofsketch}
+%We decompose the weighted loss,
+%\begin{equation}
+%L_{T}^{\boldsymbol{a}}(\mathbf{u}) =
+%L_{T}(\mathbf{u})+ \sum_t (a_t-1) \ell_{t}(\mathbf{u})  \leq
+%L_{T}(\mathbf{u})+ S \sum_t (a_t-1)~.
+%\label{decomposition}
+%\end{equation}
+%From the definition of $a_t$ we
+%have,
+%$a_{t}-1=a_{t}^{2}\mathbf{x}_{t}^{\top}\mathbf{A}_{t}^{-1}\mathbf{x}_{t}\leq\frac{b}{b-1}a_{t}\mathbf{x}_{t}^{\top}\mathbf{A}_{t}^{-1}\mathbf{x}_{t}$
+%(see \eqref{t6}). Finally, following similar steps to Forster~\cite{Forster}
+%we have,
+%$\sum_{t=1}^{T}a_{t}\mathbf{x}_{t}^{\top}\mathbf{A}_{t}^{-1}\mathbf{x}_{t}\leq\ln\left|\frac{1}{b}\mathbf{A}_{T}\right|$
+%(see \eqref{t7}).
+%\QED
+%\end{proofsketch}
+
+Next we show a bound that may be sub-logarithmic if the comparison
+vector $\vu$ suffers sublinear amount of loss. Such a bound was
+previously proposed by~\cite{OrabonaCBG12}. We defer the
+discussion about the bound after providing the proof below.
+\begin{theorem}
+\label{thm:theorem4}
+Assume $\left\Vert \mathbf{x}_{t}\right\Vert \leq1$ for $t=1 \dots T$,
+and $b>1$. Assume further that
+\begin{equation}
+a_{t}=\frac{1}{1-\mathbf{x}_{t}^{\top}\mathbf{A}_{t-1}^{-1}\mathbf{x}_{t}} \label{at}
+\end{equation}
+for $t=1 \dots T$.
+Then,
+\begin{align*}
+L_{T}^{\boldsymbol{a}}(\mathbf{u})\leq L_{T}(\mathbf{u})+\frac{b}{b-1}Sd\left[1+\ln\left(1+\frac{L_T\paren{\vu}}{Sd}\right)\right]~.
+\end{align*}
+\end{theorem}
+We prove the theorem with a refined bound on the sum $\sum_t (a_t-1)
+\ell_{t}(\mathbf{u})$ of \eqref{decomposition} using the
+following two lemmas.
+In
+\thmref{thm:theorem3} we bound the loss of all examples with $S$ and
+then bound the remaining term. Here, instead we show a relation to a
+subsequence ``pretending'' all examples of it as suffering a loss $S$, yet with the same cumulative loss, yielding
+an effective shorter sequence, which we then bound. In the next lemma
+we show how to find this subsequence, and in the following one bound
+the performance.
+\begin{lemma}
+Let $I\subset \{1 \dots T\}$ be the indices of the $T^{'}=\left\lceil
+  \sum_{t=1}^{T}\ell_{t}\left(\mathbf{u}\right)/S\right\rceil$ largest elements of $a_t$,
+%\kc{is the last sum uses the loss of the algorithm of $\vu$?}
+%\edward{the loss of  $\vu$}
+that is $\vert I \vert = T'$ and $\min_{t \in I} a_t \geq a_\tau$ for
+all $\tau \in \{ 1 \dots T\} / I$. Then,
+\[
+\sum_{t=1}^{T} \ell_{t}\left(\mathbf{u}\right) \left(a_{t}-1\right) \leq
+S\sum_{t \in I}\left(a_{t}-1\right) ~.
+\]
+\label{lem:stacking_examples}
+\end{lemma}
+\begin{proof}
+For a vector $\vv\in\reals^T$ define by $I(\vv)$ the set of indicies
+of the $T^{'}$ maximal absolute-valued elements of $\vv$, and define $f(\vv) = \sum_{t \in
+  I(\vv)} \vert \vvi{t} \vert$. The function $f(\vv)$ is a
+norm~\citep{DekelLoSi07} with a dual norm $g(\vh) = \max\left\{ \Vert \vh
+\Vert_\infty,\frac{\Vert \vh \Vert_1}{T^{'}}\right\}$.
+From the property of dual norms we have $\vv\cdot\vh \leq f(\vv)
+g(\vh)$. Applying this inequality to $\vv = (a_1-1 \comdots a_T-1)$ and
+$\vh=(\ell_1\left(\mathbf{u}\right) \comdots \ell_T\left(\mathbf{u}\right))$ we get,
+\[
+\sum_{t=1}^{T} \ell_t \left(\mathbf{u}\right) (a_t-1) \leq \max\left\{
+  S,\frac{\sum_{t=1}^{T}\ell_{t}\left(\mathbf{u}\right)}{T^{'}}\right\} \sum_{t \in I}
+(a_t-1)~.
+\]
+Combining with
+\begin{align*}
+ST' = S \left\lceil      \sum_{t=1}^{T}\ell_{t}\left(\mathbf{u}\right)/S\right\rceil
+\geq
+  \sum_{t=1}^{T}\ell_{t}\left(\mathbf{u}\right)~,
+\end{align*}
+completes the proof.
+\QED
+\end{proof}
+% \begin{proof}
+%   We assume wlog that
+%   $\sum_{t=1}^{T}\ell_{t}/S$ is integral, as otherwise we may increase
+%   the loss of one example artificially. We describe now an iterative
+%   process. We initialize $\eta_t = \ell_{t}$ and repeat the following
+%   steps. As long there exists $t \in I$ such that
+%   $\eta_t < S$ by this invariance there exists $\tau \notin I$ with
+%   $\eta_\tau>0$, we define $\delta = \min \{ S - \eta_t, \eta_\tau\}$
+% and define $\eta_t \leftarrow \eta_t + \delta$ and $\eta_\tau
+% \leftarrow \eta_\tau - \delta$. Clearly, both $\eta_t$ and $\eta_\tau$
+% were modified (the former increased and the later decreased); and
+% $\eta_t \leq S$  and $\eta_\tau \geq 0$. The process maintains an invariant $\sum_t \eta_t =
+%   \sum_{t=1}^{T}\ell_{t}$ and by definition $ST' = S \left\lceil
+%     \sum_{t=1}^{T}\ell_{t}/S\right\rceil \geq
+%   \sum_{t=1}^{T}\ell_{t}$.
+% \QED
+% \end{proof}
+
+Note that the quantity $\sum_{t \in I} a_t$ is based only on $T'$
+examples, yet was generated using all $T$ examples. In fact by running
+the algorithm with only these $T'$ examples the corresponding sum cannot get smaller. Specifically, assume that the algorithm is run with inputs
+$(\vxi{1},\yi{1}) \comdots  (\vxi{T},\yi{T})$ and generated a corresponding
+sequence $(a_1 \comdots  a_T)$. Let $I$ be the set of indices with maximal
+values of $a_t$ as before. Assume that the algorithm is run with the subsequence of examples from $I$ (with the same order) and generated $\alpha_1 \comdots  \alpha_T$ (where we set $\alpha_t=0$ for $t\notin I)$. Then, $\alpha_t \geq a_t$ for all $t\in I$.
+This statement follows from \eqref{Adef} from which we get that the
+matrix $\mathbf{A}_t$ is monotonically increasing in $t$. Thus, by removing
+examples we get another smaller matrix which leads to a
+larger value of $\alpha_t$.
+
+We continue the analysis with a sequence of length
+$T'$ rather than a subsequence of the original sequence of length $T$ being analyzed.
+The next lemma upper bounds the sum $\sum_t^{T'} a_t$ over $T'$
+inputs with another sum of same length, yet using orthonormal set of
+vectors of size $d$.
+\begin{lemma}
+  Let $\vxi{1} \comdots  \vxi{\tau}$ be any $\tau$ inputs with
+  unit-norm. Assume the algorithm is performing updates using
+  \eqref{at} for some $\mathbf{A}_0$ resulting in a sequence $a_1
+  \comdots  a_\tau$. Let $E = \{ \vvi{1} \comdots  \vvi{d} \} \subset\reals^d$ be
+  an eigen-decomposition of $\mathbf{A}_0$ with corresponding
+  eigenvalues $\lambda_1 \comdots  \lambda_d$. Then there exists a
+  sequence of indices $j_1 \comdots  j_\tau$, where $j_i \in \{ 1 \comdots  d\}$, such that
+  $\sum_t a_t \leq \sum_t \alpha_t$, where $\alpha_t$ are generated
+  using \eqref{at} on the sequence $\vvi{j_1}
+  \comdots  \vvi{j_\tau}$.
+
+Additionally, let $n_s$ be the number of times
+  eigenvector $\vvi{s}$ is used ($s=1 \comdots  d$), that is $n_s = \vert \{ j_t ~:~
+  j_t=s\} \vert$ (and $\sum_s n_s = \tau$), then,
+\[
+\sum_t \alpha_t \leq \tau + \sum_{s=1}^d \sum_{r=1}^{n_s}
+\frac{1}{\lambda_s+r-2} ~.
+\]
+\label{lem:worst_sequence}
+\end{lemma}
+\begin{proof}
+By induction over $\tau$. For $\tau=1$ we want to upper bound $a_1 =
+1/(1-\vxti{1} \mathbf{A}_0^{-1} \vxi{1})$ which is maximized when
+$\vxi{1}=\vvi{d}$ the eigenvector with minimal eigenvalue $\lambda_d$.
+In this case we have $\alpha_1 = 1/(1-1/\lambda_d) =
+1+1/(\lambda_d-1)$, as desired.
+
+Next we assume that the lemma holds
+for some $\tau-1$ and show it for $\tau$. Let $\vxi{1}$ be the first
+input, and let $\{\gamma_s\}$ and $\{\vui{s}\}$ be the eigen-values and
+eigen-vectors of
+$\mathbf{A}_1 = \mathbf{A}_0 + a_1 \vxi{1}\vxti{1}$. The assumption of induction implies that $\sum_{t=2}^\tau \alpha_t \leq (\tau-1) + \sum_{s=1}^d \sum_{r=1}^{n_s}
+\frac{1}{\gamma_s+r-2}$. From Theorem~8.1.8 of~\cite{Golub:1996:MC:248979} we know that the
+eigenvalues of $\mathbf{A}_1$ satisfy $\gamma_s = \lambda_s + m_s$ for some $m_s\geq 0$ and
+$\sum_s m_s =1$. We thus conclude that
+\[
+\sum_t a_t \leq 1+1/(\lambda_d-1) +  (\tau-1) + \sum_{s=1}^d \sum_{r=1}^{n_s}
+\frac{1}{\lambda_s + m_s + r-2} ~.
+\]
+The last term is convex in $m_1 \comdots m_d$ and thus is maximized over a
+vertex of the simplex, that is when $m_k=1$ for some $k$ and zero
+otherwise. In this case, the eigen-vectors $\{\vui{s}\}$ of
+$\mathbf{A}_1$ are in fact the eigenvectors $\{ \vvi{s} \}$
+of $\mathbf{A}_0$, and the proof is completed.
+\QED
+\end{proof}
+
+Equipped with these lemmas we now prove \thmref{thm:theorem4}.
+\begin{proof}
+Let $T^{'}=\left\lceil
+  \sum_{t=1}^{T}\ell_{t}\left(\mathbf{u}\right)/S\right\rceil$. Our starting point is the equality
+\(
+L_{T}^{\boldsymbol{a}}(\mathbf{u}) =
+L_{T}(\mathbf{u})+ \sum_{t=1}^{T} \ell_{t}\left(\mathbf{u}\right)
+\left(a_{t}-1\right)
+\)
+stated in \eqref{decomposition}. From \lemref{lem:stacking_examples}
+we get,
+\begin{equation}
+ \sum_{t=1}^{T} \ell_{t}\left(\mathbf{u}\right)
+\left(a_{t}-1\right)
+ \leq
+S\sum_{t \in I}\left(a_{t}-1\right) \leq
+S\sum_{t}^{T'}\left(\alpha_{t}-1\right) ~,
+\label{chain1}
+\end{equation}
+where $I$ is the subset of $T'$ indices for which $a_t$ are maximal,
+and $\alpha_t$ are the resulting coefficients computed with \eqref{at}
+using only the
+sub-sequence of examples $\vxi{t}$ with $t\in I$.
+
+By definition $\mathbf{A}_0 = b \mi$ and thus from
+\lemref{lem:worst_sequence} we further bound \eqref{chain1} with,
+\begin{equation}
+ \sum_{t=1}^{T} \ell_{t}\left(\mathbf{u}\right)
+\left(a_{t}-1\right)
+ \leq
+S \sum_{s=1}^d \sum_{r=1}^{n_s}
+\frac{1}{b+r-2} ~,
+\label{chain11}
+\end{equation}
+for some $n_s$ such that $\sum_s n_s = T'$.
+The last equation is maximized when all the counts $n_s$ are about (as
+$d$ may not divide $T'$) the
+same, and thus we further bound \eqref{chain11} with,
+\begin{align*}
+\sum_{t=1}^{T} \ell_{t}\left(\mathbf{u}\right)
+\left(a_{t}-1\right)
+ & \leq~ S \sum_{s=1}^d \sum_{r=1}^{\lceil T'/d \rceil}
+\frac{1}{b+r-2}  \leq Sd \sum_{r=1}^{\lceil T'/d \rceil}
+\frac{b}{b-1}\frac{1}{r}\\
+ &\leq~ Sd \frac{b}{b-1} \paren{1+\ln\paren{\left\lceil\frac{T'}{d}\right\rceil}} \\
+& \leq~ Sd \frac{b}{b-1} \paren{1+\ln\paren{1+\frac{L_T\paren{\vu}}{Sd}}} ~,
+\end{align*}
+which completes the proof.
+\QED
+\end{proof}
+
+% \begin{proof}
+% We begin with sorting in descending order the sequence $a_{t}$ generated
+% by $\mathbf{x}_{t}$, and denote by $a_{t}^{*}$ the sorted sequence.
+% In addition we reorder the sequence $\ell_{t}$ in the order of the sorting
+% of $a_{t}$, and denote by $\ell_{t}^{*}$ the new sequence. Obviously,
+% $\sum_{t=1}^{T}\left(a_{t}-1\right)\ell_{t}\left(\mathbf{u}\right)=\sum_{t=1}^{T}\left(a_{t}^{*}-1\right)\ell_{t}^{*}\left(\mathbf{u}\right)$.
+% Noting that $a_{t}^{*}$ is monotonically decreasing we upper bound
+% the term $\sum_{t=1}^{T}\left(a_{t}^{*}-1\right)\ell_{t}^{*}\left(\mathbf{u}\right)$
+% by performing the following process to the loss sequence $\ell_{t}^{*}$:
+% if $\ell_{1}^{*}+\ell_{T}^{*}\leq S$ we set $\ell_{1}^{*}$ to be $\ell_{1}^{*}+\ell_{T}^{*}$
+% and set $\ell_{T}^{*}=0$, otherwise we set $\ell_{1}^{*}=S$ and set $\ell_{T}^{*}$
+% to be $\ell_{T}^{*}+\ell_{1}^{*}-S$ (note that the sum $\sum_{t=1}^{T}\ell_{t}^{*}$
+% is not changed after this step). If after this step $\ell_{T}^{*}=0$,
+% we repeat the process with the 2nd example from the end and update $\ell_{1}^{*}$ and $\ell_{T-1}^{*}.$
+% If $\ell_{T}^{*}>0$, we repeat the process with $\ell_{2}^{*}$ and the
+% $\ell_{T}^{*}.$ This process is continued until the loss sequence can
+% not be modified more, ending up with the modified loss sequence
+% $(... \widetilde{\ell}_{t}^{*} ...)=\left\{ S,S,\ldots,s,x,0,0,\ldots,0\right\} $
+% for some $0 \leq s\leq S$ where $\sum_{t=1}^{T}\widetilde{\ell}_{t}^{*}=\sum_{t=1}^{T}\ell_{t}^{*}=\sum_{t=1}^{T}\ell_{t}$,
+% and the number of non-zero elements in $\widetilde{\ell}_{t}^{*}$ is
+% $\left\lceil \sum_{t=1}^{T}\ell_{t}/S\right\rceil $. From here we get,
+% \[
+% \sum_{t=1}^{T}\left(a_{t}-1\right)\ell_{t}\left(\mathbf{u}\right)=\sum_{t=1}^{T}\left(a_{t}^{*}-1\right)\ell_{t}^{*}\left(\mathbf{u}\right)\leq S\sum_{t=1}^{T^{'}}\left(a_{t}^{*}-1\right)
+% \]
+% for $T^{'}=\left\lceil \sum_{t=1}^{T}\ell_{t}/S\right\rceil $. For every
+% sequence $\mathbf{x}_{t}$ with $\left\Vert \mathbf{x}_{t}\right\Vert \leq1$,
+% the sum $\sum_{t=1}^{T}\left(a_{t}-1\right)$ is upper bounded by
+% the sum $\sum_{t=1}^{T}\left(a_{t}^{e}-1\right)$ where $a_{t}^{e}$
+% appropriate to the sequence of $\mathbf{x}_{t}$ from \lemref{lem:lemma3},
+% \edward{how to show it?}
+% , thus we bound the term $\sum_{t=1}^{T}\left(a_{t}-1\right)\ell_{t}\left(\mathbf{u}\right)$ as following
+% \begin{eqnarray*}
+% \sum_{t=1}^{T}\left(a_{t}-1\right)\ell_{t}\left(\mathbf{u}\right) & \leq & S\sum_{t=1}^{T^{'}}\left(a_{t}^{*}-1\right)\\
+%  & \leq & \frac{b}{b-1}Sd\left[1+\ln\left(\left\lceil \frac{T^{'}}{d}\right\rceil \right)\right]\\
+%  & = & \frac{b}{b-1}Sd\left[1+\ln\left(\left\lceil \frac{\left\lceil \sum_{t=1}^{T}\ell_{t}/S\right\rceil }{d}\right\rceil \right)\right]\\
+%  & \leq & \frac{b}{b-1}Sd\left[1+\ln\left(1+\frac{\sum_{t=1}^{T}\ell_{t}}{Sd}\right)\right]
+% \end{eqnarray*}
+% and conclude the proof,
+% \begin{eqnarray*}
+% L_{T}^{\boldsymbol{a}}(\mathbf{u}) & = & L_{T}(\mathbf{u})+\sum_{t=1}^{T}\left(a_{t}-1\right)\ell_{t}(\mathbf{u})\leq L_{T}(\mathbf{u})+\frac{b}{b-1}Sd\left[1+\ln\left(1+\frac{\sum_{t=1}^{T}\ell_{t}}{Sd}\right)\right]
+% \end{eqnarray*}
+%\end{proof}
+
+% For the second bound we will need the following lemma,
+% \begin{lemma}
+% \label{lem:lemma3}
+% Assume that $b>1$ and the input instances $\mathbf{x}_{t}$ are the
+% sequence $\left\{ \mathbf{e}_{1},\mathbf{e}_{2},\ldots,\mathbf{e}_{d},\mathbf{e}_{1},\mathbf{e}_{2},\ldots,\mathbf{e}_{d},\ldots\right\} $
+% , where $\left\{ \mathbf{e}_{1},\mathbf{e}_{2},\ldots,\mathbf{e}_{d}\right\} $
+% is the standard basis in $\mathbb{R}^{d}$. Assume further that $a_{t}=\frac{1}{1-\mathbf{x}_{t}^{\top}\mathbf{A}_{t-1}^{-1}\mathbf{x}_{t}}$ for $t=1 \dots T$.
+% Then
+% \[
+% \sum_{t=1}^{T}\left(a_{t}-1\right)\leq\frac{b}{b-1}d\left[1+\ln\left(\left\lceil \frac{T}{d}\right\rceil \right)\right]
+% \]
+% \end{lemma}
+% The proof appears in \secref{proof_lemma3}. We now state our second bound,
+
+
+% Combining the last two theorems with \thmref{thm:theorem2} yields the following bounds on the algorithm loss,
+% \begin{corollary}
+% \label{cor:main_cor_stat}
+% Under the conditions of \thmref{thm:theorem3} the cumulative loss is upper bounded by,
+% \begin{enumerate}
+% \item
+% \begin{align}
+% L_{T}(\texttt{WEMM}) \leq  \inf_{\mathbf{u}\in\mathbb{R}^{d}}\left(b\left\Vert \mathbf{u}\right\Vert ^{2}+L_{T}(\mathbf{u})+\frac{b}{b-1}S\ln\left|\frac{1}{b}\mathbf{A}_{T}\right|\right)\label{sb}
+% \end{align}
+% \item
+% \begin{align}
+% L_{T}(\texttt{WEMM})  \leq  \inf_{\mathbf{u}\in\mathbb{R}^{d}}\left(b\left\Vert \mathbf{u}\right\Vert ^{2}+L_{T}(\mathbf{u})+\frac{b}{b-1}Sd\left[1+\ln\left(1+\frac{\sum_{t=1}^{T}\ell_{t}\left(\mathbf{u}\right)}{Sd}\right)\right]\right)\label{sb1}
+% \end{align}
+% \end{enumerate}
+% \end{corollary}
+%
+
+\section{Comparison to other bounds}
+
+In this section we compare bounds of similar algorithms, summarized
+in \tabref{tab:bounds}. Our first bound\footnote{The bound in the table is obtained by noting that $\log\det$ is a
+concave function of the eigenvalues of the matrix, upper bounded when
+all the eigenvalues are equal (with the same trace).} of \thmref{thm:theorem3} is most similar to the bounds
+of~\cite{Forster},~\cite{Vovk01} and~\cite{CrammerKuDr12}.~\cite{Forster} and~\cite{Vovk01} have a multiplicative factor $Y^2$ of the logarithm,~\cite{CrammerKuDr12} have the factor $A= \sup_{1\leq t\leq T}\ell_{t}(\textrm{alg})$, and we have the
+worst-loss of $\vu$ over all examples (denoted by $S$). Thus, our first bound is better than the bound of~\cite{CrammerKuDr12} (as often $S<A$), and better than the bounds of~\cite{Forster} and~\cite{Vovk01}
+on problems that are approximately linear $y_{t}
+\approx\mathbf{u}\cdot\mathbf{x}_{t}$ for $t = 1 \comdots T$ and $Y$
+is large, while their bound may be better if $Y$ is small. Specifically, consider the case $y_{t}
+=\mathbf{u}\cdot\mathbf{x}_{t}$ for $t = 1 \comdots T$. In this case we get that $S=0$ and our bound of \thmref{thm:theorem3} is $\mcal{O}(1)$ while the bounds of~\cite{Forster},~\cite{Vovk01} and~\cite{CrammerKuDr12} are $\mcal{O}(\log{T})$. 
+Note that the analysis of~\cite{Forster} assumes that the
+labels $\yi{t}$ are bounded, and formally the algorithm should know
+this bound, while~\cite{CrammerKuDr12} assume that the inputs are
+bounded, as we do.
+
+Our second bound of \thmref{thm:theorem4} is similar to the bound of~\cite{OrabonaCBG12}. Both bounds have potentially
+sub-logarithmic regret as the cumulative loss $L(\vu)$ may be
+sublinear in $T$. Yet, their bound has a multiplicative factor of
+$(U+Y)^2$, while our bound has only the maximal loss $S$,
+which, as before, can be much smaller. Additionally, their
+analysis assumes that both the inputs $\vxi{t}$ and the labels
+$\yi{t}$ are bounded, while we only assume that the inputs are bounded, and
+furthermore, our algorithm does not need to assume and know a compact
+set which contains $\vu$ ($\left\Vert\vu\right\Vert\leq U$), as opposed to their algorithm.
+
+\begin{table}[t]
+\begin{tabular}{ll}\hline
+Algorithm & Bound on Regret $R_T(\vu)$ \\\hline
+~\citep{Vovk01} & ~$b\normt{\vu} + dY^2 \ln\paren{1+\frac{T}{db}}$\\
+~\citep{Forster} & ~$b\normt{\vu} + dY^2 \ln\paren{1+\frac{T}{db}}$\\
+~\citep{CrammerKuDr12} & ~$rb\normt{\vu} + dA \ln\paren{1+\frac{T}{drb}}$\\
+~\citep{OrabonaCBG12} & $ 2\normt{\vu} +
+d(U+Y)^2\ln\paren{1+\frac{2\normt{\vu} + \sum_t
+    \ell_t(\vu)}{d(U+Y)^2}}$\\
+\thmref{thm:theorem3} & $b\normt{\vu} + Sd\frac{b}{b-1} \ln\left(1+\frac{T}{d(b-1)}\right)$\\
+\thmref{thm:theorem4} & $b\normt{\vu} + Sd\frac{b}{b-1} \ln\paren{1+\frac{L_T(\vu)}{Sd}}$\\\hline
+\end{tabular}
+\caption{Comparison of regret bounds for online stationary regression}
+\label{tab:bounds}
+\end{table}
+
+%  \cite{Vovk01} bounds the regret $R_T(\vu)  \leq
+% \normt{\vu} + dY^2 \ln(1+T/d)$ for a different algorithm with
+% different analysis. From the bound of \cite{Forster} it is
+% straightforward to bound the regret with $R_T(\vu)  \leq
+% 2\normt{\vu} + dY^2 \ln(1+T/(2d))$ (by setting $a=1$ in his
+% algorithm). By setting $b=2$ in our algorithm and using the concavity
+% of $\ln$ we bound the regret with, $2\normt{\vu} + Sd \ln(1+T/d)$.
+% Recently, \cite{OrabonaCBG12} proved the following bound for the online
+% newton step algorithm, $R_T(\vu) \leq 2\normt{\vu} +
+% d(U+Y)^2\ln\paren{1+\frac{2\normt{\vu} + \sum_t
+%     \ell_t(\vu)}{d(U+Y)^2}}$, where $U$ bound the norm of $\vu$.
+
+
+
+
+%   from the concavity of  $\log$ we
+% get, like \cite{Vovk97}, a bound explicitly dependent on $T$ by upper bound the last term with, % if we assume that $\left|x_{t,i}\right|\leq X$ for $t\in\left\{ 1,\ldots,T\right\} $
+% %and $i\in\left\{ 1,\ldots,d\right\} $, we can give the following
+% %upper bound on the term $\ln\left|\frac{1}{b}\mathbf{A}_{T}\right|$
+% (similar to Vovk, \cite{Vovk97}),
+% \(
+% \ln\left|\frac{1}{b}\mathbf{A}_{T}\right|=\ln\left|\mathbf{I}+\frac{1}{b}\sum_{t=1}^{T}a_{t}\mathbf{x}_{t}\mathbf{x}_{t}^{\top}\right|\leq
+% %\sum_{i=1}^{d}\ln\left(1+\frac{1}{b}\sum_{t=1}^{T}a_{t}x_{t,i}^{2}\right)
+% %\leq
+% d\ln\left(1+\frac{T}{d(b-1)}\right)
+% \)
+% where the last inequality holds also since
+% $a_{t}\leq\frac{b}{b-1}$. \cite{Forster} bounded the regret with $Y^2
+% \ln\paren{\mi + \sum_t^T \vxi{t} \vxti{y}}$.
+
+% Our bound is worse with
+% the coefficient in the log-term $\frac{1}{b-1}$, but potentially much
+% better in the linear term, as $S$ may be much lower than $Y$, when the
+% problem can be approximated with a linear predictor, $y_{t} \approx\mathbf{u}\cdot\mathbf{x}_{t}$
+% for $t = 1 \comdots T$.
+

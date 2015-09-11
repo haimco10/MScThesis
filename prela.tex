@@ -1,0 +1,562 @@
+%
+%  Macros for Thesis
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+ \newtheorem{theorem}{Theorem}
+ \newtheorem{lemma}[theorem]{Lemma}
+ \newtheorem{definition}[theorem]{Definition}
+% \newtheorem{claim}[theorem]{Claim}
+ \newtheorem{corollary}[theorem]{Corollary}
+
+
+%\newtheorem{theorem}{Theorem}
+%\newtheorem{lemma}[theorem]{Lemma}
+%\newtheorem{corollary}[theorem]{Corollary}
+%\newtheorem{definition}{Definition}
+\newtheorem{Remark}{Remark}
+%\newtheorem{claim}{Claim}
+%\def\blackslug{\hbox{\hskip 1pt \vrule width 4pt height 8pt depth 1.5pt
+%\hskip 1pt}}
+\def\proof{\par\penalty-1000\vskip .5 pt\noindent{\bf Proof\/: }}
+%\def\myproof{\par\penalty-1000\vskip .5 pt\noindent{\bf Proof~}}
+\def\proofsketch{\par\penalty-1000\vskip .5 pt\noindent{\bf Proof sketch\/: }}
+%\newcommand{\QED}{\hfill$\;\;\;\rule[0.1mm]{2mm}{2mm}$}
+%\def\Proof{\par\penalty-1000\vskip .5 pt\noindent{\bf Proof\/: }}
+\def\ProofSketch{\par\penalty-1000\vskip .1 pt\noindent{\bf Proof sketch\/: }}
+\newcommand{\QED}{\hfill$\;\;\;\rule[0.1mm]{2mm}{2mm}$\\}
+%\newenvironment{Proof}{{\bf Proof:}}{\noindent\bbox\vspace{0.1in}}
+
+\newcommand{\todo}[1]{{~\\\bf TODO: {#1}}~\\}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% General
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newfont{\msym}{msbm10}
+\newcommand{\reals}{\mathbb{R}}%Re}%{mbox{\msym R}}
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\sign}{{\rm sign}}
+\newcommand{\paren}[1]{\left({#1}\right)}
+\newcommand{\brackets}[1]{\left[{#1}\right]}
+\newcommand{\braces}[1]{\left\{{#1}\right\}}
+\newcommand{\ceiling}[1]{\left\lceil{#1}\right\rceil}
+\newcommand{\abs}[1]{\left\vert{#1}\right\vert}
+\newcommand{\tr}{{\rm Tr}}
+\newcommand{\pr}[1]{{\rm Pr}\left[{#1}\right]}
+\newcommand{\prp}[2]{{\rm Pr}_{#1}\left[{#2}\right]}
+\newcommand{\Exp}[1]{{\rm E}\left[{#1}\right]}
+\newcommand{\Expp}[2]{{\rm E}_{#1}\left[{#2}\right]}
+\newcommand{\eqdef}{\stackrel{\rm def}{=}}
+\newcommand{\comdots}{, \ldots ,}
+\newcommand{\true}{\texttt{True}}
+\newcommand{\false}{\texttt{False}}
+\newcommand{\mcal}[1]{{\mathcal{#1}}}
+\newcommand{\argmin}[1]{\underset{#1}{\mathrm{argmin}} \:}
+\newcommand{\normt}[1]{\left\Vert {#1} \right\Vert^2}
+\newcommand{\step}[1]{\left[#1\right]_+}
+\newcommand{\1}[1]{[\![{#1}]\!]}
+\newcommand{\diag}{{\textrm{diag}}}
+%\newcommand{\det}{{\textrm{det}}}
+\newcommand{\KL}{{\textrm{D}_{\textrm{KL}}}}
+\newcommand{\IS}{{\textrm{D}_{\textrm{IS}}}}
+\newcommand{\EU}{{\textrm{D}_{\textrm{EU}}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Control symbols
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\leftmarginpar}[1]{\marginpar[#1]{}}
+\newcommand{\figline}{\rule{0.50\textwidth}{0.5pt}}
+\newcommand{\pseudocodefont}{\normalsize}
+\newcommand{\nolineskips}{
+\setlength{\parskip}{0pt}
+\setlength{\parsep}{0pt}
+\setlength{\topsep}{0pt}
+\setlength{\partopsep}{0pt}
+\setlength{\itemsep}{0pt}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Equations and references
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\beq}[1]{\begin{equation}\label{#1}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\beqa}{\begin{eqnarray}}
+\newcommand{\eeqa}{\end{eqnarray}}
+\renewcommand{\eqref}[1]{Eq.~(\ref{#1})}
+\newcommand{\secref}[1]{Sec.~\ref{#1}}
+\newcommand{\figref}[1]{Fig.~\ref{#1}}
+\newcommand{\exmref}[1]{Example~\ref{#1}}
+\newcommand{\thmref}[1]{Theorem~\ref{#1}}
+\newcommand{\sthmref}[1]{Thm.~\ref{#1}}
+\newcommand{\defref}[1]{Definition~\ref{#1}}
+\newcommand{\remref}[1]{Remark~\ref{#1}}
+\newcommand{\chapref}[1]{Chapter~\ref{#1}}
+\newcommand{\appref}[1]{Appendix~\ref{#1}}
+\newcommand{\lemref}[1]{Lemma~\ref{#1}}
+\newcommand{\propref}[1]{Proposition~\ref{#1}}
+\newcommand{\claimref}[1]{Claim~\ref{#1}}
+
+\newcommand{\corref}[1]{Corollary~\ref{#1}}
+\newcommand{\scorref}[1]{Cor.~\ref{#1}}
+\newcommand{\tabref}[1]{Table~\ref{#1}}
+\newcommand{\tran}[1]{{#1}^{\top}}
+\newcommand{\norm}{\mcal{N}}
+\newcommand{\eqsref}[1]{Eqns.~(\ref{#1})}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% bold, up, down
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\mb}[1]{{\boldsymbol{#1}}}
+\newcommand{\up}[2]{{#1}^{#2}}
+\newcommand{\dn}[2]{{#1}_{#2}}
+\newcommand{\du}[3]{{#1}_{#2}^{#3}}
+\renewcommand{\star}[1]{\up{#1}{*}}
+\newcommand{\textl}[2]{{$\textrm{#1}_{\textrm{#2}}$}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% vectors \va
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\vx}{\mathbf{x}}
+\newcommand{\vxi}[1]{\vx_{#1}}
+\newcommand{\vxii}{\vxi{t}}
+
+\newcommand{\ve}{\mathbf{e}}
+\newcommand{\vei}[1]{\ve_{#1}}
+\newcommand{\veii}{\vei{t}}
+\newcommand{\vet}{\ve^{\top}}
+\newcommand{\veti}[1]{\vet_{#1}}
+\newcommand{\vetii}{\veti{i}}
+\newcommand{\yi}[1]{y_{#1}}
+\newcommand{\yii}{\yi{t}}
+\newcommand{\hyi}[1]{\hat{y}_{#1}}
+\newcommand{\hyii}{\hyi{i}}
+
+\newcommand{\vy}{\mb{y}}
+\newcommand{\vyi}[1]{\vy_{#1}}
+\newcommand{\vyii}{\vyi{i}}
+
+\newcommand{\vn}{\mb{\nu}}
+\newcommand{\vni}[1]{\vn_{#1}}
+\newcommand{\vnii}{\vni{i}}
+
+\newcommand{\tvn}{\tilde{\mb{\nu}}}
+
+\newcommand{\vmu}{\mb{\mu}}
+\newcommand{\vmus}{{\vmu^*}}
+\newcommand{\vmuts}{{\vmus}^{\top}}
+\newcommand{\vmui}[1]{\vmu_{#1}}
+\newcommand{\vmuii}{\vmui{i}}
+
+\newcommand{\vmut}{\vmu^{\top}}
+\newcommand{\vmuti}[1]{\vmut_{#1}}
+\newcommand{\vmutii}{\vmuti{i}}
+
+\newcommand{\vsigma}{\mb \sigma}
+\newcommand{\msigma}{\mathbf{\Sigma}}
+\newcommand{\msigmas}{{\msigma^*}}
+\newcommand{\msigmai}[1]{\msigma_{#1}}
+\newcommand{\msigmaii}{\msigmai{t}}
+
+\newcommand{\mups}{\Upsilon}
+\newcommand{\mupss}{{\mups^*}}
+\newcommand{\mupsi}[1]{\mups_{#1}}
+\newcommand{\mupsii}{\mupsi{i}}
+\newcommand{\upssl}{\upsilon^*_l}
+
+
+\newcommand{\vu}{\mathbf{u}}
+\newcommand{\vut}{\tran{\vu}}
+\newcommand{\vui}[1]{\vu_{#1}}
+\newcommand{\vuti}[1]{\vut_{#1}}
+\newcommand{\hvu}{\hat{\vu}}
+\newcommand{\hvut}{\tran{\hvu}}
+\newcommand{\hvur}[1]{\hvu_{#1}}
+\newcommand{\hvutr}[1]{\hvut_{#1}}
+\newcommand{\vw}{\mathbf{w}}
+\newcommand{\vwi}[1]{\vw_{#1}}
+\newcommand{\vwii}{\vwi{t}}
+\newcommand{\vwti}[1]{\vwt_{#1}}
+\newcommand{\vwt}{\tran{\vw}}
+
+\newcommand{\tvw}{\tilde{\mathbf{w}}}
+\newcommand{\tvwi}[1]{\tvw_{#1}}
+\newcommand{\tvwii}{\tvwi{t}}
+
+\newcommand{\vh}{\mb{h}}
+
+\newcommand{\vv}{\mb{v}}
+\newcommand{\vvt}{\tran{\vv}}
+
+\newcommand{\vvi}[1]{\vv_{#1}}
+\newcommand{\vvti}[1]{\vvt_{#1}}
+\newcommand{\lambdai}[1]{\lambda_{#1}}
+\newcommand{\Lambdai}[1]{\Lambda_{#1}}
+
+\newcommand{\vxt}{\tran{\vx}}
+\newcommand{\vxiit}{\vxi{i,t}}
+\newcommand{\hvx}{\hat{\vx}}
+\newcommand{\hvxi}[1]{\hvx_{#1}}
+\newcommand{\hvxii}{\hvxi{i}}
+\newcommand{\hvxt}{\tran{\hvx}}
+\newcommand{\hvxti}[1]{\hvxt_{#1}}
+\newcommand{\hvxtii}{\hvxti{i}}
+\newcommand{\vxti}[1]{\vxt_{#1}}
+\newcommand{\vxtii}{\vxti{i}}
+\newcommand{\vwiit}{\vwi{i,t}}
+
+\newcommand{\vb}{\mb{b}}
+\newcommand{\vbt}{\tran{\vb}}
+\newcommand{\vbi}[1]{\vb_{#1}}
+
+
+\newcommand{\hvy}{\hat{\vy}}
+\newcommand{\hvyi}[1]{\hvy_{#1}}
+\newcommand{\yiit}{\yi{i,t}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Matrices (\mA)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\renewcommand{\mp}{P}
+\newcommand{\mpd}{\mp^{(d)}}
+\newcommand{\mpt}{\mp^T}
+\newcommand{\tmp}{\tilde{\mp}}
+\newcommand{\mpi}[1]{\mp_{#1}}
+\newcommand{\mpti}[1]{\mpt_{#1}}
+\newcommand{\mptii}{\mpti{i}}
+\newcommand{\mpii}{\mpi{i}}
+\newcommand{\mps}{Q}
+\newcommand{\mpsi}[1]{\mps_{#1}}
+\newcommand{\mpsii}{\mpsi{i}}
+\newcommand{\tmpt}{\tmp^T}
+\newcommand{\mz}{Z}
+\newcommand{\mv}{V}
+\newcommand{\mvi}[1]{\mv_{#1}}
+\newcommand{\mvt}{V^T}
+\newcommand{\mvti}[1]{\mvt_{#1}}
+\newcommand{\mzt}{\mz^T}
+\newcommand{\tmz}{\tilde{\mz}}
+\newcommand{\tmzt}{\tmz^T}
+\newcommand{\mx}{\mathbf{X}}
+\newcommand{\ma}{\mathbf{A}}
+\newcommand{\mxs}[1]{\mx_{#1}}
+
+
+\newcommand{\mai}[1]{\ma_{#1}}
+\newcommand{\mat}{\tran{\ma}}
+\newcommand{\mati}[1]{\mat_{#1}}
+
+\newcommand{\mc}{{C}}
+\newcommand{\mci}[1]{\mc_{#1}}
+\newcommand{\mcti}[1]{\mct_{#1}}
+
+
+\newcommand{\md}{{\mathbf{D}}}
+\newcommand{\mdi}[1]{\md_{#1}}
+\newcommand{\mxi}[1]{\textrm{diag}^2\paren{\vxi{#1}}}
+\newcommand{\mxii}{\mxi{i}}
+
+%\newcommand{\mxi}[1]{\mx_{#1}}
+%\newcommand{\mxii}{\mxi{i}}
+\newcommand{\hmx}{\hat{\mx}}
+\newcommand{\hmxi}[1]{\hmx_{#1}}
+\newcommand{\hmxii}{\hmxi{i}}
+\newcommand{\hmxt}{\hmx^T}
+\newcommand{\mxt}{\mx^\top}
+\newcommand{\mi}{\mathbf{I}}
+\newcommand{\mq}{Q}
+\newcommand{\mqt}{\mq^T}
+\newcommand{\mlam}{\Lambda}
+%\newcommand{\ma}{A}
+%\newcommand{\ms}{S}
+%\newcommand{\mt}{T}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% mathcal
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\L}{\mcal{L}}
+%\newcommand{\R}{\mcal{R}}
+\newcommand{\X}{\mcal{X}}
+\newcommand{\Y}{\mcal{Y}}
+\newcommand{\F}{\mcal{F}}
+\newcommand{\nur}[1]{\nu_{#1}}
+\newcommand{\lambdar}[1]{\lambda_{#1}}
+\newcommand{\gammai}[1]{\gamma_{#1}}
+\newcommand{\gammaii}{\gammai{i}}
+\newcommand{\alphai}[1]{\alpha_{#1}}
+\newcommand{\alphaii}{\alphai{i}}
+\newcommand{\lossp}[1]{\ell_{#1}}
+\newcommand{\eps}{\epsilon}
+\newcommand{\epss}{\eps^*}
+\newcommand{\lsep}{\lossp{\eps}}
+\newcommand{\lseps}{\lossp{\epss}}
+\newcommand{\T}{\mcal{T}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Notes
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\kc}[1]{\begin{center}\fbox{\parbox{3in}{{\textcolor{green}{KC: #1}}}}\end{center}}
+\newcommand{\edward}[1]{\begin{center}\fbox{\parbox{3in}{{\textcolor{red}{EM: #1}}}}\end{center}}
+\newcommand{\nv}[1]{\begin{center}\fbox{\parbox{3in}{{\textcolor{blue}{NV: #1}}}}\end{center}}
+
+
+
+
+\newcommand{\newstuffa}[2]{#2}
+\newcommand{\newstufffroma}[1]{}
+\newcommand{\newstufftoa}{}
+%\newcommand{\newstuffa}[2]{~\\{\color{MyRed} #1:\\ }{\textcolor{MyGray}{#2}~\\}}
+%\newcommand{\newstufffroma}[1]{~\\{\color{MyRed} #1:\\ }\color{MyGray}}
+%\newcommand{\newstufftoa}{\color{black}}
+
+\newcommand{\newstuff}[2]{#2}
+\newcommand{\newstufffrom}[1]{}
+\newcommand{\newstuffto}{}
+\newcommand{\oldnote}[2]{}
+
+%%%%\newcommand{\comment}[1]{}
+\newcommand{\commentout}[1]{}
+\newcommand{\mypar}[1]{\medskip\noindent{\bf #1}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% other
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% inner products
+\newcommand{\inner}[2]{\left< {#1} , {#2} \right>}
+\newcommand{\kernel}[2]{K\left({#1},{#2} \right)}
+\newcommand{\tprr}{\tilde{p}_{rr}}
+\newcommand{\hxr}{\hat{x}_{r}}
+\newcommand{\projalg}{{PST }}%{\tt Projection }}
+\newcommand{\projealg}[1]{$\textrm{PST}_{#1}~$}%{\tt Projection }}
+\newcommand{\gradalg}{{GST }}%\tt Gradient }}
+
+
+
+\newcounter {mySubCounter}
+\newcommand {\twocoleqn}[4]{
+  \setcounter {mySubCounter}{0} %
+  \let\OldTheEquation \theequation %
+  \renewcommand {\theequation }{\OldTheEquation \alph {mySubCounter}}%
+  \noindent \hfill%
+  \begin{minipage}{.40\textwidth}
+\vspace{-0.6cm}
+    \begin{equation}\refstepcounter{mySubCounter}
+      #1
+    \end {equation}
+  \end {minipage}
+~~~~~~
+%\hfill %
+  \addtocounter {equation}{ -1}%
+  \begin{minipage}{.40\textwidth}
+\vspace{-0.6cm}
+    \begin{equation}\refstepcounter{mySubCounter}
+      #3
+    \end{equation}
+  \end{minipage}%
+  \let\theequation\OldTheEquation
+}
+
+
+\newcommand{\vzero}{\mb{0}}
+
+\newcommand{\smargin}{\mcal{M}}
+
+\newcommand{\ai}[1]{A_{#1}}
+\newcommand{\bi}[1]{B_{#1}}
+\newcommand{\aii}{\ai{i}}
+\newcommand{\bii}{\bi{i}}
+\newcommand{\betai}[1]{\beta_{#1}}
+\newcommand{\betaii}{\betai{i}}
+\newcommand{\mar}{M}
+\newcommand{\mari}[1]{\mar_{#1}}
+\newcommand{\marii}{\mari{i}}
+\newcommand{\nmari}[1]{m_{#1}}
+\newcommand{\nmarii}{\nmari{i}}
+
+
+%\newcommand{\erf}{\mathrm{erf}}
+\newcommand{\erf}{\Phi}
+
+
+\newcommand{\var}{V}
+\newcommand{\vari}[1]{\var_{#1}}
+\newcommand{\varii}{\vari{i}}
+
+\newcommand{\varb}{v}
+\newcommand{\varbi}[1]{\varb_{#1}}
+\newcommand{\varbii}{\varbi{i}}
+
+%\newcommand{\vara}{v^+}
+\newcommand{\vara}{u}
+\newcommand{\varai}[1]{\vara_{#1}}
+\newcommand{\varaii}{\varai{i}}
+
+\newcommand{\marb}{m}
+\newcommand{\marbi}[1]{\marb_{#1}}
+\newcommand{\marbii}{\marbi{i}}
+
+\newcommand{\algname}{{AROW}}
+\newcommand{\rlsname}{{RLS}}
+\newcommand{\mrlsname}{{MRLS}}
+
+
+%\newcommand{phi1}{{1+\frac{\phi}{2}}}
+\newcommand{\phia}{\psi}
+\newcommand{\phib}{\xi}
+
+
+\newcommand{\amsigmaii}{\tilde{\msigma}_t}
+\newcommand{\amsigmai}[1]{\tilde{\msigma}_{#1}}
+\newcommand{\avmuii}{\tilde{\vmu}_i}
+\newcommand{\avmui}[1]{\tilde{\vmu}_{#1}}
+\newcommand{\amarbii}{\tilde{\marb}_i}
+\newcommand{\avarbii}{\tilde{\varb}_i}
+\newcommand{\avaraii}{\tilde{\vara}_i}
+\newcommand{\aalphaii}{\tilde{\alpha}_i}
+
+\newcommand{\svar}{v}
+\newcommand{\smar}{m}
+\newcommand{\nsmar}{\bar{m}}
+
+\newcommand{\vnu}{\mb{\nu}}
+\newcommand{\vnut}{\vnu^\top}
+\newcommand{\vz}{\mb{z}}
+\newcommand{\vZ}{\mb{Z}}
+\newcommand{\fphi}{f_{\phi}}
+\newcommand{\gphi}{g_{\phi}}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "nips2007"
+%%% End:
+
+
+\newcommand{\vtmui}[1]{\tilde{\vmu}_{#1}}
+\newcommand{\vtmuii}{\vtmui{i}}
+
+
+\newcommand{\zetai}[1]{\zeta_{#1}}
+\newcommand{\zetaii}{\zetai{i}}
+
+
+
+%%%%%%
+
+\newcommand{\vstate}{\bf{s}}
+\newcommand{\vstatet}[1]{\vstate_{#1}}
+\newcommand{\vstatett}{\vstatet{t}}
+
+\newcommand{\mtran}{\bf{\Phi}}
+\newcommand{\mtrant}[1]{\mtran_{#1}}
+\newcommand{\mtrantt}{\mtrant{t}}
+
+\newcommand{\vstatenoise}{\bf{\eta}}
+\newcommand{\vstatenoiset}[1]{\vstatenoise_{#1}}
+\newcommand{\vstatenoisett}{\vstatenoiset{t}}
+
+
+\newcommand{\vobser}{\bf{o}}
+\newcommand{\vobsert}[1]{\vobser_{#1}}
+\newcommand{\vobsertt}{\vobsert{t}}
+
+\newcommand{\mobser}{\bf{H}}
+\newcommand{\mobsert}[1]{\mobser_{#1}}
+\newcommand{\mobsertt}{\mobsert{t}}
+
+\newcommand{\vobsernoise}{\bf{\nu}}
+\newcommand{\vobsernoiset}[1]{\vobsernoise_{#1}}
+\newcommand{\vobsernoisett}{\vobsernoiset{t}}
+
+\newcommand{\mstatenoisecov}{\bf{Q}}
+\newcommand{\mstatenoisecovt}[1]{\mstatenoisecov_{#1}}
+\newcommand{\mstatenoisecovtt}{\mstatenoisecovt{t}}
+
+\newcommand{\mobsernoisecov}{\bf{R}}
+\newcommand{\mobsernoisecovt}[1]{\mobsernoisecov_{#1}}
+\newcommand{\mobsernoisecovtt}{\mobsernoisecovt{t}}
+
+
+
+\newcommand{\vestate}{\bf{\hat{s}}}
+\newcommand{\vestatet}[1]{\vestate_{#1}}
+\newcommand{\vestatett}{\vestatet{t}}
+\newcommand{\vestatept}[1]{\vestatet{#1}^+}
+\newcommand{\vestatent}[1]{\vestatet{#1}^-}
+
+
+\newcommand{\mcovar}{\bf{P}}
+\newcommand{\mcovart}[1]{\mcovar_{#1}}
+\newcommand{\mcovarpt}[1]{\mcovart{#1}^+}
+\newcommand{\mcovarnt}[1]{\mcovart{#1}^-}
+
+\newcommand{\mkalmangain}{\bf{K}}
+\newcommand{\mkalmangaint}[1]{\mkalmangain_{#1}}
+
+
+\newcommand{\vkalmangain}{\bf{\kappa}}
+\newcommand{\vkalmangaint}[1]{\vkalmangain_{#1}}
+
+
+
+\newcommand{\obsernoise}{{\nu}}
+\newcommand{\obsernoiset}[1]{\obsernoise_{#1}}
+\newcommand{\obsernoisett}{\obsernoiset{t}}
+
+\newcommand{\obsernoisecov}{r}
+\newcommand{\obsernoisecovt}[1]{\obsernoisecov_{#1}}
+\newcommand{\obsernoisecovtt}{\obsernoisecov}%t{t}}
+
+
+\newcommand{\obsnscv}{s}
+\newcommand{\obsnscvt}[1]{\obsnscv_{#1}}
+\newcommand{\obsnscvtt}{\obsnscvt{t}}
+
+
+\newcommand{\Psit}[1]{\Psi_{#1}}
+\newcommand{\Psitt}{\Psit{t}}
+
+\newcommand{\Omegat}[1]{\Omega_{#1}}
+\newcommand{\Omegatt}{\Omegat{t}}
+
+
+\newcommand{\ellt}[1]{\ell_{#1}}
+\newcommand{\gllt}[1]{g_{#1}}
+
+\newcommand{\chit}[1]{\chi_{#1}}
+
+\newcommand{\ms}{\mathcal{M}}
+\newcommand{\us}{\mathcal{U}}
+\newcommand{\as}{\mathcal{A}}
+
+\newcommand{\mn}{M}
+\newcommand{\un}{U}
+
+\newcommand{\set}{S}
+\newcommand{\seti}[1]{S_{#1}}
+
+\newcommand{\obj}{\mcal{C}}
+
+\newcommand{\dta}[3]{d_{#3}\paren{#1,#2}}
+
+\newcommand{\coa}{a}
+\newcommand{\coc}{c}
+\newcommand{\cob}{b}
+\newcommand{\cor}{r}
+\newcommand{\conu}{\nu}
+
+\newcommand{\coat}[1]{\coa_{#1}}
+\newcommand{\coct}[1]{\coc_{#1}}
+\newcommand{\cobt}[1]{\cob_{#1}}
+\newcommand{\cort}[1]{\cor_{#1}}
+\newcommand{\conut}[1]{\conu_{#1}}
+
+
+\newcommand{\coatt}{\coat{t}}
+\newcommand{\coctt}{\coct{t}}
+\newcommand{\cobtt}{\cobt{t}}
+\newcommand{\cortt}{\cort{t}}
+\newcommand{\conutt}{\conut{t}}
+
+\newcommand{\rb}{R_B}
+\newcommand{\proj}{\textrm{proj}}

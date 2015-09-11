@@ -1,0 +1,15 @@
+\BOOKMARK [0][-]{chapter*.4}{Abstract}{}% \@@number {1}
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}% \@@number {2}
+\BOOKMARK [1][-]{subsection.1.0.1}{Online learning}{chapter.1}% \@@number {3}
+\BOOKMARK [2][-]{subsection.1.0.2}{Selective Sampling}{subsection.1.0.1}% \@@number {4}
+\BOOKMARK [1][-]{section.1.1}{Prolem Setting}{chapter.1}% \@@number {5}
+\BOOKMARK [0][-]{chapter.2}{SHMPO \(SHared Annotator for Multiple Problems\) Algorithms}{}% \@@number {6}
+\BOOKMARK [1][-]{section.2.1}{SHAMPO perceptron}{chapter.2}% \@@number {7}
+\BOOKMARK [1][-]{section.2.2}{Aggressive version}{chapter.2}% \@@number {8}
+\BOOKMARK [1][-]{section.2.3}{prior distribution over tasks}{chapter.2}% \@@number {9}
+\BOOKMARK [1][-]{section.2.4}{SHAMPO perceptron with Adaptive b parameter}{chapter.2}% \@@number {10}
+\BOOKMARK [1][-]{section.2.5}{to do}{chapter.2}% \@@number {11}
+\BOOKMARK [0][-]{chapter.3}{Second Order SHAMPO}{}% \@@number {12}
+\BOOKMARK [1][-]{section.3.1}{From Multi-task to Contextual Bandits}{chapter.3}% \@@number {13}
+\BOOKMARK [2][-]{subsection.3.1.1}{One-vs-Rest}{section.3.1}% \@@number {14}
+\BOOKMARK [2][-]{subsection.3.1.2}{One-vs-One}{section.3.1}% \@@number {15}

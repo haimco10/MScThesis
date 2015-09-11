@@ -1,0 +1,67 @@
+\chapter{The online regression setting}
+
+In this thesis we work in the online setting for regression evaluated with the
+squared loss. Online algorithms work in rounds or iterations. On each
+iteration an online algorithm receives an instance
+$\vxi{t}\in\reals^d$ and predicts a real value $\hyi{t}\in\reals$, it
+then receives a label $\yi{t}\in\reals$, possibly chosen by an
+adversary, suffers loss $\ell_t(\textrm{alg})=\ell\paren{ \yi{t},
+  \hyi{t} } = \paren{\hyi{t}- \yi{t} }^2$, updates its prediction
+rule, and proceeds to the next round. The cumulative loss suffered by
+an algorithm over $T$ iterations is
+\(
+L_{T}(\textrm{alg})=\sum_{t=1}^{T}\ell_{t}(\textrm{alg})
+~.
+\)
+The goal of an algorithm is to perform well compared to any predictor
+from some function class.
+
+A common choice, which we adopt as well, is to compare the performance of an algorithm with respect to {\em a single} function, or specifically a single
+linear function,  $f(\vx)=\vxt\vu$, parameterized by a vector
+$\vu\in\reals^d$. We call this setting the \textbf{stationary} setting.
+Denote by $\ell_t(\vu) = \paren{\vxti{t}\vu-\yi{t}}^2$ the instantaneous
+loss of a vector $\vu$, and by $L_T(\vu) = \sum_{t=1}^T
+\ell_t(\vu)$ the total loss of the competitor $\vu$.
+The regret with respect to $\vu$ is defined to be,
+% We consider two
+% alternatives. First, a common choice it to compete against any linear
+% function $f(\vx)=\vxt\vu$, parametrized by some weight-vector $\vu\in\reals^d$. The regret is,
+\[
+R_T(\vu) \doteq L_{T}(\textrm{alg}) - L_T(\vu)= \sum_{t=1}^T (\hyi{t}-\yi{t})^2
+-  \sum_{t=1}^T (\vxti{t}\vu-\yi{t})^2 ~.
+\]
+A desired goal of an algorithm is to have ${R}_T(\vu) = o(T)$, that is, the
+average loss suffered by an algorithm will converge to the average
+loss of the best linear function $\vu$.
+
+In the \textbf{non-stationary} setting we focus on algorithms that are able to compete against sequences of
+weight-vectors, $(\vui{1} \comdots \vui{T})\in \reals^d \times \dots
+\times \reals^d$, where $\vui{t}$ is used to make a prediction for the t$th$ example
+$(\vxi{t},\yi{t})$.
+We define the cumulative loss of such set by
+\(
+L_T( \{\vui{t}\}) = \sum_{t=1}^T \ell_t(\vui{t})
+\) and the
+  regret of an algorithm by
+\[
+R_T(\{\vui{t}\}) \doteq L_{T}(\textrm{alg}) - L_T(\{\vui{t}\})
+= \sum_{t=1}^T (\hyi{t}-\yi{t})^2 - \sum_{t=1}^T (\vxti{t}\vui{t}-\yi{t})^2~.
+\]
+The goal of an algorithm is to have a low-regret, and formally to have ${R}_T(\{\vui{t}\}) = o(T)$, that is, the
+average loss suffered by an algorithm will converge to the average
+loss of the best linear function sequence $(\vui{1} \comdots \vui{T})$.
+
+Clearly, with no restriction or penalty over the set $\{\vui{t}\}$ the right term of
+the regret can easily be zero by setting, $\vui{t} = \vxi{t}
+(\yi{t}/\normt{\vxi{t}})$, which implies $\ell_t(\vui{t})=0$ for all
+$t$.
+Thus, in the analysis below we will incorporate the total drift
+of the weight-vectors defined to be,
+\begin{align*}
+V = V_T(\{\vui{t}\}) = \sum_{t=1}^{T-1} \normt{\vui{t}-\vui{t+1}} ~.
+\end{align*}
+
+We cannot expect a learning algorithm to have a low-regret 
+when the drift $V$ is linear in $T$. On the other hand, when $V=o(T)$ (sublinear drift) 
+we expect sublinear regret, $R_T(\{\vui{t}\})=o(T)$. In addition, when there is no drift in the data ($V=0$), 
+an algorithm designed for non-stationary setting should have a regret as small as an algorithm designed for stationary setting.  

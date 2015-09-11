@@ -1,0 +1,17 @@
+This is 8-bit Big BibTeX version 0.99c
+Implementation:  WIN32 Console, BaKoMa TNS bound.
+Release version: 3.71 (18 Aug 1996)
+
+The top-level auxiliary file: thesis.aux
+The style file: plainnat.bst
+Database file #1: bib.bib
+Warning--empty booktitle in WidrowHoff
+
+Here's how much of BibTeX's memory you used:
+ Cites:                43 out of 7500
+ Fields:               70 out of 125000
+ Hash table:        34753 out of 35000
+ Strings:            1101 out of 30000
+ String pool:       19485 out of 750000
+ Wizard functions:   2773 out of 10000
+(There was 1 warning)

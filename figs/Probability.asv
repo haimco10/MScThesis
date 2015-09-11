@@ -1,0 +1,67 @@
+%% Plot probability for two tasks
+close all; clear all; clc
+
+%thickLines(2)
+
+pixed_p2 = 0.5;
+res = 100;
+%bvals = linspace(1e-6,1e6,res);
+bvals = logspace(-5,4,res);
+[P1,B] = meshgrid(linspace(0,1,res), bvals);
+[P2,B] = meshgrid(pixed_p2*ones(1,res), bvals);
+Pr1 = B./(B+P1-min(P1,P2));
+Pr2 = B./(B+P2-min(P1,P2));
+Pr = Pr1./(Pr1+Pr2);
+
+imagesc (linspace(0,1,res),bvals,Pr); figure(gcf)
+set(gca,'YDir','normal');
+set(gca,'ytick',bvals);
+%set(gca,'yscale','log')
+%axis([0,1,1e-6,1e6]);
+xlabel('|p_1|');
+ylabel('b');
+%colorbar
+
+%set(gca,'yTick',logspace(-6,6,res))
+
+% %# generate data
+% num = 50;
+% X = [ mvnrnd([0.5 1.5], [0.025 0.03 ; 0.03 0.16], num) ; ...
+%       mvnrnd([-1 0.5], [0.09 -0.01 ; -0.01 0.08], num)   ];
+% G = [1*ones(num,1) ; 2*ones(num,1)];
+% 
+% X = [ mvnrnd([0.5 1.5], [0.025 0.03 ; 0.03 0.16], num)  ];
+% G = [1*ones(num,1) ];
+% 
+% gscatter(X(:,1), X(:,2), G)
+% 
+% axis equal, hold on
+% 
+% for k=1:1
+%     %# indices of points in this group
+%     idx = ( G == k );
+% 
+%     %# substract mean
+%     Mu = mean( X(idx,:) );
+%     %X0 = bsxfun(@minus, X(idx,:), Mu);
+%     X0 = X(idx,:);
+% 
+%     %# eigen decomposition [sorted by eigen values]
+%     [V D] = eig( X0'*X0 ./ (sum(idx)-1) );     %#' cov(X0)
+%     [D order] = sort(diag(D), 'descend');
+%     D = diag(D);
+%     V = V(:, order);
+% 
+%     t = linspace(0,2*pi,100);
+%     e = [cos(t) ; sin(t)];        %# unit circle
+%     VV = V*sqrt(D);               %# scale eigenvectors
+%     %e = bsxfun(@plus, VV*e, Mu'); %#' project circle back to orig space
+%     %VV = VV^(-1);
+%     e = VV*e;
+%     
+%     %# plot cov and major/minor axes
+%     plot(e(1,:), e(2,:), 'Color','k');
+%     %#quiver(Mu(1),Mu(2), VV(1,1),VV(2,1), 'Color','k')
+%     %#quiver(Mu(1),Mu(2), VV(1,2),VV(2,2), 'Color','k')
+% end
+
