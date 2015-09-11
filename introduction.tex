@@ -1,7 +1,6 @@
 \chapter{Introduction}
 
 
-
 Machine learning is a  field of computer science that concerned with data processing and the ability
 of the computer to learn from this data. 
 One main objective of this field is the development of algorithms capable of inference based on 
@@ -20,18 +19,20 @@ When the possible label values are from a discrete finite set, this learning pro
  some more classes the we need to decide which of these classes  is the correct one. 
  
 
-\subsection{Online learning}
+\section{Online learning}
+\label{sec:online_learning}
 
 One of the main features of the classification problem is the way how the data is been collected. 
 In some application, the labeled data is been collected first, such that we have an access to entire training
  dataset at once. Then we use this whole examples collection as an input to 
  a \textit{Batch learning} algorithm and learn a classification model about this problem. 
 However, in a lot of real life application this is not the case. In some problems like spam filtering, there is
- a flow of data that is transmitted in sequence and it takes time to collect the a large amount of data to learn
- from it and we don't want to wait too long before we can have a decent prediction about the continuing
-  incoming examples. For those application we use  
-\textit{Online Learning} based algorithms.
-Unlike the \textit{Batch learning}, in \textit{Online Learning} 
+a flow of data that is transmitted in sequence and it takes time to collect the a large amount of data to learn
+ from it, so we don't want to wait too long before we can have a decent prediction about the continuing
+  incoming examples. For those application we use  \textit{Online Learning} based algorithms. 
+  In this setting, at any time we keep the learned model in memory, and update it when 
+  a new labeled example is coming in.
+Unlike the \textit{Batch learning}, in \textit{Online Learning} at any time, we 
 the learner perception about the classification task become stronger when the time is pass by.
  
 %Assume you want to buy a house. There are two ways to do that. 
@@ -50,86 +51,56 @@ The \textit{Online Learning} is performed in rounds, where in each round $t$,
 the algorithm gets an input instance $\vxii$ in some domain $\mathcal{X}$  and predicts a  correspond 
 measure, $\hat{p_t}$ based on the algorithm decision  rule. This measure can be in the label domain, 
 $\mathcal{Y}$ , or can be mapped into $\hat{y_t}$ which is the predicted label in $\mathcal{Y}$ .   
-After predicting the label , the true label, $y_t$ in the labels domain, $\mathcal{Y}$, is revealed 
+After predicting the label , the true label ( $y_t$ in the labels domain, $\mathcal{Y}$)  is revealed 
 and the learner suffers a non negative loss of $\l\paren{\hat{p_t},y_t}$ that measures how much the 
 prediction is compatible with the true label. The desired property of such function is to generate low 
 values when the prediction is close to the actual label in some sense, and high values when the opposite 
 is true. Then, the algorithm update its decision rule based on the past known data and the revealed label. 
 
-\subsection{Selective Sampling}
+\section{Selective Sampling}
+\label{sec:selective_sampling}
 
-Usually, in an   online binary learning task setting,  we improve the prediction over the time, 
-which means that the algorithm improves performance during the time and have less and lees prediction
- mistakes when it updates its model. 
+Usually, in an  online binary learning task setting,  we improve the prediction over the time, 
+which means that the algorithm  have less and lees prediction mistakes when it updates its model. 
 Sometimes , annotating the data consume expensive resources, like time, money or manpower, 
 and we would like to avoid using this resources when we can. In other words, we would like 
-to avoid querying labels for the input examples when it is possible. For example, if we need to update the 
+to avoid querying labels for the input examples when it is possible. For example, if we  update the 
 model only when there is a prediction mistake (as in Perceptron), we actually don't really 
 use the information about the correct label when there is no need to update. In such cases, 
-it will be helpful to assess every time if we sure about our prediction, and no update should be done, 
+it will be helpful to assess every time how much we sure about our prediction, and no update should be done, 
 so no query should be issued, or if we not sure about the prediction, hence we should issue a 
 query and update the model using the update rule an the correct label. 
 This approach, that queries labels only for selected examples is called \textit{Selective sampling.}
 
-This work deals with multi-task problem where $K$ learners are sharing a single annotator with limited bandwidth. This limitation allow only one task to get feedback from the annotator at a time. For example, there is a need to label annotate news items from few agencies, one person can not handle all of them, and some can just be annotated. Our setting is designed to handle exactly this problem, and specifically, how to make best usage of annotation time. 
-
-\section{Prolem Setting}
-\label{sec:setting}
-We study online multi-task learning with a shared annotator. In our setting, there are
-$K$  binary classification tasks to be learned simultaneously. 
-No dependency between the tasks is assumed during the analysis, but the tasks can be dependent as well. 
-Learning is performed in rounds as an online learning algorithm, as following: 
-On each round $t$, there are $K$ input-label pairs
-$(\vxi{i,t},\yi{i,t})$ where $i=1,2\comdots K$ is the task index and $t$ is the step index. The inputs $\vxi{i,t}\in\reals^{d_i}$ are
-vectors, and labels  $\yi{i,t}\in\{-1,+1\}$ are binary. In the general
-case, the input-spaces for each problem may be different, and inputs may
-have different number of elements. Yet, in order to  simplify the notation and without loss of generality,  from now
-on, for our analysis we assume that for all of the tasks, $\vxi{i,t}\in\reals^{d}$. i.e. all the tasks are in the same dimension and   $d_i = d$ holds for all tasks . 
-
-
-On round $t$, the learning algorithm receives $K$ inputs $\vxi{i,t}$
-for $i=1 \comdots K$ tasks and outputs $K$ binary-labels $\hyi{i,t}$, where
-$\hyi{i,t}\in\{-1,+1\}$ is the label predicted for the input
-$\vxi{i,t}$ of task $i$. The algorithm then chooses a task $J_t \in\
-\{1 \comdots K\}$ and receives from an annotator its true-label
-$\yi{J_t,t}$ for that task $J_t$. Unlike the usual online multi-task setting, it  does not observe any other
-label. Then, the algorithm updates its models, using the received feedback, and proceeds to the
-next round (and inputs).  For the ease of calculations below, we denote
-by $K$ indicators $Z_t=\paren{ Z_{1,t} \comdots Z_{K,t}}$, the
-identity of the task which was queried on round $t$, and set
-$Z_{J_t,t}=1$ and $Z_{i,t}=0$ for $i\ne J_t$. Clearly from the definition, the condition, $\sum_i
-Z_{i,t}=1 ,\forall{i,t}$, always holds . Below, we define the notation $\Expp{t-1}{x}$ to be the
-conditional expectation $\Exp{x \vert Z_{1},...Z_{t-1}}$ given all
-previous choices of the tasks to be queried.
-
-
-Schematic illustration of a single iteration of multi-problem algorithms is shown in \figref{fig:ilustration}. The top panel shows the standard
-setting of online multi-task algorithms with a shared annotator, that labels all inputs, which are fed to the corresponding algorithms to update corresponding models. The
-bottom panel shows the SHAMPO algorithm, which couples labeling
-annotation and learning process, and synchronizes a single annotation
-per round.  At most one task performs an update per round, the one
-with the annotated input.
-
-\begin{figure}
-\begin{centering}
-\includegraphics[width=0.5\textwidth]{figs/SHAMPO_illustration.eps}
-\caption{Illustration of a single iteration of  multi-task algorithms (a) standard setting, shared annotator labels all inputs, and algorithms update models. (b) SHAMPO algorithm couples labeling annotation and learning process, and synchronizes a single annotation per round.}
-\label{fig:ilustration}
-\end{centering}
-\end{figure}
-
-\begin{figure}
-\begin{centering}
-\includegraphics[width=0.7\textwidth]{figs/table_ss.eps}
-\end{centering} 
-%\vspace{10}
-\begin{centering}
-\includegraphics[width=0.7\textwidth]{figs/table_SHAMPO.eps}
-\caption{In selective sampling we focus on when to issue a query for a single task (a row), while in the SHAMPO setting we
-   COMPLETE THIS SENTENCE  }
-\label{fig:ss_vs_SHAMPO}
-\end{centering}
-\end{figure}
-
 \fbox{to do - background in multi-armed bandits. and show the simple perceptron
 }
+
+\section{Multi Task Shared Annotator}
+\label{sec:selective_sampling}
+
+ In supervised learning setting, the main bottleneck is the need to annotate data. A common protocol is 
+ problem centric: first collect data or inputs automatically (with low cost), and then 
+ pass it on to a user or an expert to be annotated. Annotation can be outsourced to the crowed by a 
+ service like Mechanical Turk, or performed by experts as in the Linguistic data Consortium. Then, this data 
+ may be used to build models, either for a single task or many tasks. This approach is not making optimal 
+ use of the main resource - the annotator - as some tasks are harder than others, yet we need to give the 
+ annotator the (amount of) data to be annotated for each task a-priori . 
+ 
+ Another aspect of this problem is the need to adapt systems to individual users, to this end, 
+ such systems may query the user for the label of some input, yet, if few systems will do so 
+ independently, the user will be flooded with queries, and will avoid interaction with those systems. 
+ For example, sometimes there is a need to annotate news items from few agencies. One person cannot 
+ handle all of them, and only some items can be annotated, which ones? Our setting is designed to handle 
+ exactly this problem, and specifically, how to make best usage of annotation time.
+ 
+ We propose a new framework of online multi-task learning with a shared annotator. 
+ Here, algorithms are learning few tasks simultaneously, yet they receive feedback using a central 
+ mechanism that trades off the amount of feedback (or labels) each task receives. We derive a specific 
+ algorithm based on the good-old Perceptron algorithm, called SHAMPO (SHared Annotator for Multiple 
+ PrOblems) for binary classification and analyze it in the mistake bound model, showing that our algorithm 
+ may perform well compared with methods that observe all annotated data. We then show how to reduce 
+ few contextual bandit problems into our framework, and provide specific bounds for such 
+settings. We evaluate our algorithm with four different datasets for OCR , vowel prediction (VJ) and 
+document classification, and show that it can improve performance either on average over all tasks, 
+or even if their output is combined towards a single shared task, such as multi-class prediction.
+ We conclude with discussion of related work, and few of the many routes to extend this work.
