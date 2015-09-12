@@ -1,6 +1,0 @@
-\beamer@endinputifotherversion {3.19pt}
-\select@language {english}
-\beamer@sectionintoc {1}{Introduction}{2}{0}{1}
-\beamer@sectionintoc {2}{Classification Analysis}{9}{0}{2}
-\beamer@sectionintoc {3}{Regression Analysis}{48}{0}{3}
-\beamer@sectionintoc {4}{Summary}{54}{0}{4}

@@ -74,8 +74,7 @@ of the algorithm,
  \end{equation}
 Now, we proceed by  describing our algorithm     and specify how to choose a problem to query its label,
  and how to perform an update.
-
-
+ 
 
 In order to select a problem, the algorithm uses the absolute margin
 $\hat{p}_{i,t}$, intuitively. We can see $\abs{\hat{p}_{i,t}}$ as the certainty measure of the label prediction.
@@ -93,7 +92,10 @@ $\vert \hat{p}_{i,t} \vert$.
 \begin{figure}[h]
 \begin{centering}
 \includegraphics[width=0.5\textwidth]{figs/margin.eps}
-\caption{Example for the using of the margin as a certainty measure. The circles and crosses represent two different classes and the separate hyperplane is shown. One of the circles examples have lower margin than the other, so its label can easily been replaced with the other one.}
+\caption{Example for the using of the margin as a certainty measure. 
+The circles and crosses represent two different classes and the separate hyperplane is shown. 
+One of the circles examples have lower margin than the other, so its label can easily been replaced 
+with the other one.}
 \label{fig:margin}
 \end{centering}
 \end{figure}
@@ -113,9 +115,30 @@ D_{t}&=\sum_{i=1}^{K}{\paren{b+\abs{\hat{p}_{i,t}}-\min_{m}\abs{\hat{p}_{m,t}}}^
 \end{aligned}
 \end{equation} 
 where $b\geq 0, b\in\reals$ is a tradeoff parameter, between exploration and
-exploitation. Clearly, it is a distribution, since $\pr{J_t=j}\geq 0$ and $\sum_j \pr{J_t=j}=1$. When we examine the extream cases  of $b$ we see that  for $b\rightarrow0$
+exploitation. Clearly, it is a distribution, since $\pr{J_t=j}\geq 0$ and $\sum_j \pr{J_t=j}=1$. 
+When we examine the extream cases  of $b$ we see that  for $b\rightarrow0$
 we have $\pr{J_t=j}\rightarrow1$ and  for the task with minimal margin, $J_t=\arg\min_{i=1}^K\abs{\hat{p}_{i,t}}$,  and $\pr{J_t=j}\rightarrow0$ for all the rest. In this case , pure exploitation is being made. The pure exploration happens when   $b\rightarrow \infty$
-, then the distribution is uniform, $ \pr{J_t=j}= 1/K,~~ \forall j $.  
+, then the distribution is uniform, $ \pr{J_t=j}= 1/K,~~ \forall j $. \figref{fig:fig:probability_example} 
+shows an example of the distribution for the case of two tasks ($K=2$) at an arbitrary step $t^*$. 
+For visualization purpose, we fix 
+$\abs{\hat{p}_{2,t^*}}=0.5$ and see how the probability of task $1$ to be chosen, 
+changed, for varying $b$ and $\abs{\hat{p}_{1,t^*}}$ values. Three different vertical areas  can be easily seen 
+in the graph. The upper (green) area, where $b>>\max{\braces{\hat{p}_{1,{t^*}},\hat{p}_{2,t{^*}}}$,
+ shows uniform distribution ($\pr{J_{}t^*}=2}=\pr{J_{t^*}=1}=1/K=0.5$) 
+ which represents the model exploration over the tasks.
+ In the lower area, the probability is compatible with the exploitation method and is changing between
+ probability $1$ in the left, and probability $0$ to the right with a sharp threshold at $\abs{\hat{p}_{1,t^*}}=0.5$ 
+ which is very close to the delta distribution $\pr{J_{t^*}=1}=\mathbb{I}\brackets{\hat{p}_{1,{}t^*}<\hat{p}_{2,{t^*}}}$.
+ Whereas, the intermediate area, is the exploration-exploitation area that is 
+ given by a distribution that is biased toward the lowest margin task.
+
+\begin{figure}[h]
+\label{fig:probability_example}
+\begin{center}
+\includegraphics[width=0.80\textwidth]{figs/probability.eps}
+\caption{Example of the distribution over 2 tasks.}
+\end{center}
+\end{figure}
 
 As noted above we denote by $Z_{i,t}=1$ iff $i=J_t$.
 The update of the algorithm is performed with the perceptron rule,
