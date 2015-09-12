@@ -322,7 +322,7 @@ Summing up the last inequality over all $K$ tasks and setting $\delta
 = \max_i \delta_i$ yields, 
 \begin{equation}
 \begin{split}
-\frac{1}{K}\mathbb{E}\left[ \sum_{i=1}^{K}\sum_{t=1}^{n}{M_{i,t}} \right]
+\frac{1}{\delta_i}\mathbb{E}\left[ \sum_{i=1}^{K}\sum_{t=1}^{n}{M_{i,t}} \right]
 \le\frac{1}{\gamma}\left(1+\frac{X^2}{2b} \right){\bar L}_{\gamma,n}+
 \frac{\left({2b+X^2}\right)^2}{8{\gamma}^2b}\sum_{i=1}^{K}{{\left\Vert \vui{i} 
 \right\Vert}^2}~,
@@ -333,7 +333,7 @@ which concludes the proof.
 \QED
 \end{proof}
 
-One can use the bound to tune the algorithm for a good  value of
+One can use the bound to tune the algorithm for an optimal  value of
 $b$. However, this may not be possible as unfortunately ${\bar L}_{\gamma,n}$ depends
 implicitly on the value of $b$\footnote{Similar issue appears also
   after the discussion of Theorem~1 in a different context~\cite{cesa2006worst}.}.
@@ -354,19 +354,20 @@ which has the same dependency in the number of inputs $n$ as algorithm
 that observes all of them.
 
 
-We conclude this section with an analysis of an extension of our
-algorithm that allows more than a single query per round. In this setting the ability  of the annotator to annotate data instances is less limited. Here, we
-allow the algorithm to query $\kappa$ labels at a time, instead of one. On each
+We continue now with an analysis of an extension of our
+algorithm that allows more than a single query per round. In this setting, the ability  
+of the annotator to annotate data instances is less limited. Here, we
+allow the algorithm to query $\kappa$ labels at a time ( $\kappa<K$), instead of one. On each
 iteration $t$, the modified algorithm samples without repetitions
 $\kappa$ labels to be annotated, and perform the same update as of
-\eqref{perc_update}. Formally, on each round we have $\sum_i
-Z_{i,t}=\kappa$ for $Z_{i,t}\in\{0,1\}$ where the first problem-index to
+\eqref{update_rule}. Formally, on each round we have $\sum_i
+Z_{i,t}=\kappa$ for $Z_{i,t}\in\{0,1\}$ where the first task-index to
 be queried is
-drawn according to \eqref{prob}. The second problem is drawn from the
+drawn according to \eqref{eq:prob}. The second task is drawn from the
 same distribution, eliminating the first choice and adjusting the normalization factor, and so on. Once
 $\kappa$ problems are drawn, the algorithm receives $\kappa$ labels for
 the $\kappa$ corresponding inputs, and updates the $\kappa$ models
-according to \eqref{perc_update}.
+according to \eqref{update_rule}.
 \begin{corollary}
   If SHAMPO algorithm gets feedback for $\kappa$ tasks on each round,
   instead of only a single problem, the expected cumulative weighted
@@ -446,7 +447,7 @@ D_t &=
 \item Iff $M_{J_t, t}=0$ and $\abs{p_{J_t,t}}<\lambda$, set  the indicator $A_{J_t,t}=1$
 \item Update with the perceptron rule:
 \begin{align}
-&\vwi{J_t,t} = \vwi{J_t,t-1}+U_{J_t,t} \, \yi{J_t,t}\, \vxi{J_t,t} \label{perc_update}\\
+&\vwi{J_t,t} = \vwi{J_t,t-1}+U_{J_t,t} \, \yi{J_t,t}\, \vxi{J_t,t} \label{update_rule}\\
 &\vwi{i,t} ~~= \vwi{i,t-1}  \textrm{ for } i \neq J_t \nonumber
 \end{align}
 \end{enumerate}
