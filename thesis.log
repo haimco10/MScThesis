@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  12 SEP 2015 16:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  12 SEP 2015 21:07
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -696,23 +696,14 @@ l.1 \chapter
             {SHMPO (SHared Annotator for Multiple Problems) Algorithms}
 [8 <./figs/SHAMPO_illustration-eps-converted-to.pdf>]
 Chapter 3.
-LaTeX Font Info:    Font shape `U/lasy/b/n' in size <8> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 25.
-LaTeX Font Info:    Font shape `U/lasy/b/n' in size <6> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 25.
 pdfTeX warning (ext4): destination with the same identifier (name{page.9}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.71 \begin{equation}
+l.38 \begin{equation}
                       [9
 
-]pdfTeX warning (ext4): destination with the same identifier (name{page.10}) ha
-s been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.91 
-      [10]
+]
 Package epstopdf Info: Source file: <figs/margin.eps>
 (epstopdf)                    date: 2014-04-05 16:17:15
 (epstopdf)                    size: 9441 bytes
@@ -721,45 +712,36 @@ Package epstopdf Info: Source file: <figs/margin.eps>
 (epstopdf)                    size: 5686 bytes
 (epstopdf)             Command: <repstopdf --outfile=figs/margin-eps-converted-
 to.pdf figs/margin.eps>
-(epstopdf)             \includegraphics on input line 94.
+(epstopdf)             \includegraphics on input line 61.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/margin-eps-converted-to.pdf, id=243, 250.9375pt x 203.76125pt>
+<figs/margin-eps-converted-to.pdf, id=222, 250.9375pt x 203.76125pt>
 File: figs/margin-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/margin-eps-converted-to.pdf>
-Package pdftex.def Info: figs/margin-eps-converted-to.pdf used on input line 94
+Package pdftex.def Info: figs/margin-eps-converted-to.pdf used on input line 61
 .
 (pdftex.def)             Requested size: 180.0pt x 146.16699pt.
-pdfTeX warning (ext4): destination with the same identifier (name{page.11}) has
+pdfTeX warning (ext4): destination with the same identifier (name{page.10}) has
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.116 \end{equation}
-                     [11 <./figs/margin-eps-converted-to.pdf>]
+l.77 
+      [10 <./figs/margin-eps-converted-to.pdf>]
 
-LaTeX Warning: Reference `fig:fig:probability_example' on page \@@number{12} un
-defined on input line 121.
+LaTeX Warning: Reference `fig:fig:probability_example' on page \@@number{11} un
+defined on input line 91.
 
-./SHAMPO.tex:126: Missing } inserted.
+./SHAMPO.tex:97: Missing } inserted.
 <inserted text> 
                 }
-l.126 ...ces{\hat{p}_{1,{t^*}},\hat{p}_{2,t{^*}}}$
+l.97 ...aces{\hat{p}_{1,{t^*}},\hat{p}_{2,t{^*}}}$
                                                   ,
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
 With luck, this will get me unwedged. But if you
 really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
-
-./SHAMPO.tex:127: Extra }, or forgotten $.
-l.127 ...ws uniform distribution ($\pr{J_{}t^*}=2}
-                                                  =\pr{J_{t^*}=1}=1/K=0.5$)
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
 
 Package epstopdf Info: Source file: <figs/probability.eps>
 (epstopdf)                    date: 2014-04-06 00:45:17
@@ -769,126 +751,164 @@ Package epstopdf Info: Source file: <figs/probability.eps>
 (epstopdf)                    size: 8222 bytes
 (epstopdf)             Command: <repstopdf --outfile=figs/probability-eps-conve
 rted-to.pdf figs/probability.eps>
-(epstopdf)             \includegraphics on input line 138.
+(epstopdf)             \includegraphics on input line 109.
 Package epstopdf Info: Output file is already uptodate.
-<figs/probability-eps-converted-to.pdf, id=257, 392.46625pt x 225.84375pt>
+<figs/probability-eps-converted-to.pdf, id=238, 392.46625pt x 225.84375pt>
 File: figs/probability-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/probability-eps-converted-to.pdf>
 Package pdftex.def Info: figs/probability-eps-converted-to.pdf used on input li
-ne 138.
+ne 109.
 (pdftex.def)             Requested size: 288.0011pt x 165.73987pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
+LaTeX Font Info:    Font shape `U/lasy/b/n' in size <8> not available
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 132.
+LaTeX Font Info:    Font shape `U/lasy/b/n' in size <6> not available
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 132.
+
+LaTeX Warning: Reference `prob' on page \@@number{11} undefined on input line 1
+45.
+
+
+LaTeX Warning: Reference `prob' on page \@@number{11} undefined on input line 1
+45.
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.11}) has
+ been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.157 \end{figure}
+                   [11]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (37.41302pt too wide) in paragraph at lines 199--199
+[] 
+ []
+
 pdfTeX warning (ext4): destination with the same identifier (name{page.12}) has
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.169   I
-         f SHAMPO algorithm runs on $K$ problems with $K$ parallel example pair
-[12]
-Overfull \hbox (37.41302pt too wide) in paragraph at lines 198--198
-[] 
- []
-
-[13 <./figs/probability-eps-converted-to.pdf>]
-Overfull \hbox (0.77461pt too wide) in paragraph at lines 216--216
+l.199 \end{align*}
+                   [12 <./figs/probability-eps-converted-to.pdf>] [13]
+Overfull \hbox (0.77461pt too wide) in paragraph at lines 222--222
 [] 
  []
 
 [14] [15]
-Underfull \hbox (badness 10000) in paragraph at lines 304--307
+Underfull \hbox (badness 10000) in paragraph at lines 331--335
 
  []
 
 
 LaTeX Warning: Reference `bound' on page \@@number{16} undefined on input line 
-319.
+347.
 
 [16]
-Overfull \hbox (7.63118pt too wide) in paragraph at lines 343--346
+
+LaTeX Warning: Reference `prob' on page \@@number{17} undefined on input line 3
+65.
+
+
+Overfull \hbox (7.63118pt too wide) in paragraph at lines 371--374
 \OT1/ptm/m/it/10.95 stead of only a sin-gle prob-lem, the ex-pected cu-mu-la-ti
 ve weighted mis-takes is bounded
  []
 
 
 LaTeX Warning: Reference `thm:bound' on page \@@number{17} undefined on input l
-ine 357.
+ine 385.
 
 
 LaTeX Warning: Reference `thm:bound' on page \@@number{17} undefined on input l
-ine 386.
+ine 414.
 
 
 LaTeX Warning: Reference `thm:bound' on page \@@number{17} undefined on input l
-ine 386.
+ine 414.
 
 [17]
 
+LaTeX Warning: Reference `prob' on page \@@number{18} undefined on input line 4
+43.
+
+
+LaTeX Warning: Reference `prob' on page \@@number{18} undefined on input line 4
+43.
+
+
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 452--454
+[18]
+Underfull \hbox (badness 10000) in paragraph at lines 480--482
 
  []
 
-[18] [19] [20] [21]
-Underfull \hbox (badness 10000) in paragraph at lines 575--578
+[19] [20] [21]
+Underfull \hbox (badness 10000) in paragraph at lines 603--606
 
+ []
+
+
+Overfull \hbox (859.36157pt too wide) in paragraph at lines 609--613
+\OT1/ptm/m/n/10.95 done with a prior dis-tri-bu-tion. []
  []
 
 [22]
-Underfull \hbox (badness 10000) in paragraph at lines 611--613
+Underfull \hbox (badness 10000) in paragraph at lines 640--642
 
  []
 
 [23]
-Underfull \hbox (badness 10000) in paragraph at lines 669--673
+Underfull \hbox (badness 10000) in paragraph at lines 698--702
 
  []
 
 [24]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 675.
+(hyperref)                removing `math shift' on input line 704.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 675.
+(hyperref)                removing `math shift' on input line 704.
 
 
 LaTeX Warning: Reference `thm:bound' on page \@@number{25} undefined on input l
-ine 682.
+ine 711.
 
 
-Overfull \hbox (19.05771pt too wide) in paragraph at lines 693--693
+Overfull \hbox (19.05771pt too wide) in paragraph at lines 722--722
 [] 
  []
 
 [25] [26] [27] [28] [29] [30]
-Underfull \hbox (badness 10000) in paragraph at lines 880--882
+Underfull \hbox (badness 10000) in paragraph at lines 909--911
 
  []
 
 
-Overfull \hbox (18.9791pt too wide) in paragraph at lines 892--892
+Overfull \hbox (18.9791pt too wide) in paragraph at lines 921--921
 [] 
  []
 
 [31] [32] [33] [34] [35]
-Overfull \hbox (22.26526pt too wide) in paragraph at lines 1056--1056
+Overfull \hbox (22.26526pt too wide) in paragraph at lines 1085--1085
 [] 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 1070
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 1099
 .
 (/usr/local/texlive/2014/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 1070.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 1099.
 
 )
 (./Second_Order_SHAMPO.tex [36]
@@ -971,11 +991,11 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 113.
  ) 
 Here is how much of TeX's memory you used:
- 9217 strings out of 493117
- 127519 string characters out of 6135433
- 240359 words of memory out of 5000000
- 12298 multiletter control sequences out of 15000+600000
- 39736 words of font info for 103 fonts, out of 8000000 for 9000
+ 9224 strings out of 493117
+ 127619 string characters out of 6135433
+ 241419 words of memory out of 5000000
+ 12304 multiletter control sequences out of 15000+600000
+ 40774 words of font info for 105 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,26n,40p,1874b,417s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
@@ -996,10 +1016,10 @@ fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2014/texmf-d
 ist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/
 type1/urw/times/utmr8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/
 times/utmri8a.pfb>
-Output written on ./thesis.pdf (58 pages, 365867 bytes).
+Output written on ./thesis.pdf (58 pages, 367292 bytes).
 PDF statistics:
- 632 PDF objects out of 1000 (max. 8388607)
- 534 compressed objects within 6 object streams
- 152 named destinations out of 1000 (max. 500000)
+ 628 PDF objects out of 1000 (max. 8388607)
+ 532 compressed objects within 6 object streams
+ 153 named destinations out of 1000 (max. 500000)
  144 words of extra memory for PDF output out of 10000 (max. 10000000)
 

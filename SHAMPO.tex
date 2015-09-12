@@ -14,42 +14,9 @@ quantity $p=\vwt\vx$, $\vw\in\reals^d$,  which often called the
 Specifically, the algorithm maintains a set of $K$ weight
 vectors, $\vwi{i,t},~i\in\braces{1\comdots K}$. On round $t$, the algorithm predicts a label for each
  one of the tasks, $\hyi{i,t}=\sign(\hat{p}_{i,t})$ where $\hat{p}_{i,t}=\vwti{i,t-1}\vxii$. 
- On rounds for which the label of some problem $J_t$ is queried, the algorithm update the model of the
- queried task only, such that for the rest of the tasks we have $\vwi{i,t}=\vwi{i,t-1}$ for $i\neq J_t$ and no
- update is made for the unqueried tasks. 
-
-
-\label{sec:alg}
-\begin{figure}[t]
-\paragraph{Parameters:}$b\in\mathbb{R}>0$.
-\paragraph{Initialize:} $\vwi{i,0}=\vzero$ for $i=1\comdots K$
-\paragraph{For}  {$t=1,2, ..., n$} 
-\begin{enumerate}
-\nolineskips
-\item Observe $K$ instance vectors, $\vxiit$, ($i=1 \comdots K$).
-\item Compute margins $\hat{p}_{i,t}=\vwti{i,t-1} \vxiit$.
-\item Predict $K$ labels, $\hyi{i,t}=\sign(\hat{p}_{i,t})$.
-\item Draw problem $J_t$  with the distribution:
-\begin{align}
-\pr{J_t=j} &=
-\frac{\paren{b+\abs{\hat{p}_{j,t}}-\min_{m=1}^K\abs{\hat{p}_{m,t}}}^{-1}}{D_{t}}, \eqref{prob}\nonumber\\
-D_t &=
-\sum_i \paren{b+\abs{\hat{p}_{i,t}}-\min_{m=1}^K\abs{\hat{p}_{m,t}}}^{-1}. \nonumber
-\end{align}
-\item Query the true label ,$\yi{J_t,t}\in\{-1,1\}$.
-\item Set the indicator $M_{J_t, t}=1$ iff $\yi{J_t,t} \neq \hyi{J_t,t}$.
-\item Update with the perceptron rule:
-\begin{align}
-&\vwi{J_t,t} = \vwi{J_t,t-1}+M_{J_t,t} \, \yi{J_t,t}\, \vxi{J_t,t} \label{perc_update}\\
-&\vwi{i,t} ~~= \vwi{i,t-1}  \textrm{ for } i \neq J_t \nonumber
-\end{align}
-\end{enumerate}
-\paragraph{End for} 
-\paragraph{Output}: $\vwi{i,n}$ for $i=1 \comdots K$.
-\caption{SHAMPO: SHared Annotator for Multiple PrOblems. \label{alg:SHAMPO_FO}}
-\end{figure}        
-
-
+ On rounds for which the label of some task $J_t$ is queried, the algorithm update the model of the
+ queried task only, such that for the rest of the tasks, $i\neq J_t$, we have $\vwi{i,t}=\vwi{i,t-1}$ and no
+ update is made for those unqueried tasks.       
 
 We say that the algorithm has a prediction mistake on task $i$ in round $t$ if
 $\yi{i,t} \neq \hyi{i,t}$, and denote this event by the indicator $M_{i,t}=1$,
@@ -58,11 +25,11 @@ algorithm is to minimize the cumulative mistakes, $\sum_t \sum_i
 M_{i,t}$. Models are also evaluated using the
 {\em Hinge-loss}. Specifically, let $\vui{i}\in\reals^d$ be some vector
 associated with problem $i$. We denote the Hinge-loss \fbox{show hinge loss plot} of it, with respect
-to some input-label  pair $\paren{\vxiit,\yiit}$ by,
+to some input-label  pair $\paren{\vxiit,\yiit}$, by
 $\lossp{\gamma,i,t}(\vui{i})= \paren{\gamma-\yiit
   \vuti{i}\vxiit}_{+}$, where, $(x)_+=\max\{x,0\}$, and $\gamma>0$ is
-some parameter. The cumulative loss over all problems and a sequence of
-$n$ inputs, is,
+some parameter. The cumulative loss over all tasks and a sequence of
+$n$ input steps, is
 $ %\begin{equation}
 L_{\gamma,n} =L_{\gamma}(\{ \vui{i} \})=\sum_{t=1}^{n} \sum_{i=1}^{K}\ {\lossp{\gamma,i,t}(\vui{i})}
 $. %\end{equation}  
@@ -72,21 +39,21 @@ of the algorithm,
 \bar{L}_{\gamma,n}=\bar{L}_{ \{ \vui{i}\}}
 =\Exp{\sum_t^n \sum_{i=1}^{K}{M_{i,t}Z_{i,t}\lossp{\gamma,i,t}(\vui{i})}}. 
  \end{equation}
-Now, we proceed by  describing our algorithm     and specify how to choose a problem to query its label,
+Now, we proceed by  describing our algorithm and specify how to choose a task to query its label,
  and how to perform an update.
  
 
-In order to select a problem, the algorithm uses the absolute margin
-$\hat{p}_{i,t}$, intuitively. We can see $\abs{\hat{p}_{i,t}}$ as the certainty measure of the label prediction.
- If $\abs{\hat{p}_{i,t}}$ is small,
-then there is uncertainty about the labeling of $\vxi{i,t}$, and
-when $\abs{\hat{p}_{i,t}}$ is large, we say that we have high certainty in our label prediction. 
+In order to select a task to query on, the algorithm uses the absolute margin
+$\hat{p}_{i,t}$. We can see $\abs{\hat{p}_{i,t}}$ as the certainty measure of the label prediction.
+ intuitively if $\abs{\hat{p}_{i,t}}$ is small,
+then there is uncertainty about the labeling of $\vxi{i,t}$, and vice-versa for 
+large values of $\abs{\hat{p}_{i,t}}$. 
 Similar argument was used by ~\cite{DBLP:conf/icml/TongK00} for picking an example to be labeled in 
 batch active learning. Prima facie, under this claim, at each point we should query the true label for the task
  that corresponds to the smallest margin.  Yet, if the model $\vwi{i,t-1}$ is not accurate enough, due to
  small number of observed examples, this estimation may be rough, and may lead to a wrong
 conclusion. We thus perform an exploration-exploitation strategy, and
-query problems randomly, with a bias towards problems with low 
+query tasks randomly, with a bias towards tasks with low margin
 $\vert \hat{p}_{i,t} \vert$. 
 
 \begin{figure}[h]
@@ -103,31 +70,35 @@ with the other one.}
 
 To the best of our knowledge,
 exploration-exploitation usage in this context of choosing an examples
-to be labeled (eg in settings such as semi-supervised learning or
+to be labeled (e.g. in settings such as semi-supervised learning or
 selective sampling) is novel and new.  In order to get this property, we induced a
-distribution over the tasks in the time step $t$, such that the probability to issue a query on the task $j$ is:
+distribution over the tasks in the time step $t$, such that the probability to issue a query on the task 
+$j$ ()$j=1 \comdots K$) is:
+
 \begin{equation}
 \begin{aligned}
 \pr{J_t=j}&=\frac{\paren{b+\abs{\hat{p}_{j,t}}-\min_{m=1}^K\abs{\hat{p}_{m,t}}}^{-1}}{D_t}\\
 ~ \textrm { for } ~
 D_{t}&=\sum_{i=1}^{K}{\paren{b+\abs{\hat{p}_{i,t}}-\min_{m}\abs{\hat{p}_{m,t}}}^{-1}}.
-\label{prob}
+\label{eq:prob}
 \end{aligned}
 \end{equation} 
+
 where $b\geq 0, b\in\reals$ is a tradeoff parameter, between exploration and
 exploitation. Clearly, it is a distribution, since $\pr{J_t=j}\geq 0$ and $\sum_j \pr{J_t=j}=1$. 
-When we examine the extream cases  of $b$ we see that  for $b\rightarrow0$
+When we examine the extreme cases  of $b$ we see that  for $b\rightarrow0$
 we have $\pr{J_t=j}\rightarrow1$ and  for the task with minimal margin, $J_t=\arg\min_{i=1}^K\abs{\hat{p}_{i,t}}$,  and $\pr{J_t=j}\rightarrow0$ for all the rest. In this case , pure exploitation is being made. The pure exploration happens when   $b\rightarrow \infty$
 , then the distribution is uniform, $ \pr{J_t=j}= 1/K,~~ \forall j $. \figref{fig:fig:probability_example} 
-shows an example of the distribution for the case of two tasks ($K=2$) at an arbitrary step $t^*$. 
+shows an example of this distribution for the case of two tasks ($K=2$) at an arbitrary step $t^*$. 
 For visualization purpose, we fix 
-$\abs{\hat{p}_{2,t^*}}=0.5$ and see how the probability of task $1$ to be chosen, 
-changed, for varying $b$ and $\abs{\hat{p}_{1,t^*}}$ values. Three different vertical areas  can be easily seen 
+$\abs{\hat{p}_{2,t^*}}=0.5$ and see how the probability of task $1$ to be chosen,
+ is affected by varying $b$ and $\abs{\hat{p}_{1,t^*}}$ values. 
+ Three different vertical areas  can be easily seen 
 in the graph. The upper (green) area, where $b>>\max{\braces{\hat{p}_{1,{t^*}},\hat{p}_{2,t{^*}}}$,
- shows uniform distribution ($\pr{J_{}t^*}=2}=\pr{J_{t^*}=1}=1/K=0.5$) 
- which represents the model exploration over the tasks.
+ shows uniform distribution ($\pr{J_{t^*}=2}=\pr{J_{t^*}=1}=1/K=0.5$) 
+ which represents the exploration over the tasks.
  In the lower area, the probability is compatible with the exploitation method and is changing between
- probability $1$ in the left, and probability $0$ to the right with a sharp threshold at $\abs{\hat{p}_{1,t^*}}=0.5$ 
+ probability $1$ in the left, and probability $0$ to the right with a sharp threshold at $\abs{\hat{p}_{1,t^*}}=0.5$, 
  which is very close to the delta distribution $\pr{J_{t^*}=1}=\mathbb{I}\brackets{\hat{p}_{1,{}t^*}<\hat{p}_{2,{t^*}}}$.
  Whereas, the intermediate area, is the exploration-exploitation area that is 
  given by a distribution that is biased toward the lowest margin task.
@@ -148,17 +119,44 @@ For simplicity of presentation we write the update for all of the tasks in one t
 \vwi{i,t-1} + Z_{i,t}\, M_{i,t} \, \yi{i,t}\, \vxi{i,t}$. One can notice that although
 this notation uses labels for all tasks,  %(via $M_{i,t}$)
  only
-the label of the task $J_t$ is used in practice, as for other problems $Z_{i,t}=0$.
+the label of the task $J_t$ is used in practice, as for other tasks $Z_{i,t}=0$.
 
 
 
-We call this algorithm {\em SHAMPO} for SHared Annotator for Multiple PrOblems. The pseudo-code of this algorithm appears  in \figref{alg:SHAMPO_FO}.
+We call this algorithm {\em SHAMPO} for SHared Annotator for Multiple PrOblems. 
+The pseudo-code of this algorithm appears  in \figref{alg:SHAMPO_FO}.
 
+\label{sec:alg}
+\begin{figure}[h]
+\paragraph{Parameters:}$b\in\mathbb{R}>0$.
+\paragraph{Initialize:} $\vwi{i,0}=\vzero$ for $i=1\comdots K$
+\paragraph{For}  {$t=1,2, ..., n$} 
+\begin{enumerate}
+\nolineskips
+\item Observe $K$ instance vectors, $\vxiit$, ($i=1 \comdots K$).
+\item Compute margins $\hat{p}_{i,t}=\vwti{i,t-1} \vxiit$.
+\item Predict $K$ labels, $\hyi{i,t}=\sign(\hat{p}_{i,t})$.
+\item Draw task $J_t$  with the distribution:
+\begin{align}
+\pr{J_t=j} &=
+\frac{\paren{b+\abs{\hat{p}_{j,t}}-\min_{m=1}^K\abs{\hat{p}_{m,t}}}^{-1}}{D_{t}}, \eqref{prob}\nonumber\\
+D_t &=
+\sum_i \paren{b+\abs{\hat{p}_{i,t}}-\min_{m=1}^K\abs{\hat{p}_{m,t}}}^{-1}. \nonumber
+\end{align}
+\item Query the true label ,$\yi{J_t,t}\in\{-1,1\}$.
+\item Set the indicator $M_{J_t, t}=1$ iff $\yi{J_t,t} \neq \hyi{J_t,t}$.
+\item Update with the perceptron rule:
+\begin{align}
+&\vwi{J_t,t} = \vwi{J_t,t-1}+M_{J_t,t} \, \yi{J_t,t}\, \vxi{J_t,t} \label{perc_update}\\
+&\vwi{i,t} ~~= \vwi{i,t-1}  \textrm{ for } i \neq J_t \nonumber
+\end{align}
+\end{enumerate}
+\paragraph{End for} 
+\paragraph{Output}: $\vwi{i,n}$ for $i=1 \comdots K$.
+\caption{SHAMPO: SHared Annotator for Multiple PrOblems. \label{alg:SHAMPO_FO}}
+\end{figure}  
 
-
-
-\fbox{We conclude}
-this section by noting that the algorithm can be incorporated with
+\fbox{We conclude} this section  by noting that the algorithm can be incorporated with
 Mercer-kernels as all operations depend implicitly on inner-product
 between inputs.
 
@@ -166,16 +164,16 @@ The following theorem states that the expected cumulative number of mistakes
 that the algorithm makes, may not be higher than for an algorithm that
 observes the labels of all inputs. 
 \begin{theorem}
-  If SHAMPO algorithm runs on $K$ problems with $K$ parallel example pair
+  If SHAMPO algorithm runs on $K$ tasks with $K$ parallel example pair
   sequences
   $(\vxi{i,1},y_{i,1}),...(\vxi{i,n},y_{i,n})\in\mathbb{R}^d\times\{-1,1\}$,
   $i=1,...,K$ with input parameter $b>0$, then for all $\gamma>0$, all
-  $\vui{i}\in\mathbb{R}^d$ and all $n\ge1$,
+  $\vui{i}\in\mathbb{R}^d$ and all $n\ge1$, there exists $0<\delta\le K$, such that,
   
 \begin{displaymath}
 \mathbb{E}\left[ \sum_{i=1}^{K}\sum_{t=1}^{n}{M_{i,t}} \right]
-\le \frac{K}{\gamma}\left(1+\frac{X^2}{2b} \right){\bar L}_{\gamma,n}
-+\frac{K\left({2b+X^2}\right)^2\tilde{U}^2}{8{\gamma}^2b}~,
+\le \frac{\delta}{\gamma}\brackets{\left(1+\frac{X^2}{2b} \right){\bar L}_{\gamma,n}
++\frac{\left({2b+X^2}\right)^2\tilde{U}^2}{8{\gamma}b}}~,
 \label{bound_FO_SHAMPO}
 \end{displaymath}
  where $X=\max_{i,t}\Vert\vxiit\Vert$,
@@ -183,8 +181,11 @@ $\tilde{U}^2=\sum_{i=1}^{K}\normt{\vui{i}}$ and the expectation is over the
 random choices of the algorithm.
 \end{theorem} \label{thm:FO_bound}
 
+
 \begin{proof}
-Fix $n$ examples sequences, $(\vxi{i,1},y_{i,1}),...,(\vxi{i,n},y_{i,n})$ for each of the $K$ tasks. Let $t$ be certain trial and $i$ to be an update task on this trial, such that $M_{i,t}=1.$ We can write,
+Fix $n$ examples sequences, $(\vxi{i,1},y_{i,1}),...,(\vxi{i,n},y_{i,n})$ for each one of the $K$ tasks. 
+Let $t$ be certain trial and $i$ to be an update task on this trial, such that $M_{i,t}=1$. 
+We can write,
 \begin{align*}
 \gamma-\lossp{\gamma,i,t}(\vu_i)&=\gamma-\paren{\gamma-y_{i,t}\vu_i^T\vxiit}_+\\
  ~&\le~  y_{i,t}\vu_i^T\vxiit \\
@@ -196,17 +197,22 @@ Fix $n$ examples sequences, $(\vxi{i,1},y_{i,1}),...,(\vxi{i,n},y_{i,n})$ for ea
 &=  y_{i,t}\hat{p}_{i,t}+\frac{1}{2}{\normt{\vu_{i}-\vwi{i,t-1}}}
         -\frac{1}{2}{\normt{\vu_i-\vwiit}}+\frac{1}{2}{\normt{\vwi{i,t-1}-\vwiit}}~.
 \end{align*}
+
 The last inequality holds for all $\gamma>0$ and for all
 $\vu_i\in\mathbb{R}^d$, so we can replace $\gamma$ and $\vu_i$ by their
 scaling $\alpha\gamma$ and $\alpha \vu_i$ respectively, where $\alpha>0$
 is a scaling parameter that will be determined shortly. Since the inequality is computed on an update task,
 $y_{i,t}\hat{p}_{i,t}\le0$ holds , i.e. $y_{i,t}\hat{p}_{i,t}=-\abs{\hat{p}_{i,t}}$ , and we get
+
 \begin{equation*}
 \begin{split}
 \alpha\gamma  +&\abs{\hat{p}_{i,t}} \le\\
 &\alpha\lossp{\gamma,i,t}(\vu_i)+\frac{1}{2}{\normt{\alpha \vu_i-\vwi{i,t-1}}}-\frac{1}{2}{\normt{\alpha \vu_i-\vwiit}}+\frac{1}{2}{\normt{\vwi{i,t-1}-\vwiit}} .\end{split}
 \end{equation*}
-Now, in order to generalize the inequality, we multiply it by the indicator $M_{i,t}Z_{i,t}$ , which means that the inequality holds for  trials and tasks where there is an update, as stated above.
+
+Now, in order to generalize the inequality, we multiply it by the indicator $M_{i,t}Z_{i,t}$ , 
+which means that the inequality holds for  trials and tasks where there is an update, as stated above.
+
 \begin{equation*}
 \begin{split}
 M_{i,t}&Z_{i,t}{\paren{\alpha\gamma \!-\!\abs{\hat{p}_{i,t}}}} \!\le\! M_{i,t}Z_{i,t}\alpha \lossp{\gamma,i,t}(\vu_i)
@@ -214,8 +220,11 @@ M_{i,t}&Z_{i,t}{\paren{\alpha\gamma \!-\!\abs{\hat{p}_{i,t}}}} \!\le\! M_{i,t}Z_
 \frac{M_{i,t}Z_{i,t}}{2}\normt{\vwi{i,t\!-\!1}\!-\!\vwiit}\!.
 \end{split}
 \end{equation*} 
- Yet, in the other cases,  when,  $M_{i,t}Z_{i,t}=0$,
-the equality $\vwiit=\vwi{i,t-1}$ holds as well, so we can rid off the indicator for the last three terms and we have
+
+ Yet, in the other cases,  when no update is performed and  $M_{i,t}Z_{i,t}=0$,
+the equality $\vwiit=\vwi{i,t-1}$ holds as well, so we can rid off the indicator for any one of the last three 
+terms and we have
+
 \begin{equation}
 \begin{split}
 M_{i,t}Z_{i,t}{\paren{\alpha\gamma +\abs{\hat{p}_{i,t}}}} \le M_{i,t}&Z_{i,t}\alpha \lossp{\gamma,i,t}(\vu_i)+\\ 
@@ -223,8 +232,10 @@ M_{i,t}Z_{i,t}{\paren{\alpha\gamma +\abs{\hat{p}_{i,t}}}} \le M_{i,t}&Z_{i,t}\al
 \frac{M_{i,t}Z_{i,t}}{2}\normt{\vwi{i,t-1}-\vwiit}.
 \end{split}
 \end{equation}\label{step_1_in_proof} 
+
 Next, we sum the inequality above, over $t$,  recall the facts that
-$\vwi{i,0}=0$ and $\normt{\vwi{i,t-1}-\vwiit}\le X^2$ to get,
+$\vwi{i,0}=0$ and $\normt{\vwi{i,t-1}-\vwiit}\le X^2$ for $X=\max_{i,t}\Vert\vxiit\Vert$ to get,
+
 \begin{equation}
 \begin{split}
 \sum_{t=1}^{n}{M_{i,t}Z_{i,t}{\paren{\alpha\gamma+\abs{\hat{p}_{i,t}}-\frac{X^2}{2}}}}
@@ -242,7 +253,7 @@ in \eqref{step_2_in_proof}, we get
 +\frac{\left({2b+X^2}\right)^2}{8{\gamma}^2}\normt{\vu_i}.
 \end{split}
 \end{equation*} 
-We subtract a non negative quantity $\sum_{t=1}^{n}M_{i,t}Z_{i,t}
+Now, we subtract a non negative quantity $\sum_{t=1}^{n}M_{i,t}Z_{i,t}
 {{\min_j{\abs{\hat{p}_{j,t}}}}}$ from the l.h.s. and get,
 \begin{equation}
 \begin{split}
@@ -265,6 +276,7 @@ We start with the left term,
 &\mathbb{E}\brackets{\sum_{t=1}^{n}{\frac{M_{i,t}}{D_{t}}}}~.
 \end{split}
 \end{align*}
+
 Substituting the last term in the expectation of
 \eqref{step_2_in_proof}, % we get,
 \begin{equation}
@@ -274,6 +286,7 @@ Substituting the last term in the expectation of
     \vui{i} \right\Vert}^2~.
 \label{step_3_in_proof}
 \end{equation} 
+
 Since that the normalization factor is a sum of positive components,
 hence $D_t$ is maximal when each of the components gets its maximal
 value. This happens when $\left\vert \hat{p}_{m,t}
@@ -281,27 +294,42 @@ value. This happens when $\left\vert \hat{p}_{m,t}
 m,j \in\{1,..,K\}$. This allows us to bound the normalization factor as
 follows,
 \begin{equation}
-\begin{split}
 D_{t}=\sum_{m=1}^{K}{\left({b+\left\vert \hat{p}_{m,t}
       \right\vert-\min_{j}{\left\vert \hat{p}_{j,t}
-        \right\vert}}\right)^{-1}}& \le \\ \sum_{m=1}^{K}{b^{-1}}&=K/b~.
-\end{split}
+        \right\vert}}\right)^{-1}} \le \sum_{m=1}^{K}{b^{-1}}=\frac{K}{b}~.
 \label{bound_D}
 \end{equation}
-Plugging \eqref{bound_D} in \eqref{step_3_in_proof} we get,
+
+
+Since $M_{i,t}>0 ~\forall{i,t}$, thus there exists $\delta_i\in\reals>0$ such that 
+\begin{equation}
+\label{eq:introducing_delta}
+\mathbb{E}\brackets{\sum_{t=1}^{n}{\frac{M_{i,t}}{D_{t}}}} = 
+\frac{b}{\delta_i}\mathbb{E}\brackets{\sum_{t=1}^{n}{M_{i,t}}}.
+\end{equation}
+and
+\[
+\frac{b}{\delta_i} \geq \min\frac{1}{D_t}  = \frac{1}{\max D_t}  \geq 
+\frac{b}{K}~.
+\]
+Which implies that $0<\delta_i\le K$.\\
+Plugging \eqref{eq:introducing_delta} in \eqref{step_3_in_proof} we get,
 \begin{equation}\label{eq:bound_for_i}
-\mathbb{E}\left[ \sum_{t=1}^{n}{M_{i,t}\frac{b}{K}} \right]
+\frac{b}{\delta_i}\mathbb{E}\left[ \sum_{t=1}^{n}{M_{i,t}} \right]
 \le \frac{2b+X^2}{2\gamma}{\bar L}_{\gamma,i,n}(\vui{i})+\frac{\left({2b+X^2}\right)^2}{8{\gamma}^2}{\left\Vert \vui{i} \right\Vert}^2.
 \end{equation}
-Summing up the last inequality over all $K$ tasks concludes the proof.
+Summing up the last inequality over all $K$ tasks and setting $\delta
+= \max_i \delta_i$ yields, 
 \begin{equation}
 \begin{split}
 \frac{1}{K}\mathbb{E}\left[ \sum_{i=1}^{K}\sum_{t=1}^{n}{M_{i,t}} \right]
 \le\frac{1}{\gamma}\left(1+\frac{X^2}{2b} \right){\bar L}_{\gamma,n}+
-\frac{\left({2b+X^2}\right)^2}{8{\gamma}^2b}\sum_{i=1}^{K}{{\left\Vert \vui{i} \right\Vert}^2}~.
+\frac{\left({2b+X^2}\right)^2}{8{\gamma}^2b}\sum_{i=1}^{K}{{\left\Vert \vui{i} 
+\right\Vert}^2}~,
 \end{split}
 \label{final_eq}
 \end{equation}
+which concludes the proof.
 \QED
 \end{proof}
 
@@ -579,7 +607,8 @@ Summing up the last inequality over all $K$ tasks concludes the proof.
 \section{prior distribution over tasks}
 
 We saw before that $b$ is a tradeoff parameter between  exploitation and uniform  distribution over the tasks (exploration). It is possible that we have prior knowledge about the tasks, which tasks are harder than the others. In this case, we would like to add this prior knowledge to the distribution such that in the exploration will be done with  a prior distribution.       
-
+\fbox{Try to simulate the algorithm with varying in time $a_i$ prion that uses the distance between the centers of queried labeles of the task
+devided by the variance of the tasks in each direction or divided by the distance between the two most far examples   }
 In order to do that we change the probability to be 
 
 \begin{equation*}
