@@ -1,5 +1,22 @@
 \chapter{SHMPO (SHared Annotator for Multiple Problems) Algorithms}
 
+We now describe algorithms for multi-task learning with
+a shared annotator setting, that uses linear models. Two steps are
+yet to be specified: how to pick a task to be labeled  and how to
+perform an update, once the true label for that task is given.
+Our first algorithm is based on the perceptron algorithm 
+
+\section{SHAMPO perceptron}
+
+We focus now on linear-functions of the form $f(\vx)=\sign(p)$ for the
+quantity $p=\vwt\vx$, $\vw\in\reals^d$,  which often called the
+\textit{margin}.
+Specifically, the algorithm maintains a set of $K$ weight
+vectors, $\vwi{i,t},~i\in\braces{1\comdots K}$. On round $t$, the algorithm predicts a label for each
+ one of the tasks, $\hyi{i,t}=\sign(\hat{p}_{i,t})$ where $\hat{p}_{i,t}=\vwti{i,t-1}\vxii$. 
+ On rounds for which the label of some problem $J_t$ is queried, the algorithm update the model of the
+ queried task only, such that for the rest of the tasks we have $\vwi{i,t}=\vwi{i,t-1}$ for $i\neq J_t$ and no
+ update is made for the unqueried tasks. 
 
 
 \label{sec:alg}
@@ -34,22 +51,6 @@ D_t &=
 
 
 
-We now describe algorithms for multi-task learning with
-a shared annotator setting, that uses linear models. Two steps are
-yet to be specified: how to pick a task to be labeled  and how to
-perform an update, once the true label for that task is given.
-Our first algorithm is based on the perceptron algorithm 
-\
-
-\section{SHAMPO perceptron}
-
-We focus now on linear-functions of the form $f(\vx)=\sign(p)$ for the
-quantity $p=\vwt\vx$, $\vw\in\reals^d$,  which often called the
-\textit{margin}. Specifically, the algorithm maintains a set of $K$ weight
-vectors, $\vwi{i,t},~i\in\braces{1\comdots K}$. On round $t$, the algorithm predicts a label for each one of the tasks, $\hyi{i,t}=\sign(\hat{p}_{i,t})$ where $\hat{p}_{i,t}=\vwti{i,t-1}\vxii$. On rounds for which the label of
-some problem $J_t$ is queried, the algorithm update the model of the queried task only, such that for the rest of the tasks   we have
-$\vwi{i,t}=\vwi{i,t-1}$ for $i\neq J_t$ and no update is made for the unqueried tasks. 
-
 We say that the algorithm has a prediction mistake on task $i$ in round $t$ if
 $\yi{i,t} \neq \hyi{i,t}$, and denote this event by the indicator $M_{i,t}=1$,
 otherwise, if there is no mistake, we set $M_{i,t}=0$. The goal of the
@@ -57,7 +58,7 @@ algorithm is to minimize the cumulative mistakes, $\sum_t \sum_i
 M_{i,t}$. Models are also evaluated using the
 {\em Hinge-loss}. Specifically, let $\vui{i}\in\reals^d$ be some vector
 associated with problem $i$. We denote the Hinge-loss \fbox{show hinge loss plot} of it, with respect
-to some input-label by,
+to some input-label  pair $\paren{\vxiit,\yiit}$ by,
 $\lossp{\gamma,i,t}(\vui{i})= \paren{\gamma-\yiit
   \vuti{i}\vxiit}_{+}$, where, $(x)_+=\max\{x,0\}$, and $\gamma>0$ is
 some parameter. The cumulative loss over all problems and a sequence of
@@ -67,19 +68,24 @@ L_{\gamma,n} =L_{\gamma}(\{ \vui{i} \})=\sum_{t=1}^{n} \sum_{i=1}^{K}\ {\lossp{\
 $. %\end{equation}  
 We also use the following expected hinge-loss over the random queried choices
 of the algorithm, 
-$ % \begin{equation}
-\bar{L}_{\gamma,n}=\bar{L}_{ \{ \vui{i}\}}=\mathbb{E}{\sum_t^n \sum_{i=1}^{K}{M_{i,t}Z_{i,t}\lossp{\gamma,i,t}(\vui{i})}}
-$.  %\end{equation}
-Now, we proceed by  describing our algorithm     and specify how to choose a problem to query its label, and how to perform an update.
+\begin{equation}
+\bar{L}_{\gamma,n}=\bar{L}_{ \{ \vui{i}\}}
+=\Exp{\sum_t^n \sum_{i=1}^{K}{M_{i,t}Z_{i,t}\lossp{\gamma,i,t}(\vui{i})}}. 
+ \end{equation}
+Now, we proceed by  describing our algorithm     and specify how to choose a problem to query its label,
+ and how to perform an update.
 
 
 
 In order to select a problem, the algorithm uses the absolute margin
-$\hat{p}_{i,t}$, intuitively. We can see $\abs{\hat{p}_{i,t}}$ as the certainty measure of the label prediction.  If $\abs{\hat{p}_{i,t}}$ is small,
+$\hat{p}_{i,t}$, intuitively. We can see $\abs{\hat{p}_{i,t}}$ as the certainty measure of the label prediction.
+ If $\abs{\hat{p}_{i,t}}$ is small,
 then there is uncertainty about the labeling of $\vxi{i,t}$, and
-when $\abs{\hat{p}_{i,t}}$ is large, we say that we have high certainty in our label prediction. Similar argument was used by Tong and Koller~\cite{DBLP:conf/icml/TongK00} for picking an example to be labeled in batch active learning. Prima facie, under this claim, at each point we should query the true label for the task that corresponds to the smallest margin.  Yet, if the
-model $\vwi{i,t-1}$ is not accurate enough, due to small number of
-observed examples, this estimation may be rough, and may lead to a wrong
+when $\abs{\hat{p}_{i,t}}$ is large, we say that we have high certainty in our label prediction. 
+Similar argument was used by ~\cite{DBLP:conf/icml/TongK00} for picking an example to be labeled in 
+batch active learning. Prima facie, under this claim, at each point we should query the true label for the task
+ that corresponds to the smallest margin.  Yet, if the model $\vwi{i,t-1}$ is not accurate enough, due to
+ small number of observed examples, this estimation may be rough, and may lead to a wrong
 conclusion. We thus perform an exploration-exploitation strategy, and
 query problems randomly, with a bias towards problems with low 
 $\vert \hat{p}_{i,t} \vert$. 

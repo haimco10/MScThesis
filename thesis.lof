@@ -1,8 +1,7 @@
 \select@language {english}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {\@@number {\@@number {2}.\@@number {1}}}{\ignorespaces Illustration of a single iteration of multi-task algorithms (a) standard setting, shared annotator labels all inputs, and algorithms update models. (b) SHAMPO algorithm couples labeling annotation and learning process, and synchronizes a single annotation per round.}}{\@@number {7}}{figure.2.1}
-\contentsline {figure}{\numberline {\@@number {\@@number {2}.\@@number {2}}}{\ignorespaces In selective sampling we focus on when to issue a query for a single task (a row), while in the SHAMPO setting we COMPLETE THIS SENTENCE }}{\@@number {8}}{figure.2.2}
+\contentsline {figure}{\numberline {\@@number {\@@number {2}.\@@number {1}}}{\ignorespaces Illustration of a single iteration of multi-task algorithms (a) standard setting, shared annotator labels all inputs, and algorithms update models. (b) SHAMPO algorithm couples labeling annotation and learning process, and synchronizes a single annotation per round.}}{\@@number {8}}{figure.2.1}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {\@@number {\@@number {3}.\@@number {1}}}{\ignorespaces SHAMPO: SHared Annotator for Multiple PrOblems. }}{\@@number {10}}{figure.3.1}
 \contentsline {figure}{\numberline {\@@number {\@@number {3}.\@@number {2}}}{\ignorespaces Example for the using of the margin as a certainty measure. The circles and crosses represent two different classes and the separate hyperplane is shown. One of the circles examples have lower margin than the other, so its label can easily been replaced with the other one.}}{\@@number {11}}{figure.3.2}
