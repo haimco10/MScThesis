@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  15 SEP 2015 14:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  15 SEP 2015 17:13
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -457,9 +457,6 @@ LaTeX Warning: Label `thm:FO_bound_aggressive' multiply defined.
 
 
 LaTeX Warning: Label `eq:bound_for_i' multiply defined.
-
-
-LaTeX Warning: Label `final_eq' multiply defined.
 
 
 LaTeX Warning: Label `eq:adaptive_b_first_step' multiply defined.
@@ -964,75 +961,76 @@ Underfull \hbox (badness 10000) in paragraph at lines 501--509
  []
 
 [20] [21]
-Underfull \hbox (badness 10000) in paragraph at lines 625--629
+Underfull \hbox (badness 10000) in paragraph at lines 626--630
 
  []
 
 
-Overfull \hbox (859.36157pt too wide) in paragraph at lines 632--636
-\OT1/ptm/m/n/10.95 done with a prior dis-tri-bu-tion. []
+Overfull \hbox (726.12334pt too wide) in paragraph at lines 633--642
+[]
  []
 
 [22]
-Underfull \hbox (badness 10000) in paragraph at lines 663--665
+Underfull \hbox (badness 10000) in paragraph at lines 669--671
 
  []
 
-[23]
-Underfull \hbox (badness 10000) in paragraph at lines 721--725
+[23] [24]
+Underfull \hbox (badness 10000) in paragraph at lines 747--751
 
  []
 
-[24]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 727.
+(hyperref)                removing `math shift' on input line 758.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 727.
+(hyperref)                removing `math shift' on input line 758.
+
+[25]
+
+LaTeX Warning: Reference `thm:bound' on page \@@number{26} undefined on input l
+ine 765.
 
 
-LaTeX Warning: Reference `thm:bound' on page \@@number{25} undefined on input l
-ine 734.
-
-
-Overfull \hbox (19.05771pt too wide) in paragraph at lines 745--745
+Overfull \hbox (19.05771pt too wide) in paragraph at lines 776--776
 [] 
  []
 
-[25] [26] [27] [28] [29] [30]
-Underfull \hbox (badness 10000) in paragraph at lines 932--934
+[26] [27] [28] [29] [30]
+Underfull \hbox (badness 10000) in paragraph at lines 963--965
 
  []
 
 
-Overfull \hbox (18.9791pt too wide) in paragraph at lines 944--944
+Overfull \hbox (18.9791pt too wide) in paragraph at lines 975--975
 [] 
  []
 
 [31] [32] [33] [34] [35]
-Overfull \hbox (22.26526pt too wide) in paragraph at lines 1108--1108
+Overfull \hbox (22.26526pt too wide) in paragraph at lines 1139--1139
 [] 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 1122
+[36]
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 1153
 .
-(/usr/local/texlive/2014/texmf-dist/tex/latex/psnfss/omsptm.fd
+ (/usr/local/texlive/2014/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 1122.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 1153.
 
 )
-(./Second_Order_SHAMPO.tex [36]
+(./Second_Order_SHAMPO.tex [37]
 Chapter 4.
 
 Underfull \hbox (badness 10000) in paragraph at lines 59--63
 
  []
 
-[37
+[38
 
 ]
 Overfull \hbox (36.56804pt too wide) in paragraph at lines 84--84
@@ -1044,12 +1042,12 @@ Overfull \hbox (51.95059pt too wide) in paragraph at lines 92--92
 [] 
  []
 
-[38] [39] [40] [41] [42]
+[39] [40] [41] [42] [43]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 229.
- [43]
+ [44]
 
-LaTeX Warning: Reference `thm:bound' on page \@@number{44} undefined on input l
+LaTeX Warning: Reference `thm:bound' on page \@@number{45} undefined on input l
 ine 238.
 
 
@@ -1071,9 +1069,9 @@ s-one\OT1/ptm/m/n/10.95 , the al-go-rithm picks two la-bels $[]\OML/cmm/m/it/10
 .95 ; [] \OMS/cmsy/m/n/10.95 2$
  []
 
-[44]
+[45]
 
-LaTeX Warning: Reference `thm:bound' on page \@@number{45} undefined on input l
+LaTeX Warning: Reference `thm:bound' on page \@@number{46} undefined on input l
 ine 264.
 
 
@@ -1083,9 +1081,9 @@ ng that, $\OT1/cmr/m/n/10.95 [ [[]] ] \OMS/cmsy/m/n/10.95 ^^T [] [][] \OML/cmm/
 m/it/10.95 M[]$\OT1/ptm/m/n/10.95 .
  []
 
-) [45] (./thesis.bbl)
+) [46] (./thesis.bbl)
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 113.
- [46
+ [47
 
 
 ]
@@ -1105,10 +1103,10 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 113.
  ) 
 Here is how much of TeX's memory you used:
- 9224 strings out of 493117
- 127617 string characters out of 6135433
- 237417 words of memory out of 5000000
- 12305 multiletter control sequences out of 15000+600000
+ 9229 strings out of 493117
+ 127704 string characters out of 6135433
+ 237616 words of memory out of 5000000
+ 12308 multiletter control sequences out of 15000+600000
  40774 words of font info for 105 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,26n,40p,1874b,417s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1130,10 +1128,10 @@ fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2014/texmf-d
 ist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/
 type1/urw/times/utmr8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/
 times/utmri8a.pfb>
-Output written on ./thesis.pdf (58 pages, 368220 bytes).
+Output written on ./thesis.pdf (59 pages, 369882 bytes).
 PDF statistics:
- 627 PDF objects out of 1000 (max. 8388607)
- 531 compressed objects within 6 object streams
- 152 named destinations out of 1000 (max. 500000)
+ 633 PDF objects out of 1000 (max. 8388607)
+ 536 compressed objects within 6 object streams
+ 154 named destinations out of 1000 (max. 500000)
  144 words of extra memory for PDF output out of 10000 (max. 10000000)
 

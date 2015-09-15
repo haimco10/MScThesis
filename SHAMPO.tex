@@ -477,7 +477,7 @@ D_t &=
   If Aggressive SHAMPO algorithm runs on $K$ problems with $K$ parallel example pair
   sequences
   $(\vxi{i,1},y_{i,1}),...(\vxi{i,n},y_{i,n})\in\mathbb{R}^d\times\{-1,1\}$,
-  $i=1,...,K$ with input parameters $b>0$, and $\lambda>0$ then for all $\gamma>0$, all
+  $i=1,...,K$ with input parameters $b>0$, and $0 \le \lambda \le b/2$ then for all $\gamma>0$, all
   $\vui{i}\in\mathbb{R}^d$ and all $n\ge1$, there exists $0<\delta\le K$, such that,
   
 \begin{displaymath}
@@ -500,7 +500,7 @@ which can be negative.
 
 In order to achieve tighter bound on the expected cumulative mistakes than we had in the regular SHAMPO 
 perceptron algorithm (\sthmref{bound_FO_SHAMPO}), we need to restrict the aggressive margin  $\lambda$ 
-to be $\lambda<b/2$. Indeed, one can say that this bound shows that the best choice of $\lambda$ is 
+to be $\lambda\le b/2$. Indeed, one can say that this bound shows that the best choice of $\lambda$ is 
 $\lambda=0$, i.e. it seems that aggressive update is not a good idea. However, in this case, 
 $A_{i,t}=0,~ \forall i,t$ which means that this would not be the best choice. 
 This discrimination actually shows  that there is a sweet point where $0<\lambda<b/2$ such that the 
@@ -600,6 +600,7 @@ Substituting the last term in the expectation of
 Now we bound the factor that is multiplied by $A_{i,t}$ using the fact that $A_{i,t}=1$ only when 
 $\abs{\hat{p}_{i,t}}<\lambda$ ,
 \begin{equation}
+\label{eq:bound_on_agressive_multiplier}
 \paren{1-2\frac{\lambda}{b}}=\frac{b-2\lambda}{b} \le\frac{b-\abs{\hat{p}_{i,t}}-\min_{j}{\abs{\hat{p}_{j,t}} }}{b+\abs{\hat{p}_{i,t}}-\min_{j}{\abs{\hat{p}_{j,t}}}}\le1.
 \end{equation}
 As stated before, there exists $\delta_i\in\reals,~ 0<\delta_i\le K$ such that \eqref{eq:introducing_delta}
@@ -629,9 +630,14 @@ Which concludes the proof
 
 \section{prior distribution over tasks}
 
-We saw before that $b$ is a tradeoff parameter between  exploitation and uniform  distribution over the tasks (exploration). It is possible that we have prior knowledge about the tasks, which tasks are harder than the others. In this case, we would like to add this prior knowledge to the distribution such that in the exploration will be done with  a prior distribution.       
+We saw before that $b$ is a tradeoff parameter between  exploitation and uniform  distribution over the 
+tasks (exploration). It is possible that we have prior knowledge about the tasks, which tasks are harder than 
+the others. In this case, we would like to add this prior knowledge to the distribution such that in the 
+exploration will be done with  a prior distribution. This is especially important in the first steps of the 
+algorithms when instead starting in pure uniform exploration (since we initialize our model vectors, $\vwi{i,0}=\vzero$)  
+we can start with a reasonable prior distribution.
 \fbox{Try to simulate the algorithm with varying in time $a_i$ prion that uses the distance between the centers of queried labeles of the task
-devided by the variance of the tasks in each direction or divided by the distance between the two most far examples   }
+divided by the variance of the tasks in each direction or divided by the distance between the two most far examples   }
 In order to do that we change the probability to be 
 
 \begin{equation*}
@@ -663,7 +669,13 @@ random choices of the algorithm.
 This bound brings an advantage and disadvantage. We can reduce the last term in the bound choosing the right weights for $a_i$, but then, we suffer the factor of $\sum_{j=1}^Ka_{j}$ in rest part of the bound. 
 \\
 \begin{proof}
-We follow the proof of \sthmref{bound_aggressive_FO_SHAMPO} until \eqref{eq:step_3_in_proof_agressive}, than we take the expectation of this term.First, we take the expectation of the left hand side where now the conditional expectation of $Z_{i,t}$ is $\brackets{a_{i}(b+|\hat{p}_{i,t}|-\min_j| \hat{p}_{j,t}|)^{-1}}/D_{t}$. Doing that, the expectation becomes 
+We follow the proof of \sthmref{bound_aggressive_FO_SHAMPO} until \eqref{eq:step_3_in_proof_agressive}, 
+than we take the expectation of this term. First, we take the expectation of the left hand side 
+where now the conditional expectation of $Z_{i,t}$ changed to 
+\[
+\mathbb{E}\brackets{Z_{i,t}}=\frac{1}{D_{t}}\frac{a_{i}}{\paren{b+\abs{\hat{p}_{i,t}}-\min_{m=1}^K\abs{\hat{p}_{m,t}}}}.
+\]
+Doing that, the expectation becomes
 \begin{align*}
 \begin{split}
 &\mathbb{E}\brackets{\sum_{t=1}^{n}U_{i,t}Z_{i,t}{\paren{b-y_{i,t}\hat{p}_{i,t}-\min_{j}{\abs{ \hat{p}_{j,t}}}}}} \\
@@ -671,7 +683,7 @@ We follow the proof of \sthmref{bound_aggressive_FO_SHAMPO} until \eqref{eq:step
 &=\mathbb{E}\brackets{\sum_{t=1}^{n}{\frac{a_{i}}{D_{t}}\paren{M_{i,t}+\frac{b-\abs{\hat{p}_{j,t}}-\min_{j}{\abs{\hat{p}_{j,t}} }}{b+\abs{\hat{p}_{j,t}}-\min_{j}{\abs{\hat{p}_{j,t}}}}A_{i,t} }}}~.
 \end{split}
 \end{align*}
-Reminding that $a_{i} >0$ we can bound $M_{i,t} \le M_{i,t}a_{i}$ and get 
+Reminding that $a_{i} \ge 1 \forall i$, we can bound $M_{i,t} \le M_{i,t}a_{i}$ and get 
 \begin{equation}
 \begin{split}
 \mathbb{E}\left[ \sum_{t=1}^{n}{\frac{1}{D_{t}}}\paren{M_{i,t}+\frac{b-\abs{\hat{p}_{j,t}}-\min_{j}{\abs{\hat{p}_{j,t}} }}{b+\abs{\hat{p}_{j,t}}-\min_{j}{\abs{\hat{p}_{j,t}}}}A_{i,t}a_{i} } \right]
@@ -681,48 +693,67 @@ Reminding that $a_{i} >0$ we can bound $M_{i,t} \le M_{i,t}a_{i}$ and get
 \label{step_3_in_proof_prior}
 \end{split}
 \end{equation}
-Now we bound the factor that is multiplied by $A_{i,t}$ as follows,
-\begin{equation*}
-\paren{1-2\frac{\lambda}{b}}a_{i}=\frac{b-2\lambda}{b} a_{i}\le\frac{b-\abs{\hat{p}_{j,t}}-\min_{j}{\abs{\hat{p}_{j,t}} }}{b+\abs{\hat{p}_{j,t}}-\min_{j}{\abs{\hat{p}_{j,t}}}}a_{i}.
-\end{equation*}
+We use now the same bound as in \eqref{eq:bound_on_agressive_multiplier}
+and plug it into the left side of the inequality,
 
-As stated before, the    normalization factor can be bounded as
-follows,
-\begin{equation*}
+\begin{multline*}
+\mathbb{E}\brackets{\sum_{t=1}^{n}{\frac{1}{D_{t}}}\paren{M_{i,t}+\paren{1-2\frac{\lambda}{b}}A_{i,t}a_{i} }}
+\le \\
+\mathbb{E}\left[ \sum_{t=1}^{n}{\frac{1}{D_{t}}}\paren{M_{i,t}+\frac{b-\abs{\hat{p}_{j,t}}-\min_{j}{\abs{\hat{p}_{j,t}} }}{b+\abs{\hat{p}_{j,t}}-\min_{j}{\abs{\hat{p}_{j,t}}}}A_{i,t}a_{i} } \right].
+\end{multline*}
+
+Since $b/2 \geq \lambda$ we have that
+$M_{i,t}+\paren{1-2\frac{\lambda}{b}}A_{i,t}a_{i}\geq 0$, thus there
+exists $\delta_i$ such that, 
+
+\begin{multline}
+  \label{eq:bound_delta_prior}
+\mathbb{E}\left[
+  \sum_{t=1}^{n}{\frac{1}{D_{t}}}\paren{M_{i,t}+\paren{1-2\frac{\lambda}{b}}A_{i,t}a_{i}
+  } \right]= \\
+  \frac{b}{\delta_i}\mathbb{E}\left[
+  \sum_{t=1}^{n}\paren{M_{i,t}+\paren{1-2\frac{\lambda}{b}}A_{i,t}a_{i}
+  } \right] ~,
+\end{multline}
+
+and 
+\[
+\frac{b}{\delta_i} \geq \min\frac{1}{D_t}  = \frac{1}{\max D_t}  \geq \frac{b}{\sum_{j=1}^Ka_{j}}~,
+\]
+where the last inequality follows from,
+\begin{equation}\label{eq:bound_D}
 D_{t}=\sum_{j=1}^K\frac{a_{j}}{\paren{b+\abs{\hat{p}_{j,t}}-\min_{m=1}^K\abs{\hat{p}_{m,t}}}}\le \frac{\sum_{j=1}^Ka_{j}}{b}.
-\end{equation*}
-Plugging \eqref{bound_D} in \eqref{step_3_in_proof} we get,
-\begin{equation}\label{eq:bound_for_i}
-\begin{split}
-\mathbb{E}\left[ \sum_{t=1}^{n}{M_{i,t}\frac{b}{\sum_{j=1}^Ka_{j}}} \right]
-\le& \frac{2b+X^2}{2\gamma}{\bar L}_{\gamma,i,n}(\vui{i})\\
-+\frac{\left({2b+X^2}\right)^2}{8{\gamma}^2}{\left\Vert \vui{i} \right\Vert}^2&+\paren{2\frac{\lambda}{b}-1}a_{i}\mathbb{E}\brackets{\sum_{t=1}^{n}{A_{i,t}\frac{b}{\sum_{j=1}^Ka_{j}}}}.
-\end{split}
 \end{equation}
-Summing up the last inequality over all $K$ tasks concludes the proof.
-\begin{equation}
-\begin{split}
-\frac{1}{\sum_{j=1}^Ka_{j}}\mathbb{E}\left[ \sum_{i=1}^{K}\sum_{t=1}^{n}{M_{i,t}} \right]
-\le\frac{1}{\gamma}\left(1+\frac{X^2}{2b} \right){\bar L}_{\gamma,n}+
-\frac{\left({2b+X^2}\right)^2}{8{\gamma}^2b}\sum_{i=1}^{K}{{\left\Vert \vui{i} \right\Vert}^2}+\\ \frac{1}{\sum_{j=1}^Ka_{j}}\paren{2\frac{\lambda}{b}-1}\mathbb{E}\brackets{\sum_{i=1}^{K}a_{i}\sum_{t=1}^{n}{A_{i,t}}}~.
-\end{split}
-\label{final_eq}
-\end{equation}
+The previous bound implies that $0<\delta_i\le\sum_{i=1}^Ka_{i  }$.
 
-\begin{equation}
+Combining \eqref{step_3_in_proof_prior} and \eqref{eq:bound_delta_prior}, 
+\begin{multline}
+\label{eq:bound_for_i}
+\frac{b}{\delta_i}\mathbb{E}\left[ \sum_{t=1}^{n}{M_{i,t}} \right]
+\le \frac{2b+X^2}{2\gamma}{\bar L}_{\gamma,i,n}(\vui{i}) 
+\\+\frac{\left({2b+X^2}\right)^2}{8{\gamma}^2}{\left\Vert \vui{i} \right\Vert}^2 
++\frac{b}{\delta_i}\paren{2\frac{\lambda}{b}-1}a_{i}\mathbb{E}\brackets{\sum_{t=1}^{n}{A_{i,t}}}.
+\end{multline}
+Summing up the last inequality over all $K$ tasks and setting $\delta
+= \max_i \delta_i$ yields,
+\begin{equation}\label{eq:final_eq}
 \begin{split}
 \mathbb{E}\left[ \sum_{i=1}^{K}\sum_{t=1}^{n}{M_{i,t}} \right]
-\le\frac{\sum_{j=1}^Ka_{j}}{\gamma}\brackets{\left(1+\frac{X^2}{2b} \right){\bar L}_{\gamma,n}+
+\le&\frac{\delta}{\gamma }\brackets{\left(1+\frac{X^2}{2b} \right){\bar L}_{\gamma,n}+
 \frac{\left({2b+X^2}\right)^2}{8{\gamma}b}\sum_{i=1}^{K}{{\left\Vert \vui{i} \right\Vert}^2}}\\ 
-+
-\paren{2\frac{\lambda}{b}-1}\mathbb{E}\brackets{\sum_{i=1}^{K}\sum_{t=1}^{n}{a_{i}A_{i,t}}}~.
+&+
+\paren{2\frac{\lambda}{b}-1}\mathbb{E}\brackets{\sum_{i=1}^{K}\sum_{t=1}^{n}{a_{i}A_{i,t}}}~,
 \end{split}
-\label{final_eq_prior}
 \end{equation}
-We see that when this  bound is a global bound for the last two algorithms. If we set $a_i=1, ~~\forall i\in\braces{1,\cdots,K}$ we get the same bound as  SHAMPO aggressive algorithm and if we update only when a prediction mistake ia accours, it means that $A_{i,t}=0,~~\forall i\in\braces{a,\cdots,K},t>0$ and we get the bound of  the ordinary SHAMPO perceptron algorithm  .
+which concludes the proof.
 \QED
 \end{proof}
 
+We see that when this  bound is a global bound for the last two algorithms. 
+If we set $a_i=1, ~~\forall i\in\braces{1,\cdots,K}$ we get the same bound as  SHAMPO aggressive 
+algorithm and if we update only when a prediction mistake occurs, it means that 
+$A_{i,t}=0,~~\forall i\in\braces{a,\cdots,K},t>0$ and we get the bound of  the ordinary 
+SHAMPO perceptron algorithm.
 
 \section{SHAMPO perceptron with Adaptive $b$ parameter}
 
