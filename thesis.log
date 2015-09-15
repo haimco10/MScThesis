@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  12 SEP 2015 23:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  15 SEP 2015 14:58
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -453,9 +453,6 @@ LaTeX Warning: Label `step_2_in_proof' multiply defined.
 LaTeX Warning: Label `alg:SHAMPO_FO' multiply defined.
 
 
-LaTeX Warning: Label `final_eq' multiply defined.
-
-
 LaTeX Warning: Label `thm:FO_bound_aggressive' multiply defined.
 
 
@@ -798,109 +795,234 @@ Overfull \hbox (0.77461pt too wide) in paragraph at lines 222--222
  []
 
 [14] [15]
-Underfull \hbox (badness 10000) in paragraph at lines 331--335
+Underfull \hbox (badness 10000) in paragraph at lines 333--337
 
  []
 
 
 LaTeX Warning: Reference `bound' on page \@@number{16} undefined on input line 
-347.
+349.
 
 [16]
-Overfull \hbox (7.63118pt too wide) in paragraph at lines 372--375
+
+LaTeX Warning: Reference `update_rule' on page \@@number{17} undefined on input
+ line 366.
+
+
+LaTeX Warning: Reference `update_rule' on page \@@number{17} undefined on input
+ line 373.
+
+
+Overfull \hbox (7.63118pt too wide) in paragraph at lines 375--378
 \OT1/ptm/m/it/10.95 stead of only a sin-gle prob-lem, the ex-pected cu-mu-la-ti
 ve weighted mis-takes is bounded
  []
 
 
 LaTeX Warning: Reference `thm:bound' on page \@@number{17} undefined on input l
-ine 386.
+ine 390.
 
 
 LaTeX Warning: Reference `thm:bound' on page \@@number{17} undefined on input l
-ine 415.
+ine 419.
 
 
 LaTeX Warning: Reference `thm:bound' on page \@@number{17} undefined on input l
-ine 415.
+ine 419.
 
 [17]
 
 LaTeX Warning: Reference `prob' on page \@@number{18} undefined on input line 4
-44.
+60.
 
 
 LaTeX Warning: Reference `prob' on page \@@number{18} undefined on input line 4
-44.
+60.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[18]
-Underfull \hbox (badness 10000) in paragraph at lines 481--483
+./SHAMPO.tex:490: Missing } inserted.
+<inserted text> 
+                }
+l.490 \end{split}
+                 
+I've put in what seems to be necessary to fix
+the current column of the current alignment.
+Try to go on, since this might almost work.
+
+./SHAMPO.tex:490: Extra }, or forgotten \right.
+<template> }
+            $\endtemplate 
+l.490 \end{split}
+                 
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+./SHAMPO.tex:490: Missing \right. inserted.
+<inserted text> 
+                \right .
+l.490 \end{split}
+                 
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+./SHAMPO.tex:490: Missing } inserted.
+<inserted text> 
+                }
+l.490 \end{split}
+                 
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+./SHAMPO.tex:490: Extra \right.
+\brackets #1->\left [{#1}\right ]
+                                 
+l.490 \end{split}
+                 
+I'm ignoring a \right that had no matching \left.
+
+./SHAMPO.tex:490: Missing { inserted.
+<inserted text> 
+                {
+l.490 \end{split}
+                 
+I've put in what seems to be necessary to fix
+the current column of the current alignment.
+Try to go on, since this might almost work.
+
+./SHAMPO.tex:490: Missing } inserted.
+<inserted text> 
+                }
+l.490 \end{split}
+                 
+I've put in what seems to be necessary to fix
+the current column of the current alignment.
+Try to go on, since this might almost work.
+
+./SHAMPO.tex:490: Extra }, or forgotten \right.
+<template> }
+            $\endtemplate 
+l.490 \end{split}
+                 
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+./SHAMPO.tex:490: Missing \right. inserted.
+<inserted text> 
+                \right .
+l.490 \end{split}
+                 
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+./SHAMPO.tex:490: Missing } inserted.
+<inserted text> 
+                }
+l.490 \end{split}
+                 
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+./SHAMPO.tex:490: Extra \right.
+\brackets #1->\left [{#1}\right ]
+                                 
+l.490 \end{split}
+                 
+I'm ignoring a \right that had no matching \left.
+
+./SHAMPO.tex:490: Missing { inserted.
+<inserted text> 
+                {
+l.490 \end{split}
+                 
+I've put in what seems to be necessary to fix
+the current column of the current alignment.
+Try to go on, since this might almost work.
+
+[18] [19]
+Underfull \hbox (badness 10000) in paragraph at lines 501--509
 
  []
 
-[19] [20] [21]
-Underfull \hbox (badness 10000) in paragraph at lines 604--607
+[20] [21]
+Underfull \hbox (badness 10000) in paragraph at lines 625--629
 
  []
 
 
-Overfull \hbox (859.36157pt too wide) in paragraph at lines 610--614
+Overfull \hbox (859.36157pt too wide) in paragraph at lines 632--636
 \OT1/ptm/m/n/10.95 done with a prior dis-tri-bu-tion. []
  []
 
 [22]
-Underfull \hbox (badness 10000) in paragraph at lines 641--643
+Underfull \hbox (badness 10000) in paragraph at lines 663--665
 
  []
 
 [23]
-Underfull \hbox (badness 10000) in paragraph at lines 699--703
+Underfull \hbox (badness 10000) in paragraph at lines 721--725
 
  []
 
 [24]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 705.
+(hyperref)                removing `math shift' on input line 727.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 705.
+(hyperref)                removing `math shift' on input line 727.
 
 
 LaTeX Warning: Reference `thm:bound' on page \@@number{25} undefined on input l
-ine 712.
+ine 734.
 
 
-Overfull \hbox (19.05771pt too wide) in paragraph at lines 723--723
+Overfull \hbox (19.05771pt too wide) in paragraph at lines 745--745
 [] 
  []
 
 [25] [26] [27] [28] [29] [30]
-Underfull \hbox (badness 10000) in paragraph at lines 910--912
+Underfull \hbox (badness 10000) in paragraph at lines 932--934
 
  []
 
 
-Overfull \hbox (18.9791pt too wide) in paragraph at lines 922--922
+Overfull \hbox (18.9791pt too wide) in paragraph at lines 944--944
 [] 
  []
 
 [31] [32] [33] [34] [35]
-Overfull \hbox (22.26526pt too wide) in paragraph at lines 1086--1086
+Overfull \hbox (22.26526pt too wide) in paragraph at lines 1108--1108
 [] 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 1100
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 1122
 .
 (/usr/local/texlive/2014/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 1100.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 1122.
 
 )
 (./Second_Order_SHAMPO.tex [36]
@@ -983,9 +1105,9 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 113.
  ) 
 Here is how much of TeX's memory you used:
- 9225 strings out of 493117
- 127632 string characters out of 6135433
- 241465 words of memory out of 5000000
+ 9224 strings out of 493117
+ 127617 string characters out of 6135433
+ 237417 words of memory out of 5000000
  12305 multiletter control sequences out of 15000+600000
  40774 words of font info for 105 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1008,10 +1130,10 @@ fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2014/texmf-d
 ist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/
 type1/urw/times/utmr8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/
 times/utmri8a.pfb>
-Output written on ./thesis.pdf (58 pages, 367345 bytes).
+Output written on ./thesis.pdf (58 pages, 368220 bytes).
 PDF statistics:
- 629 PDF objects out of 1000 (max. 8388607)
- 533 compressed objects within 6 object streams
- 153 named destinations out of 1000 (max. 500000)
+ 627 PDF objects out of 1000 (max. 8388607)
+ 531 compressed objects within 6 object streams
+ 152 named destinations out of 1000 (max. 500000)
  144 words of extra memory for PDF output out of 10000 (max. 10000000)
 

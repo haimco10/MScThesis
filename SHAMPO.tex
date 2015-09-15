@@ -320,9 +320,11 @@ Plugging \eqref{eq:introducing_delta} in \eqref{step_3_in_proof} we get,
 \end{equation}
 Summing up the last inequality over all $K$ tasks and setting $\delta
 = \max_i \delta_i$ yields, 
+\fbox{try to replace with $\min_i{\delta_i}\le\delta
+\le\max_i \delta_i$}  
 \begin{equation}
 \begin{split}
-\frac{1}{\delta_i}\mathbb{E}\left[ \sum_{i=1}^{K}\sum_{t=1}^{n}{M_{i,t}} \right]
+\frac{1}{\delta}\mathbb{E}\left[ \sum_{i=1}^{K}\sum_{t=1}^{n}{M_{i,t}} \right]
 \le\frac{1}{\gamma}\left(1+\frac{X^2}{2b} \right){\bar L}_{\gamma,n}+
 \frac{\left({2b+X^2}\right)^2}{8{\gamma}^2b}\sum_{i=1}^{K}{{\left\Vert \vui{i} 
 \right\Vert}^2}~,
@@ -348,10 +350,11 @@ Substituting this value in the bound of \eqref{bound} with
 $L_{\gamma,n}$ leads to the following bound, 
 \begin{equation*}
 \mathbb{E}\brackets{\sum_{i=1}^{K}\sum_{t=1}^{n}{M_{i,t}}}
-\le\frac{K}{\gamma}\brackets{L_{\gamma,n}+\frac{U^{2}X^2}{2\gamma}+\frac{U^{2}}{2\gamma}\sqrt{1+\frac{4\gamma L_{\gamma,n}}{U^{2}X^2}}}
+\le\frac{\delta}{\gamma}\brackets{L_{\gamma,n}+\frac{U^{2}X^2}{2\gamma}+\frac{U^{2}}{2\gamma}\sqrt{1+\frac{4\gamma L_{\gamma,n}}{U^{2}X^2}}}
 \end{equation*}
 which has the same dependency in the number of inputs $n$ as algorithm
 that observes all of them.
+\fbox{show this statement}
 
 
 We continue now with an analysis of an extension of our
@@ -382,6 +385,7 @@ ${\bar L}^\kappa_{\gamma,n}$ is the expected loss of $K$ models
 $\{\vui{i}\}$ over the $\kappa$ instances that are annotated per round
 $t$.
 \end{corollary}
+ \fbox{show full proof}
 \begin{proof}
   We follow the proof of \thmref{thm:bound} until \eqref{final_eq}. We
   repeat the process $\kappa$ times, and get the equivalent inequality
@@ -394,7 +398,7 @@ $t$.
 \end{split}
 \label{final_eq_k}
 \end{equation}
-where all expectations are now with respect to the sampling \fbox{without}
+where all expectations are now with respect to the sampling
 repetitions, and specifically ${\bar L}^\kappa_{\gamma,n}$ is the
 expected loss of a set of linear models $\{ \vui{i} \}$ where $\kappa$
 problems are sampled rather than a single one.
@@ -419,11 +423,23 @@ worse dependency in the number of tasks.
 
 \section{Aggressive version}
 
-So far we used the margin to build the distribution over the tasks,  but in the update stage we used the regular perceptron update rule, that makes an update only when there is a prediction mistake. However, we already said that the margin can tells us about the uncertainty in the prediction, so it may be helpful to proceed with this approach in the update stage as well. 
+So far we used the margin to build the distribution over the tasks,  but in the update stage,
+we used the same regular perceptron update rule, that makes an update only when there is a prediction 
+mistake. However, we already said that the margin can tells us about the uncertainty in the prediction, 
+so it may be helpful to proceed with this approach in the update stage as well and make the sharp update 
+threshold a little bit softer. 
 
-In this  version of SHAMPO algorithm, the update is been preformed not only when there is mistake, but also in the case of correct prediction with low margin. We set this margin to be $\lambda$. In addition to the previous mistake indicator, $M_{i,t}$,  we introduce one more  indicator,   $A_{i,t}$. we keep the notation of  $M_{i,t}=1$ when there is wrong prediction on the task $i$ in round $t$ and $M_{i,t}=0$ otherwise ,  and set $A_{i,t}=1$ when there is no prediction mistake on the task $i$ in round $t$, but the margin is low, i.e. $\abs{p_{i,t}}<\lambda,$ therefore , an aggressive update takes place, and zero otherwise. We  also define the update indicator which is $U_{i,t}=M_{i,t}+A_{i,t}$. This indicator is  $U_{i,t}=1$ on update trials and  $U_{i,t}=1$ for the rest of the cases.
-
-The theorem below, states that when the update is aggressive, the bound on the expected number of errors can be tighter than the non aggressive algorithm because we have added a new term term to the bound which can be negative.     
+In this  version of SHAMPO algorithm, the update is been preformed not only when there is a mistake, 
+but also in the case of correct prediction with low margin, i.e. low certainty. We define this margin to be
+$\lambda \in\reals>0$. In addition to the previous mistake indicator, $M_{i,t}$,  we introduce one more 
+indicator,  $A_{i,t}$. We keep the notation of  $M_{i,t}=1$ when there is wrong prediction on the task $i$
+in round $t$ and $M_{i,t}=0$ otherwise, and set $A_{i,t}=1$ when there is no prediction mistake on the task 
+$i$ in round $t$, but the margin is lower than our threshold, i.e. $0<\hat{p}_{i,t}<\lambda,$ therefore an
+aggressive update takes place, and $A_{i,t}=0$  otherwise. 
+An update is performed if either there is a mistake ($M_{J_i,t}=1$) or the margin is
+low ($A_{J_i,t}=1$). Note that these events are mutually exclusive thus, for simplicity, we define the update
+indicator which is  $U_{i,t}=M_{i,t}+A_{i,t}$. This indicator is  $U_{i,t}=1$ on update trials and  $U_{i,t}=1$
+when no update has been made.
 
 \label{sec:FO_aggressive_alg}
 \begin{figure}[h]
@@ -445,9 +461,9 @@ D_t &=
 \item Query the true label ,$\yi{J_t,t}\in\{-1,1\}$.
 \item Set the indicator $M_{J_t, t}=1$ iff $\yi{J_t,t} \neq \hyi{J_t,t}$.
 \item Iff $M_{J_t, t}=0$ and $\abs{p_{J_t,t}}<\lambda$, set  the indicator $A_{J_t,t}=1$
-\item Update with the perceptron rule:
+\item For $U_{i,t}=M_{i,t}+A_{i,t}$ update with the perceptron rule:
 \begin{align}
-&\vwi{J_t,t} = \vwi{J_t,t-1}+U_{J_t,t} \, \yi{J_t,t}\, \vxi{J_t,t} \label{update_rule}\\
+&\vwi{J_t,t} = \vwi{J_t,t-1}+U_{J_t,t} \, \yi{J_t,t}\, \vxi{J_t,t} \\
 &\vwi{i,t} ~~= \vwi{i,t-1}  \textrm{ for } i \neq J_t \nonumber
 \end{align}
 \end{enumerate}
@@ -462,13 +478,13 @@ D_t &=
   sequences
   $(\vxi{i,1},y_{i,1}),...(\vxi{i,n},y_{i,n})\in\mathbb{R}^d\times\{-1,1\}$,
   $i=1,...,K$ with input parameters $b>0$, and $\lambda>0$ then for all $\gamma>0$, all
-  $\vui{i}\in\mathbb{R}^d$ and all $n\ge1$,
+  $\vui{i}\in\mathbb{R}^d$ and all $n\ge1$, there exists $0<\delta\le K$, such that,
   
 \begin{displaymath}
 \begin{split}
 \mathbb{E}\left[ \sum_{i=1}^{K}\sum_{t=1}^{n}{M_{i,t}} \right]
-\le& \frac{K}{\gamma}\left(1+\frac{X^2}{2b} \right){\bar L}_{\gamma,n}+
-\frac{K\left({2b+X^2}\right)^2\tilde{U}^2}{8{\gamma}^2b}\\ 
+\le \frac{\delta}{\gamma}\brackets{\left(1+\frac{X^2}{2b} \right){\bar L}_{\gamma,n}
++&\frac{\left({2b+X^2}\right)^2\tilde{U}^2}{8{\gamma}b}}\\ 
 +&\paren{2\frac{\lambda}{b}-1}\mathbb{E}\brackets{\sum_{i=1}^{K}\sum_{t=1}^{n}{A_{i,t}}}~,
 \label{bound_aggressive_FO_SHAMPO}
 \end{split}
@@ -478,12 +494,23 @@ $\tilde{U}^2=\sum_{i=1}^{K}\normt{\vui{i}}$ and the expectation is over the
 random choices of the algorithm.
 \end{theorem} \label{thm:FO_bound_aggressive}
 
-In order to achieve tighter bound on the expected cumulative mistakes than we had in the regular SHAMPO perceptron algorithm (\sthmref{bound_FO_SHAMPO}), we need to restrict the aggressive margin  $\lambda$ to be $\lambda<b/2$. Indeed, one can say that this bound shows that the best choice of $\lambda$ is $\lambda=0$, i.e. it seems that aggressive update is not a good idea. However, in this case, $A_{i,t}=0,~ \forall i,t$ which means that this would not be the best choice. This discrimination actually shows  that there is a sweet point where $0<\lambda<b/2$ such that the bound will be the  tightest as this bound allows . 
+The theorem above, states that when the update is aggressive, the bound on the expected number of errors
+can be tighter than the non aggressive algorithm because we have added a new term term to the bound 
+which can be negative.     
+
+In order to achieve tighter bound on the expected cumulative mistakes than we had in the regular SHAMPO 
+perceptron algorithm (\sthmref{bound_FO_SHAMPO}), we need to restrict the aggressive margin  $\lambda$ 
+to be $\lambda<b/2$. Indeed, one can say that this bound shows that the best choice of $\lambda$ is 
+$\lambda=0$, i.e. it seems that aggressive update is not a good idea. However, in this case, 
+$A_{i,t}=0,~ \forall i,t$ which means that this would not be the best choice. 
+This discrimination actually shows  that there is a sweet point where $0<\lambda<b/2$ such that the 
+bound will be the  tightest as this bound allows . 
 \\
 
 \begin{proof}
-We follow the proof of $\sthmref{thm:FO_bound}$ on an update trial, reminding that now the update indicator is  $U_{i,t}=1, $ until we get,  
-% Fix $n$ examples sequences, $(\vxi{i,1},y_{i,1}),...,(\vxi{i,n},y_{i,n})$ for each of the $K$ tasks. Let $t$ be certain trial and $i$ to be an update task on this trial, such that $M_{i,t}=1.$ We can write,
+We follow the proof of $\sthmref{thm:FO_bound}$ on an update trial, reminding that now the update 
+indicator is  $U_{i,t}=1, $ until we get,  
+
 \begin{align*}
 \gamma-&\lossp{\gamma,i,t}(\vu_i)\le \\
 &y_{i,t}\hat{p}_{i,t}+\frac{1}{2}{\normt{\vu_{i}-\vwi{i,t-1}}}
@@ -555,53 +582,48 @@ We start with the left term,
 &\mathbb{E}\brackets{\sum_{t=1}^{n}U_{i,t}Z_{i,t}{\paren{b-y_{i,t}\hat{p}_{i,t}-\min_{j}{\abs{ \hat{p}_{j,t}}}}}}\\
 &=\mathbb{E}\brackets{\mathbb{E}_{t-1}\brackets{{\sum_{t=1}^{n}{U_{i,t}Z_{i,t}{\left(b-y_{i,t}\hat{p}_{i,t}-\min_{j}{\abs{\hat{p}_{j,t}}}\right)}}}}} \\
 &=\mathbb{E}\brackets{{\sum_{t=1}^{n}U_{i,t}{\left({b -y_{i,t}\hat{p}_{i,t}}-\min_{j}{\left\vert \hat{p}_{j,t} \right\vert}\right)}\mathbb{E}_{t-1}\brackets{ Z_{i,t}}}}\\
-&=\mathbb{E}\brackets{\sum_{t=1}^{n}\frac{\paren{M_{i,t}+A_{i,t}}}{D_{t}}\frac{\paren{b -y_{i,t}\hat{p}_{i,t}-\min_{j}\abs{\hat{p}_{j,t}}}}{b+\abs{\hat{p}_{j,t}}-\min_{j}{\abs{\hat{p}_{j,t}}}}}\\
-&=\mathbb{E}\brackets{\sum_{t=1}^{n}{\frac{1}{D_{t}}\paren{M_{i,t}+\frac{b-\abs{\hat{p}_{j,t}}-\min_{j}{\abs{\hat{p}_{j,t}} }}{b+\abs{\hat{p}_{j,t}}-\min_{j}{\abs{\hat{p}_{j,t}}}}A_{i,t} }}}~.
+&=\mathbb{E}\brackets{\sum_{t=1}^{n}\frac{\paren{M_{i,t}+A_{i,t}}}{D_{t}}\frac{\paren{b -y_{i,t}\hat{p}_{i,t}-\min_{j}\abs{\hat{p}_{j,t}}}}{b+\abs{\hat{p}_{i,t}}-\min_{j}{\abs{\hat{p}_{j,t}}}}}\\
+&=\mathbb{E}\brackets{\sum_{t=1}^{n}{\frac{1}{D_{t}}\paren{M_{i,t}+\frac{b-\abs{\hat{p}_{i,t}}-\min_{j}{\abs{\hat{p}_{j,t}} }}{b+\abs{\hat{p}_{i,t}}-\min_{j}{\abs{\hat{p}_{j,t}}}}A_{i,t} }}}~.
 \end{split}
 \end{align*}
 Substituting the last term in the expectation of
 \eqref{eq:step_3_in_proof_agressive} we get,
 \begin{equation}
 \begin{split}
-\mathbb{E}\left[ \sum_{t=1}^{n}{\frac{1}{D_{t}}}\paren{M_{i,t}+\frac{b-\abs{\hat{p}_{j,t}}-\min_{j}{\abs{\hat{p}_{j,t}} }}{b+\abs{\hat{p}_{j,t}}-\min_{j}{\abs{\hat{p}_{j,t}}}}A_{i,t} } \right]
+\mathbb{E}\left[ \sum_{t=1}^{n}{\frac{1}{D_{t}}}\paren{M_{i,t}+\frac{b-\abs{\hat{p}_{i,t}}-\min_{j}{\abs{\hat{p}_{j,t}} }}{b+\abs{\hat{p}_{i,t}}-\min_{j}{\abs{\hat{p}_{j,t}}}}A_{i,t} } \right]
 &\le \\ \frac{2b+X^2}{2\gamma}{\bar
   L}_{\gamma,i,n}(u_i)+&\frac{\left({2b+X^2}\right)^2}{8{\gamma}^2}{\left\Vert
     \vui{i} \right\Vert}^2~.
 \label{step_3_in_proof_aggressive}
 \end{split}
 \end{equation} 
-Now we bound the factor that is multiplied by $A_{i,t}$,
+Now we bound the factor that is multiplied by $A_{i,t}$ using the fact that $A_{i,t}=1$ only when 
+$\abs{\hat{p}_{i,t}}<\lambda$ ,
 \begin{equation}
-\paren{1-2\frac{\lambda}{b}}=\frac{b-2\lambda}{b} \le\frac{b-\abs{\hat{p}_{j,t}}-\min_{j}{\abs{\hat{p}_{j,t}} }}{b+\abs{\hat{p}_{j,t}}-\min_{j}{\abs{\hat{p}_{j,t}}}}\le1.
+\paren{1-2\frac{\lambda}{b}}=\frac{b-2\lambda}{b} \le\frac{b-\abs{\hat{p}_{i,t}}-\min_{j}{\abs{\hat{p}_{j,t}} }}{b+\abs{\hat{p}_{i,t}}-\min_{j}{\abs{\hat{p}_{j,t}}}}\le1.
 \end{equation}
-As stated before, the normalization factor can be bounded as
-follows,
-$D_{t}\le K/b$.
-Plugging this bound in \eqref{step_3_in_proof_aggressive} we get,
+As stated before, there exists $\delta_i\in\reals,~ 0<\delta_i\le K$ such that \eqref{eq:introducing_delta}
+holds.
+Plugging this in \eqref{step_3_in_proof_aggressive} we get,
 \begin{equation}\label{eq:bound_for_i_aggressive}
 \begin{split}
-\mathbb{E}\brackets{\sum_{t=1}^{n}{M_{i,t}\frac{b}{K}}}
+\frac{b}{\delta_i}\mathbb{E}\brackets{\sum_{t=1}^{n}{M_{i,t}}}
 &\le \frac{2b+X^2}{2\gamma}{\bar L}_{\gamma,i,n}(\vui{i})\\
-+&\frac{\left({2b+X^2}\right)^2}{8{\gamma}^2}{\left\Vert \vui{i} \right\Vert}^2+ \paren{2\frac{\lambda}{b}-1}\mathbb{E}\brackets{\sum_{t=1}^{n}{A_{i,t}\frac{b}{K}}}.
++&\frac{\left({2b+X^2}\right)^2}{8{\gamma}^2}{\left\Vert \vui{i} \right\Vert}^2+ 
+     \frac{b}{\delta_i}\paren{2\frac{\lambda}{b}-1}\mathbb{E}\brackets{\sum_{t=1}^{n}{A_{i,t}}}.
 \end{split}
 \end{equation}
-Summing up the last inequality over all $K$ tasks concludes the proof.
+
+Summing up the last inequality over all $K$ tasks and setting $\delta
+= \max_i \delta_i$ yields,
 \begin{equation*}
 \begin{split}
-\frac{1}{K}\mathbb{E}\left[ \sum_{i=1}^{K}\sum_{t=1}^{n}{M_{i,t}} \right]
+\frac{1}{\delta}\mathbb{E}\left[ \sum_{i=1}^{K}\sum_{t=1}^{n}{M_{i,t}} \right]
 \le&\frac{1}{\gamma}\left(1+\frac{X^2}{2b} \right){\bar L}_{\gamma,n}\\
-+\frac{\left({2b+X^2}\right)^2}{8{\gamma}^2b}&\sum_{i=1}^{K}{{\left\Vert \vui{i} \right\Vert}^2}+ \frac{1}{K}\paren{2\frac{\lambda}{b}-1}\mathbb{E}\brackets{\sum_{i=1}^{K}\sum_{t=1}^{n}{A_{i,t}}}
++\frac{\left({2b+X^2}\right)^2}{8{\gamma}^2b}&\sum_{i=1}^{K}{{\left\Vert \vui{i} \right\Vert}^2}+ \frac{1}{\delta}\paren{2\frac{\lambda}{b}-1}\mathbb{E}\brackets{\sum_{i=1}^{K}\sum_{t=1}^{n}{A_{i,t}}}
 \end{split}
 \end{equation*}
-
-\begin{equation}
-\begin{split}
-\mathbb{E}\left[ \sum_{i=1}^{K}\sum_{t=1}^{n}{M_{i,t}} \right]
-\le&\frac{K}{\gamma}\left(1+\frac{X^2}{2b} \right){\bar L}_{\gamma,n}\\
-+\frac{K\left({2b+X^2}\right)^2}{8{\gamma}^2b}&\sum_{i=1}^{K}{{\left\Vert \vui{i} \right\Vert}^2}+\paren{2\frac{\lambda}{b}-1}\mathbb{E}\brackets{\sum_{i=1}^{K}\sum_{t=1}^{n}{A_{i,t}}}.
-\end{split}
-\label{final_eq}
-\end{equation}
+Which concludes the proof
 \QED
 \end{proof}
 
