@@ -761,16 +761,39 @@ SHAMPO perceptron algorithm.
 
 \section{SHAMPO perceptron with Adaptive $b$ parameter}
 
-As it has been proved in the analysis and will be shown in the experiments, $b$ can tune the distribution over the tasks from exploration to exploitation, yet, there is still a need to supply the algorithm with this input parameter. So far, all of the tasks sheared the same parameter $b$ which was determined at the beginning of the algorithm and remained constant all the time. For this reason, the margin was the only factor that had an influence on the distribution. Now, we would like to suggest another algorithm that allow us to  dominate the distribution using the number of updates. The adaptive version of the  SHAMPO perceptron algorithm is  described in  ??? . The algorithm still have a parameter $\beta$ to be determined, however, it has much less influence on the distribution than the parameter $b$ in  \figref{sec:alg}.
+As it has been proved in the analysis and will be shown in experiments, the parameter $b$ can tune 
+the distribution over the tasks between exploration and exploitation, yet, there is still a need to supply 
+the algorithm with this input parameter. So far, all of the tasks sheared the same parameter $b$ which
+was determined at the beginning of the algorithm and remained constant during the whole process. 
+For this reason, once the initial parameters were supplied, the margin was the only factor that had a varying
+influence on the distribution. Now, we would like to suggest another algorithm that allow us to
+dominate the distribution using the number of updates for each task. 
+We assume as in Cesa-Bianchi et al  ~\cite{cesa2006worst} that the algorithm makes more mistakes on harder task than easier one, so a natural choice 
+at any time, can be one that set higher probability to the tasks that made more prediction mistakes up to 
+the same time. 
+The adaptive algorithm is similar to the one in \figref{sec:alg} with three variation in order to comply with this
+intuition. Here we introduce two more variables per task. First, the scalar 
+$N_{i,n} = \sum_{t=1}^n{Z_{i,t}M_{i,t}}+1$ that holds the number of updates that has been done for the 
+$i^{th}$ task  up to time $n$.
+For simplicity of analysis we will write it in it's recursive way $N_{i,t}=N_{i,t-1}+1$.
+The second variable is $X_{i,t}$ which is holds at the end of each cycle,  
+the maximal norm of the input vectors that were involved in the updates.  The algorithm still have a parameter $\beta$ to be 
+determined, however, it has less influence on the distribution than the parameter $b$ in  \figref{sec:alg}.
+Using those three new parameter we introduce the adaptive version of $b$
+\[
+b_{i,t-1}=\beta X_{i,t} \sqrt{1+N_{i,t-1}}
+\]
+ The adaptive version of the  
+SHAMPO perceptron algorithm is  described in  ??? . 
+The proof here is more  extended version of the proof in \thmref{thm:bound} . 
+We will start here from \eqref{step_2_in_proof}. here, we will replace the constant scaling parameter, 
+formerly $\alpha$, with a time varying factor $c_{i,t-1}/\gamma$, where $c_{i,t}\ge0$  is defined as following 
 
-The adaptive algorithm is similar to the one in \figref{sec:alg} with two variation. Here we introduce two more variables per task. First, the scalar $N_{i,t}$ that holds the number of updates that has been done for the $i^{th}$ task  up to time $t$. The second variable is $X_{i,t}$ which is holds at the end of each cycle,  the maximal norm of the input vectors that were involved in the updates. I
-
-We assume as in Cesa-Bianchi et al  ~\cite{cesa2006worst} that when  In order to solve this problem we propose the adaptive SHAMPO algorithm 
-The proof here is more  extended version of the proof in \thmref{thm:bound} . We will start here from \eqref{step_2_in_proof}. here, we will replace the constant scaling parameter, with a time varying factor $c_{i,t-1}/\gamma$, where $c_{i,t}\ge0$  is defined as following 
 \begin{equation*}
 c_{i,t-1}=\half\paren{\max{\braces{X_{i,t-1},\abs{\abs{\vxiit}}}}}+b_{i,t-1}.
 \end{equation*}
-In addition, we define $X_i=\max_t{\Vert\vxiit\Vert}$ . Plugging the new scaling factor into the given inequality we get 
+Plugging the new scaling factor into the 
+given inequality we get 
 \begin{equation*}
 \begin{split}
 M_{i,t}Z_{i,t}{\paren{c_{i,t-1} +\abs{\hat{p}_{i,t}}}} \le M_{i,t}&Z_{i,t}\frac{c_{i,t-1}}{\gamma} \lossp{\gamma,i,t}(\vu_i)+\\ 
@@ -778,7 +801,9 @@ M_{i,t}Z_{i,t}{\paren{c_{i,t-1} +\abs{\hat{p}_{i,t}}}} \le M_{i,t}&Z_{i,t}\frac{
 \frac{M_{i,t}Z_{i,t}}{2}\normt{\vwi{i,t-1}-\vwiit}.
 \end{split}
 \end{equation*}
- From the update rule of the  algorithm we can bound $\normt{\vwi{i,t-1}-\vwiit}\le \normt{\vxiit}$. This inequality holds for any time step, and particular for an update iteration. Using this bound and dividing the inequality by in  $b_{t-1}$ yields
+From the update rule of the  algorithm we can bound $\normt{\vwi{i,t-1}-\vwiit}\le \normt{\vxiit}$. 
+This inequality holds for any time step, and particular for an update iteration. 
+Using this bound and dividing the inequality by  $b_{t-1}$ yields
 \begin{equation}
 \begin{split}
 M_{i,t}Z_{i,t}&{\paren{\frac{c_{i,t-1} +\abs{\hat{p}_{i,t}}-\normt{\vxiit}/2}{b_{i,t-1}}}} \le M_{i,t}Z_{i,t}\frac{c_{i,t-1}}{b_{i,t-1}}\frac{\lossp{\gamma,i,t}(\vu_i)}{\gamma} \\ 
@@ -807,7 +832,8 @@ and we get
 &+\frac{\normt{\vwiit}}{2}\paren{\frac{1}{b_{i,t}}-\frac{1}{b_{i,t-1}}}
 \end{split}
 \end{equation*}
-The definition of $b_{i,t}$ we know that $b_{i,t}$ is non decreasing over time such that the last term is always negative and can be waved. In addition,  the definition of $c_{i,t}$ we leads to the fact that  
+We know that by definition, $b_{i,t}$ is non decreasing over time such that the last term is always negative 
+and can be waved. In addition,  the definition of $c_{i,t}$  leads to 
 \begin{equation*}
 \frac{c_{i,t}}{b_{i,t}}=\frac{1}{2\beta\sqrt{1+N_{i,t}}}+1
 \end{equation*}
@@ -825,7 +851,8 @@ Combining these facts and using $Cauchy-Schwarz$ the inequality becomes,
 \end{split}
 \label{eq:difference_of_norm_ineq}
 \end{equation}
-Here, recall that on an update trial $y_{i,t}\vw_{i,t-1}^{T}\vxiit\le0$, we use again the update rule and  bound the weight vector norm with the number of updates, 
+Here, recall that on an update trial $y_{i,t}\vw_{i,t-1}^{T}\vxiit\le0$ we define $X_i=\max_t{\Vert\vxiit\Vert}$ 
+and use again the update rule and bound the weight vector norm with the number of updates , 
 \begin{equation*}
 \begin{split}
 \normt{\vwiit}&=\normt{\vw_{i,t-1}+M_{i,t}Z_{i,t}y_{i,t}\vxiit}\\
@@ -834,7 +861,7 @@ Here, recall that on an update trial $y_{i,t}\vw_{i,t-1}^{T}\vxiit\le0$, we use 
 &\le\normt{\vw_{i,t-1}}+M_{i,t}Z_{i,t}X_i^2
 \end{split}
 \end{equation*}
-This inequality, combined with the initial value $\vw_{i,0}=0$ leads us to
+Applying this inequality recursively, combined with the initial value $\vw_{i,0}=0$ leads us to
 \begin{equation}
 \Vert\vwiit\Vert\le X_i\sqrt{N_{i,t}}
 \label{eq:bound_on_w}

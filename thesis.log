@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  15 SEP 2015 19:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  3 OCT 2015 22:56
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -991,36 +991,36 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 [25]
 
 LaTeX Warning: Reference `thm:bound' on page \@@number{26} undefined on input l
-ine 769.
+ine 788.
 
 
-Overfull \hbox (19.05771pt too wide) in paragraph at lines 780--780
+Overfull \hbox (19.05771pt too wide) in paragraph at lines 803--803
 [] 
  []
 
 [26] [27] [28] [29] [30]
-Underfull \hbox (badness 10000) in paragraph at lines 967--969
+Underfull \hbox (badness 10000) in paragraph at lines 994--996
 
  []
 
 
-Overfull \hbox (18.9791pt too wide) in paragraph at lines 979--979
+Overfull \hbox (18.9791pt too wide) in paragraph at lines 1006--1006
 [] 
  []
 
 [31] [32] [33] [34] [35]
-Overfull \hbox (22.26526pt too wide) in paragraph at lines 1143--1143
+Overfull \hbox (22.26526pt too wide) in paragraph at lines 1170--1170
 [] 
  []
 
 [36]
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 1157
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 1184
 .
  (/usr/local/texlive/2014/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 1157.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 1184.
 
 )
 (./Second_Order_SHAMPO.tex [37]
@@ -1128,7 +1128,7 @@ fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2014/texmf-d
 ist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/
 type1/urw/times/utmr8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/
 times/utmri8a.pfb>
-Output written on ./thesis.pdf (59 pages, 370173 bytes).
+Output written on ./thesis.pdf (59 pages, 370775 bytes).
 PDF statistics:
  638 PDF objects out of 1000 (max. 8388607)
  541 compressed objects within 6 object streams
