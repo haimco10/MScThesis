@@ -755,6 +755,10 @@ algorithm and if we update only when a prediction mistake occurs, it means that
 $A_{i,t}=0,~~\forall i\in\braces{a,\cdots,K},t>0$ and we get the bound of  the ordinary 
 SHAMPO perceptron algorithm.
 
+\section{Kernel-based SHAMPO}
+
+
+
 \section{SHAMPO perceptron with Adaptive $b$ parameter}
 
 As it has been proved in the analysis and will be shown in the experiments, $b$ can tune the distribution over the tasks from exploration to exploitation, yet, there is still a need to supply the algorithm with this input parameter. So far, all of the tasks sheared the same parameter $b$ which was determined at the beginning of the algorithm and remained constant all the time. For this reason, the margin was the only factor that had an influence on the distribution. Now, we would like to suggest another algorithm that allow us to  dominate the distribution using the number of updates. The adaptive version of the  SHAMPO perceptron algorithm is  described in  ??? . The algorithm still have a parameter $\beta$ to be determined, however, it has much less influence on the distribution than the parameter $b$ in  \figref{sec:alg}.

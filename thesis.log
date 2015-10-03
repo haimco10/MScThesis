@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  15 SEP 2015 17:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  15 SEP 2015 19:34
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -666,7 +666,7 @@ ps-converted-to.pdf figs/SHAMPO_illustration.eps>
 (epstopdf)             \includegraphics on input line 81.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/SHAMPO_illustration-eps-converted-to.pdf, id=194, 766.865pt x 634.37pt>
+<figs/SHAMPO_illustration-eps-converted-to.pdf, id=199, 766.865pt x 634.37pt>
 File: figs/SHAMPO_illustration-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/SHAMPO_illustration-eps-converted-to.pdf>
@@ -706,7 +706,7 @@ to.pdf figs/margin.eps>
 (epstopdf)             \includegraphics on input line 61.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/margin-eps-converted-to.pdf, id=222, 250.9375pt x 203.76125pt>
+<figs/margin-eps-converted-to.pdf, id=227, 250.9375pt x 203.76125pt>
 File: figs/margin-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/margin-eps-converted-to.pdf>
@@ -744,7 +744,7 @@ Package epstopdf Info: Source file: <figs/probability.eps>
 rted-to.pdf figs/probability.eps>
 (epstopdf)             \includegraphics on input line 109.
 Package epstopdf Info: Output file is already uptodate.
-<figs/probability-eps-converted-to.pdf, id=238, 392.46625pt x 225.84375pt>
+<figs/probability-eps-converted-to.pdf, id=243, 392.46625pt x 225.84375pt>
 File: figs/probability-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/probability-eps-converted-to.pdf>
@@ -982,45 +982,45 @@ Underfull \hbox (badness 10000) in paragraph at lines 747--751
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 758.
+(hyperref)                removing `math shift' on input line 762.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 758.
+(hyperref)                removing `math shift' on input line 762.
 
 [25]
 
 LaTeX Warning: Reference `thm:bound' on page \@@number{26} undefined on input l
-ine 765.
+ine 769.
 
 
-Overfull \hbox (19.05771pt too wide) in paragraph at lines 776--776
+Overfull \hbox (19.05771pt too wide) in paragraph at lines 780--780
 [] 
  []
 
 [26] [27] [28] [29] [30]
-Underfull \hbox (badness 10000) in paragraph at lines 963--965
+Underfull \hbox (badness 10000) in paragraph at lines 967--969
 
  []
 
 
-Overfull \hbox (18.9791pt too wide) in paragraph at lines 975--975
+Overfull \hbox (18.9791pt too wide) in paragraph at lines 979--979
 [] 
  []
 
 [31] [32] [33] [34] [35]
-Overfull \hbox (22.26526pt too wide) in paragraph at lines 1139--1139
+Overfull \hbox (22.26526pt too wide) in paragraph at lines 1143--1143
 [] 
  []
 
 [36]
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 1153
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 1157
 .
  (/usr/local/texlive/2014/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 1153.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 1157.
 
 )
 (./Second_Order_SHAMPO.tex [37]
@@ -1092,7 +1092,7 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 113.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 113.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 113.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 16AE7D3FA26AE4B2AB39FD536EEFAE5C;1256.
+(rerunfilecheck)             Checksum: 18D9F603BE902C2CC34CE1C60E87F4FB;1334.
 
 
 LaTeX Warning: There were undefined references.
@@ -1103,10 +1103,10 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 113.
  ) 
 Here is how much of TeX's memory you used:
- 9229 strings out of 493117
- 127704 string characters out of 6135433
- 237616 words of memory out of 5000000
- 12308 multiletter control sequences out of 15000+600000
+ 9231 strings out of 493117
+ 127728 string characters out of 6135433
+ 238616 words of memory out of 5000000
+ 12309 multiletter control sequences out of 15000+600000
  40774 words of font info for 105 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,26n,40p,1874b,417s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1128,10 +1128,10 @@ fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2014/texmf-d
 ist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/
 type1/urw/times/utmr8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/
 times/utmri8a.pfb>
-Output written on ./thesis.pdf (59 pages, 369882 bytes).
+Output written on ./thesis.pdf (59 pages, 370173 bytes).
 PDF statistics:
- 633 PDF objects out of 1000 (max. 8388607)
- 536 compressed objects within 6 object streams
- 154 named destinations out of 1000 (max. 500000)
- 144 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 638 PDF objects out of 1000 (max. 8388607)
+ 541 compressed objects within 6 object streams
+ 155 named destinations out of 1000 (max. 500000)
+ 152 words of extra memory for PDF output out of 10000 (max. 10000000)
 
