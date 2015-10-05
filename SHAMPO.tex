@@ -771,6 +771,7 @@ dominate the distribution using the number of updates for each task.
 We assume as in Cesa-Bianchi et al  ~\cite{cesa2006worst} that the algorithm makes more mistakes on harder task than easier one, so a natural choice 
 at any time, can be one that set higher probability to the tasks that made more prediction mistakes up to 
 the same time. 
+
 The adaptive algorithm is similar to the one in \figref{sec:alg} with three variation in order to comply with this
 intuition. Here we introduce two more variables per task. First, the scalar 
 $N_{i,n} = \sum_{t=1}^n{Z_{i,t}M_{i,t}}$ that holds the number of updates that has been done for the 
@@ -783,7 +784,7 @@ Using those three new parameter we introduce the adaptive version of $b$
 \[
 b_{i,t-1}=\beta X_{i,t} \sqrt{1+N_{i,t-1}}
 \]
- The adaptive version of the  SHAMPO perceptron algorithm is  described in  \figref{alg:SHAMPO_adaptive} . 
+ The adaptive version of the  SHAMPO perceptron algorithm is  described in  \figref{alg:SHAMPO_adaptive}. 
  
  \begin{figure}[h]
 \paragraph{Parameters:}$\beta\in\mathbb{R}>0$.
@@ -816,6 +817,22 @@ Where $b_{i,t} = \beta X_{i,t}^2\sqrt{1+N_{i,t}}$.
 \paragraph{Output}: $\vwi{i,n}$ for $i=1 \comdots K$.
 \caption{Adaptive SHAMPO algorithm \label{alg:SHAMPO_adaptive}}
 \end{figure}  
+
+\begin{theorem}
+  If adaptive SHAMPO algorithm runs on $K$ tasks with $K$ parallel example pair
+  sequences
+  $(\vxi{i,1},y_{i,1}),...(\vxi{i,n},y_{i,n})\in\mathbb{R}^d\times\{-1,1\}$,
+  $i=1,...,K$ with input parameter $b>0$, then for all $\gamma>0$, all
+  $\vui{i}\in\mathbb{R}^d$ and all $n\ge1$, there exists $0<\delta\le K$, such that,
+  
+\begin{displaymath}
+\mathbb{E}\brackets{ \sum_{i=1}^{K}\sum_{t=1}^{n}{M_{i,t}}}
+\le \delta\brackets{\frac{\delta B^2}{2}+\frac{1}{\gamma}{\bar L}_{\gamma,n}+\frac{KR}{2\beta}
++ B\sqrt{\frac{\delta B^2}{4}+\frac{1}{\gamma}{\bar L}_{\gamma,n}+\frac{KR}{2\beta}}}
+\end{displaymath}
+ where $R = \max_i{\paren{\Vert u_i\Vert X_i}/{\gamma}}$, $B=\paren{R+\frac{2+3R}{2\beta}}$ and the expectation is over the
+random choices of the algorithm.
+\end{theorem} \label{thm:adaptive_bound}
 
  
 The proof here is more  extended version of the proof in \thmref{thm:bound} . 
@@ -1063,7 +1080,6 @@ such that
 \le \sqrt{K}\sqrt{\mathbb{E}\brackets{\sum_{i=1}^K\sum_{t=1}^nM_{i,t}}}.
 \]
 Plugging the result in the inequality, we get
-
 \begin{equation*}
 \begin{split}
 \frac{1}{\delta}\mathbb{E}&\brackets{\sum_{i=1}^{K}\sum_{t=1}^{n}M_{i,t}}\\
@@ -1074,6 +1090,14 @@ Plugging the result in the inequality, we get
 +\frac{KR}{2\beta}
 \end{split}
 \end{equation*}
+which is quadratic inequality in  $\sqrt{\mathbb{E}\brackets{ \sum_{i=1}^{K}\sum_{t=1}^{n}{M_{i,t}} }$. 
+Solving this equation gives us the bound for  the cumulative mistakes
+\[
+\mathbb{E}\brackets{ \sum_{i=1}^{K}\sum_{t=1}^{n}{M_{i,t}}}
+\le \delta\brackets{\frac{\delta B^2}{2}+\frac{1}{\gamma}{\bar L}_{\gamma,n}+\frac{KR}{2\beta}
++ B\sqrt{\frac{\delta B^2}{4}+\frac{1}{\gamma}{\bar L}_{\gamma,n}+\frac{KR}{2\beta}}}
+\]
+
 
 
 

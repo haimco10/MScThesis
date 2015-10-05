@@ -21,13 +21,13 @@
 \contentsline {section}{\numberline {\@@number {\@@number {3}.\@@number {3}}}prior distribution over tasks}{\@@number {22}}{section.3.3}
 \contentsline {section}{\numberline {\@@number {\@@number {3}.\@@number {4}}}Kernel-based SHAMPO}{\@@number {25}}{section.3.4}
 \contentsline {section}{\numberline {\@@number {\@@number {3}.\@@number {5}}}SHAMPO perceptron with Adaptive $b$ parameter}{\@@number {25}}{section.3.5}
-\contentsline {section}{\numberline {\@@number {\@@number {3}.\@@number {6}}}to do}{\@@number {33}}{section.3.6}
-\contentsline {paragraph}{Parameters:}{\@@number {34}}{section*.16}
-\contentsline {paragraph}{Initialize:}{\@@number {34}}{section*.17}
-\contentsline {paragraph}{For}{\@@number {34}}{section*.18}
-\contentsline {paragraph}{End for}{\@@number {34}}{section*.19}
-\contentsline {paragraph}{Output}{\@@number {34}}{section*.20}
-\contentsline {chapter}{\numberline {\@@number {4}}Second Order SHAMPO}{\@@number {35}}{chapter.4}
-\contentsline {section}{\numberline {\@@number {\@@number {4}.\@@number {1}}}From Multi-task to Contextual Bandits}{\@@number {40}}{section.4.1}
-\contentsline {subsection}{\numberline {\@@number {\@@number {\@@number {4}.\@@number {1}}.\@@number {1}}}One-vs-Rest}{\@@number {41}}{subsection.4.1.1}
-\contentsline {subsection}{\numberline {\@@number {\@@number {\@@number {4}.\@@number {1}}.\@@number {2}}}One-vs-One}{\@@number {42}}{subsection.4.1.2}
+\contentsline {section}{\numberline {\@@number {\@@number {3}.\@@number {6}}}to do}{\@@number {34}}{section.3.6}
+\contentsline {paragraph}{Parameters:}{\@@number {35}}{section*.16}
+\contentsline {paragraph}{Initialize:}{\@@number {35}}{section*.17}
+\contentsline {paragraph}{For}{\@@number {35}}{section*.18}
+\contentsline {paragraph}{End for}{\@@number {35}}{section*.19}
+\contentsline {paragraph}{Output}{\@@number {35}}{section*.20}
+\contentsline {chapter}{\numberline {\@@number {4}}Second Order SHAMPO}{\@@number {36}}{chapter.4}
+\contentsline {section}{\numberline {\@@number {\@@number {4}.\@@number {1}}}From Multi-task to Contextual Bandits}{\@@number {41}}{section.4.1}
+\contentsline {subsection}{\numberline {\@@number {\@@number {\@@number {4}.\@@number {1}}.\@@number {1}}}One-vs-Rest}{\@@number {42}}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {\@@number {\@@number {\@@number {4}.\@@number {1}}.\@@number {2}}}One-vs-One}{\@@number {43}}{subsection.4.1.2}
