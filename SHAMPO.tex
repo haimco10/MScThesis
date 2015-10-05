@@ -773,7 +773,7 @@ at any time, can be one that set higher probability to the tasks that made more 
 the same time. 
 The adaptive algorithm is similar to the one in \figref{sec:alg} with three variation in order to comply with this
 intuition. Here we introduce two more variables per task. First, the scalar 
-$N_{i,n} = \sum_{t=1}^n{Z_{i,t}M_{i,t}}+1$ that holds the number of updates that has been done for the 
+$N_{i,n} = \sum_{t=1}^n{Z_{i,t}M_{i,t}}$ that holds the number of updates that has been done for the 
 $i^{th}$ task  up to time $n$.
 For simplicity of analysis we will write it in it's recursive way $N_{i,t}=N_{i,t-1}+1$.
 The second variable is $X_{i,t}$ which is holds at the end of each cycle,  
@@ -783,8 +783,41 @@ Using those three new parameter we introduce the adaptive version of $b$
 \[
 b_{i,t-1}=\beta X_{i,t} \sqrt{1+N_{i,t-1}}
 \]
- The adaptive version of the  
-SHAMPO perceptron algorithm is  described in  ??? . 
+ The adaptive version of the  SHAMPO perceptron algorithm is  described in  \figref{alg:SHAMPO_adaptive} . 
+ 
+ \begin{figure}[h]
+\paragraph{Parameters:}$\beta\in\mathbb{R}>0$.
+\paragraph{Initialize:} $\vwi{i,0}=\vzero$ for $i=1\comdots K$
+\paragraph{For}  {$t=1,2, ..., n$} 
+\begin{enumerate}
+\nolineskips
+\item Observe $K$ instance vectors, $\vxiit$, ($i=1 \comdots K$).
+\item Compute margins $\hat{p}_{i,t}=\vwti{i,t-1} \vxiit$.
+\item Predict $K$ labels, $\hyi{i,t}=\sign(\hat{p}_{i,t})$.
+\item Set $X_{i,t}=\max\paren{X_{i,t-1},\Vert\vxiit\Vert}$
+\item Draw task $J_t$  with the distribution:
+\begin{align}
+\pr{J_t=j} &=
+\frac{1}{D_t}\frac{b_{i,t}}{b_{i,t}+\abs{\hat{p}_{j,t}}-\min_{m=1}^K\abs{\hat{p}_{m,t}}},\nonumber\\
+D_t &=
+\sum_i \frac{b_{i,t}}{b_{i,t}+\abs{\hat{p}_{j,t}}-\min_{m=1}^K\abs{\hat{p}_{m,t}}}.\nonumber
+\end{align}
+Where $b_{i,t} = \beta X_{i,t}^2\sqrt{1+N_{i,t}}$.
+\item Query the true label ,$\yi{J_t,t}\in\{-1,1\}$.
+\item Set the indicator $M_{J_t, t}=1$ iff $\yi{J_t,t} \neq \hyi{J_t,t}$.
+\item Update with the perceptron rule:
+\begin{align}
+&\vwi{J_t,t} = \vwi{J_t,t-1}+M_{J_t,t} \, \yi{J_t,t}\, \vxi{J_t,t} \nonumber\\
+&\vwi{i,t} ~~= \vwi{i,t-1}  \textrm{ for } i \neq J_t \nonumber\\
+&N_{J_t,t} = N_{J_t,t} +M_{J_t,t} \nonumber
+\end{align}
+\end{enumerate}
+\paragraph{End for} 
+\paragraph{Output}: $\vwi{i,n}$ for $i=1 \comdots K$.
+\caption{Adaptive SHAMPO algorithm \label{alg:SHAMPO_adaptive}}
+\end{figure}  
+
+ 
 The proof here is more  extended version of the proof in \thmref{thm:bound} . 
 We will start here from \eqref{step_2_in_proof}. here, we will replace the constant scaling parameter, 
 formerly $\alpha$, with a time varying factor $c_{i,t-1}/\gamma$, where $c_{i,t}\ge0$  is defined as following 
@@ -975,201 +1008,73 @@ Defining $R_i=\paren{\Vert u_i\Vert X_i}/{\gamma}$, and combining the last three
 +&\frac{R_i}{2\beta}+R_{i}\sqrt{N_{i,n}}.
 \end{split}
 \end{equation*}
-Now, we subtract non negative term from the left side and take an  expectation .
+Now, we subtract non negative term from the left side, sum the inequality over all tasks and take 
+the expectation.
 \begin{equation*}
 \begin{split}  
-\mathbb{E}&\brackets{\sum_{t=1}^{n}M_{i,t}Z_{i,t}{\paren{\frac{b_{i,t-1} +\abs{\hat{p}_{i,t}}-\min_j\abs{\hat{p}_{j,t}}}{b_{i,t-1}}}}}\\
-\le &\frac{1}{\gamma}\mathbb{E}\brackets{\sum_{t=1}^{n}{M_{i,t}Z_{i,t}}\lossp{\gamma,i,t}(\vu_i)}
-+\mathbb{E}\brackets{\paren{R_{i}+\frac{2+3R_{i}}{2\beta}}\sqrt{N_{i,n}}}
-+\mathbb{E}\brackets{\sum_{i=1}^{K}\frac{R_i}{2\beta}}.
+\mathbb{E}&\brackets{\sum_{i=1}^K\sum_{t=1}^{n}M_{i,t}Z_{i,t}{\paren{\frac{b_{i,t-1} +\abs{\hat{p}_{i,t}}-\min_j\abs{\hat{p}_{j,t}}}{b_{i,t-1}}}}}\\
+\le &\frac{1}{\gamma}\mathbb{E}\brackets{\sum_{i=1}^K\sum_{t=1}^{n}{M_{i,t}Z_{i,t}}\lossp{\gamma,i,t}(\vu_i)}
++\mathbb{E}\brackets{\sum_{i=1}^K\paren{R_{i}+\frac{2+3R_{i}}{2\beta}}\sqrt{N_{i,n}}}\\
+&+\mathbb{E}\brackets{\sum_{i=1}^{K}\frac{R_i}{2\beta}}.
 \end{split}
 \end{equation*}
-and take the expectation of the inequality. First we look at the left hand side of the inequality.
+First we look at the left hand side of the inequality.
+\[
+\sum_{i=1}^{K}\mathbb{E}&\brackets{\sum_{t=1}^{n}M_{i,t}Z_{i,t}{\paren{\frac{b_{i,t-1} +\abs{\hat{p}_{i,t}}-\min_j\abs{\hat{p}_{j,t}}}{b_{i,t-1}}}}}
+= \sum_{i=1}^{K}\mathbb{E}\brackets{\sum_{t=1}^{n}\frac{M_{i,t}}{D_t}}
+\]
+The bound of $D_t$ now is 
+\[
+D_t = \sum_{i=1}^K{\frac{b_{i,t-1}}{b_{i,t-1} +\abs{\hat{p}_{i,t}}-\min_j\abs{\hat{p}_{j,t}}}}  
+\le K
+\]
+Since $M_{i,t} > 0 \forall i,t$, thus there exists $\delta_i\in\reals >0$  such that
+\[
+\sum_{i=1}^{K}\mathbb{E}\brackets{\sum_{t=1}^{n}\frac{M_{i,t}}{D_t}} 
+= \sum_{i=1}^{K}\frac{1}{\delta_i}\mathbb{E}\brackets{\sum_{t=1}^{n}M_{i,t}}  
+\le\frac{1}{\delta}\mathbb{E}\brackets{\sum_{i=1}^{K}\sum_{t=1}^{n}M_{i,t}}  
+\]
+When $\delta = max_i{\delta_i}$.
+Next we handle the middle term of the rhs.
+\[
+\begin{split}
+\mathbb{E}&\brackets{\sum_{i=1}^K\paren{R_{i}+\frac{2+3R_{i}}{2\beta}}\sqrt{N_{i,n}}}
+\le \mathbb{E}\brackets{\sum_{i=1}^K\paren{R+\frac{2+3R}{2\beta}}\sqrt{N_{i,n}}} \\
+&=\paren{R+\frac{2+3R}{2\beta}}\mathbb{E}\brackets{\sum_{i=1}^K\sqrt{N_{i,n}}},
+\end{split}
+\]
+Where $R=\max_i\paren{\Vert u_i\Vert X_i}/{\gamma}$.
+Now, considering that $N_{i,n}$ is non-negative and and exploiting the concavity 
+of the square root function we can continue as following
+\[
+\begin{split}
+\mathbb{E}\brackets{\sum_{i=1}^K\sqrt{N_{i,n}}} 
+&\le \mathbb{E}\brackets{\sqrt{K\sum_{i=1}^KN_{i,n}}}
+=\sqrt{K}\mathbb{E}\brackets{\sqrt{\sum_{i=1}^KN_{i,n}}}\\
+&\le \sqrt{K}\sqrt{\mathbb{E}\brackets{\sum_{i=1}^KN_{i,n}}}.
+\end{split}
+\]
+Here we used the bound for sum of squares, $\sum_{i=1}^K\sqrt{a_i} \le \sqrt{K\sum_{i=1}^K a_i}$ 
+for $a_i\in \reals, a_i\ge0$ combining with Jensen inequality. Moreover, we can 
+continue, recall that by definition, $N_{i,n} = \sum_{t=1}^n{Z_{i,t}M_{i,t}}$ and $Z_{i,t}M_{i,t} \le M_{i,t}$ 
+such that 
+\[
+\sqrt{K}\sqrt{\mathbb{E}\brackets{\sum_{i=1}^KN_{i,n}}} 
+\le \sqrt{K}\sqrt{\mathbb{E}\brackets{\sum_{i=1}^K\sum_{t=1}^nM_{i,t}}}.
+\]
+Plugging the result in the inequality, we get
 
 \begin{equation*}
 \begin{split}
-\mathbb{E}&\brackets{\sum_{i=1}^{K}\sum_{t=1}^{n}M_{i,t}Z_{i,t}{\paren{\frac{b_{i,t-1} +\abs{\hat{p}_{i,t}}-\min_j\abs{\hat{p}_{j,t}}}{b_{i,t-1}}}}}\\
-&~
-\end{split}
-\end{equation*}
-\QED
-
-
-
-In addition, we define $X_i=\max_t{\Vert\vxiit\Vert}$ . Plugging the new scaling factor, $b_{i,t-1}$ into the given inequality we get 
-\begin{equation*}
-\begin{split}
-M_{i,t}Z_{i,t}{\paren{b_{i,t-1} +\abs{\hat{p}_{i,t}}}} \le M_{i,t}&Z_{i,t}\frac{b_{i,t-1}}{\gamma} \lossp{\gamma,i,t}(\vu_i)+\\ 
-\frac{1}{2}\normt{\frac{b_{i,t-1}}{\gamma} \vu_i-\vwi{i,t-1}}&-\frac{1}{2}\normt{\frac{b_{i,t-1}}{\gamma} \vu_i-\vwiit}+
-\frac{M_{i,t}Z_{i,t}}{2}\normt{\vwi{i,t-1}-\vwiit}.
-\end{split}
-\end{equation*}
- From the update rule of the  algorithm we can bound $\normt{\vwi{i,t-1}-\vwiit}\le \normt{\vxiit}$. This inequality holds for any time step, and particular for an update iteration. Using this bound and dividing the inequality by in  $b_{t-1}$ yields
-\begin{equation}
-\begin{split}
-M_{i,t}Z_{i,t}&{\paren{\frac{b_{i,t-1} +\abs{\hat{p}_{i,t}}-\normt{\vxiit}/2}{b_{i,t-1}}}} \le M_{i,t}Z_{i,t}\frac{\lossp{\gamma,i,t}(\vu_i)}{\gamma} \\ 
-&+\frac{1}{2b_{i,t-1
-}}\paren{\normt{\frac{b_{i,t-1}}{\gamma} \vu_i-\vwi{i,t-1}}-\normt{\frac{b_{i,t-1}}{\gamma} \vu_i-\vwiit}}.
-\label{eq:adaptive_b_first_step}
-\end{split}
-\end{equation}
-Now, we decompose the last term of the inequality to two  differences,
-\begin{equation*}
-\begin{split}
-\frac{1}{2b_{i,t-1}}
-\paren{\normt{\frac{c_{i,t-1}}{\gamma} \vu_i-\vwi{i,t-1}}-\normt{\frac{c_{i,t-1}}{\gamma} \vu_i-\vwiit}}= \\
-\frac{1}{2b_{i,t-1}}\normt{\frac{b_{i,t-1}}{\gamma} \vu_i-\vwi{i,t-1}}-\frac{1}{2b_{i,t}}\normt{\frac{b_{i,t}}{\gamma} \vu_i-\vwi{i,t}}+\\
-\frac{1}{2b_{i,t}}\normt{\frac{b_{i,t}}{\gamma} \vu_i-\vwi{i,t}}-\frac{1}{2b_{i,t-1}}\normt{\frac{b_{i,t-1}}{\gamma} \vu_i-\vwiit}.
-\end{split}
-\end{equation*}
-At this point  expand the last two terms and  set   
-
-and we get
-\begin{equation*}
-\begin{split}
-\frac{1}{2b_{i,t}}\normt{\frac{b_{i,t}}{\gamma} \vu_i-\vwi{i,t}}&-\frac{1}{2b_{i,t-1}}\normt{\frac{b_{i,t-1}}{\gamma} \vu_i-\vwiit}\\
-=&\frac{\normt{\vu_i}}{2\gamma^2}\paren{b_{{i,t}}-b_{{i,t-}}}
-+\frac{\normt{\vwiit}}{2}\paren{\frac{1}{b_{i,t}}-\frac{1}{b_{i,t-1}}}
-\end{split}
-\end{equation*}
-The definition of $b_{i,t}$ we know that $b_{i,t}$ is non decreasing over time such that the last term is always negative and can be waved,the inequality becomes,
-
-\begin{equation}
-\begin{split}
-\frac{1}{2b_{i,t}}\normt{\frac{b_{i,t}}{\gamma} \vu_i-\vwi{i,t}}&-\frac{1}{2b_{i,t-1}}\normt{\frac{b_{i,t-1}}{\gamma} \vu_i-\vwiit}
-\le\frac{\normt{\vu_i}}{2\gamma^2}\paren{b_{{i,t}}-b_{{i,t-}}}
-.
-\end{split}
-\label{eq:difference_of_norm_ineq}
-\end{equation}
-Here, recall that on an update trial $y_{i,t}\vw_{i,t-1}^{T}\vxiit\le0$, we use again the update rule and  bound the weight vector norm with the number of updates, 
-\begin{equation*}
-\begin{split}
-\normt{\vwiit}&=\normt{\vw_{i,t-1}+M_{i,t}Z_{i,t}y_{i,t}\vxiit}\\
-&=\normt{\vw_{i,t-1}}+ 2M_{i,t}Z_{i,t}y_{i,t}\vw_{i,t-1}^{T}\vxiit+M_{i,t}Z_{i,t}\normt{\vxiit}\\
-&\le\normt{\vw_{i,t-1}}+M_{i,t}Z_{i,t}\normt{\vxiit}\\
-&\le\normt{\vw_{i,t-1}}+M_{i,t}Z_{i,t}X_i^2
-\end{split}
-\end{equation*}
-This inequality, combined with the initial value $\vw_{i,0}=0$ leads us to
-\begin{equation}
-\Vert\vwiit\Vert\le X_i\sqrt{N_{i,t}}
-\label{eq:bound_on_w}
-\end{equation}
-which holds for any $i$ and $t$. 
-
-Plugging the  last bound and \eqref{eq:difference_of_norm_ineq_2} into \eqref{eq:adaptive_b_first_step} gives us the next inequality that holds for any $i,t,\gamma>0,$ and $u_i\in\reals^d$,
-\begin{equation*}
-\begin{split}
-M_{i,t}Z_{i,t}&{\paren{\frac{b_{i,t-1} +\abs{\hat{p}_{i,t}}-\normt{\vxiit}/2}{b_{i,t-1}}}} \le M_{i,t}Z_{i,t}\frac{\lossp{\gamma,i,t}(\vu_i)}{\gamma}\\
-&+\frac{1}{2b_{i,t-1}}\normt{\frac{b_{i,t-1}}{\gamma} \vu_i-\vwi{i,t-1}}-\frac{1}{2b_{i,t}}\normt{\frac{b_{i,t}}{\gamma} \vu_i-\vwi{i,t}}\\
-&+\frac{\normt{\vu_i}}{2\gamma^2}\paren{b_{{i,t}}-b_{{i,t-1}}}
-.
-\end{split}
-\end{equation*}
-Recall the definition of $c_{i,t}$, we can write $c_{i,t-1}-\normt{\vxiit}/2\ge b_{i,t-1}$ and the ineqality gets the form
-\begin{equation*}
-\begin{split}
-M_{i,t}Z_{i,t}&{\paren{\frac{b_{i,t-1} +\abs{\hat{p}_{i,t}}}{b_{i,t-1}}}} \le M_{i,t}Z_{i,t}\frac{c_{i,t-1}}{b_{i,t-1}}\frac{\lossp{\gamma,i,t}(\vu_i)}{\gamma}\\
-&+\frac{1}{2b_{i,t-1}}\normt{\frac{c_{i,t-1}}{\gamma} \vu_i-\vwi{i,t-1}}-\frac{1}{2b_{i,t}}\normt{\frac{c_{i,t}}{\gamma} \vu_i-\vwi{i,t}}\\
-&+\frac{\normt{\vu_i}}{2\gamma^2}\paren{\frac{c_{i,t}^2}{b_{i,t}}-\frac{c_{i,t-1}^2}{b_{i,t-1}}}+
-\frac{\Vert\vu_i\Vert~ X_i}{\gamma}\frac{M_{i,t}Z_{i,t}}{4\beta}\frac{1}{N_{i,t}}.
-\end{split}
-\end{equation*}
-Summing  both sides over $t=1,\cdots,n$, and taking into consideration the initialization,   $w_0=0$ we obtain,
-\begin{equation}
-\begin{split}
-\sum_{t=1}^{n}M_{i,t}Z_{i,t}&{\paren{\frac{b_{i,t-1} +\abs{\hat{p}_{i,t}}}{b_{i,t-1}}}} \le \frac{1}{\gamma}\sum_{t=1}^{n}{M_{i,t}Z_{i,t}\frac{c_{i,t-1}}{b_{i,t-1}}\lossp{\gamma,i,t}(\vu_i)}\\
-&+\frac{\normt{\vu_i}}{2\gamma^2}\frac{c_{i,n}^2}{b_{i,n}}-\frac{1}{2b_{i,n}}\normt{\frac{c_{i,n}}{\gamma} \vu_i-\vwi{i,n}}
-+\frac{\Vert\vu_i\Vert~ X_i}{4\beta\gamma}\sum_{t=1}^{n}{\frac{M_{i,t}Z_{i,t}}{N_{i,t}}}.
-\label{eq:first_sum}
-\end{split}
-\end{equation}
-Now, we will bound the terms in the right hand side. The first term can be bounded as following,
-\begin{equation*}
-\begin{split}
-\frac{1}{\gamma}\frac{c_{i,t-1}}{b_{i,t-1}}\lossp{\gamma,i,t}(\vu_i)&=\frac{1}{\gamma}\paren{\frac{1}{2\beta\sqrt{1+N_{i,t-1}}}+1}\lossp{\gamma,i,t}(\vu_i)\\
-&\le \frac{1}{2\gamma\beta\sqrt{1+N_{i,t-1}}}\paren{\gamma+\Vert u_i\Vert X_i}+\frac{\lossp{\gamma,i,t}(\vu_i)}{\gamma}\\
-&=\frac{1}{2\beta\sqrt{1+N_{i,t-1}}}\paren{1+\frac{\Vert u_i\Vert X_i}{\gamma}}+\frac{\lossp{\gamma,i,t}(\vu_i)}{\gamma}
-\end{split}
-\end{equation*}
-Here, we used  the fact that $\lossp{\gamma,i,t}(\vu_i)\le \gamma+\Vert u_i\Vert X_i$.
-Now we proceed  with  the two middle terms of \eqref{eq:first_sum} and get the bound
-\begin{equation*}
-\begin{split}
-\frac{\normt{\vu_i}}{2\gamma^2}\frac{c_{i,n}^2}{b_{i,n}}-\frac{1}{2b_{i,n}}\normt{\frac{c_{i,n}}{\gamma} \vu_i-\vwi{i,n}}
-&=\frac{c_{i,n}u_i^T\vwi{i,n}}{b_{i,n}\gamma}-\frac{\normt{\vw_{i,n}}}{2b_{i,n}}\\
-&\le \frac{c_{i,n}u_i^T\vwi{i,n}}{b_{i,n}\gamma}\\
-&\le\frac{c_{i,n}}{b_{i,n}}\frac{{\Vert u_i\Vert}~{\Vert\vwi{i,n}\Vert}}{\gamma}\\
-&\le\paren{\frac{1}{2\beta\sqrt{1+N_{i,n}}}+1}\frac{{\Vert u_i\Vert}X_i\sqrt{N_{i,n}}}{\gamma},
-\end{split}
-\end{equation*}
-where we used \eqref{eq:bound_on_w} in the last step.
-Putting all together in \eqref{eq:first_sum}  gives us
-\begin{equation*}
-\begin{split}
-\sum_{t=1}^{n}M_{i,t}Z_{i,t}&{\paren{\frac{b_{i,t-1} +\abs{\hat{p}_{i,t}}}{b_{i,t-1}}}}\\
-\le &\frac{1}{2\beta}\paren{1+\frac{\Vert u_i\Vert X_i}{\gamma}}\sum_{t=1}^{n}{\frac{M_{i,t}Z_{i,t}}{\sqrt{1+N_{i,t-1}}}}
-+\frac{1}{\gamma}\sum_{t=1}^{n}{M_{i,t}Z_{i,t}}\lossp{\gamma,i,t}(\vu_i)\\
-+&\paren{\frac{1}{2\beta\sqrt{1+N_{i,n}}}+1}\frac{{\Vert u_i\Vert}X_i\sqrt{N_{i,n}}}{\gamma}
-+\frac{\Vert\vu_i\Vert~ X_i}{4\beta\gamma}\sum_{t=1}^{n}{\frac{M_{i,t}Z_{i,t}}{N_{i,t}}}.
-\end{split}
-\end{equation*} 
-The first and the last sums in the right hand side can get more elegant form. Recall $M_{i,t}Z_{i,t}=1$ implies $N_{i,t}=N_{i,t-1}+1$ , we can write  
-\begin{equation*}
-\begin{split}
-\sum_{t=1}^{n}{\frac{M_{i,t}Z_{i,t}}{\sqrt{1+N_{i,t-1}}}}
-=\sum_{t=1}^{n}{\frac{M_{i,t}Z_{i,t}}{\sqrt{N_{i,t}}}}
-=\sum_{r=1}^{N_{i,n}}{\frac{1}{\sqrt{r}}} 
-\le 2\sqrt{N_{i,n}}.
-\end{split}
-\end{equation*}
-Now, we apply the same bound on the second sum, but with more loose bound, \begin{equation*}
-\begin{split}
-\sum_{t=1}^{n}{\frac{M_{i,t}Z_{i,t}}{N_{i,t}}}
-\le\sum_{t=1}^{n}{\frac{M_{i,t}Z_{i,t}}{\sqrt{N_{i,t}}}} 
-\le 2\sqrt{N_{i,n}}. 
-\end{split}
-\end{equation*}
-Defining $R_i=\paren{\Vert u_i\Vert X_i}/{\gamma}$, and combining the last three bounds together we get
-\begin{equation*}
-\begin{split}
-\sum_{t=1}^{n}M_{i,t}Z_{i,t}&{\paren{\frac{b_{i,t-1} +\abs{\hat{p}_{i,t}}}{b_{i,t-1}}}}\\
-\le &\frac{1}{\gamma}\sum_{t=1}^{n}{M_{i,t}Z_{i,t}}\lossp{\gamma,i,t}(\vu_i)
-+\frac{1}{\beta}\paren{1+\frac{3R_{i}}{2}}\sqrt{N_{i,n}}
-\\
-+&\frac{R_i}{2\beta}+R_{i}\sqrt{N_{i,n}}.
-\end{split}
-\end{equation*}
-Now, we subtract non negative term from the left side and take an  expectation .
-\begin{equation*}
-\begin{split}  
-\mathbb{E}&\brackets{\sum_{t=1}^{n}M_{i,t}Z_{i,t}{\paren{\frac{b_{i,t-1} +\abs{\hat{p}_{i,t}}-\min_j\abs{\hat{p}_{j,t}}}{b_{i,t-1}}}}}\\
-\le &\frac{1}{\gamma}\mathbb{E}\brackets{\sum_{t=1}^{n}{M_{i,t}Z_{i,t}}\lossp{\gamma,i,t}(\vu_i)}
-+\mathbb{E}\brackets{\paren{R_{i}+\frac{2+3R_{i}}{2\beta}}\sqrt{N_{i,n}}}
-+\mathbb{E}\brackets{\sum_{i=1}^{K}\frac{R_i}{2\beta}}.
-\end{split}
-\end{equation*}
-and take the expectation of the inequality. First we look at the left hand side of the inequality.
-
-\begin{equation*}
-\begin{split}
-\mathbb{E}&\brackets{\sum_{i=1}^{K}\sum_{t=1}^{n}M_{i,t}Z_{i,t}{\paren{\frac{b_{i,t-1} +\abs{\hat{p}_{i,t}}-\min_j\abs{\hat{p}_{j,t}}}{b_{i,t-1}}}}}\\
+\frac{1}{\delta}\mathbb{E}&\brackets{\sum_{i=1}^{K}\sum_{t=1}^{n}M_{i,t}}\\
 \le &\frac{1}{\gamma}\mathbb{E}\brackets{\sum_{i=1}^{K}\sum_{t=1}^{n}{M_{i,t}Z_{i,t}}\lossp{\gamma,i,t}(\vu_i)}
 +\mathbb{E}\brackets{\sum_{i=1}^{K}\paren{R_{i}+\frac{2+3R_{i}}{2\beta}}\sqrt{N_{i,n}}}
 +\mathbb{E}\brackets{\sum_{i=1}^{K}\frac{R_i}{2\beta}}\\
-\le & \frac{1}{\gamma}{\bar L}_{\gamma,n}+\paren{R+\frac{2+3R}{2\beta}}\mathbb{E}\brackets{\sum_{i=1}^{K}\sqrt{N_{i,n}}}
-+\frac{KR}{2\beta}\\
-\le & \frac{1}{\gamma}{\bar L}_{\gamma,n}+\paren{R+\frac{2+3R}{2\beta}}\mathbb{E}\brackets{\sum_{i=1}^{K}\sqrt{N_{i,n}}}
-+\frac{KR}{2\beta}\\
-\le & \frac{1}{\gamma}{\bar L}_{\gamma,n}+\paren{R+\frac{2+3R}{2\beta}}\mathbb{E}\brackets{\sqrt{Kn}}
-+\frac{KR}{2\beta}\\
-\le & \frac{1}{\gamma}{\bar L}_{\gamma,n}+\paren{R+\frac{2+3R}{2\beta}}\sqrt{Kn}
+\le & \frac{1}{\gamma}{\bar L}_{\gamma,n}+\paren{R+\frac{2+3R}{2\beta}}\sqrt{K}\sqrt{\mathbb{E}\brackets{\sum_{i=1}^K\sum_{t=1}^nM_{i,t}}}
 +\frac{KR}{2\beta}
 \end{split}
 \end{equation*}
 
-Where $R=\max_i\paren{\Vert u_i\Vert X_i}/{\gamma}$
 
 
 \begin{equation*}
@@ -1177,6 +1082,9 @@ Where $R=\max_i\paren{\Vert u_i\Vert X_i}/{\gamma}$
 \le  \frac{K}{\gamma}{\bar L}_{\gamma,n}+K^{3/2}\paren{R+\frac{2+3R}{2\beta}}\sqrt{n}
 +\frac{K^{2}R}{2\beta}
 \end{equation*}
+
+\QED
+
 
 \section{to do}
 \begin{itemize}
