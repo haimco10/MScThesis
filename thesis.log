@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  5 OCT 2015 20:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  5 OCT 2015 22:44
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1017,17 +1017,17 @@ really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
 [33]
-Underfull \hbox (badness 10000) in paragraph at lines 1110--1111
+Underfull \hbox (badness 10000) in paragraph at lines 1099--1101
 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 1116
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 1106
 .
 (/usr/local/texlive/2014/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 1116.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 1106.
 
 )
 (./Second_Order_SHAMPO.tex [34] [35]
@@ -1049,57 +1049,59 @@ Overfull \hbox (51.95059pt too wide) in paragraph at lines 92--92
 [] 
  []
 
-[37] [38] [39] [40] [41]
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 236.
- [42]
+[37] [38] [39] [40]) (./multitask_to_multiclass.tex [41]
+Chapter 5.
 
-LaTeX Warning: Reference `thm:bound' on page \@@number{43} undefined on input l
-ine 245.
-
-
-Overfull \hbox (9.91805pt too wide) in paragraph at lines 245--246
-\OT1/ptm/m/n/10.95 The corol-lary fol-lows di-rectly from The-o-rem [] by not-i
-ng that, $\OT1/cmr/m/n/10.95 [ [[]] ] \OMS/cmsy/m/n/10.95 ^^T [][] \OML/cmm/m/i
-t/10.95 M[]$\OT1/ptm/m/n/10.95 .
+Overfull \hbox (3.37468pt too wide) in paragraph at lines 2--10
+[]\OT1/ptm/m/n/10.95 Avner et al.[] [[]2012[]]. The prob-lem of this set-ting i
+s pre-dict-ing a la-bel $[] \OMS/cmsy/m/n/10.95 2 f\OT1/cmr/m/n/10.95 1\OML/cmm
+/m/it/10.95 ; [] ; C\OMS/cmsy/m/n/10.95 g$
  []
 
+[42
+
+]
 
 Package amsmath Warning: Foreign command \atopwithdelims;
 (amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 260.
+(amsmath)                 on input line 50.
 
 
-Overfull \hbox (10.1642pt too wide) in paragraph at lines 260--262
+Overfull \hbox (10.1642pt too wide) in paragraph at lines 50--52
 \OT1/ptm/m/n/10.95 In the sec-ond set-ting, termed by \OT1/ptm/m/it/10.95 one-v
 s-one\OT1/ptm/m/n/10.95 , the al-go-rithm picks two la-bels $[]\OML/cmm/m/it/10
 .95 ; [] \OMS/cmsy/m/n/10.95 2$
  []
 
 [43]
+Overfull \hbox (140.31943pt too wide) in paragraph at lines 54--58
+[]$\U/msb/m/n/10.95 E [] \OMS/cmsy/m/n/10.95 ^^T [] []  \OML/cmm/m/it/10.95 :$ 
+
+ []
+
 
 LaTeX Warning: Reference `thm:bound' on page \@@number{44} undefined on input l
-ine 271.
+ine 59.
 
 
-Overfull \hbox (76.55124pt too wide) in paragraph at lines 271--272
+Overfull \hbox (76.55124pt too wide) in paragraph at lines 59--60
 \OT1/ptm/m/n/10.95 The corol-lary fol-lows di-rectly from The-o-rem [] by not-i
 ng that, $\OT1/cmr/m/n/10.95 [ [[]] ] \OMS/cmsy/m/n/10.95 ^^T [] [][] \OML/cmm/
 m/it/10.95 M[]$\OT1/ptm/m/n/10.95 .
  []
 
 ) [44] (./thesis.bbl)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 113.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 115.
  [45
 
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 113.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 115.
  (./thesis.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 113.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 113.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 115.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 115.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 18D9F603BE902C2CC34CE1C60E87F4FB;1334.
+(rerunfilecheck)             Checksum: BF086479CE6A8B34EE124D702AE7465B;1309.
 
 
 LaTeX Warning: There were undefined references.
@@ -1107,16 +1109,16 @@ LaTeX Warning: There were undefined references.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 113.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 115.
  ) 
 Here is how much of TeX's memory you used:
- 9242 strings out of 493117
- 127825 string characters out of 6135433
- 243763 words of memory out of 5000000
- 12311 multiletter control sequences out of 15000+600000
- 40774 words of font info for 105 fonts, out of 8000000 for 9000
+ 9240 strings out of 493117
+ 127817 string characters out of 6135433
+ 243700 words of memory out of 5000000
+ 12307 multiletter control sequences out of 15000+600000
+ 38641 words of font info for 102 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,26n,40p,1874b,417s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,26n,40p,1129b,414s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/te
 xlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texl
@@ -1135,7 +1137,7 @@ fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2014/texmf-d
 ist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/
 type1/urw/times/utmr8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/
 times/utmri8a.pfb>
-Output written on ./thesis.pdf (57 pages, 366864 bytes).
+Output written on ./thesis.pdf (57 pages, 367400 bytes).
 PDF statistics:
  641 PDF objects out of 1000 (max. 8388607)
  546 compressed objects within 6 object streams

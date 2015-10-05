@@ -12,6 +12,6 @@
 \BOOKMARK [1][-]{section.3.5}{SHAMPO perceptron with Adaptive b parameter}{chapter.3}% \@@number {12}
 \BOOKMARK [1][-]{section.3.6}{to do}{chapter.3}% \@@number {13}
 \BOOKMARK [0][-]{chapter.4}{Second Order SHAMPO}{}% \@@number {14}
-\BOOKMARK [1][-]{section.4.1}{From Multi-task to Contextual Bandits}{chapter.4}% \@@number {15}
-\BOOKMARK [2][-]{subsection.4.1.1}{One-vs-Rest}{section.4.1}% \@@number {16}
-\BOOKMARK [2][-]{subsection.4.1.2}{One-vs-One}{section.4.1}% \@@number {17}
+\BOOKMARK [0][-]{chapter.5}{From Multi-task to Contextual Bandits}{}% \@@number {15}
+\BOOKMARK [1][-]{section.5.1}{One-vs-Rest}{chapter.5}% \@@number {16}
+\BOOKMARK [1][-]{section.5.2}{One-vs-One}{chapter.5}% \@@number {17}

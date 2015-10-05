@@ -223,63 +223,6 @@ Now, we can summarize the inequality over all of the tasks,
 &+\frac{1}{c}\mathbb{E}\sum_{i=1}^{K}\sum_{t\in\mathcal{A}}\brackets{\frac{r_{i,t}}{1+r_{i,t}}}
 \end{split}
 \end{equation*} 
- \section{From Multi-task to Contextual Bandits}
-Although our algorithm is designed for many binary-classification tasks that can be independent, 
-it can also be applied in two settings of contextual bandits, when one decoupling exploration and 
-exploitation is allowed in every cycle as in ~\cite{DBLP:conf/icml/YuM09,DBLP:conf/icml/AvnerMS12}. 
-The problem of this setting is predicting a label $\hat{Y}_t \in\{ 1 \comdots C\}$ given an input $\vxi{t}$. 
-As before, the algorithm works in rounds. On round $t$ the algorithm receives an input $\vxi{t}$ and 
-outputs  multicalss label $\hat{Y}_t\in\{1 \comdots C\}$. 
-Then, it queries for some information about the label via a single binary ``yes-no'' question, and uses the 
-feedback to update its model. We consider here two forms of binary questions.
-
-\subsection{One-vs-Rest}
-In the first setting, termed {\em one-vs-rest}, the algorithm asks if the true label is some label $\bar{Y}_t\in\{ 1 \comdots C\}$, possibly not the predicted label, i.e. it may be the case that $\bar{Y}_t \neq\hat{Y}_t$. Given the response whether  $\bar{Y}_t$ is indeed the true label $Y_t$, the algorithm updates its models. The reduction we perform is by introducing $K$ tasks to be done in parallel, one per class, such that $K=C$. The $i^{\text{th}}$ task is to decide whether the true label of the current input  $\vx_t$ is class $i$ or not. Even though, for the most of the tasks, we can not deduce the true labeling $Y_t\in\{ 1 \comdots C\}$,  considering a single task prediction (actually it can be done only for one  specific task at a time),  still the binary prediction, gives us the ability to eliminate one of the classes. For example: in the case of numbers OCR, if the true label of an input image is $6$, the first task is asking if the predicted label should be $0$ or not, the answer of this question is indeed negative, so  the true label may not be $0$, but we still don't know what it is. Given the output of all (binary) classifiers, the algorithm generates a single multi-class prediction to be the single label for which the output of the corresponding binary classifier is positive.  If such class does not exist, or there are more than one such classes, a random prediction is used, that is, given an input $\vxi{t}$ we define $\hat{Y}_t = \arg\max_i \hat{p}_{i,t}$, where ties are broken arbitrarily   . Given the feedback whether  $\bar{Y}_t$ is indeed the true label $Y_t$, the algorithm updates its models. The label to be queried is $\bar{Y}_t=J_t$, i.e. the problem index that SHAMPO is querying. We now analyze the performance of this reduction as a multiclass prediction algorithm.
-\begin{corollary} 
-Assume the SHAMPO algorithm is executed as above with $K=C$ one-vs-rest tasks, on a sequence $(\vx_1,Y_1),...(\vx_n,Y_n)\in\mathbb{R}^d\times\{1,...,C\}$, and input parameter $b>0$. Then for all $\gamma>0$ and all $\vui{i}\in\mathbb{R}^d$, the expected number of multi-class errors is bounded as follows
-\begin{displaymath}
-\mathbb{E}\brackets{\sum_t \1{Y_t \neq \hat{Y}_t}}\le \frac{C}{\gamma}\brackets{\paren{1+\frac{X^2}{2b} }{\bar L}_{\gamma,n}+\frac{\paren{{2b+X^2}}^2U^2}{8{\gamma}b}}~,
-\end{displaymath}
-where $\1{A}=1$ if the predicate $A$ is true, and zero otherwise.
-\end{corollary}
-The corollary follows directly from \thmref{thm:bound} by noting that, $\1{Y_t \neq \hat{Y}_t} \leq \sum_i M_{i,t}$. That is, there is a multiclass mistake if there is at least one prediction mistake of one of the one-vs-rest problems. The closest setting  to the presented setting is the one of contextual bandits, yet we allow decoupling of exploration and exploitation. Ignoring this decoupling, the Banditron algorithm~\cite{kakade2008efficient} is the closest to ours, with a regret of $O(T^{2/3})$. Hazan et al~\cite{hazan2011newtron} proposed an algorithm with $O(\sqrt{T})$ regret but designed for the $\log$ loss, with coefficient that may be very large, and another~\cite{DBLP:journals/ml/CrammerG13} algorithm has $O(\sqrt{T})$ regret with respect to prediction mistakes, yet they assumed stochastic labeling, rather than adversarial.
-
-
-% \begin{itemize}
-% \item ask $\kappa$ queries, by sampling with no replacements.
-% \kc{compute the bound please}
-% \item ECOC (cor below)
-% \item 1-vs-rest = contextual bandits with decoupled exploration and
-%   exploitation (add)
-% \item 1-vs-1 = contextual dueling bandits, with a dont relevant input, with decoupled exploration and
-%   exploitation (add)
-
-%\end{itemize}
-\subsection{One-vs-One}
-\label{sec:variants}
-In the second setting, termed by {\em one-vs-one}, the algorithm picks two labels $\bar{Y}^+_t,\bar{Y}^-_t \in\{1 \dots C\}$, possibly both not the predicted label. The feedback for the learner is three-fold, it is $\yi{J_t,t}=+1$ if the first alternative is the correct label, $\bar{Y}^+_t=Y_t$. The feedback is $\yi{J_t,t}=-1$ if the second alternative is the correct label, $\bar{Y}^-_t=Y_t$, and it is $\yi{J_t,t}=0$ otherwise (in this case there is no error and we set $M_{J_t,t}=0$). The reduction we perform is by introducing $K= {C \choose 2}$ problems, one per pair of classes.  The goal of the learning algorithm for a problem indexed with two labels $(y_1,y_2)$ is to decide which is the correct label, given it is one of the two. Given the output of all (binary) classifiers the algorithm generates a single multi-class prediction using a tournament in a round-robin approach~\cite{DBLP:journals/jmlr/Furnkranz02}. If there is no clear winner, a random prediction is used. We now analyze the performance of this reduction as a multiclass prediction algorithm,
-\begin{corollary} 
-Assume the SHAMPO algorithm is executed as above, with $K={C \choose 2}$ one-vs-one problems, on a sequence $(\vx_1,Y_1),...(\vx_n,Y_n)\in\mathbb{R}^d\times\{1,...,C\}$, and input parameter $b>0$. Then for all $\gamma>0$ and all $\vui{i}\in\mathbb{R}^d$, the expected number of multi-class errors can be bounded as follows
-\[
-\begin{split}
-&\mathbb{E}\brackets{\sum_t \1{Y_t \neq \hat{Y}_t}}\le \\
-&\frac{2{C \choose 2}}{({C \choose 2}-1)/2+1} \frac{1}{\gamma}\brackets{\paren{1+\frac{X^2}{2b} }{\bar L}_{\gamma,n}+\frac{\paren{{2b+X^2}}^2U^{2}}{8{\gamma}b}}
-\end{split}
-\]
-where $\1{A}=1$ if the predicate $A$ is true, and zero otherwise.
-\end{corollary}
-The corollary follows directly from \thmref{thm:bound} by noting that, $\1{Y_t \neq \hat{Y}_t} \leq \frac{2}{({C \choose 2}-1)/2+1}\sum_{i=1}^{ {C \choose 2}} M_{i,t}$. Note, that the bound is essentially  independent of $C$ as the coefficient in the bound is upper bounded by $6$ for $C \geq 3$.
-
-We conclude this section with two algorithmic modifications, which we employ in this setting. Currently, when the feedback is zero, there is no update of the weights  for those problems, because there is no error. This causes the algorithm to effectively ignore such (many) examples, as in these cases the algorithm is not modifying any model, and furthermore, if such example is repeated, a problem with possibly ``0'' feedback may be queried again. 
-%
-We fix this issue with one of the two modifications. In the first alternative, if the feedback is zero, we modify the model to reduce the chance that the chosen problem, $J_t$, would be chosen again for the same input (i.e. not to make the same wrong-choice of choosing irrelevant problem again). To this end, we modify the weights a bit, to increase the confidence (absolute margin) of the model for the same input, and replace \eqref{perc_update} with,
-\(
-\vwi{J_t,t} = \vwi{J_t,t-1}+ \1{\yi{J_t,t}\ne0} \, \yi{J_t,t}\, \vxi{J_t,t} +
- \1{\yi{J_t,t}=0} \eta \hyi{J_t,t}\vxi{J_t,t}~,
-\)
-for some $\eta>0$. In other words, if there is a possible error (i.e. $\yi{J_t,t}\ne0$) the update follows the Perceptron's rule. Otherwise, the weights are updated such that the absolute margin will increase, as $\vert \vwti{J_t,t} \vxi{J_t,t} \vert = \vert 
-(\vwi{J_t,t-1}+ \eta \hyi{J_t,t}\vxi{J_t,t})^\top\vxi{J_t,t}\vert = \vert \vwti{J_t,t-1}\vxi{J_t,t}+ \eta \sign(\vwti{J_t,t-1}\vxi{J_t,t}) \Vert\vxi{J_t,t}\Vert^2 \vert = 
-\vert \vwti{J_t,t-1}\vxi{J_t,t}\vert + \eta \Vert\vxi{J_t,t}\Vert^2 > \vert \vwti{J_t,t-1}\vxi{J_t,t}\vert$. We call this method {\em one-vs-one-weak}, as it performs weak updates when there is zero feedback. The second alternative is not to allow a zeroed value feedback, and if this is the case, to set the label to be either $+1$ or $-1$, randomly. Both alternates are evaluated below. We call this method {\em one-vs-one-random}.
 
 
 
