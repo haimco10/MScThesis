@@ -1,17 +1,20 @@
-\BOOKMARK [0][-]{chapter*.4}{Abstract}{}% \@@number {1}
-\BOOKMARK [0][-]{chapter.1}{Introduction}{}% \@@number {2}
-\BOOKMARK [1][-]{section.1.1}{Online learning}{chapter.1}% \@@number {3}
-\BOOKMARK [1][-]{section.1.2}{Selective Sampling}{chapter.1}% \@@number {4}
-\BOOKMARK [1][-]{section.1.3}{Multi Task with Shared Annotator}{chapter.1}% \@@number {5}
-\BOOKMARK [0][-]{chapter.2}{The Shared Annotator Setting}{}% \@@number {6}
-\BOOKMARK [0][-]{chapter.3}{SHMPO \(SHared Annotator for Multiple Problems\) Algorithms}{}% \@@number {7}
-\BOOKMARK [1][-]{section.3.1}{SHAMPO perceptron}{chapter.3}% \@@number {8}
-\BOOKMARK [1][-]{section.3.2}{Aggressive version}{chapter.3}% \@@number {9}
-\BOOKMARK [1][-]{section.3.3}{prior distribution over tasks}{chapter.3}% \@@number {10}
-\BOOKMARK [1][-]{section.3.4}{Kernel-based SHAMPO}{chapter.3}% \@@number {11}
-\BOOKMARK [1][-]{section.3.5}{SHAMPO perceptron with Adaptive b parameter}{chapter.3}% \@@number {12}
-\BOOKMARK [1][-]{section.3.6}{to do}{chapter.3}% \@@number {13}
-\BOOKMARK [0][-]{chapter.4}{Second Order SHAMPO}{}% \@@number {14}
-\BOOKMARK [0][-]{chapter.5}{From Multi-task to Contextual Bandits}{}% \@@number {15}
-\BOOKMARK [1][-]{section.5.1}{One-vs-Rest}{chapter.5}% \@@number {16}
-\BOOKMARK [1][-]{section.5.2}{One-vs-One}{chapter.5}% \@@number {17}
+\BOOKMARK [0][-]{chapter*.4}{Abstract}{}% 1
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 2
+\BOOKMARK [1][-]{section.1.1}{Online learning}{chapter.1}% 3
+\BOOKMARK [1][-]{section.1.2}{Selective Sampling}{chapter.1}% 4
+\BOOKMARK [1][-]{section.1.3}{Multi Task with Shared Annotator}{chapter.1}% 5
+\BOOKMARK [0][-]{chapter.2}{The Shared Annotator Setting}{}% 6
+\BOOKMARK [0][-]{chapter.3}{SHMPO \(SHared Annotator for Multiple Problems\) Algorithms}{}% 7
+\BOOKMARK [1][-]{section.3.1}{SHAMPO perceptron}{chapter.3}% 8
+\BOOKMARK [1][-]{section.3.2}{Aggressive version}{chapter.3}% 9
+\BOOKMARK [1][-]{section.3.3}{prior distribution over tasks}{chapter.3}% 10
+\BOOKMARK [1][-]{section.3.4}{Kernel-based SHAMPO}{chapter.3}% 11
+\BOOKMARK [1][-]{section.3.5}{SHAMPO perceptron with Adaptive b parameter}{chapter.3}% 12
+\BOOKMARK [1][-]{section.3.6}{to do}{chapter.3}% 13
+\BOOKMARK [0][-]{chapter.4}{Second Order SHAMPO}{}% 14
+\BOOKMARK [0][-]{chapter.5}{From Multi-task to Contextual Bandits}{}% 15
+\BOOKMARK [1][-]{section.5.1}{One-vs-Rest}{chapter.5}% 16
+\BOOKMARK [1][-]{section.5.2}{One-vs-One}{chapter.5}% 17
+\BOOKMARK [0][-]{chapter.6}{Experiments}{}% 18
+\BOOKMARK [0][-]{chapter.7}{Related Work}{}% 19
+\BOOKMARK [0][-]{chapter.8}{Summary and Conclusions}{}% 20

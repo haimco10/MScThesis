@@ -1,54 +1,53 @@
 \chapter{Second Order SHAMPO}
 
-% \section{second order aggressive}
-% 
-%   \begin{algorithmic}
-%     \State \textbf{Parameters:}  $c\in\mathbb{R}>0$.\\ 
-%     \State \textbf{Initialize:} $\vwi{i,0}=\vzero$, $A_0=I$ \\
-%     \For {$t=1,2, ..., n$} 
-%       
-% \begin{enumerate}
-% \nolineskips
-% \item Observe $K$ instance vectors, $\vxiit$, ($i=1 \comdots K$).
-% \item Compute  $\hat{p}_{i,t}=\vxiit^T \paren{A_{i,t-1}+\vxiit\vxiit^T}^{-1}\vw_{i,t-1}$.
-% \item Predict $K$ labels, $\hyi{i,t}=\sign(\hat{p}_{i,t})$.
-% \item Compute $r_i = \vxiit^T A_{i,t-1}^{-1}\vxiit$.
-% \item Draw problem $J_t$  with the distribution:
-% \begin{align}
-% \pr{J_t=j} &=
-% \frac{1}{D_{t}}\frac{2c}{2c+\paren{\Theta\paren{\abs{\hat{p}_{j,t}},r_{j,t}}}_+}, \nonumber\\
-% D_t &=2c
-% \sum_i \paren{2c+\paren{\Theta\paren{\abs{\hat{p}_{i,t}},r_{i,t}}}_+}^{-1}. \nonumber
-% \end{align}
-% %Where $m,i\in\{1,...,K\}$ and $D_t$ is the normalization factor. Set $Z_{J,t}=1,~Z_{i,t}=0 , ~\forall i\ne J $.
-% If  \Theta\paren{\abs{\hat{p}_{J_t,t}},r_{i,t}}\ge0 \Then
-%         
-%         if $y_{J_t,t}\ne{\hat{y}_{J_t,t}$ set $U_{J_t,t}=1$.
-%         
-%         end if 
-% 
-% else
-% 
-% set $U_{J_t,t}=1$.
-% 
-% end if.
-% 
-% \item Update:
-% \begin{align}
-% &\vwi{J_t,t} = \vwi{J_t,t-1}+U_{J_t,t}\,  \vxi{J_t,t}  \yi{J_t,t}\,\label{perc_update}\\
-% &A_{J_t,t}=A_{J_t,t-1}+ U_{J_t,t}\vxi{J_t,t}\vxi{J_t,t}^T\nonumber
-% \end{align}
-% \end{enumerate}
-% \EndFor  
-% \State {\bf Output}: $\vwi{i,n}$ for $i=1 \comdots K$.
-% \end{algorithmic}\\
+\begin{algorithm}
+\begin{algorithmic}
+   \State \textbf{Parameters:}  $c\in\mathbb{R}>0$.
+   \State \textbf{Initialize:} $\vwi{i,0}=\vzero$, $A_0=I$ \\
+   \For {$t=1,2, ..., n$} 
+     \begin{enumerate}
+     \nolineskips
+     \item Observe $K$ instance vectors, $\vxiit$, ($i=1 \comdots K$).
+     \item Compute  $\hat{p}_{i,t}=\vxiit^T \paren{A_{i,t-1}+\vxiit\vxiit^T}^{-1}\vw_{i,t-1}$.
+     \item Predict $K$ labels, $\hyi{i,t}=\sign(\hat{p}_{i,t})$.
+      \item Compute $r_{i,t} = \vxiit^T A_{i,t-1}^{-1}\vxiit$.
+     \item Draw problem $J_t$  with the distribution:
+     
+      \begin{align}
+     \pr{J_t=j} &=
+     \frac{1}{D_{t}}\frac{2c}{2c+\paren{\Theta\paren{\abs{\hat{p}_{j,t}},r_{j,t}}}_+}, \nonumber\\
+     D_t &=2c
+     \sum_i \paren{2c+\paren{\Theta\paren{\abs{\hat{p}_{i,t}},r_{i,t}}}_+}^{-1}. \nonumber
+     \end{align}
+     Where $m,i\in\{1,...,K\}$ and $D_t$ is the normalization factor. \\
+     Set $Z_{J,t}=1,~Z_{i,t}=0 , ~\forall i\ne J $.
 
-% \caption{Second order aggressive SHAMPO. \label{alg:SHAMPO}}
-% \end{figure}        
-%\end{algorithm}
+     
+     \If {$\Theta\paren{\abs{\hat{p}_{J_t,t}},r_{i,t}}\ge0$}
+        \If {$y_{J_t,t}\ne{\hat{y}_{J_t,t}$}}
+            \State $U_{J_t,t}=1$
+        \EndIf
+    \Else 
+        \State set $U_{J_t,t}=1$
+    \EndIf
+     
+     \item Update:
+     \begin{align}
+     &\vwi{J_t,t} = \vwi{J_t,t-1}+U_{J_t,t}\,  \vxi{J_t,t}  \yi{J_t,t}\,\label{perc_update}\\
+     &A_{J_t,t}=A_{J_t,t-1}+ U_{J_t,t}\vxi{J_t,t}\vxi{J_t,t}^T\nonumber
+     \end{align}
+
+     
+     \end{enumerate}
+   \EndFor  
+   \State {\bf Output}: $\vwi{i,n}$ for $i=1 \comdots K$.
+\end{algorithmic}
+\caption{Second order aggressive SHAMPO. \label{alg:SHAMPO}}
+\end{algorithm}
 
 
-This algorithm and proof builds on the second order selective sampling by Cesa-Bianchi et al ~\cite{cesa2006worst} define the function
+This algorithm and proof builds on the second order selective sampling by Cesa-Bianchi 
+et al ~\cite{cesa2006worst} define the function
 \begin{equation}
 \Theta\paren{\abs{\hat{p}_{i,t}},r_{i,t}}=\paren{1+r_{i,t}}\hat{p}_{i,t}^2+2\abs{\hat{p}_{i,t}}-\frac{r_{i,t}}{1+r_{i,t}}
 \end{equation}
@@ -57,8 +56,18 @@ In order to understand the way that the aggressive update works, there is a need
 \begin{equation}
 \Theta\paren{\abs{\hat{p}_{i,t}},r_{i,t}}\le0 \Leftrightarrow \abs{\hat{p}_{i,t}}\le\theta({r_{i,t}})=\frac{-1+\sqrt{1+r_{i,t}}}{1+r_{i,t}}.
 \end{equation}
- The last equation shows that the condition on the function $\Theta\paren{\abs{\hat{p}_{j,t}},r_{j,t}}$ can be translated to threshold on the margin. First, a task is chosen according to the distribution above, then, for margin that is less the threshold, an aggressive update will be issued whereas for margin that is bigger than that, the algorithm will performed update only when there is a prediction error. For 
-all the rest of the task that were not chosen, no update is issued. For now, we would like to analyse the possibilities for one task in a certain iteration. There are two extreme cases: First, when the the algorithm has not get yet input examples the similar to the current one, which cause the maximal uncertainty i.e., $r_{i,t}=1$. In this case,  the aggressiveness threshold is maximal as well, and we get $\max{\theta({r_{i,t}})}=\frac{-1+\sqrt{2}}{2}\approx0.21$ and an aggressive update will be issued only when the margin is less than this value. Another interesting case is when we saw the same example many times before, such the uncertainty in the prediction now is relatively low, which means $r_{i,t}\approx0$. In this scenario, the aggressive update will be issued only when the margin is zero, $\hat{p}_{i,t}=0$. 
+The last equation shows that the condition on the function $\Theta\paren{\abs{\hat{p}_{j,t}},r_{j,t}}$ 
+can be translated to threshold on the margin. First, a task is chosen according to the distribution above, 
+then, for margin that is less the threshold, an aggressive update will be issued whereas for margin that is 
+bigger than that, the algorithm will performed update only when there is a prediction error. For 
+all the rest of the task that were not chosen, no update is issued. For now, we would like to analyse the 
+possibilities for one task in a certain iteration. There are two extreme cases: First, when the the algorithm 
+has not get yet input examples that are similar to the current one, which cause the maximal uncertainty 
+i.e., $r_{i,t}=1$. In this case,  the aggressiveness threshold is maximal as well, and we get 
+$\max{\theta({r_{i,t}})}=\frac{-1+\sqrt{2}}{2}\approx0.21$ and an aggressive update will be issued only 
+when the margin is less than this value. Another interesting case is when we saw the same example many 
+times before, such the uncertainty in the prediction now is relatively low, which means $r_{i,t}\approx0$. 
+In this scenario, the aggressive update will be issued only when the margin is zero, $\hat{p}_{i,t}=0$. 
 \\
 
 \begin{proof} 
@@ -68,11 +77,12 @@ Before proofing the Thm. we will use the next inequality. define $x\in[0,1]$
 \sqrt{1-x}+\sqrt{1+x}\le2.
 \label{technical_inequality}
 \end{equation}
-From the concavity of $\sqrt{1+x}$ we see that $\sqrt{1+x}\le1+\half x$. using this inequality twice, we get $\sqrt{1-x}+\sqrt{1+x}\le1-\half x+1+\half x=2$.
-
-Define 
+From the concavity of $\sqrt{1+x}$ we see that $\sqrt{1+x}\le1+\half x$. 
+Using this inequality twice, we get $\sqrt{1-x}+\sqrt{1+x}\le1-\half x+1+\half x=2$.
+Define the regularized cumulative square loss of the updated rounds on the task 
+$i$ up to the round $t$
 \begin{equation*}
-\Phi_{i,t}(\vu_i)=\half\normt{\vu_i}+\half\sum_{s=1}^{t}{Z_{i,t}U_{i,t}\paren{y_{i,t}-\vu_i^T\vx_{i,t}}}^2
+\Phi_{i,t}(\vu_i)=\half\normt{\vu_i}+\half\sum_{s=1}^{t}{Z_{i,t}U_{i,t}\paren{y_{i,t}-\vu_i^T\vx_{i,t}}}^2.
 \end{equation*}
 Simlar to the proof of Thm .3 of Cesa-Bianchi et al ~\cite{cesa2006worst} and Forster ????,
 \begin{equation*}
@@ -98,17 +108,18 @@ Expanding the squares we get,
 \begin{equation}
 \begin{split}
 \half \sum_{t=1}^{n}Z_{i,t}U_{i,t}&\paren{\hat{p}_{i,t}^2-2y_{i,t}\hat{p}_{i,t}-\frac{r_{i,t}}{1+r_{i,t}}+r_{i,t}\hat{p}_{i,t}^2}\\
-\le& \half\normt{\vu_i}+\sum_{t=1}^{n}{Z_{i,t}U_{i,t}\vu_i^T\vx_{i,t}\vx_{i,t}^T\vu_i}-\sum_{t=1}^{n}{Z_{i,t}U_{i,t}\vu_i^T\vx_{i,t}y_{i,t}}\\
+\le& \half\normt{\vu_i}+\frac{1}{2}\sum_{t=1}^{n}{Z_{i,t}U_{i,t}\vu_i^T\vx_{i,t}\vx_{i,t}^T\vu_i}-\sum_{t=1}^{n}{Z_{i,t}U_{i,t}\vu_i^T\vx_{i,t}y_{i,t}}\\
 &=\half \vu_i^T\paren{I+\sum_{t=1}^{n}{Z_{i,t}U_{i,t}}\vxiit\vxiit^T}\vu_i-\sum_{t=1}^{n}{Z_{i,t}U_{i,t}\vu_i^T\vx_{i,t}y_{i,t}}\\
 &=\half \vu_i^T A_{i,n} \vu_i-\sum_{t=1}^{n}{Z_{i,t}U_{i,t}\vu_i^T\vx_{i,t}y_{i,t}}.
 \end{split}
 \label{sec_order_1}
 \end{equation} 
-The vectors $\vu_i$ can be replaced with their scaled version, $c\vu_i$. introducing the trivial inequality, $1-x\le \max\braces{1-x,0}$ we get 
+The vectors $\vu_i$ can be replaced with their scaled version, $c\vu_i$. 
+Introducing the trivial inequality, $1-x\le \max\braces{1-x,0}$ we get 
 \begin{equation}
 \begin{split}
-cZ_{i,t}U_{i,t}\paren{1-\vu_i^T\vx_{i,t}y_{i,t}} \le cZ_{i,t}U_{i,t}\max\braces{1-\vu_i^T\vx_{i,t}y_{i,t},0}\\
--cZ_{i,t}U_{i,t}\vu_i^T\vx_{i,t}y_{i,t}\le-cZ_{i,t}U_{i,t}+c \lossp{}\paren{\vu_i^T\vx_{i,t}y_{i,t}}.
+cZ_{i,t}U_{i,t}\paren{1-\vu_i^T\vx_{i,t}y_{i,t}} &\le cZ_{i,t}U_{i,t}\max\braces{1-\vu_i^T\vx_{i,t}y_{i,t},0}\\
+-cZ_{i,t}U_{i,t}\vu_i^T\vx_{i,t}y_{i,t}&\le-cZ_{i,t}U_{i,t}+c \lossp{}\paren{\vu_i^T\vx_{i,t}y_{i,t}}.
 \label{sec_order_2}
 \end{split}
 \end{equation}

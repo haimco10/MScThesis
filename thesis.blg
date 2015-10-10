@@ -5,46 +5,61 @@ The style file: plainnat.bst
 Database file #1: bib.bib
 A bad cross reference---entry "DBLP:conf/icml/AvnerMS12"
 refers to entry "DBLP:conf/icml/2012", which doesn't exist
+A bad cross reference---entry "DBLP:conf/colt/DekelLS06"
+refers to entry "DBLP:conf/colt/2006", which doesn't exist
+A bad cross reference---entry "DBLP:conf/colt/LugosiPS09"
+refers to entry "DBLP:conf/colt/2009", which doesn't exist
+A bad cross reference---entry "dekel2010robust"
+refers to entry "DBLP:conf/colt/2010", which doesn't exist
+A bad cross reference---entry "DBLP:conf/colt/YueBKJ09"
+refers to entry "DBLP:conf/colt/2009", which doesn't exist
+A bad cross reference---entry "DBLP:conf/icml/YueJ11"
+refers to entry "DBLP:conf/icml/2011", which doesn't exist
 Warning--I didn't find a database entry for "DBLP:conf/icml/2012"
-You've used 9 entries,
+Warning--I didn't find a database entry for "DBLP:conf/colt/2006"
+Warning--I didn't find a database entry for "DBLP:conf/colt/2009"
+Warning--I didn't find a database entry for "DBLP:conf/icml/2011"
+Warning--I didn't find a database entry for "DBLP:conf/colt/2010"
+Warning--empty publisher in NIPS2012_0706
+You've used 28 entries,
             2773 wiz_defined-function locations,
-            887 strings with 14772 characters,
-and the built_in function-call counts, 4281 in all, are:
-= -- 385
-> -- 214
-< -- 7
-+ -- 72
-- -- 63
-* -- 319
-:= -- 634
-add.period$ -- 28
-call.type$ -- 9
-change.case$ -- 48
-chr.to.int$ -- 9
-cite$ -- 18
-duplicate$ -- 213
-empty$ -- 381
-format.name$ -- 80
-if$ -- 925
-int.to.chr$ -- 1
+            1012 strings with 18399 characters,
+and the built_in function-call counts, 13609 in all, are:
+= -- 1215
+> -- 748
+< -- 18
++ -- 251
+- -- 222
+* -- 1068
+:= -- 2028
+add.period$ -- 95
+call.type$ -- 28
+change.case$ -- 158
+chr.to.int$ -- 27
+cite$ -- 57
+duplicate$ -- 667
+empty$ -- 1170
+format.name$ -- 270
+if$ -- 2936
+int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 9
-newline$ -- 53
-num.names$ -- 36
-pop$ -- 103
+missing$ -- 27
+newline$ -- 156
+num.names$ -- 112
+pop$ -- 332
 preamble$ -- 1
-purify$ -- 39
+purify$ -- 130
 quote$ -- 0
-skip$ -- 162
+skip$ -- 498
 stack$ -- 0
-substring$ -- 179
-swap$ -- 31
-text.length$ -- 2
+substring$ -- 485
+swap$ -- 98
+text.length$ -- 7
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 99
-warning$ -- 0
-while$ -- 38
+type$ -- 308
+warning$ -- 1
+while$ -- 112
 width$ -- 0
-write$ -- 122
-(There was 1 error message)
+write$ -- 381
+(There were 6 error messages)

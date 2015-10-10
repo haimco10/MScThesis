@@ -10,7 +10,6 @@
 \usepackage{subfigure}
 \usepackage{natbib}
 
-\usepackage{algorithm}
 \usepackage{hyperref}
 
 \usepackage{amsfonts}
@@ -27,10 +26,17 @@
 \usepackage{rotating}
 \usepackage{enumerate}
 \usepackage{tabulary}
-
 \usepackage[table]{xcolor}
-%\usepackage{algpseudocode}
-%\usepackage{algorithmic}
+
+% the next 3 line is a fix in order to add the algorithmicx works with hebrew
+\makeatletter
+\def\@arabic#1{\number#1}
+\makeatother
+
+\usepackage{algpseudocode}
+\usepackage{algorithmicx}
+\usepackage[chapter]{algorithm}
+
 
 
 % For some reason, the hebrew package clashes with the amsthm package. If you need a proof environment, you can uncomment the following:
@@ -95,7 +101,9 @@ $ECOC$& --- & Error COrrecting Code
 \input{SHAMPO}
 \input{Second_Order_SHAMPO}
 \input{multitask_to_multiclass}
-
+\input{experiments}
+\input{related_work}
+\input{conclusions}
 
 %\section*{Appendix}
 %\addcontentsline{toc}{section}{Appendix}
