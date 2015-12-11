@@ -1,0 +1,27 @@
+\chapter{Summary and Conclusions}
+%To conclude
+We proposed a new framework for online multi-task learning, where  learners share a single annotator. 
+We presented an algorithm (SHAMPO) that works in this settings and analyzed it in the mistake-bound 
+model. We also suggested a few more variation of the SHAMPO algoritm: Aggressive 
+version, Adaptive version, Prior version and Second Order version. Mistake bound analysis was done for all
+of the proposed algorithms. 
+Then, we showed how learning in such model can be used to learn in contextual-bandits setting 
+with few types of feedback. Empirical results show that our algorithms does better than only random uniform
+choice of feedback for the same price. 
+It focuses the annotator on the harder instances, and is improving performance in various tasks and settings. 
+
+Further work can be done  to improve those algorithms. We have shown that there exist $b$ optimal value 
+that may vary for different multitask problems.  
+Now, after we know that such parameter exist, we can try to find a way to select the optimal value for every dataset.  
+We can also investigate ways to generate good priors for the SHAMPO with prior algorithm or derive another 
+distribution that select the task to be queried at every step, not only by the margin and the number of queried 
+up to the same step, but also consider the count of the mistaken queried for every task.
+
+% In this paper we extended the methods of partial feedback and selective sampling algorithms to the 
+%multi-task case and  introduced MUTSEA, a new multi-task selective sampling algorithm. 
+%The algorithm doesn't force a  same space for all of the tasks inputs and the bound on its expected 
+%learning mistakes, shows that the bound  becomes tighter for a certain value of the parameter $b$. 
+%Our experiments show that this is indeed the case, and the minimal error is obtained for a certain optimal 
+%point. Moreover, the experiments shows that this optimal point can be approximately found,  using only the 
+%partial feedback. We plan to study and develop this algorithm into the multi-class direction and try to make 
+%the algorithm adaptive such that its single parameter could be adapted iteratively to the data.

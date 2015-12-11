@@ -1,11 +1,39 @@
 \select@language {english}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {\@@number {\@@number {2}.\@@number {1}}}{\ignorespaces Illustration of a single iteration of multi-task algorithms (a) standard setting, shared annotator labels all inputs, and algorithms update models. (b) SHAMPO algorithm couples labeling annotation and learning process, and synchronizes a single annotation per round.}}{\@@number {8}}{figure.2.1}
+\contentsline {figure}{\numberline {\@@number {2.1}}{\ignorespaces Illustration of a single iteration of multi-task algorithms (a) standard setting, shared annotator labels all inputs, and algorithms update models. (b) SHAMPO algorithm couples labeling annotation and learning process, and synchronizes a single annotation per round.}}{8}{figure.2.1}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {\@@number {\@@number {3}.\@@number {1}}}{\ignorespaces Example for the using of the margin as a certainty measure. The circles and crosses represent two different classes and the separate hyperplane is shown. One of the circles examples have lower margin than the other, so its label can easily been replaced with the other one.}}{\@@number {10}}{figure.3.1}
-\contentsline {figure}{\numberline {\@@number {\@@number {3}.\@@number {2}}}{\ignorespaces Example of the distribution over 2 tasks.}}{\@@number {12}}{figure.3.2}
-\contentsline {figure}{\numberline {\@@number {\@@number {3}.\@@number {3}}}{\ignorespaces SHAMPO: SHared Annotator for Multiple PrOblems. }}{\@@number {13}}{figure.3.3}
-\contentsline {figure}{\numberline {\@@number {\@@number {3}.\@@number {4}}}{\ignorespaces SHAMPO aggressive perceptron. }}{\@@number {19}}{figure.3.4}
-\contentsline {figure}{\numberline {\@@number {\@@number {3}.\@@number {5}}}{\ignorespaces Adaptive SHAMPO algorithm }}{\@@number {35}}{figure.3.5}
+\contentsline {figure}{\numberline {\@@number {3.1}}{\ignorespaces Example for the using of the margin as a certainty measure. The circles and crosses represent two different classes and the separate hyperplane is shown. One of the circles examples have lower margin than the other, so its label can easily been replaced with the other one.}}{10}{figure.3.1}
+\contentsline {figure}{\numberline {\@@number {3.2}}{\ignorespaces Example of the distribution over 2 tasks.}}{12}{figure.3.2}
+\contentsline {figure}{\numberline {\@@number {3.3}}{\ignorespaces SHAMPO: SHared Annotator for Multiple PrOblems. }}{13}{figure.3.3}
+\contentsline {figure}{\numberline {\@@number {3.4}}{\ignorespaces SHAMPO aggressive perceptron. }}{19}{figure.3.4}
+\contentsline {figure}{\numberline {\@@number {3.5}}{\ignorespaces Adaptive SHAMPO algorithm }}{35}{figure.3.5}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {\@@number {6.1}}{\ignorespaces gjkhjkhljkh khjhjlkhjlkhl hljkhjk }}{50}{figure.6.1}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {MNIST one-vs-one}}}{50}{figure.6.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {MNIST one-vs-rest}}}{50}{figure.6.1}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {USPS one-vs-one}}}{50}{figure.6.1}
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {USPS one-vs-rest}}}{50}{figure.6.1}
+\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {VJ one-vs-one}}}{50}{figure.6.1}
+\contentsline {subfigure}{\numberline {(f)}{\ignorespaces {VJ one-vs-rest}}}{50}{figure.6.1}
+\contentsline {subfigure}{\numberline {(g)}{\ignorespaces {NLP ove-vs-one}}}{50}{figure.6.1}
+\contentsline {figure}{\numberline {\@@number {6.2}}{\ignorespaces gjkhjkhljkh khjhjlkhjlkhl hljkhjk }}{51}{figure.6.2}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {MNIST one-vs-one}}}{51}{figure.6.2}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {MNIST one-vs-rest}}}{51}{figure.6.2}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {USPS one-vs-one}}}{51}{figure.6.2}
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {USPS one-vs-rest}}}{51}{figure.6.2}
+\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {VJ one-vs-one}}}{51}{figure.6.2}
+\contentsline {subfigure}{\numberline {(f)}{\ignorespaces {VJ one-vs-rest}}}{51}{figure.6.2}
+\contentsline {subfigure}{\numberline {(g)}{\ignorespaces {NLP one-vs-one}}}{51}{figure.6.2}
+\contentsline {figure}{\numberline {\@@number {6.3}}{\ignorespaces gjkhjkhljkh khjhjlkhjlkhl hljkhjk }}{52}{figure.6.3}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {MNIST one-vs-one}}}{52}{figure.6.3}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {MNIST one-vs-rest}}}{52}{figure.6.3}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {USPS one-vs-one}}}{52}{figure.6.3}
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {USPS one-vs-rest}}}{52}{figure.6.3}
+\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {VJ one-vs-one}}}{52}{figure.6.3}
+\contentsline {subfigure}{\numberline {(f)}{\ignorespaces {VJ one-vs-rest}}}{52}{figure.6.3}
+\contentsline {subfigure}{\numberline {(g)}{\ignorespaces {NLP one-vs-one}}}{52}{figure.6.3}
+\addvspace {10\p@ }
 \addvspace {10\p@ }

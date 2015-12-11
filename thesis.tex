@@ -10,7 +10,6 @@
 \usepackage{subfigure}
 \usepackage{natbib}
 
-\usepackage{algorithm}
 \usepackage{hyperref}
 
 \usepackage{amsfonts}
@@ -27,10 +26,17 @@
 \usepackage{rotating}
 \usepackage{enumerate}
 \usepackage{tabulary}
-
 \usepackage[table]{xcolor}
-%\usepackage{algpseudocode}
-%\usepackage{algorithmic}
+
+% the next 3 line is a fix in order to add the algorithmicx works with hebrew
+\makeatletter
+\def\@arabic#1{\number#1}
+\makeatother
+
+\usepackage{algpseudocode}
+\usepackage{algorithmicx}
+\usepackage[chapter]{algorithm}
+
 
 
 % For some reason, the hebrew package clashes with the amsthm package. If you need a proof environment, you can uncomment the following:
@@ -45,8 +51,8 @@
 \supervisorEnglish{The Research Thesis Was Done Under The Supervision
 of Prof.~Koby Crammer in the Faculty of Electrical Engineering.}
 
-\PublicationEnglish{\\Parts of this work were published in
-\\Weighted Multi-task Learning with a Shared Annotator. 
+\PublicationEnglish{\\Parts of this work were published in\\
+``Learning Multiple Tasks in Parallel with a Shared Annotator''. 
 \\Haim Cohen and Koby Crammer. NIPS 2014.}
 
 \GregorianDateEnglish{December 2015}
@@ -83,6 +89,9 @@ same labour of the annotator.
 \begin{tabular}{lcl}
 $SHAMPO$ & --- & SHared Annotator for Multiple PrOblems\\
 $\Vert\vu \Vert$ & --- & $\ell_2$-norm of the vector $\vu$\\
+$ECOC$ & --- & Error COrrecting Code
+$OCR$ & --- & Optical Character Recognition
+$NLP$ & --- & Natural language processing
 \end{tabular}
 
 %Or, if your tables are long, ``\usepackage{longtable}'' at the beginning, and then  ``\begin{longtable}[l]{lcl} ... \end{longtable}''
@@ -92,7 +101,12 @@ $\Vert\vu \Vert$ & --- & $\ell_2$-norm of the vector $\vu$\\
 \input{introduction}
 \input{SharedAnnotatorSettings}
 \input{SHAMPO}
-\input{Second_Order_SHAMPO}
+\input{second_order}
+%\input{second_order_aggressive}
+\input{multitask_to_multiclass}
+\input{experiments}
+\input{related_work}
+\input{conclusions}
 
 %\section*{Appendix}
 %\addcontentsline{toc}{section}{Appendix}

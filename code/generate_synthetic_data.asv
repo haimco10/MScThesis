@@ -1,0 +1,30 @@
+clear all; close all; clc;
+n_features = 2;
+n_examples = 3000;
+dist = 3.5;
+
+mu = [0 0];
+Sigma = [1 0; 0 0.3]; R = chol(Sigma);
+x = (repmat(mu,n_examples,1) + randn(n_examples,2)*R)';
+x(2,1:n_examples/2) = x(2,1:n_examples/2)+dist;
+x(2,:) = x(2,:)- dist/2;
+y = x(2,:)>0;
+margin = abs(x(2,:));
+
+angle = 45 / (2*pi);
+x(1:2,:) = [cos(angle),sin(angle); -sin(angle),cos(angle)] * x(1:2,:);
+figure; hold on
+plot(x(1,y==1),x(2,y==1),'o');
+plot(x(1,y==0),x(2,y==0),'*r');
+[~,idx]=sort(margin);
+xordered = x(:,idx);
+
+figure; hold on
+for ii=1:n_examples,
+    plo
+end
+
+
+
+
+

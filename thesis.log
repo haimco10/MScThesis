@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  5 OCT 2015 20:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  10 DEC 2015 17:47
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -140,24 +140,6 @@ Package: natbib 2010/09/13 8.31b (PWD, AO)
 LaTeX Info: Redefining \cite on input line 694.
 \c@NAT@ctr=\count94
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/algorithms/algorithm.sty
-Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
-nment
-
-(/usr/local/texlive/2014/texmf-dist/tex/latex/float/float.sty
-Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count95
-\float@exts=\toks17
-\float@box=\box26
-\@float@everytoks=\toks18
-\@floatcapt=\box27
-)
-(/usr/local/texlive/2014/texmf-dist/tex/latex/base/ifthen.sty
-Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
-)
-\@float@every@algorithm=\toks19
-\c@algorithm=\count96
-)
 (/usr/local/texlive/2014/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2012/11/06 v6.83m Hypertext links for LaTeX
 
@@ -216,13 +198,13 @@ Package: auxhook 2011/03/04 v1.3 Hooks for auxiliary files (HO)
 Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
 )
 \@linkdim=\dimen108
-\Hy@linkcounter=\count97
-\Hy@pagecounter=\count98
+\Hy@linkcounter=\count95
+\Hy@pagecounter=\count96
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 )
-\Hy@SavedSpaceFactor=\count99
+\Hy@SavedSpaceFactor=\count97
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/latexconfig/hyperref.cfg
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
@@ -234,7 +216,7 @@ Package hyperref Info: Plain pages OFF on input line 4458.
 Package hyperref Info: Backreferencing OFF on input line 4463.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4688.
-\c@Hy@tempcnt=\count100
+\c@Hy@tempcnt=\count98
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip10
@@ -242,7 +224,7 @@ Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 5041.
 \XeTeXLinkMargin=\dimen109
-\Fld@menulength=\count101
+\Fld@menulength=\count99
 \Field@Width=\dimen110
 \Fld@charsize=\dimen111
 Package hyperref Info: Hyper figures OFF on input line 6295.
@@ -254,17 +236,17 @@ Package hyperref Info: Link coloring with OCG OFF on input line 6320.
 Package hyperref Info: PDF/A mode OFF on input line 6325.
 LaTeX Info: Redefining \ref on input line 6365.
 LaTeX Info: Redefining \pageref on input line 6369.
-\Hy@abspage=\count102
-\c@Item=\count103
-\c@Hfootnote=\count104
+\Hy@abspage=\count100
+\c@Item=\count101
+\c@Hfootnote=\count102
 )
 
 Package hyperref Message: Driver (autodetected): hpdftex.
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/hyperref/hpdftex.def
 File: hpdftex.def 2012/11/06 v6.83m Hyperref driver for pdfTeX
-\Fld@listcount=\count105
-\c@bookmark@seq@number=\count106
+\Fld@listcount=\count103
+\c@bookmark@seq@number=\count104
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
 Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
@@ -275,7 +257,7 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 (/usr/local/texlive/2014/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
-\@emptytoks=\toks20
+\@emptytoks=\toks17
 \symAMSa=\mathgroup5
 \symAMSb=\mathgroup6
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
@@ -291,7 +273,7 @@ Package: amstext 2000/06/29 v2.01
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0
-\@emptytoks=\toks21
+\@emptytoks=\toks18
 \ex@=\dimen112
 ))
 (/usr/local/texlive/2014/texmf-dist/tex/latex/amsmath/amsbsy.sty
@@ -301,41 +283,41 @@ Package: amsbsy 1999/11/29 v1.2d
 (/usr/local/texlive/2014/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 1999/12/14 v2.01 operator names
 )
-\inf@bad=\count107
+\inf@bad=\count105
 LaTeX Info: Redefining \frac on input line 210.
-\uproot@=\count108
-\leftroot@=\count109
+\uproot@=\count106
+\leftroot@=\count107
 LaTeX Info: Redefining \overline on input line 306.
-\classnum@=\count110
-\DOTSCASE@=\count111
+\classnum@=\count108
+\DOTSCASE@=\count109
 LaTeX Info: Redefining \ldots on input line 378.
 LaTeX Info: Redefining \dots on input line 381.
 LaTeX Info: Redefining \cdots on input line 466.
-\Mathstrutbox@=\box28
-\strutbox@=\box29
+\Mathstrutbox@=\box26
+\strutbox@=\box27
 \big@size=\dimen114
 LaTeX Font Info:    Redeclaring font encoding OML on input line 566.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
-\macc@depth=\count112
-\c@MaxMatrixCols=\count113
+\macc@depth=\count110
+\c@MaxMatrixCols=\count111
 \dotsspace@=\muskip11
-\c@parentequation=\count114
-\dspbrk@lvl=\count115
-\tag@help=\toks22
-\row@=\count116
-\column@=\count117
-\maxfields@=\count118
-\andhelp@=\toks23
+\c@parentequation=\count112
+\dspbrk@lvl=\count113
+\tag@help=\toks19
+\row@=\count114
+\column@=\count115
+\maxfields@=\count116
+\andhelp@=\toks20
 \eqnshift@=\dimen115
 \alignsep@=\dimen116
 \tagshift@=\dimen117
 \tagwidth@=\dimen118
 \totwidth@=\dimen119
 \lineht@=\dimen120
-\@envbody=\toks24
+\@envbody=\toks21
 \multlinegap=\skip53
 \multlinetaggap=\skip54
-\mathdisplay@stack=\toks25
+\mathdisplay@stack=\toks22
 LaTeX Info: Redefining \[ on input line 2665.
 LaTeX Info: Redefining \] on input line 2666.
 )
@@ -371,9 +353,9 @@ Package color Info: Driver file: pdftex.def on input line 137.
 (/usr/local/texlive/2014/texmf-dist/tex/latex/wrapfig/wrapfig.sty
 \wrapoverhang=\dimen121
 \WF@size=\dimen122
-\c@WF@wrappedlines=\count119
-\WF@box=\box30
-\WF@everypar=\toks26
+\c@WF@wrappedlines=\count117
+\WF@box=\box28
+\WF@everypar=\toks23
 Package: wrapfig 2003/01/31  v 3.6
 )
 (/usr/local/texlive/2014/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
@@ -381,24 +363,28 @@ Package: fancyvrb 2008/02/07
 
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
 <2008/02/07> (tvz)
-\FV@CodeLineNo=\count120
+\FV@CodeLineNo=\count118
 \FV@InFile=\read1
-\FV@TabBox=\box31
-\c@FancyVerbLine=\count121
-\FV@StepNumber=\count122
+\FV@TabBox=\box29
+\c@FancyVerbLine=\count119
+\FV@StepNumber=\count120
 \FV@OutFile=\write3
 )
 (/usr/local/texlive/2014/texmf-dist/tex/latex/rotating/rotating.sty
 Package: rotating 2009/03/28 v2.16a rotated objects in LaTeX
-\c@r@tfl@t=\count123
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\c@r@tfl@t=\count121
 \rotFPtop=\skip55
 \rotFPbot=\skip56
-\rot@float@box=\box32
-\rot@mess@toks=\toks27
+\rot@float@box=\box30
+\rot@mess@toks=\toks24
 )
 (/usr/local/texlive/2014/texmf-dist/tex/latex/tools/enumerate.sty
 Package: enumerate 1999/03/05 v3.00 enumerate extensions (DPC)
-\@enLab=\toks28
+\@enLab=\toks25
 )
 (/usr/local/texlive/2014/texmf-dist/tex/latex/tabulary/tabulary.sty
 Package: tabulary 2008/12/01 v0.9 tabulary package (DPC)
@@ -407,11 +393,11 @@ Package: tabulary 2008/12/01 v0.9 tabulary package (DPC)
 Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
 \col@sep=\dimen123
 \extrarowheight=\dimen124
-\NC@list=\toks29
+\NC@list=\toks26
 \extratabsurround=\skip57
 \backup@length=\skip58
 )
-\TY@count=\count124
+\TY@count=\count122
 \TY@linewidth=\dimen125
 \tymin=\dimen126
 \tymax=\dimen127
@@ -427,11 +413,11 @@ Package xcolor Info: Driver file: pdftex.def on input line 225.
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/colortbl/colortbl.sty
 Package: colortbl 2012/02/13 v1.0a Color table columns (DPC)
-\everycr=\toks30
+\everycr=\toks27
 \minrowclearance=\skip59
 )
 LaTeX Info: Redefining \color on input line 702.
-\rownum=\count125
+\rownum=\count123
 Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1337.
 Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1341.
 Package xcolor Info: Model `RGB' extended on input line 1353.
@@ -442,10 +428,40 @@ Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
 )
-(./thesis.aux
+(/usr/local/texlive/2014/texmf-dist/tex/latex/algorithmicx/algpseudocode.sty
+Package: algpseudocode 
 
-LaTeX Warning: Label `sec:selective_sampling' multiply defined.
+(/usr/local/texlive/2014/texmf-dist/tex/latex/algorithmicx/algorithmicx.sty
+Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
 
+Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
+\c@ALG@line=\count124
+\c@ALG@rem=\count125
+\c@ALG@nested=\count126
+\ALG@tlm=\skip60
+\ALG@thistlm=\skip61
+\c@ALG@Lnr=\count127
+\c@ALG@blocknr=\count128
+\c@ALG@storecount=\count129
+\c@ALG@tmpcounter=\count130
+\ALG@tmplength=\skip62
+)
+Document Style - pseudocode environments for use with the `algorithmicx' style
+) (/usr/local/texlive/2014/texmf-dist/tex/latex/algorithms/algorithm.sty
+Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
+nment
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count131
+\float@exts=\toks28
+\float@box=\box31
+\@float@everytoks=\toks29
+\@floatcapt=\box32
+)
+\@float@every@algorithm=\toks30
+\c@algorithm=\count132
+) (./thesis.aux
 
 LaTeX Warning: Label `step_2_in_proof' multiply defined.
 
@@ -459,87 +475,198 @@ LaTeX Warning: Label `thm:FO_bound_aggressive' multiply defined.
 LaTeX Warning: Label `eq:bound_for_i' multiply defined.
 
 
-LaTeX Warning: Label `sec_order_2' multiply defined.
+LaTeX Warning: Label `fig:bars1' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:bars1' multiply defined.
+
+
+LaTeX Warning: Label `fig:bars2' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:bars2' multiply defined.
+
+
+LaTeX Warning: Label `fig:bars1' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:bars1' multiply defined.
+
+
+LaTeX Warning: Label `fig:bars2' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:bars2' multiply defined.
+
+
+LaTeX Warning: Label `fig:bars2' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:bars2' multiply defined.
+
+
+LaTeX Warning: Label `fig:bars1' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:bars1' multiply defined.
+
+
+LaTeX Warning: Label `fig:bars2' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:bars2' multiply defined.
+
+
+LaTeX Warning: Label `fig:bars1' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:bars1' multiply defined.
+
+
+LaTeX Warning: Label `fig:bars2' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:bars2' multiply defined.
+
+
+LaTeX Warning: Label `fig:bars1' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:bars1' multiply defined.
+
+
+LaTeX Warning: Label `fig:bars2' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:bars2' multiply defined.
+
+
+LaTeX Warning: Label `fig:bars2' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:bars2' multiply defined.
+
+
+LaTeX Warning: Label `fig:bars1' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:bars1' multiply defined.
+
+
+LaTeX Warning: Label `fig:bars2' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:bars2' multiply defined.
+
+
+LaTeX Warning: Label `fig:bars1' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:bars1' multiply defined.
+
+
+LaTeX Warning: Label `fig:bars2' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:bars2' multiply defined.
+
+
+LaTeX Warning: Label `fig:bars1' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:bars1' multiply defined.
+
+
+LaTeX Warning: Label `fig:bars2' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:bars2' multiply defined.
+
+
+LaTeX Warning: Label `fig:bars2' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:bars2' multiply defined.
 
 )
 \openout1 = `thesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for LHE/cmr/m/n on input line 39.
-LaTeX Font Info:    Try loading font information for LHE+cmr on input line 39.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for LHE/cmr/m/n on input line 45.
+LaTeX Font Info:    Try loading font information for LHE+cmr on input line 45.
  (/usr/local/texlive/2014/texmf-dist/tex/generic/babel-hebrew/lhecmr.fd
 File: lhecmr.fd 2005/05/20 v1.2c Hebrew default font (test version: still liabl
 e to change)
 )
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 39.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 45.
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 (/usr/local/texlive/2014/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count126
+\scratchcounter=\count133
 \scratchdimen=\dimen129
 \scratchbox=\box33
-\nofMPsegments=\count127
-\nofMParguments=\count128
+\nofMPsegments=\count134
+\nofMParguments=\count135
 \everyMPshowfont=\toks31
-\MPscratchCnt=\count129
+\MPscratchCnt=\count136
 \MPscratchDim=\dimen130
-\MPnumerator=\count130
-\makeMPintoPDFobject=\count131
+\MPnumerator=\count137
+\makeMPintoPDFobject=\count138
 \everyMPtoPDFconversion=\toks32
 )
 \AtBeginShipoutBox=\box34
-Package hyperref Info: Link coloring OFF on input line 39.
+Package hyperref Info: Link coloring OFF on input line 45.
  (/usr/local/texlive/2014/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
 (/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count132
+\c@section@level=\count139
 )
-LaTeX Info: Redefining \ref on input line 39.
-LaTeX Info: Redefining \pageref on input line 39.
-LaTeX Info: Redefining \nameref on input line 39.
+LaTeX Info: Redefining \ref on input line 45.
+LaTeX Info: Redefining \pageref on input line 45.
+LaTeX Info: Redefining \nameref on input line 45.
 
 (./thesis.out) (./thesis.out)
 \@outlinefile=\write4
 \openout4 = `thesis.out'.
 
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <24.88> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 59.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 65.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <17.28> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 59.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 65.
  [1
 
 {/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
-LaTeX Font Info:    Try loading font information for U+lasy on input line 59.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 65.
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 59.
+LaTeX Font Info:    Try loading font information for U+msa on input line 65.
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 59.
+LaTeX Font Info:    Try loading font information for U+msb on input line 65.
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -549,7 +676,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 [5
 
 ] [6]
-Underfull \hbox (badness 10000) in paragraph at lines 59--59
+Underfull \hbox (badness 10000) in paragraph at lines 65--65
 
  []
 
@@ -579,19 +706,43 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
 
 ] [12]
 (./prela.tex
-\c@theorem=\count133
-\c@Remark=\count134
-\c@mySubCounter=\count135
+\c@theorem=\count140
+\c@Remark=\count141
+\c@mySubCounter=\count142
 )pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.82 \chapter
+l.88 \chapter
              *{Abbreviations and Notations} [1
 
 
-] (./introduction.texpdfTeX warning (ext4): destination with the same identifie
-r (name{page.2}) has been already used, duplicate ignored
+]
+./thesis.tex:93: Extra alignment tab has been changed to \cr.
+<recently read> \endtemplate 
+                             
+l.93 $OCR$ &
+             --- & Optical Character Recognition
+You have given more \span or & marks than there were
+in the preamble to the \halign or \valign now in progress.
+So I'll assume that you meant to type \cr instead.
+
+./thesis.tex:94: Extra alignment tab has been changed to \cr.
+<recently read> \endtemplate 
+                             
+l.94 $NLP$ & --- &
+                   Natural language processing
+You have given more \span or & marks than there were
+in the preamble to the \halign or \valign now in progress.
+So I'll assume that you meant to type \cr instead.
+
+
+Overfull \hbox (145.69437pt too wide) in paragraph at lines 89--96
+[] 
+ []
+
+(./introduction.texpdfTeX warning (ext4): destination with the same identifier 
+(name{page.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.1 \chapter
@@ -618,7 +769,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.4}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.88 
+l.89 
       [4]) (./SharedAnnotatorSettings.texpdfTeX warning (ext4): destination wit
 h the same identifier (name{page.5}) has been already used, duplicate ignored
 <to be read again> 
@@ -654,7 +805,7 @@ ps-converted-to.pdf figs/SHAMPO_illustration.eps>
 (epstopdf)             \includegraphics on input line 81.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/SHAMPO_illustration-eps-converted-to.pdf, id=201, 766.865pt x 634.37pt>
+<figs/SHAMPO_illustration-eps-converted-to.pdf, id=219, 766.865pt x 634.37pt>
 File: figs/SHAMPO_illustration-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/SHAMPO_illustration-eps-converted-to.pdf>
@@ -667,13 +818,34 @@ e{page.7}) has been already used, duplicate ignored
                    \relax 
 l.1 \chapter
             {SHMPO (SHared Annotator for Multiple Problems) Algorithms}
-[7]pdfTeX warning (ext4): destination with the same identifier (name{page.8}) h
-as been already used, duplicate ignored
+[7pdfTeX warning (ext4): destination with the same identifier (name{table.2.1})
+ has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1 \chapter
+            {SHMPO (SHared Annotator for Multiple Problems) Algorithms}pdfTeX w
+arning (ext4): destination with the same identifier (name{table.2.2}) has been 
+already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1 \chapter
+            {SHMPO (SHared Annotator for Multiple Problems) Algorithms}]pdfTeX 
+warning (ext4): destination with the same identifier (name{page.8}) has been al
+ready used, duplicate ignored
 <to be read again> 
                    \relax 
 l.1 \chapter
             {SHMPO (SHared Annotator for Multiple Problems) Algorithms}
-[8 <./figs/SHAMPO_illustration-eps-converted-to.pdf>]
+[8pdfTeX warning (ext4): destination with the same identifier (name{figure.2.1}
+) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1 \chapter
+            {SHMPO (SHared Annotator for Multiple Problems) Algorithms} <./figs
+/SHAMPO_illustration-eps-converted-to.pdf>]
 Chapter 3.
 pdfTeX warning (ext4): destination with the same identifier (name{page.9}) has 
 been already used, duplicate ignored
@@ -694,7 +866,7 @@ to.pdf figs/margin.eps>
 (epstopdf)             \includegraphics on input line 61.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/margin-eps-converted-to.pdf, id=229, 250.9375pt x 203.76125pt>
+<figs/margin-eps-converted-to.pdf, id=247, 250.9375pt x 203.76125pt>
 File: figs/margin-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/margin-eps-converted-to.pdf>
@@ -706,10 +878,16 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.10}) has
 <to be read again> 
                    \relax 
 l.77 
-      [10 <./figs/margin-eps-converted-to.pdf>]
+      [10pdfTeX warning (ext4): destination with the same identifier (name{figu
+re.3.1}) has been already used, duplicate ignored
 
-LaTeX Warning: Reference `fig:fig:probability_example' on page \@@number{11} un
-defined on input line 91.
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.77 
+      <./figs/margin-eps-converted-to.pdf>]
+
+LaTeX Warning: Reference `fig:fig:probability_example' on page 11 undefined on 
+input line 91.
 
 ./SHAMPO.tex:97: Missing } inserted.
 <inserted text> 
@@ -732,7 +910,7 @@ Package epstopdf Info: Source file: <figs/probability.eps>
 rted-to.pdf figs/probability.eps>
 (epstopdf)             \includegraphics on input line 109.
 Package epstopdf Info: Output file is already uptodate.
-<figs/probability-eps-converted-to.pdf, id=245, 392.46625pt x 225.84375pt>
+<figs/probability-eps-converted-to.pdf, id=263, 392.46625pt x 225.84375pt>
 File: figs/probability-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/probability-eps-converted-to.pdf>
@@ -748,12 +926,10 @@ LaTeX Font Info:    Font shape `U/lasy/b/n' in size <8> not available
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <6> not available
 (Font)              Font shape `U/lasy/m/n' tried instead on input line 132.
 
-LaTeX Warning: Reference `prob' on page \@@number{11} undefined on input line 1
-45.
+LaTeX Warning: Reference `prob' on page 11 undefined on input line 145.
 
 
-LaTeX Warning: Reference `prob' on page \@@number{11} undefined on input line 1
-45.
+LaTeX Warning: Reference `prob' on page 11 undefined on input line 145.
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.11}) has
  been already used, duplicate ignored
@@ -774,7 +950,20 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.12}) has
 <to be read again> 
                    \relax 
 l.199 \end{align*}
-                   [12 <./figs/probability-eps-converted-to.pdf>] [13]
+                   [12pdfTeX warning (ext4): destination with the same identifi
+er (name{figure.3.2}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.199 \end{align*}
+                   <./figs/probability-eps-converted-to.pdf>] [13pdfTeX warning
+ (ext4): destination with the same identifier (name{figure.3.3}) has been alrea
+dy used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.199 \end{align*}
+                  ]
 Overfull \hbox (0.77461pt too wide) in paragraph at lines 222--222
 [] 
  []
@@ -785,17 +974,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 333--337
  []
 
 
-LaTeX Warning: Reference `bound' on page \@@number{16} undefined on input line 
-349.
+LaTeX Warning: Reference `bound' on page 16 undefined on input line 349.
 
 [16]
 
-LaTeX Warning: Reference `update_rule' on page \@@number{17} undefined on input
- line 366.
+LaTeX Warning: Reference `update_rule' on page 17 undefined on input line 366.
 
 
-LaTeX Warning: Reference `update_rule' on page \@@number{17} undefined on input
- line 373.
+LaTeX Warning: Reference `update_rule' on page 17 undefined on input line 373.
 
 
 Overfull \hbox (7.63118pt too wide) in paragraph at lines 375--378
@@ -804,25 +990,20 @@ ve weighted mis-takes is bounded
  []
 
 
-LaTeX Warning: Reference `thm:bound' on page \@@number{17} undefined on input l
-ine 390.
+LaTeX Warning: Reference `thm:bound' on page 17 undefined on input line 390.
 
 
-LaTeX Warning: Reference `thm:bound' on page \@@number{17} undefined on input l
-ine 419.
+LaTeX Warning: Reference `thm:bound' on page 17 undefined on input line 419.
 
 
-LaTeX Warning: Reference `thm:bound' on page \@@number{17} undefined on input l
-ine 419.
+LaTeX Warning: Reference `thm:bound' on page 17 undefined on input line 419.
 
 [17]
 
-LaTeX Warning: Reference `prob' on page \@@number{18} undefined on input line 4
-60.
+LaTeX Warning: Reference `prob' on page 18 undefined on input line 460.
 
 
-LaTeX Warning: Reference `prob' on page \@@number{18} undefined on input line 4
-60.
+LaTeX Warning: Reference `prob' on page 18 undefined on input line 460.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -943,7 +1124,13 @@ I've put in what seems to be necessary to fix
 the current column of the current alignment.
 Try to go on, since this might almost work.
 
-[18] [19]
+[18] [19pdfTeX warning (ext4): destination with the same identifier (name{figur
+e.3.4}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.500 
+      ]
 Underfull \hbox (badness 10000) in paragraph at lines 501--509
 
  []
@@ -968,30 +1155,45 @@ Underfull \hbox (badness 10000) in paragraph at lines 747--751
 
  []
 
+./SHAMPO.tex:772: Extra }, or forgotten $.
+l.772 ...{\alpha_{i,s}y_{i,s}K(\vx_{i,s},\vxiit})}
+                                                  
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
 
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 762.
 
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 762.
+Overfull \hbox (70.48093pt too wide) detected at line 773
+[] \OT1/cmr/m/n/10.95 = \OT1/cmr/bx/n/10.95 w[]x[] \OT1/cmr/m/n/10.95 = [][]\OT
+1/cmr/bx/n/10.95 x[] \OT1/cmr/m/n/10.95 = [] [] = [] [])
+ []
 
 [25]
 
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 780.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 780.
+
+
 LaTeX Warning: `h' float specifier changed to `ht'.
 
+[26]
 
-LaTeX Warning: Reference `thm:bound' on page \@@number{26} undefined on input l
-ine 838.
+LaTeX Warning: Reference `thm:bound' on page 27 undefined on input line 856.
 
 
-Overfull \hbox (19.05771pt too wide) in paragraph at lines 853--853
+Overfull \hbox (19.05771pt too wide) in paragraph at lines 871--871
 [] 
  []
 
-[26] [27] [28] [29] [30] [31]
-./SHAMPO.tex:1040: Misplaced alignment tab character &.
-l.1040 \sum_{i=1}^{K}\mathbb{E}&
+[27] [28] [29] [30] [31]
+./SHAMPO.tex:1058: Misplaced alignment tab character &.
+l.1058 \sum_{i=1}^{K}\mathbb{E}&
                                 \brackets{\sum_{t=1}^{n}M_{i,t}Z_{i,t}{\pare...
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -1001,14 +1203,15 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 [32]
-Overfull \hbox (28.92358pt too wide) in paragraph at lines 1092--1092
+Overfull \hbox (28.92358pt too wide) in paragraph at lines 1110--1110
 [] 
  []
 
-./SHAMPO.tex:1093: Missing } inserted.
+[33]
+./SHAMPO.tex:1111: Missing } inserted.
 <inserted text> 
                 }
-l.1093 ...\sum_{i=1}^{K}\sum_{t=1}^{n}{M_{i,t}} }$
+l.1111 ...\sum_{i=1}^{K}\sum_{t=1}^{n}{M_{i,t}} }$
                                                   .
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -1016,49 +1219,93 @@ With luck, this will get me unwedged. But if you
 really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
-[33]
-Underfull \hbox (badness 10000) in paragraph at lines 1110--1111
+) (./second_order.tex
+Underfull \hbox (badness 10000) in paragraph at lines 1117--1
 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 1116
-.
-(/usr/local/texlive/2014/texmf-dist/tex/latex/psnfss/omsptm.fd
-File: omsptm.fd 
-)
-LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 1116.
+[34] [35pdfTeX warning (ext4): destination with the same identifier (name{figur
+e.3.5}) has been already used, duplicate ignored
 
-)
-(./Second_Order_SHAMPO.tex [34] [35]
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1 \chapter
+            {Second Order Shampo}]
 Chapter 4.
-
-Underfull \hbox (badness 10000) in paragraph at lines 59--63
-
- []
-
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
+put line 48.
 [36
 
+] [37]
+Overfull \hbox (16.16438pt too wide) in paragraph at lines 98--98
+[] 
+ []
+
+
+Overfull \hbox (10.78635pt too wide) in paragraph at lines 110--110
+[] 
+ []
+
+[38]
+./second_order.tex:131: Extra alignment tab has been changed to \cr.
+<template> }$\hfill \endtemplate 
+                                 
+l.131 \end{split}
+                 
+You have given more \span or & marks than there were
+in the preamble to the \halign or \valign now in progress.
+So I'll assume that you meant to type \cr instead.
+
+./second_order.tex:131: Extra alignment tab has been changed to \cr.
+<template> }$\hfill \endtemplate 
+                                 
+l.131 \end{split}
+                 
+You have given more \span or & marks than there were
+in the preamble to the \halign or \valign now in progress.
+So I'll assume that you meant to type \cr instead.
+
+./second_order.tex:138: Misplaced alignment tab character &.
+l.138    \sum_{t=1}^{n}&
+                        Z_{i,t}M_{i,t}\paren{\abs{\hat{p}_{i,t}}+\vu_i^T\vx_...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+[39]
+./second_order.tex:162: Misplaced alignment tab character &.
+<argument> \sum _{t=1}^{n}&
+                           Z_{i,t}M_{i,t}\paren {\abs {\hat {p}_{i,t}}-\min ...
+l.162 ...p}_{i,t}}-\min_j{\abs{\hat{p}_{j,t}}}+b}}
+                                                  
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+[40]) (./multitask_to_multiclass.tex [41]
+Chapter 5.
+
+Overfull \hbox (3.37468pt too wide) in paragraph at lines 2--10
+[]\OT1/ptm/m/n/10.95 Avner et al.[] [[]2012[]]. The prob-lem of this set-ting i
+s pre-dict-ing a la-bel $[] \OMS/cmsy/m/n/10.95 2 f\OT1/cmr/m/n/10.95 1\OML/cmm
+/m/it/10.95 ; [] ; C\OMS/cmsy/m/n/10.95 g$
+ []
+
+[42
+
 ]
-Overfull \hbox (36.56804pt too wide) in paragraph at lines 84--84
-[] 
- []
+
+LaTeX Warning: Reference `thm:bound_aggressive_prior' on page 43 undefined on i
+nput line 43.
 
 
-Overfull \hbox (51.95059pt too wide) in paragraph at lines 92--92
-[] 
- []
-
-[37] [38] [39] [40] [41]
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 236.
- [42]
-
-LaTeX Warning: Reference `thm:bound' on page \@@number{43} undefined on input l
-ine 245.
-
-
-Overfull \hbox (9.91805pt too wide) in paragraph at lines 245--246
+Overfull \hbox (9.91805pt too wide) in paragraph at lines 43--52
 \OT1/ptm/m/n/10.95 The corol-lary fol-lows di-rectly from The-o-rem [] by not-i
 ng that, $\OT1/cmr/m/n/10.95 [ [[]] ] \OMS/cmsy/m/n/10.95 ^^T [][] \OML/cmm/m/i
 t/10.95 M[]$\OT1/ptm/m/n/10.95 .
@@ -1067,10 +1314,10 @@ t/10.95 M[]$\OT1/ptm/m/n/10.95 .
 
 Package amsmath Warning: Foreign command \atopwithdelims;
 (amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 260.
+(amsmath)                 on input line 60.
 
 
-Overfull \hbox (10.1642pt too wide) in paragraph at lines 260--262
+Overfull \hbox (10.1642pt too wide) in paragraph at lines 55--66
 \OT1/ptm/m/n/10.95 In the sec-ond set-ting, termed by \OT1/ptm/m/it/10.95 one-v
 s-one\OT1/ptm/m/n/10.95 , the al-go-rithm picks two la-bels $[]\OML/cmm/m/it/10
 .95 ; [] \OMS/cmsy/m/n/10.95 2$
@@ -1078,28 +1325,503 @@ s-one\OT1/ptm/m/n/10.95 , the al-go-rithm picks two la-bels $[]\OML/cmm/m/it/10
 
 [43]
 
-LaTeX Warning: Reference `thm:bound' on page \@@number{44} undefined on input l
-ine 271.
+LaTeX Warning: Reference `thm:bound_aggressive_prior' on page 44 undefined on i
+nput line 82.
+
+[44]) (./experiments.tex [45]
+Chapter 6.
+Package epstopdf Info: Source file: <figs/test-m1.eps>
+(epstopdf)                    date: 2015-12-10 10:11:12
+(epstopdf)                    size: 15800 bytes
+(epstopdf)             Output file: <figs/test-m1-eps-converted-to.pdf>
+(epstopdf)                    date: 2015-12-10 10:22:49
+(epstopdf)                    size: 9343 bytes
+(epstopdf)             Command: <repstopdf --outfile=figs/test-m1-eps-converted
+-to.pdf figs/test-m1.eps>
+(epstopdf)             \includegraphics on input line 17.
+Package epstopdf Info: Output file is already uptodate.
+<figs/test-m1-eps-converted-to.pdf, id=596, 510.90875pt x 432.61626pt>
+File: figs/test-m1-eps-converted-to.pdf Graphic file (type pdf)
+
+<use figs/test-m1-eps-converted-to.pdf>
+Package pdftex.def Info: figs/test-m1-eps-converted-to.pdf used on input line 1
+7.
+(pdftex.def)             Requested size: 143.9978pt x 121.93047pt.
+Package epstopdf Info: Source file: <figs/test-mr.eps>
+(epstopdf)                    date: 2015-12-10 10:11:18
+(epstopdf)                    size: 15472 bytes
+(epstopdf)             Output file: <figs/test-mr-eps-converted-to.pdf>
+(epstopdf)                    date: 2015-12-10 10:22:51
+(epstopdf)                    size: 9083 bytes
+(epstopdf)             Command: <repstopdf --outfile=figs/test-mr-eps-converted
+-to.pdf figs/test-mr.eps>
+(epstopdf)             \includegraphics on input line 18.
+Package epstopdf Info: Output file is already uptodate.
+
+<figs/test-mr-eps-converted-to.pdf, id=597, 524.96124pt x 432.61626pt>
+File: figs/test-mr-eps-converted-to.pdf Graphic file (type pdf)
+
+<use figs/test-mr-eps-converted-to.pdf>
+Package pdftex.def Info: figs/test-mr-eps-converted-to.pdf used on input line 1
+8.
+(pdftex.def)             Requested size: 143.9978pt x 118.66287pt.
+Package epstopdf Info: Source file: <figs/test-u1.eps>
+(epstopdf)                    date: 2015-12-10 10:11:20
+(epstopdf)                    size: 15196 bytes
+(epstopdf)             Output file: <figs/test-u1-eps-converted-to.pdf>
+(epstopdf)                    date: 2015-12-10 10:22:53
+(epstopdf)                    size: 8623 bytes
+(epstopdf)             Command: <repstopdf --outfile=figs/test-u1-eps-converted
+-to.pdf figs/test-u1.eps>
+(epstopdf)             \includegraphics on input line 19.
+Package epstopdf Info: Output file is already uptodate.
+
+<figs/test-u1-eps-converted-to.pdf, id=598, 510.90875pt x 432.61626pt>
+File: figs/test-u1-eps-converted-to.pdf Graphic file (type pdf)
+
+<use figs/test-u1-eps-converted-to.pdf>
+Package pdftex.def Info: figs/test-u1-eps-converted-to.pdf used on input line 1
+9.
+(pdftex.def)             Requested size: 143.9978pt x 121.93047pt.
+Package epstopdf Info: Source file: <figs/test-ur.eps>
+(epstopdf)                    date: 2015-12-10 10:11:22
+(epstopdf)                    size: 15220 bytes
+(epstopdf)             Output file: <figs/test-ur-eps-converted-to.pdf>
+(epstopdf)                    date: 2015-12-10 10:22:55
+(epstopdf)                    size: 8770 bytes
+(epstopdf)             Command: <repstopdf --outfile=figs/test-ur-eps-converted
+-to.pdf figs/test-ur.eps>
+(epstopdf)             \includegraphics on input line 20.
+Package epstopdf Info: Output file is already uptodate.
+
+<figs/test-ur-eps-converted-to.pdf, id=599, 524.96124pt x 432.61626pt>
+File: figs/test-ur-eps-converted-to.pdf Graphic file (type pdf)
+
+<use figs/test-ur-eps-converted-to.pdf>
+Package pdftex.def Info: figs/test-ur-eps-converted-to.pdf used on input line 2
+0.
+(pdftex.def)             Requested size: 143.9978pt x 118.66287pt.
+Package epstopdf Info: Source file: <figs/test-v1.eps>
+(epstopdf)                    date: 2015-12-10 10:11:28
+(epstopdf)                    size: 15338 bytes
+(epstopdf)             Output file: <figs/test-v1-eps-converted-to.pdf>
+(epstopdf)                    date: 2015-12-10 10:22:56
+(epstopdf)                    size: 8772 bytes
+(epstopdf)             Command: <repstopdf --outfile=figs/test-v1-eps-converted
+-to.pdf figs/test-v1.eps>
+(epstopdf)             \includegraphics on input line 21.
+Package epstopdf Info: Output file is already uptodate.
+
+<figs/test-v1-eps-converted-to.pdf, id=600, 524.96124pt x 432.61626pt>
+File: figs/test-v1-eps-converted-to.pdf Graphic file (type pdf)
+
+<use figs/test-v1-eps-converted-to.pdf>
+Package pdftex.def Info: figs/test-v1-eps-converted-to.pdf used on input line 2
+1.
+(pdftex.def)             Requested size: 143.9978pt x 118.66287pt.
+Package epstopdf Info: Source file: <figs/test-vr.eps>
+(epstopdf)                    date: 2015-12-10 10:11:48
+(epstopdf)                    size: 15309 bytes
+(epstopdf)             Output file: <figs/test-vr-eps-converted-to.pdf>
+(epstopdf)                    date: 2015-12-10 10:22:58
+(epstopdf)                    size: 8832 bytes
+(epstopdf)             Command: <repstopdf --outfile=figs/test-vr-eps-converted
+-to.pdf figs/test-vr.eps>
+(epstopdf)             \includegraphics on input line 22.
+Package epstopdf Info: Output file is already uptodate.
+
+<figs/test-vr-eps-converted-to.pdf, id=601, 510.90875pt x 432.61626pt>
+File: figs/test-vr-eps-converted-to.pdf Graphic file (type pdf)
+
+<use figs/test-vr-eps-converted-to.pdf>
+Package pdftex.def Info: figs/test-vr-eps-converted-to.pdf used on input line 2
+2.
+(pdftex.def)             Requested size: 143.9978pt x 121.93047pt.
+Package epstopdf Info: Source file: <figs/test-n.eps>
+(epstopdf)                    date: 2015-12-10 10:11:50
+(epstopdf)                    size: 15175 bytes
+(epstopdf)             Output file: <figs/test-n-eps-converted-to.pdf>
+(epstopdf)                    date: 2015-12-10 10:23:00
+(epstopdf)                    size: 8678 bytes
+(epstopdf)             Command: <repstopdf --outfile=figs/test-n-eps-converted-
+to.pdf figs/test-n.eps>
+(epstopdf)             \includegraphics on input line 23.
+Package epstopdf Info: Output file is already uptodate.
+
+<figs/test-n-eps-converted-to.pdf, id=602, 510.90875pt x 432.61626pt>
+File: figs/test-n-eps-converted-to.pdf Graphic file (type pdf)
+
+<use figs/test-n-eps-converted-to.pdf>
+Package pdftex.def Info: figs/test-n-eps-converted-to.pdf used on input line 23
+.
+(pdftex.def)             Requested size: 143.9978pt x 121.93047pt.
 
 
-Overfull \hbox (76.55124pt too wide) in paragraph at lines 271--272
-\OT1/ptm/m/n/10.95 The corol-lary fol-lows di-rectly from The-o-rem [] by not-i
-ng that, $\OT1/cmr/m/n/10.95 [ [[]] ] \OMS/cmsy/m/n/10.95 ^^T [] [][] \OML/cmm/
-m/it/10.95 M[]$\OT1/ptm/m/n/10.95 .
+LaTeX Warning: Float too large for page by 67.8067pt on input line 27.
+
+Package epstopdf Info: Source file: <figs/train-m1.eps>
+(epstopdf)                    date: 2015-12-05 23:29:03
+(epstopdf)                    size: 15095 bytes
+(epstopdf)             Output file: <figs/train-m1-eps-converted-to.pdf>
+(epstopdf)                    date: 2015-12-09 14:03:50
+(epstopdf)                    size: 8324 bytes
+(epstopdf)             Command: <repstopdf --outfile=figs/train-m1-eps-converte
+d-to.pdf figs/train-m1.eps>
+(epstopdf)             \includegraphics on input line 31.
+Package epstopdf Info: Output file is already uptodate.
+<figs/train-m1-eps-converted-to.pdf, id=603, 510.90875pt x 410.53375pt>
+File: figs/train-m1-eps-converted-to.pdf Graphic file (type pdf)
+
+<use figs/train-m1-eps-converted-to.pdf>
+Package pdftex.def Info: figs/train-m1-eps-converted-to.pdf used on input line 
+31.
+(pdftex.def)             Requested size: 143.9978pt x 115.70663pt.
+Package epstopdf Info: Source file: <figs/train-mr.eps>
+(epstopdf)                    date: 2015-12-05 23:29:15
+(epstopdf)                    size: 15346 bytes
+(epstopdf)             Output file: <figs/train-mr-eps-converted-to.pdf>
+(epstopdf)                    date: 2015-12-09 14:03:52
+(epstopdf)                    size: 8527 bytes
+(epstopdf)             Command: <repstopdf --outfile=figs/train-mr-eps-converte
+d-to.pdf figs/train-mr.eps>
+(epstopdf)             \includegraphics on input line 32.
+Package epstopdf Info: Output file is already uptodate.
+
+<figs/train-mr-eps-converted-to.pdf, id=604, 515.9275pt x 410.53375pt>
+File: figs/train-mr-eps-converted-to.pdf Graphic file (type pdf)
+
+<use figs/train-mr-eps-converted-to.pdf>
+Package pdftex.def Info: figs/train-mr-eps-converted-to.pdf used on input line 
+32.
+(pdftex.def)             Requested size: 143.9978pt x 114.57907pt.
+Package epstopdf Info: Source file: <figs/train-u1.eps>
+(epstopdf)                    date: 2015-12-05 23:29:18
+(epstopdf)                    size: 15339 bytes
+(epstopdf)             Output file: <figs/train-u1-eps-converted-to.pdf>
+(epstopdf)                    date: 2015-12-09 14:03:54
+(epstopdf)                    size: 8508 bytes
+(epstopdf)             Command: <repstopdf --outfile=figs/train-u1-eps-converte
+d-to.pdf figs/train-u1.eps>
+(epstopdf)             \includegraphics on input line 33.
+Package epstopdf Info: Output file is already uptodate.
+
+<figs/train-u1-eps-converted-to.pdf, id=605, 510.90875pt x 410.53375pt>
+File: figs/train-u1-eps-converted-to.pdf Graphic file (type pdf)
+
+<use figs/train-u1-eps-converted-to.pdf>
+Package pdftex.def Info: figs/train-u1-eps-converted-to.pdf used on input line 
+33.
+(pdftex.def)             Requested size: 143.9978pt x 115.70663pt.
+Package epstopdf Info: Source file: <figs/train-ur.eps>
+(epstopdf)                    date: 2015-12-05 23:29:22
+(epstopdf)                    size: 15092 bytes
+(epstopdf)             Output file: <figs/train-ur-eps-converted-to.pdf>
+(epstopdf)                    date: 2015-12-09 14:03:56
+(epstopdf)                    size: 8210 bytes
+(epstopdf)             Command: <repstopdf --outfile=figs/train-ur-eps-converte
+d-to.pdf figs/train-ur.eps>
+(epstopdf)             \includegraphics on input line 34.
+Package epstopdf Info: Output file is already uptodate.
+
+<figs/train-ur-eps-converted-to.pdf, id=606, 515.9275pt x 411.5375pt>
+File: figs/train-ur-eps-converted-to.pdf Graphic file (type pdf)
+
+<use figs/train-ur-eps-converted-to.pdf>
+Package pdftex.def Info: figs/train-ur-eps-converted-to.pdf used on input line 
+34.
+(pdftex.def)             Requested size: 143.9978pt x 114.85922pt.
+Package epstopdf Info: Source file: <figs/train-v1.eps>
+(epstopdf)                    date: 2015-12-05 23:29:32
+(epstopdf)                    size: 15366 bytes
+(epstopdf)             Output file: <figs/train-v1-eps-converted-to.pdf>
+(epstopdf)                    date: 2015-12-09 14:03:58
+(epstopdf)                    size: 8426 bytes
+(epstopdf)             Command: <repstopdf --outfile=figs/train-v1-eps-converte
+d-to.pdf figs/train-v1.eps>
+(epstopdf)             \includegraphics on input line 35.
+Package epstopdf Info: Output file is already uptodate.
+
+<figs/train-v1-eps-converted-to.pdf, id=607, 524.96124pt x 410.53375pt>
+File: figs/train-v1-eps-converted-to.pdf Graphic file (type pdf)
+
+<use figs/train-v1-eps-converted-to.pdf>
+Package pdftex.def Info: figs/train-v1-eps-converted-to.pdf used on input line 
+35.
+(pdftex.def)             Requested size: 143.9978pt x 112.60583pt.
+Package epstopdf Info: Source file: <figs/train-vr.eps>
+(epstopdf)                    date: 2015-12-05 23:29:56
+(epstopdf)                    size: 15093 bytes
+(epstopdf)             Output file: <figs/train-vr-eps-converted-to.pdf>
+(epstopdf)                    date: 2015-12-09 14:04:00
+(epstopdf)                    size: 8181 bytes
+(epstopdf)             Command: <repstopdf --outfile=figs/train-vr-eps-converte
+d-to.pdf figs/train-vr.eps>
+(epstopdf)             \includegraphics on input line 36.
+Package epstopdf Info: Output file is already uptodate.
+
+<figs/train-vr-eps-converted-to.pdf, id=608, 510.90875pt x 410.53375pt>
+File: figs/train-vr-eps-converted-to.pdf Graphic file (type pdf)
+
+<use figs/train-vr-eps-converted-to.pdf>
+Package pdftex.def Info: figs/train-vr-eps-converted-to.pdf used on input line 
+36.
+(pdftex.def)             Requested size: 143.9978pt x 115.70663pt.
+Package epstopdf Info: Source file: <figs/train-n.eps>
+(epstopdf)                    date: 2015-12-05 23:30:01
+(epstopdf)                    size: 15324 bytes
+(epstopdf)             Output file: <figs/train-n-eps-converted-to.pdf>
+(epstopdf)                    date: 2015-12-09 14:04:02
+(epstopdf)                    size: 8649 bytes
+(epstopdf)             Command: <repstopdf --outfile=figs/train-n-eps-converted
+-to.pdf figs/train-n.eps>
+(epstopdf)             \includegraphics on input line 37.
+Package epstopdf Info: Output file is already uptodate.
+
+<figs/train-n-eps-converted-to.pdf, id=609, 510.90875pt x 410.53375pt>
+File: figs/train-n-eps-converted-to.pdf Graphic file (type pdf)
+
+<use figs/train-n-eps-converted-to.pdf>
+Package pdftex.def Info: figs/train-n-eps-converted-to.pdf used on input line 3
+7.
+(pdftex.def)             Requested size: 143.9978pt x 115.70663pt.
+
+
+LaTeX Warning: Float too large for page by 45.0514pt on input line 41.
+
+Package epstopdf Info: Source file: <figs/queried-m1.eps>
+(epstopdf)                    date: 2015-12-05 23:29:04
+(epstopdf)                    size: 13527 bytes
+(epstopdf)             Output file: <figs/queried-m1-eps-converted-to.pdf>
+(epstopdf)                    date: 2015-12-09 14:04:04
+(epstopdf)                    size: 6860 bytes
+(epstopdf)             Command: <repstopdf --outfile=figs/queried-m1-eps-conver
+ted-to.pdf figs/queried-m1.eps>
+(epstopdf)             \includegraphics on input line 45.
+Package epstopdf Info: Output file is already uptodate.
+<figs/queried-m1-eps-converted-to.pdf, id=610, 510.90875pt x 410.53375pt>
+File: figs/queried-m1-eps-converted-to.pdf Graphic file (type pdf)
+
+<use figs/queried-m1-eps-converted-to.pdf>
+Package pdftex.def Info: figs/queried-m1-eps-converted-to.pdf used on input lin
+e 45.
+(pdftex.def)             Requested size: 143.9978pt x 115.70663pt.
+Package epstopdf Info: Source file: <figs/queried-mr.eps>
+(epstopdf)                    date: 2015-12-05 23:29:15
+(epstopdf)                    size: 13406 bytes
+(epstopdf)             Output file: <figs/queried-mr-eps-converted-to.pdf>
+(epstopdf)                    date: 2015-12-09 14:04:06
+(epstopdf)                    size: 6920 bytes
+(epstopdf)             Command: <repstopdf --outfile=figs/queried-mr-eps-conver
+ted-to.pdf figs/queried-mr.eps>
+(epstopdf)             \includegraphics on input line 46.
+Package epstopdf Info: Output file is already uptodate.
+
+<figs/queried-mr-eps-converted-to.pdf, id=611, 515.9275pt x 410.53375pt>
+File: figs/queried-mr-eps-converted-to.pdf Graphic file (type pdf)
+
+<use figs/queried-mr-eps-converted-to.pdf>
+Package pdftex.def Info: figs/queried-mr-eps-converted-to.pdf used on input lin
+e 46.
+(pdftex.def)             Requested size: 143.9978pt x 114.57907pt.
+Package epstopdf Info: Source file: <figs/queried-u1.eps>
+(epstopdf)                    date: 2015-12-05 23:29:19
+(epstopdf)                    size: 14015 bytes
+(epstopdf)             Output file: <figs/queried-u1-eps-converted-to.pdf>
+(epstopdf)                    date: 2015-12-09 14:04:08
+(epstopdf)                    size: 7291 bytes
+(epstopdf)             Command: <repstopdf --outfile=figs/queried-u1-eps-conver
+ted-to.pdf figs/queried-u1.eps>
+(epstopdf)             \includegraphics on input line 47.
+Package epstopdf Info: Output file is already uptodate.
+
+<figs/queried-u1-eps-converted-to.pdf, id=612, 510.90875pt x 410.53375pt>
+File: figs/queried-u1-eps-converted-to.pdf Graphic file (type pdf)
+
+<use figs/queried-u1-eps-converted-to.pdf>
+Package pdftex.def Info: figs/queried-u1-eps-converted-to.pdf used on input lin
+e 47.
+(pdftex.def)             Requested size: 143.9978pt x 115.70663pt.
+Package epstopdf Info: Source file: <figs/queried-ur.eps>
+(epstopdf)                    date: 2015-12-05 23:29:23
+(epstopdf)                    size: 13767 bytes
+(epstopdf)             Output file: <figs/queried-ur-eps-converted-to.pdf>
+(epstopdf)                    date: 2015-12-09 14:04:09
+(epstopdf)                    size: 7064 bytes
+(epstopdf)             Command: <repstopdf --outfile=figs/queried-ur-eps-conver
+ted-to.pdf figs/queried-ur.eps>
+(epstopdf)             \includegraphics on input line 48.
+Package epstopdf Info: Output file is already uptodate.
+
+<figs/queried-ur-eps-converted-to.pdf, id=613, 515.9275pt x 410.53375pt>
+File: figs/queried-ur-eps-converted-to.pdf Graphic file (type pdf)
+
+<use figs/queried-ur-eps-converted-to.pdf>
+Package pdftex.def Info: figs/queried-ur-eps-converted-to.pdf used on input lin
+e 48.
+(pdftex.def)             Requested size: 143.9978pt x 114.57907pt.
+Package epstopdf Info: Source file: <figs/queried-v1.eps>
+(epstopdf)                    date: 2015-12-05 23:29:32
+(epstopdf)                    size: 13524 bytes
+(epstopdf)             Output file: <figs/queried-v1-eps-converted-to.pdf>
+(epstopdf)                    date: 2015-12-09 14:04:12
+(epstopdf)                    size: 6851 bytes
+(epstopdf)             Command: <repstopdf --outfile=figs/queried-v1-eps-conver
+ted-to.pdf figs/queried-v1.eps>
+(epstopdf)             \includegraphics on input line 49.
+Package epstopdf Info: Output file is already uptodate.
+
+<figs/queried-v1-eps-converted-to.pdf, id=614, 510.90875pt x 410.53375pt>
+File: figs/queried-v1-eps-converted-to.pdf Graphic file (type pdf)
+
+<use figs/queried-v1-eps-converted-to.pdf>
+Package pdftex.def Info: figs/queried-v1-eps-converted-to.pdf used on input lin
+e 49.
+(pdftex.def)             Requested size: 143.9978pt x 115.70663pt.
+Package epstopdf Info: Source file: <figs/queried-vr.eps>
+(epstopdf)                    date: 2015-12-05 23:29:57
+(epstopdf)                    size: 14150 bytes
+(epstopdf)             Output file: <figs/queried-vr-eps-converted-to.pdf>
+(epstopdf)                    date: 2015-12-09 14:04:14
+(epstopdf)                    size: 7267 bytes
+(epstopdf)             Command: <repstopdf --outfile=figs/queried-vr-eps-conver
+ted-to.pdf figs/queried-vr.eps>
+(epstopdf)             \includegraphics on input line 50.
+Package epstopdf Info: Output file is already uptodate.
+
+<figs/queried-vr-eps-converted-to.pdf, id=615, 524.96124pt x 410.53375pt>
+File: figs/queried-vr-eps-converted-to.pdf Graphic file (type pdf)
+
+<use figs/queried-vr-eps-converted-to.pdf>
+Package pdftex.def Info: figs/queried-vr-eps-converted-to.pdf used on input lin
+e 50.
+(pdftex.def)             Requested size: 143.9978pt x 112.60583pt.
+Package epstopdf Info: Source file: <figs/queried-n.eps>
+(epstopdf)                    date: 2015-12-05 23:30:02
+(epstopdf)                    size: 13766 bytes
+(epstopdf)             Output file: <figs/queried-n-eps-converted-to.pdf>
+(epstopdf)                    date: 2015-12-09 14:04:15
+(epstopdf)                    size: 7215 bytes
+(epstopdf)             Command: <repstopdf --outfile=figs/queried-n-eps-convert
+ed-to.pdf figs/queried-n.eps>
+(epstopdf)             \includegraphics on input line 51.
+Package epstopdf Info: Output file is already uptodate.
+
+<figs/queried-n-eps-converted-to.pdf, id=616, 510.90875pt x 410.53375pt>
+File: figs/queried-n-eps-converted-to.pdf Graphic file (type pdf)
+
+<use figs/queried-n-eps-converted-to.pdf>
+Package pdftex.def Info: figs/queried-n-eps-converted-to.pdf used on input line
+ 51.
+(pdftex.def)             Requested size: 143.9978pt x 115.70663pt.
+
+
+LaTeX Warning: Float too large for page by 45.0514pt on input line 55.
+
+[46
+
+]
+
+LaTeX Warning: Reference `fig:test_error' on page 47 undefined on input line 97
+.
+
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 111.
+
+Overfull \hbox (62.4387pt too wide) in paragraph at lines 109--126
+[][]
  []
 
-) [44] (./thesis.bbl)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 113.
- [45
+[47pdfTeX warning (ext4): destination with the same identifier (name{table.6.1}
+) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.146 
+      ]
+
+LaTeX Warning: Reference `fig:mnist1' on page 48 undefined on input line 148.
+
+
+LaTeX Warning: Reference `thm:bound' on page 48 undefined on input line 159.
+
+
+LaTeX Warning: Reference `fig:mnist2' on page 48 undefined on input line 166.
+
+[48]
+
+LaTeX Warning: Reference `fig:test_error' on page 49 undefined on input line 19
+1.
+
+
+LaTeX Warning: Reference `sec:variants' on page 49 undefined on input line 204.
+
+
+) (./related_work.tex [49] [50pdfTeX warning (ext4): destination with the same 
+identifier (name{figure.6.1}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1 \chapter
+            {Related Work} <./figs/test-m1-eps-converted-to.pdf> <./figs/test-m
+r-eps-converted-to.pdf> <./figs/test-u1-eps-converted-to.pdf> <./figs/test-ur-e
+ps-converted-to.pdf> <./figs/test-v1-eps-converted-to.pdf> <./figs/test-vr-eps-
+converted-to.pdf> <./figs/test-n-eps-converted-to.pdf>] [51pdfTeX warning (ext4
+): destination with the same identifier (name{figure.6.2}) has been already use
+d, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1 \chapter
+            {Related Work} <./figs/train-m1-eps-converted-to.pdf> <./figs/train
+-mr-eps-converted-to.pdf> <./figs/train-u1-eps-converted-to.pdf> <./figs/train-
+ur-eps-converted-to.pdf> <./figs/train-v1-eps-converted-to.pdf> <./figs/train-v
+r-eps-converted-to.pdf> <./figs/train-n-eps-converted-to.pdf>] [52pdfTeX warnin
+g (ext4): destination with the same identifier (name{figure.6.3}) has been alre
+ady used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1 \chapter
+            {Related Work} <./figs/queried-m1-eps-converted-to.pdf> <./figs/que
+ried-mr-eps-converted-to.pdf> <./figs/queried-u1-eps-converted-to.pdf> <./figs/
+queried-ur-eps-converted-to.pdf> <./figs/queried-v1-eps-converted-to.pdf> <./fi
+gs/queried-vr-eps-converted-to.pdf> <./figs/queried-n-eps-converted-to.pdf>]
+Chapter 7.
+[53
+
+]) (./conclusions.tex [54]
+Chapter 8.
+) [55
+
+] (./thesis.bbl
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 15.
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+)
+Underfull \hbox (badness 3965) in paragraph at lines 10--16
+\OT1/ptm/m/n/10.95 2008-138, EECS De-part-ment, Uni-ver-sity of Cal-i-for-nia, 
+Berke-ley, Oct
+ []
+
+[56
 
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 113.
+Underfull \hbox (badness 4144) in paragraph at lines 96--100
+\OT1/ptm/m/n/10.95 hy-pothe-ses.  In \OT1/ptm/m/it/10.95 Ad-vances in Neu-ral I
+n-for-ma-tion Pro-cess-ing Sys-tems
+ []
+
+[57] [58])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 127.
+ [59]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 127.
  (./thesis.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 113.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 113.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 127.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 127.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 18D9F603BE902C2CC34CE1C60E87F4FB;1334.
+(rerunfilecheck)             Checksum: 9FCC6F4B31918BB2E5AB74F304F48A53;1207.
 
 
 LaTeX Warning: There were undefined references.
@@ -1107,16 +1829,16 @@ LaTeX Warning: There were undefined references.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 113.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 127.
  ) 
 Here is how much of TeX's memory you used:
- 9242 strings out of 493117
- 127825 string characters out of 6135433
- 243763 words of memory out of 5000000
- 12311 multiletter control sequences out of 15000+600000
- 40774 words of font info for 105 fonts, out of 8000000 for 9000
+ 10028 strings out of 493117
+ 142520 string characters out of 6135433
+ 253679 words of memory out of 5000000
+ 12978 multiletter control sequences out of 15000+600000
+ 44051 words of font info for 110 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,26n,40p,1874b,417s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,26n,40p,579b,499s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/te
 xlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texl
@@ -1125,6 +1847,7 @@ ve/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texliv
 e/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive
 /2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2
 014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/201
+4/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/201
 4/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2014/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2014/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2014/texmf-
@@ -1132,13 +1855,14 @@ dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2014/texmf-d
 ist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2014/texmf-dis
 t/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2014/texmf-dist/
 fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2014/texmf-d
-ist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/
-type1/urw/times/utmr8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/
-times/utmri8a.pfb>
-Output written on ./thesis.pdf (57 pages, 366864 bytes).
+ist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2014/texmf-dist/font
+s/type1/urw/times/utmb8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/ur
+w/times/utmr8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/times/ut
+mri8a.pfb>
+Output written on ./thesis.pdf (71 pages, 512309 bytes).
 PDF statistics:
- 641 PDF objects out of 1000 (max. 8388607)
- 546 compressed objects within 6 object streams
- 164 named destinations out of 1000 (max. 500000)
- 152 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1091 PDF objects out of 1200 (max. 8388607)
+ 920 compressed objects within 10 object streams
+ 239 named destinations out of 1000 (max. 500000)
+ 273 words of extra memory for PDF output out of 10000 (max. 10000000)
 

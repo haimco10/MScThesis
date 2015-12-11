@@ -46,12 +46,12 @@
 
 \DeclareOption{PhD}{%
 \newcommand{\@degreeEnglish}{Doctor of Philosophy}
-\newcommand{\@degreeHebrew}{ãå÷èåø ìôéìåñåôéä}
+\newcommand{\@degreeHebrew}{Ã£Ã¥Ã·Ã¨Ã¥Ã¸ Ã¬Ã´Ã©Ã¬Ã¥Ã±Ã¥Ã´Ã©Ã¤}
 }
 
 \DeclareOption{MSc}{%
 \newcommand{\@degreeEnglish}{Master of Science in Electrical Engineering}
-\newcommand{\@degreeHebrew}{îâéñèø ìîãòéí áîãòé äîçùá}
+\newcommand{\@degreeHebrew}{Ã®Ã¢Ã©Ã±Ã¨Ã¸ Ã¬Ã®Ã£Ã²Ã©Ã­ Ã¡Ã®Ã£Ã²Ã© Ã¤Ã®Ã§Ã¹Ã¡}
 }
 
 \DeclareOption{beforeExam}{% No personal thanks are printed before the exam is taken and passed
@@ -153,14 +153,14 @@ the Technion --- Israel Institute of Technology \\ }
 
 \chapter*{Abstract}
 \addcontentsline{toc}{chapter}{Abstract}
-\addcontentsline{cot}{chapter}{ú÷öéø}
+\addcontentsline{cot}{chapter}{ÃºÃ·Ã¶Ã©Ã¸}
 \setcounter{page}{1}
 }
 
 \newcommand{\abbreviationsAndNotationsEnglish}{%
 \chapter*{Abbreviations and Notations}
 \addcontentsline{toc}{chapter}{Abbreviations and Notations}
-\addcontentsline{cot}{chapter}{øùéîú ÷éöåøéí åñîìéí}
+\addcontentsline{cot}{chapter}{Ã¸Ã¹Ã©Ã®Ãº Ã·Ã©Ã¶Ã¥Ã¸Ã©Ã­ Ã¥Ã±Ã®Ã¬Ã©Ã­}
 }
 
 \newcommand{\maketitleHebrew}{
@@ -186,19 +186,19 @@ the Technion --- Israel Institute of Technology \\ }
 {\Huge \bf \@titleHebrew}
 \end{spacing}
 \vfill
-çéáåø òì îç÷ø
+Ã§Ã©Ã¡Ã¥Ã¸ Ã²Ã¬ Ã®Ã§Ã·Ã¸
 \vfill
 {\normalsize
-ìùí îéìåé çì÷é ùì äãøéùåú ì÷áìú äúåàø \\
+Ã¬Ã¹Ã­ Ã®Ã©Ã¬Ã¥Ã© Ã§Ã¬Ã·Ã© Ã¹Ã¬ Ã¤Ã£Ã¸Ã©Ã¹Ã¥Ãº Ã¬Ã·Ã¡Ã¬Ãº Ã¤ÃºÃ¥Ã Ã¸ \\
 \@degreeHebrew}
 \vfill
 {\LARGE \bf \@authorHebrew}
 \vfill
 \parbox{3in}{
 \normalsize
-{\center äåâù ìñğè äèëğéåï \L{--} îëåï èëğåìåâé ìéùøàì \\ }
+{\center Ã¤Ã¥Ã¢Ã¹ Ã¬Ã±Ã°Ã¨ Ã¤Ã¨Ã«Ã°Ã©Ã¥Ã¯ \L{--} Ã®Ã«Ã¥Ã¯ Ã¨Ã«Ã°Ã¥Ã¬Ã¥Ã¢Ã© Ã¬Ã©Ã¹Ã¸Ã Ã¬ \\ }
 \@JewishDateHebrew
-\hfill çéôä \hfill
+\hfill Ã§Ã©Ã´Ã¤ \hfill
 \@GregorianDateHebrew
 }
 \end{center}
@@ -224,8 +224,8 @@ the Technion --- Israel Institute of Technology \\ }
 
 
 \newcommand{\abstractHebrew}{%
-\chapter*{ú÷öéø}
-\addcontentsline{cot}{chapter}{ú÷öéø áòáøéú}
+\chapter*{ÃºÃ·Ã¶Ã©Ã¸}
+\addcontentsline{cot}{chapter}{ÃºÃ·Ã¶Ã©Ã¸ Ã¡Ã²Ã¡Ã¸Ã©Ãº}
 \addcontentsline{toc}{chapter}{Abstract in Hebrew}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{10pt}

@@ -1,0 +1,228 @@
+\chapter{Second Order Adaptive SHAMPO}
+
+
+\begin{algorithm}
+\begin{algorithmic}
+   \State \textbf{Parameters:}  $c\in\mathbb{R}>0$.
+   \State \textbf{Initialize:} $\vwi{i,0}=\vzero$, $A_0=I$ \\
+   \For {$t=1,2, ..., n$} 
+     \begin{enumerate}
+     \nolineskips
+     \item Observe $K$ instance vectors, $\vxiit$, ($i=1 \comdots K$).
+     \item Compute  $\hat{p}_{i,t}=\vxiit^T \paren{A_{i,t-1}+\vxiit\vxiit^T}^{-1}\vw_{i,t-1}$.
+     \item Predict $K$ labels, $\hyi{i,t}=\sign(\hat{p}_{i,t})$.
+      \item Compute $r_{i,t} = \vxiit^T A_{i,t-1}^{-1}\vxiit$.
+     \item Draw problem $J_t$  with the distribution:
+     
+      \begin{align}
+     \pr{J_t=j} &=
+     \frac{1}{D_{t}}\frac{2c}{2c+\paren{\Theta\paren{\abs{\hat{p}_{j,t}},r_{j,t}}}_+}, \nonumber\\
+     D_t &=2c
+     \sum_i \paren{2c+\paren{\Theta\paren{\abs{\hat{p}_{i,t}},r_{i,t}}}_+}^{-1}. \nonumber
+     \end{align}
+     Where $m,i\in\{1,...,K\}$ and $D_t$ is the normalization factor. \\
+     Set $Z_{J,t}=1,~Z_{i,t}=0 , ~\forall i\ne J $.
+
+     
+     \If {$\Theta\paren{\abs{\hat{p}_{J_t,t}},r_{i,t}}\ge0$}
+        \If {$y_{J_t,t}\ne{\hat{y}_{J_t,t}$}}
+            \State $U_{J_t,t}=1$
+         \Else
+            \State $U_{J_t,t}=0$
+        \EndIf
+    \Else 
+        \State set $U_{J_t,t}=1$
+    \EndIf
+     
+     \item Update:
+     \begin{align}
+     &\vwi{J_t,t} = \vwi{J_t,t-1}+U_{J_t,t}\,  \vxi{J_t,t}  \yi{J_t,t}\,\label{perc_update}\\
+     &A_{J_t,t}=A_{J_t,t-1}+ U_{J_t,t}\vxi{J_t,t}\vxi{J_t,t}^T\nonumber
+     \end{align}
+
+     
+     \end{enumerate}
+   \EndFor  
+   \State {\bf Output}: $\vwi{i,n}$ for $i=1 \comdots K$.
+\end{algorithmic}
+\caption{Second order aggressive SHAMPO. \label{alg:SHAMPO}}
+\end{algorithm}
+
+
+This algorithm and proof builds on the second order selective sampling by Cesa-Bianchi 
+et al ~\cite{cesa2006worst} define the function
+\begin{equation}
+\Theta\paren{\abs{\hat{p}_{i,t}},r_{i,t}}=\paren{1+r_{i,t}}\hat{p}_{i,t}^2+2\abs{\hat{p}_{i,t}}-\frac{r_{i,t}}{1+r_{i,t}}
+\end{equation}
+
+
+\begin{proof} 
+\\ 
+Before proofing the Thm. we will use the next inequality. define $x\in[0,1]$
+\begin{equation}
+\sqrt{1-x}+\sqrt{1+x}\le2.
+\label{technical_inequality}
+\end{equation}
+From the concavity of $\sqrt{1+x}$ we see that $\sqrt{1+x}\le1+\half x$. 
+Using this inequality twice, we get $\sqrt{1-x}+\sqrt{1+x}\le1-\half x+1+\half x=2$.
+Define the regularized cumulative square loss of the updated rounds on the task 
+$i$ up to the round $t$
+\begin{equation*}
+\Phi_{i,t}(\vu_i)=\half\normt{\vu_i}+\half\sum_{s=1}^{t}{Z_{i,t}U_{i,t}\paren{y_{i,t}-\vu_i^T\vx_{i,t}}}^2.
+\end{equation*}
+Simlar to the proof of Thm .3 of Cesa-Bianchi et al ~\cite{cesa2006worst} and Forster ????,
+\begin{equation*}
+\begin{split}
+\half Z_{i,t}U_{i,t}\paren{y_{i,t}-\hat{p}_{i,t}}^{2}= &\inf_{\vu_i}{\Phi_{i,t+1}}(\vu_i)-\inf_{\vu_i}{\Phi_{i,t}}(\vu_i)+\frac{Z_{i,t}U_{i,t}}{2}\vxiit^TA_{i,t}^{-1}\vxiit\\
+&-\frac{Z_{i,t}U_{i,t}}{2}\vxiit^TA_{i,t-1}^{-1}\vxiit\hat{p}_{i,t}^2\\
+=&\inf_{\vu_i}{\Phi_{i,t+1}}(\vu_i)-\inf_{\vu_i}{\Phi_{i,t}}(\vu_i)+\frac{Z_{i,t}U_{i,t}}{2}\frac{r_{i,t}}{1+r_{i,t}}-\frac{Z_{i,t}U_{i,t}}{2}r_{i,t}\hat{p}_{i,t}^2
+\end{split}
+\end{equation*} 
+Now, we sum up the equation over $t$,
+ 
+\begin{equation*}
+\begin{split}
+\half \sum_{t=1}^{n}Z_{i,t}U_{i,t}\paren{y_{i,t}-\hat{p}_{i,t}}^{2}=& \inf_{\vu_i}{\Phi_{i,n+1}}(\vu_i)+ \sum_{t=1}^{n}\frac{Z_{i,t}U_{i,t}}{2}\frac{r_{i,t}}{1+r_{i,t}}-\sum_{t=1}^{n}\frac{Z_{i,t}U_{i,t}}{2}r_{i,t}\hat{p}_{i,t}^2\\
+\le&\half\normt{\vu_i}+\half\sum_{t=1}^{n}{Z_{i,t}U_{i,t}\paren{y_{i,t}-\vu_i^T\vx_{i,t}}}^2+ \sum_{t=1}^{n}\frac{Z_{i,t}U_{i,t}}{2}\frac{r_{i,t}}{1+r_{i,t}}\\&-\sum_{t=1}^{n}\frac{Z_{i,t}U_{i,t}}{2}r_{i,t}\hat{p}_{i,t}^2.
+\end{split}
+\end{equation*} 
+For simplification we will define
+\begin{equation*}
+A_{i,n}=I+\sum_{t=1}^{n}{Z_{i,t}U_{i,t}}\vxiit\vxiit^T.
+\end{equation*}
+Expanding the squares we get,
+\begin{equation}
+\begin{split}
+\half \sum_{t=1}^{n}Z_{i,t}U_{i,t}&\paren{\hat{p}_{i,t}^2-2y_{i,t}\hat{p}_{i,t}-\frac{r_{i,t}}{1+r_{i,t}}+r_{i,t}\hat{p}_{i,t}^2}\\
+\le& \half\normt{\vu_i}+\frac{1}{2}\sum_{t=1}^{n}{Z_{i,t}U_{i,t}\vu_i^T\vx_{i,t}\vx_{i,t}^T\vu_i}-\sum_{t=1}^{n}{Z_{i,t}U_{i,t}\vu_i^T\vx_{i,t}y_{i,t}}\\
+&=\half \vu_i^T\paren{I+\sum_{t=1}^{n}{Z_{i,t}U_{i,t}}\vxiit\vxiit^T}\vu_i-\sum_{t=1}^{n}{Z_{i,t}U_{i,t}\vu_i^T\vx_{i,t}y_{i,t}}\\
+&=\half \vu_i^T A_{i,n} \vu_i-\sum_{t=1}^{n}{Z_{i,t}U_{i,t}\vu_i^T\vx_{i,t}y_{i,t}}.
+\end{split}
+\label{sec_order_1}
+\end{equation} 
+The vectors $\vu_i$ can be replaced with their scaled version, $c\vu_i$. 
+Introducing the trivial inequality, $1-x\le \max\braces{1-x,0}$ we get 
+\begin{equation}
+\begin{split}
+cZ_{i,t}U_{i,t}\paren{1-\vu_i^T\vx_{i,t}y_{i,t}} &\le cZ_{i,t}U_{i,t}\max\braces{1-\vu_i^T\vx_{i,t}y_{i,t},0}\\
+-cZ_{i,t}U_{i,t}\vu_i^T\vx_{i,t}y_{i,t}&\le-cZ_{i,t}U_{i,t}+c Z_{i,t}U_{i,t}\lossp{}\paren{\vu_i^T\vx_{i,t}y_{i,t}}.
+\label{sec_order_2}
+\end{split}
+\end{equation}
+Rearranging an plugging \eqref{sec_order_2} and \eqref{sec_order_1} 
+
+\begin{equation}
+\begin{split}
+\half \sum_{t=1}^{n}Z_{i,t}U_{i,t}&\paren{\hat{p}_{i,t}^2-2y_{i,t}\hat{p}_{i,t}-\frac{r_{i,t}}{1+r_{i,t}}+r_{i,t}\hat{p}_{i,t}^{2}+2c}\\
+&\le\frac{c^2}{2} \vu_i^T A_{i,n} \vu_i+c\sum_{t=1}^{n}{Z_{i,t}U_{i,t}\lossp{}\paren{\vu_i^T\vx_{i,t}y_{i,t}}}
+\label{sec_order_2}
+\end{split}
+\end{equation}
+Recall that $U_{i,t}=M_{i,t}+G_{i,t}$ we will split the inequality into two different cases. First we will take into consideration the cases when an error update was performed, i.e.$M_{i,t}=1$, in which we have $-y_{i,t}\hat{p}_{i,t}=\abs{\hat{p}_{i,t}}$. In this case we need to consider also two subcases, when $\Theta\paren{\abs{\hat{p}_{i,t}},r_{i,t}}\ge0$   and when $\Theta\paren{\abs{\hat{p}_{i,t}},r_{i,t}}<0$. Beginning with the former subcase, recall that for this case 
+$\mathbb{E}_{t-1}\brackets{Z_{i,t}}=\frac{1}{D_{t}}\frac{2c}{2c+\paren{\Theta\paren{\abs{\hat{p}_{j,t}},r_{j,t}}}}$, we get 
+\begin{equation*}
+\begin{split}
+\mathbb{E}&\brackets{Z_{i,t}U_{i,t}\paren{\hat{p}_{i,t}^2-2y_{i,t}\hat{p}_{i,t}-\frac{r_{i,t}}{1+r_{i,t}}+r_{i,t}\hat{p}_{i,t}^{2}+2c}}\\
+&=\mathbb{E}\brackets{\mathbb{E}_{t-1}\brackets{Z_{i,t}}U_{i,t}\paren{\hat{p}_{i,t}^2-2y_{i,t}\hat{p}_{i,t}-\frac{r_{i,t}}{1+r_{i,t}}+r_{i,t}\hat{p}_{i,t^{}}^{2}+2c}}\\
+&=2c\mathbb{E}\brackets{\frac{1}{D_t}U_{i,t}}.
+\end{split}
+\end{equation*}
+When $\Theta\paren{\abs{\hat{p}_{i,t}},r_{i,t}}<0$  the conditional expectation becomes $\mathbb{E}_{t-1}\brackets{Z_{i,t}}=\frac{1}{D_t}$ and the thus,
+\begin{equation*}
+\begin{split}
+\mathbb{E}&\brackets{Z_{i,t}U_{i,t}\paren{\hat{p}_{i,t}^2-2y_{i,t}\hat{p}_{i,t}-\frac{r_{i,t}}{1+r_{i,t}}+r_{i,t}\hat{p}_{i,t}^{2}+2c}}\\
+&=\mathbb{E}\brackets{\mathbb{E}_{t-1}\brackets{Z_{i,t}}U_{i,t}\paren{\hat{p}_{i,t}^2+2\abs{\hat{p}_{i,t}}-\frac{r_{i,t}}{1+r_{i,t}}+r_{i,t}\hat{p}_{i,t}^{2}+2c}}\\
+&\ge\mathbb{E}\brackets{\mathbb{E}_{t-1}\brackets{Z_{i,t}}U_{i,t}\paren{-\frac{r_{i,t}}{1+r_{i,t}}+2c}}\\
+&\ge 2c 
+\mathbb{E}\brackets{\frac{U_{i,t}}{D_t}}-\frac{r_{i,t}}{1+r_{i,t}}\mathbb{E}\brackets{\frac{U_{i,t}}{D_t}}\\
+&\ge 2c \mathbb{E}\brackets{\frac{1}{D_t}U_{i,t}}-\frac{r_{i,t}}{1+r_{i,t}}\mathbb{E}\brackets{\frac{1}{D_t}}.
+\end{split}
+\end{equation*}
+Now we examine the case where an update was performed, but there was no mistake. In this case, $0\le y_{i,t}\hat{p}_{i,t}$ and the aggressive update was performed. Recall the bound on the margin for such case and using \eqref{sec_order_2} ,
+we bound the margin as follows\begin{equation*}
+0\le y_{i,t}\hat{p}_{i,t}\le \theta({r_{i,t}})=\frac{-1+\sqrt{1+r_{i,t}}}{1+r_{i,t}}.
+\end{equation*}
+We can bound now,
+\begin{equation*}
+\begin{split}
+\hat{p}_{i,t}^2&-2y_{i,t}\hat{p}_{i,t}-\frac{r_{i,t}}{1+r_{i,t}}+r_{i,t}\hat{p}_{i,t}^{2}+2c\\
+&=(1+r_{i,t})\hat{p}_{i,t}^2-2y_{i,t}\hat{p}_{i,t}+\frac{r_{i,t}}{1+r_{i,t}}-2\frac{r_{i,t}}{1+r_{i,t}}+2c\\
+&=f(y_{i,t}\hat{p}_{i,t})-2\frac{r_{i,t}}{1+r_{i,t}}+2c
+\end{split}
+\end{equation*}
+\end{proof}          
+where $f(y_{i,t}\hat{p}_{i,t})=(1+r_{i,t})\hat{p}_{i,t}^2-2y_{i,t}\hat{p}_{i,t}+\frac{r_{i,t}}{1+r_{i,t}}$ is a quadratic convex function with two non-negative roots $\frac{1\pm\sqrt{1-r_{i,t}}}{1+r_{i,t}}$ and we know that the margin is lower than the smaller root , $y_{i,t}\hat{p}_{i,t}\le\frac{1-\sqrt{1-r_{i,t}}}{1+r_{i,t}}$ which leads to the inequality $f(y_{i,t}\hat{p}_{i,t})\ge0$ so we bound 
+\begin{equation*}
+\begin{split}
+\mathbb{E}&\brackets{Z_{i,t}U_{i,t}\paren{\hat{p}_{i,t}^2-2y_{i,t}\hat{p}_{i,t}-\frac{r_{i,t}}{1+r_{i,t}}+r_{i,t}\hat{p}_{i,t}^{2}+2c}}\\
+&=\mathbb{E}\brackets{\mathbb{E}_{t-1}\brackets{Z_{i,t}}U_{i,t}\paren{f(y_{i,t}\hat{p}_{i,t})-2\frac{r_{i,t}}{1+r_{i,t}}+2c}}\\
+&\ge\mathbb{E}\brackets{\mathbb{E}_{t-1}\brackets{Z_{i,t}}U_{i,t}\paren{-2\frac{r_{i,t}}{1+r_{i,t}}+2c}}\\
+&\ge 2c\mathbb{E}\brackets{\frac{U_{i,t}}{D_t}}-\frac{2r_{i,t}}{1+r_{i,t}}\mathbb{E}\brackets{\frac{U_{i,t}}{D_t}}
+&\ge 2c\mathbb{E}\brackets{\frac{1}{D_t}U_{i,t}}-\frac{2r_{i,t}}{1+r_{i,t}}\mathbb{E}\brackets{\frac{1}{D_t}}.
+\end{split}
+\end{equation*}
+Summarize the results we get,
+\begin{equation}
+\begin{split}
+\half \sum_{t=1}^{n}&\mathbb{E}\brackets{Z_{i,t}U_{i,t}\paren{\hat{p}_{i,t}^2-2y_{i,t}\hat{p}_{i,t}-\frac{r_{i,t}}{1+r_{i,t}}+r_{i,t}\hat{p}_{i,t}^{2}+2c}}\\
+&\ge c \sum_{t\in\mathcal{M}}\mathbb{E}\brackets{\frac{1}{D_t}U_{i,t}}+c \sum_{t\in\mathcal{G}}\mathbb{E}\brackets{\frac{1}{D_t}U_{i,t}}\\
+&-\half\sum_{t\in\mathcal{A\cap M}}\frac{r_{i,t}}{1+r_{i,t}}\mathbb{E}\brackets{\frac{1}{D_t}}
+-\sum_{t\in\mathcal{A\cap G}}\frac{r_{i,t}}{1+r_{i,t}}\mathbb{E}\brackets{\frac{1}{D_t}}
+\end{split}
+\end{equation}
+Combining the result of the last inequality with the expectation of the  \eqref{sec_order_2}, recall that  $\sum_{t\in\mathcal{M}}U_{i,t}=M_i$ , and  $\sum_{t\in\mathcal{G}}U_{i,t}=G_i$ we get,   
+\begin{equation*}
+\begin{split}
+c \sum_{t\in\mathcal{M}}\mathbb{E}\brackets{\frac{1}{D_t}U_{i,t}}+c \sum_{t\in\mathcal{G}}\mathbb{E}&\brackets{\frac{1}{D_t}U_{i,t}}
+-\frac{1}{2}\sum_{t\in\mathcal{A\cap M}}\frac{r_{i,t}}{1+r_{i,t}}\mathbb{E}\brackets{\frac{1}{D_t}}\\
+-\sum_{t\in\mathcal{A\cap U}}\frac{r_{i,t}}{1+r_{i,t}}\mathbb{E}\brackets{\frac{1}{D_t}}
+\le& \frac{c^2}{2} \vu_i^T \mathbb{E}\brackets{A_{i,n}} \vu_i+c\sum_{t=1}^{n}\mathbb{E}\brackets{{Z_{i,t}U_{i,t}\lossp{}\paren{\vu_i^T\vx_{i,t}y_{i,t}}}}
+\end{split}
+\end{equation*}
+
+The normalization can also been bound by
+\begin{equation*}
+\begin{split}
+D_{t}=2c\sum_{i=1}^{K}{\left({2c+\paren{\Theta\paren{\abs{\hat{p}_{i,t}},r_{i,t}}}_+}\right)^{-1}}& \le  2c\sum_{m=1}^{K}{\frac{1}{2c}}=K
+\end{split}
+\end{equation*}
+which leads to
+
+
+\begin{equation*}
+\begin{split}
+\mathbb{E}\brackets{M_{i}}+ &\mathbb{E}\brackets{G_{i}}
+-\frac{1}{2c}\mathbb{E}\sum_{t\in\mathcal{A\cap M}}\brackets{\frac{r_{i,t}}{1+r_{i,t}}}
+-\frac{1}{c}\mathbb{E}\sum_{t\in\mathcal{A\cap U}}\brackets{\frac{r_{i,t}}{1+r_{i,t}}}\\
+\le& \frac{Kc}{2} \vu_i^T \mathbb{E}\brackets{A_{i,n}} \vu_i+K\sum_{t=1}^{n}\mathbb{E}\brackets{{Z_{i,t}U_{i,t}\lossp{}\paren{\vu_i^T\vx_{i,t}y_{i,t}}}}
+\end{split}
+\end{equation*}
+
+
+
+\begin{equation*}
+\begin{split}
+\mathbb{E}\brackets{M_{i}}\le&\frac{Kc}{2} \vu_i^T \mathbb{E}\brackets{A_{i,n}} \vu_i+K\sum_{t=1}^{n}\mathbb{E}\brackets{{Z_{i,t}U_{i,t}\lossp{}\paren{\vu_i^T\vx_{i,t}y_{i,t}}}} -\mathbb{E}\brackets{G_{i}}\\
+&+\frac{1}{2c}\mathbb{E}\sum_{t\in\mathcal{A\cap M}}\brackets{\frac{r_{i,t}}{1+r_{i,t}}}
++\frac{1}{c}\mathbb{E}\sum_{t\in\mathcal{A\cap U}}\brackets{\frac{r_{i,t}}{1+r_{i,t}}}\\
+\le& \frac{Kc}{2} \vu_i^T \mathbb{E}\brackets{A_{i,n}} \vu_i+K\mathbb{E}\brackets{\sum_{t=1}^{n}{Z_{i,t}U_{i,t}\lossp{}\paren{\vu_i^T\vx_{i,t}y_{i,t}}}}-\mathbb{E}\brackets{G_{i}}\\
+&+\frac{1}{c}\sum_{t\in\mathcal{A}}\brackets{\frac{r_{i,t}}{1+r_{i,t}}}
+\end{split}
+\end{equation*}
+Now, we can summarize the inequality over all of the tasks,
+\begin{equation*}
+\begin{split}
+\mathbb{E}\brackets{M}\le &\frac{cK}{2}\sum_{i=1}^{K}  \vu_i^T \mathbb{E}\brackets{A_{i,n}} \vu_i+K\mathbb{E}\brackets{\sum_{i=1}^{K}\sum_{t=1}^{n}Z_{i,t}U_{i,t}{\lossp{}\paren{\vu_i^T\vx_{i,t}y_{i,t}}}}-\mathbb{E}\brackets{G}\\
+&+\frac{1}{c}\mathbb{E}\sum_{i=1}^{K}\sum_{t\in\mathcal{A}}\brackets{\frac{r_{i,t}}{1+r_{i,t}}}
+\end{split}
+\end{equation*}
+ 
+\begin{equation*}
+\begin{split}
+\mathbb{E}\brackets{M}\le &\frac{cK}{2}\sum_{i=1}^{K}  \vu_i^T \mathbb{E}\brackets{A_{i,n}} \vu_i+K{\bar L}_{1,n}-\mathbb{E}\brackets{G}\\
+&+\frac{1}{c}\mathbb{E}\sum_{i=1}^{K}\sum_{t\in\mathcal{A}}\brackets{\frac{r_{i,t}}{1+r_{i,t}}}
+\end{split}
+\end{equation*} 
+
+
+

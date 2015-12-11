@@ -1,0 +1,24 @@
+#!/bin/bash
+###### Select resources #####
+#PBS -N Test
+#PBS -l ncpus=1
+#PBS -l mem=8g
+#PBS -J 1-200
+
+##### Change to current working directory
+
+cd $PBS_O_WORKDIR
+
+##### Obtain Parameters from input.txt file using $PBS_ARRAY_INDEX as the line number #####
+
+parameters=`sed -n "${PBS_ARRAY_INDEX} p" input.txt`
+
+parameterArray=($parameters)
+
+x=${parameterArray[0]}
+y=${parameterArray[1]}
+z=${parameterArray[2]}
+
+##### Execute Program #####
+
+printf "Values used are %d %f %d\n" $x $y $z
