@@ -1,0 +1,794 @@
+%
+\documentclass{beamer}
+\usepackage{amssymb,amsmath,amsfonts,graphicx}
+\usepackage[english]{babel}
+\usepackage{graphics}
+\usepackage{beamerthemesplit}
+\usepackage{beamerthemeshadow}
+\usepackage[latin1]{inputenc}
+\usefonttheme{professionalfonts}
+\usepackage{times}
+\usepackage{amsmath}
+\usecolortheme{whale}
+\usepackage{enumerate}
+\usepackage{amssymb}
+\setcounter{tocdepth}{3}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{times}
+\usepackage{subfigure}
+\usepackage{color}
+\usepackage{amsbsy}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{epsfig}
+\usepackage{tabulary}
+\usepackage{wrapfig}
+\usepackage[noadjust]{cite}
+%\input{prel_eli}
+\input{prela}
+
+
+\usetheme{Frankfurt}
+%\usetheme{Warsaw}
+%\setbeamertemplate{footline}[frame number]
+  \useoutertheme{infolines}
+    \usefonttheme[onlysmall]{structurebold}
+
+\title []{Multi-task Learning with a  \\Shared Annotator}    % Enter
+\author [H. Cohen and K. Crammer]{Haim Cohen \and \newline\newline  Supervised by Prof. Koby Crammer\newline\newline}
+
+\institute [Technion]{Faculty of Electrical Engineering, Technion\\
+Israel Institute of Technology}
+
+\date[April 6th, 2014]{6.4.2014}
+
+\usepackage[normalem]{ulem}
+
+\begin{document}
+
+\maketitle
+\section{Introduction}
+
+\begin{frame}{Outline}
+  \tableofcontents[pausesections]
+\end{frame}
+
+
+\begin{frame}{Online Learning}
+\begin{itemize}
+\item Input  comes in sequence \newline
+\item Feedback after prediction  \newline
+\item   Uses when  : \newline
+\begin{itemize}
+\item Data comes in sequence \newline
+\item Big data \newline
+\end{itemize}
+\item Examples: stock market, advertisement \newline
+
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Online Learning}
+\begin{itemize}
+\item On each round:\newline
+\begin{enumerate}
+\item Instance $\vxi{t}$ is observed\newline
+\item Prediction $\hat{y}_t$ is made\newline
+\item Loss $\lossp{t}$ is suffered\newline
+\item True value $y_t$ is revealed\newline
+\item An update of the model is made\newline
+\end{enumerate}
+\item Loss types: zero-one, hinge, exponential, quadratic...
+\end{itemize}
+\end{frame}
+
+\subsection{Problem statement}
+
+\begin{frame}{Problem statement}
+\begin{itemize}
+\item $K$ binary learning tasks  in parallel\newline
+\item Limited resources (limited bandwidth) \newline
+\item Annotate one task at a time \newline
+
+\item Example: classify data news from many agencies\newline
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Problem statement - update}
+\begin{center}
+\includegraphics[width=0.7\textwidth]{figs/SHAMPO_illustration.eps}
+\end{center}
+\end{frame}
+
+\subsection{Related work}
+
+\begin{frame}{ Related Work on multitask learning}
+\begin{itemize}
+\item \ [Evgeniou et al., 2004] [Argyriou et al., 2008]\newline
+
+Used regularization for multitask learning\newline
+\item \ [Collobert et al., 2008]\newline
+
+Focused on  learning neural networks for NLP\newline
+
+
+\end{itemize}
+
+ Assume relation between  tasks
+
+\end{frame}
+
+\begin{frame}{Selective Sampling}
+\textbf{Problem} \newline
+\begin{itemize}
+\item Labeling  is  expensive - consume resources (time, money, etc.) \newline
+\end{itemize}
+\textbf{Solution} \newline
+\begin{itemize}
+\item Only some of the labels are queried. Others remain unknown\newline
+\item Two questions: When should we query? How to update?\newline
+\end{itemize}
+
+In our problem, the question \textcolor{red}{"when?"}, become \textcolor{red}{"which task?}"\newline
+
+[Cesa-Bianchi et al., 2006, 2009], [Fruend et al., 1997] ,\newline
+[Crammer , 2014] \newline
+\end{frame}
+
+\begin{frame}{Selective sampling-example}
+Selective sampling setting:
+\begin{center}
+\includegraphics[width=0.6\textwidth]{figs/Table_ss.eps}
+\end{center}
+Our setting:
+\begin{center}
+\includegraphics[width=0.6\textwidth]{figs/Table_shampo.eps}
+\end{center}
+Q=Queried,   NQ=Not Queried
+\end{frame}
+
+\subsection{work guidelines}
+
+\begin{frame}{In this work}
+\begin{itemize}
+\item Propose  ways for feedback selection (to answer the question "which task?").   \newline
+\item Devise    \textcolor{red}{SHAMPO} algorithms  - SHared Annotator for Multiple PrOblems\newline
+\item Analyze -  mistakes bound \newline
+\item Show experiments that strengthen the algorithms\newline
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Feedback selection - guidelines}
+How so issue a query?\newline
+\begin{itemize}
+\item Ask when  wrong prediction is assumed.\newline
+\item To possible ways:\newline
+\begin{itemize}
+\item Similarity to previous  examples \newline
+\item Prediction is not distinctive.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\section{First Order Algorithms}
+
+\begin{frame}{Problem Setting}
+Problem setup:\newline
+\begin{itemize}
+\item $K$ binary tasks to be learned \newline
+\item $\vxi{i,t}\in \reals^{d_i}$,~~~$i\in\braces{1,\cdots,K}$, - instance vector\newline
+\item $y_{i,t}\in\{\pm1\}$ - label\newline
+\end{itemize}
+
+
+\end{frame}
+
+\subsection{Perceptron SHAMPO}
+
+\begin{frame}{Perceptron SHAMPO  - definitions}
+\begin{itemize}
+\item Linear classifier $\vwi{i,t}\in \reals^d$ \newline
+\item Margin $\hat{p}_{i,t}=\vwti{i,t-1}\vxiit $\newline
+\item Predicted label $\hyi{i,t}=\sign(\hat{p}_{i,t})$\newline
+\item Mistake indicator $M_{i,t}=\mathbb{I}\brackets{\hyi{i,t}\ne y_{i,t}}\in\braces{0,1}$\newline
+\item Query  indicator $Z_{i,t}\in\braces{0,1}$\newline
+\begin{itemize}
+\item $\sum_{i=1}^{K} Z_{i,t}=1 ~~,\forall t$\newline
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Perceptron SHAMPO }
+Margin can measure certainty \newline
+\begin{itemize}
+\item large $\abs{\hat{p}_{i,t}}\Rightarrow$ high certainty\newline
+\item small $\abs{\hat{p}_{i,t}}\Rightarrow$ low certainty
+\end{itemize}
+\begin{center}
+\includegraphics[width=0.5\textwidth]{figs/margin.eps}
+\end{center}
+\end{frame}
+
+\begin{frame}{perceptron SHAMPO }
+Let $J_t$ - the chosen task in time $t$\newline
+
+The probability to query the task $j\in\braces{1\cdots,K}$ is:\newline
+\begin{equation*}
+\begin{aligned}
+ \pr{J_t=j}&=\frac{1}{D_t}\frac{1}{\paren{b+\textcolor{red}{\abs{\hat{p}_{j,t}}-\min_{m=1}^K\abs{\hat{p}_{m,t}}}}} ~~\forall j\in\braces{1\cdots,K}\\
+~ \textrm{ for }~
+D_{t}&=\sum_{i=1}^{K}{\paren{b+\abs{\hat{p}_{i,t}}-\min_{m}\abs{\hat{p}_{m,t}}}^{-1}}
+\end{aligned}
+\end{equation*}
+\begin{itemize}
+\item Large $b\Rightarrow$ uniform distribution - exploration \newline
+\item Small $b\Rightarrow$ delta distribution - exploitation\newline
+\item The data need to be  scaled into the same  ball\end{itemize}
+\end{frame}
+
+\begin{frame}{ Probability example}
+Example of the distribution over 2 tasks.\newline
+
+Fix $\abs{\hat{p}_{2,t^*}}=0.5$. \newline
+
+The probability to choose task 1 is:
+\begin{center}
+\includegraphics[width=0.60\textwidth]{figs/probability.eps}
+\end{center}
+\end{frame}
+
+\begin{frame}
+Advantages of   random choosing:\newline
+\begin{itemize}
+\item A few tasks has  similar  margin\newline
+\item To cope with adversary\newline
+\item To get get exploration-exploitation
+\end{itemize}
+\end{frame}
+
+\begin{frame}{perceptron SHAMPO }
+Initialize: $\vwi{i,0}=\vzero$, $b\in\mathbb{R}>0$\newline
+
+On each round $t$ the algorithm: \newline
+\begin{itemize}
+\item Observe $K$ instances $\vxi{i,t}$  \newline
+\item Predict $K$ labels  $\hat{y}_{i,t}=\sign{(\vwti{i,t-1} \vxiit)}$ \newline
+\item Choose a task to query  with probability  $\pr{J_t=j}$  \newline
+\item Query the label $y_{J_t,t}$ \newline
+\item Set $M_{J_t}=1$ ~~~~ iff~~~~ $\hat{y}_{J_t,t}=y_{J_t,t}$\newline
+\item Update :~~~~
+$\vwi{J_t,t} =\vwi{J_t,t-1}+M_{J_t,t} \,\yi{J_t,t}\, \vxi{J_t,t}$
+\end{itemize}
+\end{frame}
+
+
+
+
+\subsection{Aggressive perceptron SHAMPO}
+
+\begin{frame}{Aggressive perceptron SHAMPO  }
+\begin{itemize}
+\item Aggressive update: correct prediction but low margin.\newline
+\item $\lambda\in \reals>0$, -  aggressiveness threshold.\newline
+\item Aggressive update indicator $A_{i,t}=\mathbb{I}\brackets{\abs{\hat{p}_{i,t}}<\lambda,M_{i,t}=0}\in\braces{0,1}$\newline
+\item Update  indicator $U_{i,t}=M_{i,t}+A_{i,t}\in\braces{0,1}$\newline
+\end{itemize}
+\end{frame}
+
+
+\subsection{SHAMPO with prior}
+
+\begin{frame}{SHAMPO with prior}
+
+If we have a prior knowledge about the  tasks we would like to change the distribution to:\newline
+
+\begin{equation*}
+\pr{J_t=j} =
+\frac{1}{D_{t}}\frac{a_{j}}{\paren{b+\abs{\hat{p}_{j,t}}-\min_{m=1}^K\abs{\hat{p}_{m,t}}}} \end{equation*}\newline
+with the appropriate normalization factor $D_t$\newline
+\begin{itemize}
+\item The "prior" parameters $a_j\ge1$ (only for the analysis)\newline
+\item Large $b\Rightarrow$ prior distribution \newline
+\item Small $b\Rightarrow$ delta distribution\newline
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Perceptron SHAMPO  loss}
+\begin{itemize}
+\item $\vu_i\in\reals^d$ is arbitrary hyperplane \newline
+\item Hinge loss function $\lossp{\gamma,i,t}(\vui{i})= \paren{\gamma-\yiit
+  \vuti{i}\vxiit}_{+}~,~~\gamma>0$ \newline
+\item Expected loss over updates up to time $T$
+\end{itemize}
+\begin{equation*}
+ \bar{L}_{\gamma,T}=\mathbb{E}\brackets{\sum_{t=1}^T \sum_{i=1}^{K}{Z_{i,t}U_{i,t}\lossp{\gamma,i,t}(\vui{i})}}\newline
+\end{equation*}
+\end{frame}
+
+
+\begin{frame}{Perceptron SHAMPO bound}
+\begin{block}{Expected mistakes bound}
+\emph{The expected number of mistakes  of the perceptron SHAMPO  up to time $T$ can be bounded as follows:}
+\begin{displaymath}
+\mathbb{E}\left[ \sum_{i=1}^{K}\sum_{t=1}^{T}{M_{i,t}} \right]
+\le \frac{K}{\gamma}\left(1+\frac{X^2}{2b} \right){\bar L}_{\gamma,T}
++\frac{K\left({2b+X^2}\right)^2\tilde{U}^2}{8{\gamma}^2b}~
+\end{displaymath}
+\emph{where}~~~ $\tilde{U}^2=\sum_{i=1}^{K}\normt{\vui{i}}$~, ~~ $X=\max_{i,t}\Vert\vxiit\Vert$
+\end{block}
+\begin{itemize}
+
+\item When $b$ increase, the first term decrease and the second increase and vice versa\newline
+\item Get partial feedback, yet achieves good results
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Aggressive perceptron SHAMPO   bound }
+\begin{block}{Expected mistakes bound}
+\emph{The expected  number of mistakes  of the aggressive perceptron SHAMPO  up to time $T$ can be bounded as follows:}
+\begin{displaymath}
+\begin{split}
+\mathbb{E}\left[ \sum_{i=1}^{K}\sum_{t=1}^{T}{M_{i,t}} \right]
+\le& \frac{K}{\gamma}\left(1+\frac{X^2}{2b} \right){\bar L}_{\gamma,T}+
+\frac{K\left({2b+X^2}\right)^2\tilde{U}^2}{8{\gamma}^2b}\\
+&\textcolor{red}{-\paren{1-2\frac{\lambda}{b}}\mathbb{E}\brackets{\sum_{i=1}^{K}\sum_{t=1}^{T}{A_{i,t}}}}~
+\end{split}
+\end{displaymath}
+\end{block}
+\begin{itemize}
+\item A good choice $\lambda<b/2 $\newline
+\item When $\lambda\rightarrow0\Longrightarrow\mathbb{E}\brackets{\sum_{i=1}^{K}\sum_{t=1}^{n}{A_{i,t}}}\rightarrow0$
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Aggressive perceptron SHAMPO with prior}
+\begin{block}{Expected mistake bound}
+\emph{The  expected number of mistakes of the aggressive perceptron SHAMPO  with prior up to time $T$ can be bounded as follows:}
+\begin{displaymath}
+\begin{split}
+\mathbb{E}\left[ \sum_{i=1}^{K}\sum_{t=1}^{T}{M_{i,t}} \right]
+\le\frac{\textcolor{red}{\paren{\sum_{j=1}^Ka_{j}}}}{\gamma}\brackets{\left(1+\frac{X^2}{2b} \right){\bar L}_{\gamma,T}+
+\frac{\left({2b+X^2}\right)^2\tilde{U}^2}{8{\gamma}b}}\\
+-\paren{1-2\frac{\lambda}{b}}\mathbb{E}\brackets{\sum_{i=1}^{K}\sum_{t=1}^{T}{\textcolor{red}{a_{i}}A_{i,t}}}
+\end{split}
+\end{displaymath}
+\end{block}
+\begin{itemize}
+\item When $a_{i,t}=1~,\forall i=1,\cdots,K$ we get the aggressive bound\newline
+\item When $A_{i,t}=0~,\forall i=1,\cdots,K$ we get the non aggressive bound\newline
+\end{itemize}
+\end{frame}
+
+% \begin{frame}
+% \begin{table}[h]
+% \caption{Bounds} % title name of the table
+% \centering % centering table
+% \begin{tabular}{l c} % creating 10 columns
+% \hline\hline % inserting double-line
+% & $\frac{K}{\gamma}\brackets{\left(1+\frac{X^2}{2b} \right){\bar L}_{\gamma,n}+
+% \frac{\left({2b+X^2}\right)^2\tilde{U}^2}{8{\gamma}b}}$\\ [-1ex]
+% \raisebox{1.5ex}{perceptron}&\\[1ex]
+%
+% & $\frac{K}{\gamma}\brackets{\left(1+\frac{X^2}{2b} \right){\bar L}_{\gamma,n}+
+% \frac{\left({2b+X^2}\right)^2\tilde{U}^2}{8{\gamma}b}}$\\ [-1ex]
+% \raisebox{1.5ex}{Aggresive}&$-\paren{1-2\frac{\lambda}{b}}\mathbb{E}\brackets{\sum_{i=1}^{K}\sum_{t=1}^{n}{A_{i,t}}}
+% $\\[1ex]
+%
+% & $\frac{\paren{\sum_{j=1}^Ka_{j}}}{\gamma}\brackets{\left(1+\frac{X^2}{2b} \right){\bar L}_{\gamma,n}+
+% \frac{\left({2b+X^2}\right)^2\tilde{U}^2}{8{\gamma}b}}$\\ [-1ex]
+% \raisebox{1.5ex}{Prior}&$-\paren{1-2\frac{\lambda}{b}}\mathbb{E}\brackets{\sum_{i=1}^{K}\sum_{t=1}^{n}{a_{i}A_{i,t}}}
+% $\\[1ex]
+% \hline % inserts single-line
+% % Entering 1st row
+% \hline % inserts single-line
+% \end{tabular}
+%
+% \end{table}
+% \end{frame}
+
+% \subsection{Adaptive $b$ SHAMPO}
+%
+%
+% \begin{frame}{SHAMPO with adaptive $b$ }
+% \begin{itemize}
+% \item How to choose the optimal $b$? ( by experiments - later)\newline
+%
+% \item
+%
+% Task that asks a lot of queries $\longrightarrow$ hard task  \newline
+% \end{itemize}
+% Define:
+% \begin{itemize}
+% \item $N_{i,t}$ the number of updates of task $i$ up to time $t$ \newline
+% \item  $\tilde{X}_{i,t} = \max\paren{Z_{i,t}M_{i,t}x_{i,t}}_{}$\newline
+% \item  $b_{i,t-1}=\beta  \tilde{X}_{i,t}^2\sqrt{N_{i,t-1}+1}$~,~~ $\beta\in\reals>0$
+% \end{itemize}
+% \end{frame}
+%
+%
+% \begin{frame}{SHAMPO with adaptive $b$}
+% \begin{block}{Mistake bound}
+% The  expected number of mistakes number of the adaptive $b$ perceptron SHAMPO  can be bounded as follows:
+% \begin{displaymath}
+% \mathbb{E}\left[ \sum_{i=1}^{K}\sum_{t=1}^{n}{M_{i,t}} \right]
+% \le  \frac{K}{\gamma}{\bar L}_{\gamma,n}+K^{3/2}\paren{R+\frac{2+3R}{2\beta}}\sqrt{n}
+% +\frac{K^{2}R}{2\beta}
+% \end{displaymath}
+% Where $R=\max_i\paren{\Vert u_i\Vert X_i}/{\gamma}$
+% \end{block}
+% \begin{itemize}
+% \item Doesn't consider the queries\newline
+% \item Solution: instead $\sqrt{N_{i,t-1}+1}$, use $\sqrt{(N_{i,t-1}+1)/(\sum_t{Z_{i,t}}})$  \newline
+% \end{itemize}
+% \end{frame}
+
+\section{Second Order Algorithm}
+%
+%
+% \begin{frame}{Second order SHAMPO}
+% So far our measures for hardness of tasks are: \newline
+% \begin{itemize}
+% \item The margin\newline
+% \item Number of queries\newline
+% \end{itemize}
+% We had not exploit the similarity  of input examples yet.
+% \end{frame}
+
+\begin{frame}{Second order SHAMPO}
+This is the state in time $t$
+\begin{center}
+\includegraphics[width=0.7\textwidth]{figs/confidence.eps}
+\end{center}
+\end{frame}
+
+\begin{frame}{Second order SHAMPO}
+On $t+1$ we get a new example (black square). What will be it's label?
+\begin{center}
+\includegraphics[width=0.7\textwidth]{figs/confidence2.eps}
+\end{center}
+\end{frame}
+
+\begin{frame}{Second order SHAMPO}
+RLS (Regularized Least squares) estimator
+\begin{equation*}
+\vwi{i,t}=B_{i,t}^{-1}\vvi{i,t}
+\end{equation*}
+Where:\newline
+\begin{itemize}
+\item $B_{i,0}=I_{d\times d}$\newline
+\item $B_{i,t}=\paren{B_{i,t-1}+ U_{i,t}Z_{i,t}\vxi{i,t} \vxti{i,t}}\in R^{d\times d}$\newline
+\item $\vvi{i,t}=\vvi{i,t-1}+U_{i,t}Z_{i,t}y_{i_t}\vxi{i,t}\in R^d$ \newline
+\end{itemize}
+$B_t$ can be viewed as covariance or "confidence " matrix\newline
+
+ [Cesa-Bianchi et al. 2006, Crammer  2014]
+\end{frame}
+
+\begin{frame}{Second order SHAMPO}
+Define $r_{i,t}= \vxiit^TB_{i,t-1}^{-1}\vxiit$  \newline
+\begin{itemize}
+\item $r_{i,t}$ - the confidence  in the prediction of $\hat{y}_{i,t}$\newline
+%\item $r_{i,t}$ does not depend explicitly on the  feedback \newline
+\item Large $r_{i,t}\Rightarrow$ low confidence \newline
+\item Small $r_{i,t}\Rightarrow$ high confidence \newline
+\item If $\normt{\vxi{i,t}}=1, \forall i,t$ then $0<r_{i,t}\le1$
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Second order SHAMPO}
+An intuition for the confidence $r_{i,t}$
+\begin{center}
+\includegraphics[width=0.6\textwidth]{figs/Confidence_matrix.eps}
+\end{center}
+\end{frame}
+
+\begin{frame}{Second order SHAMPO}
+Define:
+\begin{equation*}
+F\paren{\abs{\hat{p}_{i,t}},r_{i,t}}=\paren{1+r_{i,t}}\hat{p}_{i,t}^2+2\abs{\hat{p}_{i,t}}-\frac{r_{i,t}}{1+r_{i,t}}\newline
+\end{equation*}
+We build a new distribution:
+\begin{equation*}
+\begin{aligned}
+\pr{J_t=j}&=\frac{\paren{b+F\paren{\abs{\hat{p}_{i,t}},r_{i,t}}_{+}}^{-1}}{D_t} ~~\forall j\in\braces{1\cdots,K}\\
+ ~ \textrm{ Where }~
+ D_{t}&=\sum_{i=1}^{K}{\paren{b+F\paren{\abs{\hat{p}_{i,t}},r_{i,t}}_{+}}^{-1}}
+\end{aligned}
+\end{equation*}
+
+\begin{itemize}
+\item $F\paren{\abs{\hat{p}_{i,t}},r_{i,t}}\le0$  ~~iff~~ $\abs{\hat{p}_{i,t}}\le\frac{-1+\sqrt{1+r_{i,t}}}{1+r_{i,t}}\le\frac{-1+\sqrt{2}}{2}\approx0.3 $  (aggressive)\newline
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Second order SHAMPO}
+Initialize: $\vvi{i,0}=\vzero$, $B_{0}=I,~~b\in\mathbb{R}>0$\newline
+
+On each round $t$ \newline
+\begin{itemize}
+\item Observe $K$ instances $\vxi{i,t}$ \newline
+\item Compute  $K$ margins  $\hat{p}_{i,t}= \vxiit^T\paren{B_{i,t-1}+\vxiit\vxiit^T}^{-1}\vvi{i,t-1}$\newline
+\item Predict $K$ labels $\hat{y}_{i,t}=\sign\paren{\hat{p}_{i,t}}$\newline
+\item Query the label $y_{J_t,t}$ with probability  $\pr{J_t=j}$ above, \newline
+\item If $F\paren{\abs{\hat{p}_{i,t}},r_{i,t}}\le0$ or $\hat{y}_{i,t}\ne y_{i,t}$ set $U_{i,t}=1$\newline
+\item Update :~~~~
+$\vvi{J_t,t}~~,~~ B_{J_t,t} $\newline
+\item h
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Second order SHAMPO}
+Define:
+\begin{itemize}
+\item indicator $G_{i,t}=\mathbb{I}\brackets{F\paren{\abs{\hat{p}_{i,t}},r_{i,t}}<0}  $ - aggressive update\newline
+\item indicator $A_{i,t}=\mathbb{I}\brackets{F\paren{\abs{\hat{p}_{i,t}},r_{i,t}}<0,~~M_{i,t}=0}$ - aggressive, correct\newline
+\end{itemize}
+\begin{block}{Expected mistake bound}
+\emph{The  expected of mistake number of the Second order SHAMPO perceptron up to time $T$ can be bounded as follows:}
+\begin{equation*}
+\begin{split}
+\mathbb{E}\left[ \sum_{i=1}^{K}\sum_{t=1}^{T}{M_{i,t}} \right]
+\le &\frac{bK}{4}\sum_{i=1}^{K}\vu_i^T \mathbb{E}\brackets{A_{i,T}} \vu_i+K{\bar L}_{1,n}-\mathbb{E}\brackets{\sum_{i=1}^{K}\sum_{t=1}^{T}A_{i,t}}\\
+&+\frac{2}{b}\mathbb{E}\brackets{\sum_{i=1}^{K}\sum_{t=1}^{T}G_{i,t}\frac{r_{i,t}}{1+r_{i,t}}}
+\end{split}
+\end{equation*}
+\end{block}
+\
+\end{frame}
+
+\section{Variants}
+
+\begin{frame}{From Multi-task to Contextual Bandits}
+The problem: predicting a label $\hat{Y}_t \in\{ 1 \comdots C\}$ given an input $\vxi{t}$\newline
+\begin{itemize}
+\item Tasks are related\newline
+\item Query a single binary question and update the model\newline
+\end{itemize}
+We consider  two forms  :\newline
+\begin{itemize}
+\item One vs. one \newline
+\item One vs. rest \newline
+\end{itemize}
+[Kakade et al., 2008], [Hazan et al. 2012]
+\end{frame}
+
+
+\begin{frame}{One vs. rest}
+
+\begin{itemize}
+\item There are $K= C$ binary tasks.\newline
+\end{itemize}
+On each round $t$\newline
+\begin{itemize}
+\item A single input $\vxii$ is observed\newline
+\item  $K$  margins $\hat{p}_{i,t}$ for binary tasks are computed\newline
+\item Predict the multiclass label, $\hat{Y}_t = \arg\max_i \hat{p}_{i,t}$\newline
+\item Choose the label (task) to query on $\bar{Y}_t=J_t$ \newline
+\item Update %s the model\newline
+\end{itemize}
+\end{frame}
+
+\begin{frame}{One vs. rest}
+\begin{block}{Expected mistake bound}
+The  expected number of mistakes  of the One vs. Rest cotextual SHAMPO bandit  can be bounded as:
+
+\begin{displaymath}
+\mathbb{E}\brackets{\sum_t \mathbb{I}\brackets{Y_t \neq \hat{Y}_t}}\le \frac{C}{\gamma}\brackets{\paren{1+\frac{X^2}{2b} }{\bar L}_{\gamma,n}+\frac{\paren{{2b+X^2}}^2\tilde{U}^2}{8{\gamma}b}}~
+\end{displaymath}
+\end{block}
+
+\begin{itemize}
+\item This bound comes from $\mathbb{I}\brackets{Y_t \neq \hat{Y}_t}\le \sum_iM_{i,t}$\newline
+
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{One vs. one}
+\begin{itemize}
+
+\item There are $K= {C\choose2}$ binary tasks.\newline
+
+\end{itemize}
+At each round the algorithm:\newline
+\begin{itemize}
+\item Gets a single input $\vxii$\newline
+\item Computes $K$ predictions  $\hat{y}_{i,t}$ for binary tasks\newline
+\item Predicts the multiclass label $\hat{Y}_t$, by tournament. \newline
+\item Chooses pair of labels  (task) to  query on $\braces{\bar{Y}_t^{+},\bar{Y}_t^{-}}$ assigned with $J_t$ \newline
+\item Update%s the model\newline
+\end{itemize}
+\end{frame}
+
+\begin{frame}{One vs. One}
+\begin{block}{Expected mistake bound}
+The  expected number of mistakes  of the One vs. One contextual SHAMPO bandit  is:
+\begin{displaymath}
+\begin{split}
+&\mathbb{E}\brackets{\sum_t \mathbb{I}\brackets{Y_t \neq \hat{Y}_t}}\le \\
+&\frac{4{C \choose 2}}{{C \choose 2}+1} \frac{1}{\gamma}\brackets{\paren{1+\frac{X^2}{2b} }{\bar L}_{\gamma,n}+\frac{\paren{{2b+X^2}}^2\tilde{U}^{2}}{8{\gamma}b}}
+\end{split}
+\end{displaymath}
+\end{block}
+\begin{itemize}
+
+\item This bound is follows from $\mathbb{I}\brackets{Y_t \neq \hat{Y}_t} \leq \frac{2}{({C \choose 2}-1)/2+1}\sum_{i=1}^{ {C \choose 2}} M_{i,t}$\newline [Allwein et al., 2000]\newline
+\item The bound does not depend on $C$ because the bound coefficient is upper bounded by 4.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{One vs. One}
+What if the prediction is not a mistake, nor correct , i.e.$y_{J_t,t}=0$?\newline
+\begin{itemize}
+\item No update -  this task will be chosen again\newline
+\item Random update - not allow zero feedback\newline
+\item Weak update - increases the margin using $\eta>0$\newline
+
+$
+\vwi{J_t,t} = \vwi{J_t,t-1}+ \mathbb{I}\brackets{\yi{J_t,t}\ne0} \, \yi{J_t,t}\, \vxi{J_t,t} +
+ \mathbb{I}\brackets{\yi{J_t,t}=0} \eta \hyi{J_t,t}\vxi{J_t,t}~$
+\newline
+\end{itemize}
+\begin{equation*}
+\begin {aligned}
+\vert \vwti{J_t,t} \vxi{J_t,t} \vert &= \vert
+(\vwi{J_t,t-1}+ \eta \hyi{J_t,t}\vxi{J_t,t})^\top\vxi{J_t,t}\vert \\
+&= \vert \vwti{J_t,t-1}\vxi{J_t,t}+ \eta \sign(\vwti{J_t,t-1}\vxi{J_t,t}) \Vert\vxi{J_t,t}\Vert^2 \vert \\
+&= \vert \vwti{J_t,t-1}\vxi{J_t,t}\vert + \eta \Vert\vxi{J_t,t}\Vert^2 > \vert \vwti{J_t,t-1}\vxi{J_t,t}\vert
+\end{aligned}
+\end{equation*}
+\end{frame}
+
+% \begin{frame}{Perceptron SHAMPO for $\kappa$ queries}
+% In the case where  we can annotate $\kappa$ tasks in parallel\newline
+% \begin{block}{Mistake bound}
+% The bound of the expected number of mistakes  of the perceptron SHAMPO with $\kappa$ feedbacks is:
+% \begin{displaymath}
+% \mathbb{E}\left[ \sum_{i=1}^{K}\sum_{t=1}^{n}{M_{i,t}} \right]
+% \le \frac{1}{C(\kappa,K)}\paren{\frac{1}{\gamma}\left(1+\frac{X^2}{2b} \right){\bar L}^\kappa_{\gamma,n}
+% +\kappa\frac{\left({2b+X^2}\right)^2}{8{\gamma}^2b}\tilde{U}^2}~
+% \end{displaymath}
+% \end{block}
+% Where
+% \begin{itemize}
+% \item $C(\kappa,K) = \sum_{j=K-\kappa+1}^{K}\frac{1}{j}$\newline
+% \item ${\bar L}^\kappa_{\gamma,n}=\mathbb{E}\brackets{\sum_t^n \sum_{i=1}^{K}{M_{i,t}Z_{i,t}\lossp{\gamma,i,t}(\vui{i})}},$ but now $\sum_{i}Z_{i,t}=\kappa$\newline
+% \end{itemize}
+% \end{frame}
+
+
+\section{Experiments}
+
+\begin{frame}{Experiments - Data sets}
+
+\begin{itemize}
+\item OCR - USPS \!(7,291 train /2,007 test,$d$=256),\\~~~~~~~~~~
+ MNIST\!(60,000 train/10,000 test,$d=784$)  \newline
+\begin{itemize}
+\item One vs. Rest - 10 tasks\newline
+\item One vs. One - 45 tasks \newline
+\end{itemize}
+\item Vowel prediction - Vocal Joystick (572,911 train /236,680, test, $d=27$)\newline
+\begin{itemize}
+\item One vs. Rest - 8 tasks\newline
+\item One vs. One - 28 tasks \newline
+\end{itemize}
+\item NLP - sentiment analysis\newline
+\end{itemize}
+\end{frame}
+
+\begin{frame}{One vs. Rest  dataset}
+Mean test error over all (binary prediction) tasks vs. $b$ values. Right values correspond to pure exploration, while left values to pure exploitation.
+Experiments supports the
+\begin{figure}
+\begin{centering}
+\subfigure[Test error ]{\includegraphics[width=0.45\textwidth]{figs/usps3.eps}}
+\subfigure[Train errors ]{\includegraphics[width=0.45\textwidth]{figs/usps1a.eps}}
+%\subfigure[MNIST data]{\includegraphics[width=0.32\textwidth]{figs/mnist3.eps}}
+%\subfigure[VJ data]{\includegraphics[width=0.32\textwidth]{figs/VJ_pairs3.eps}}
+\end{centering}
+\end{figure}
+\end{frame}
+
+\begin{frame}{One vs. Rest dataset}
+\textbf{USPS} - One vs. Rest\newline
+The only thing we see is the red curve. The "knee" can show the optimal $b$
+
+% Mean fraction of mistakes during training time, for either only queried inputs (dashed red) or all inputs (blue) vs $b$. High $b$ values indicate pure exploration, and low $b$ values pure exploitation.
+\begin{figure}
+\begin{centering}
+\subfigure[USPS data ]{\includegraphics[width=0.32\textwidth]{figs/usps1a.eps}}
+\subfigure[USPS data ]{\includegraphics[width=0.32\textwidth]{figs/mnist1a.eps}}
+\subfigure[USPS data ]{\includegraphics[width=0.32\textwidth]{figs/VJ_pairs1a.eps}}
+\end{centering}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}{Error vs. number of queries}
+\textbf{MNIST Data} \newline
+The tradeoff   shows less errors for the appropriate queries distribution\newline
+
+\begin{centering}
+\includegraphics[width=0.6\textwidth]{figs/mnist2b.eps}
+
+\end{centering}
+
+\end{frame}
+
+
+\begin{frame}{Error vs. b}
+\textbf{NLP Data - 2 hard tasks, 3 easy, second order} \newline
+Almost all of the tasks shows lower test error for the tradeoff $b$ value  \newline
+
+\begin{centering}
+\includegraphics[width=0.6\textwidth]{figs/NLP_SO_3_2_mean_error_tasks.eps}
+
+\end{centering}
+
+\end{frame}
+
+
+
+
+\begin{frame}{Error vs. b - different algorithms}
+\textbf{NLP Data - 2 hard tasks, 3 easy, second order} \newline
+The tradeoff   shows less errors for the appropriate queries distribution\newline
+
+\begin{centering}
+
+\includegraphics[width=1\textwidth]{figs/NLP_SO_3_2_mean_error_alg.eps}
+
+\end{centering}
+
+\end{frame}
+
+
+\begin{frame}{Test and train error vs. b}
+\textbf{NLP Data - 2 hard tasks, 3 easy, second order } \newline
+The train error is what we bound\newline
+
+\begin{centering}
+\includegraphics[width=0.6\textwidth]{figs/NLP_SO_3_2_mean_error.eps}
+
+\end{centering}
+\end{frame}
+
+\begin{frame}{Adaptive $b$}
+\textbf{USPS Data} \newline
+Shows mean error for adaptive $b$ algorithm with $b_{i,t}= (N_{i,t-1}+1)^{\kappa}(\sum_t{Z_{i,t}})^{\eta}$ \newline
+We see that a good choice is  $\sqrt{(N_{i,t-1}+1)/(\sum_t{Z_{i,t}})}$\newline
+
+\begin{centering}
+\includegraphics[width=0.6\textwidth]{figs/Mean_test_error_adaptive_b_V2_3D.eps}
+
+\end{centering}
+\end{frame}
+
+\section{Conclusion}
+
+\begin{frame}{Conclusion}
+\begin{itemize}
+\item We introduced algorithms to solve the multi-task learning with a shared annotator\newline
+\item We analyzed the algorithms in the mistake bound model  \newline
+\item We showed a variation of our SHAMPO algorithms to contextual bandits.\newline
+\item Experiments that show that SHAMPO algorithms can acheive good results even with partial feedback and focuses on the hard tasks, were presented. \newline
+\end{itemize}
+\end{frame}
+
+\begin{frame}{~}
+\begin{center}
+\begin{Huge}Questions ???\end{Huge}
+\end{center}
+\end{frame}
+
+\end{document}

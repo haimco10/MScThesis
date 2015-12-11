@@ -75,12 +75,13 @@ This approach, that queries labels only for selected examples is called \textit{
 \fbox{to do - background in multi-armed bandits. and show the simple perceptron}
 
 \section{Multi Task with Shared Annotator}
-\label{sec:selective_sampling}
+\label{sec:multi_task_intro}
 
  In supervised learning setting, the main bottleneck is the need to annotate data. A common protocol is 
  problem centric: first collect data or inputs automatically (with low cost), and then 
  pass it on to a user or an expert to be annotated. Annotation can be outsourced to the crowed by a 
- service like Mechanical Turk, or performed by experts as in the Linguistic data Consortium. Then, this data 
+ service like Mechanical Turk (like google's recaptcha project), or performed by experts as
+  in the Linguistic data Consortium. Then, this data 
  may be used to build models, either for a single task or many tasks. This approach is not making optimal 
  use of the main resource - the annotator - as some tasks are harder than others, yet we need to give the 
  annotator the (amount of) data to be annotated for each task a-priori. 

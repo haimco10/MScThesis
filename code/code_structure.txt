@@ -1,0 +1,67 @@
+
+Code structure for experiments:
+
+Specifications:
+	- 3 datasets x 2 : 1-vs-1 and 1-rest (MNIST, USPS, VJ)
+	- 1 NLP dataset 1-vs-rest only.
+	- may be one mixed dataset (a few of all tasks)
+	- synthetic dataset
+
+	- input parameters:
+		datasets 				- one of all above
+		algorithm 				- the alg to test
+		b vector				- the alg parameter
+		g			 			- agressiveness parameter, relevant only for agressive version
+		a vector		 		- prior vector, relevant only for prior version (maybe can extructed from simple perceptron)
+		runs					- number of runs
+
+
+	- output:
+		w	- The seperator vector
+		queried 			- The queried tasks at each round
+		margin 				- margin of the every task at each roun
+		train_err			- The train table vector of each task at each 
+		train_err_quried  	- The train error of the queried task
+		train_err_total 	- number of erroes for each task
+
+-------------------------------------------------------------------------------
+
+Structure:
+	linux script: 
+		loop over datasets,
+		loop over algorithms
+		loop over b params
+
+
+
+	examples are in : 
+		https://my.cqu.edu.au/web/eresearch/multiple-job-array-submission
+		http://www.it.northwestern.edu/research/user-services/sscc/batchjob.html#matlab
+
+	MATLAB code:
+		input: dataset, algorithm and b value
+			for every run:
+				for every example:
+					- compute margins
+						- 1st/2nd order
+					- predict
+					- compute distribution
+						- regular
+						- prior
+						- 2nd order
+					- draw task
+					- update task
+						- regular
+						- aggressive
+						- second order
+				test
+					- 1st/2nd order
+
+	Local:
+		go over the tsaks and plot	
+
+
+
+
+
+

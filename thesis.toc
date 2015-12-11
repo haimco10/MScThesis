@@ -20,19 +20,18 @@
 \contentsline {paragraph}{Output}{19}{section*.15}
 \contentsline {section}{\numberline {\@@number {3.3}}prior distribution over tasks}{22}{section.3.3}
 \contentsline {section}{\numberline {\@@number {3.4}}Kernel-based SHAMPO}{25}{section.3.4}
-\contentsline {section}{\numberline {\@@number {3.5}}SHAMPO perceptron with Adaptive $b$ parameter}{25}{section.3.5}
-\contentsline {section}{\numberline {\@@number {3.6}}to do}{34}{section.3.6}
+\contentsline {section}{\numberline {\@@number {3.5}}SHAMPO perceptron with Adaptive $b$ parameter}{26}{section.3.5}
 \contentsline {paragraph}{Parameters:}{35}{section*.16}
 \contentsline {paragraph}{Initialize:}{35}{section*.17}
 \contentsline {paragraph}{For}{35}{section*.18}
 \contentsline {paragraph}{End for}{35}{section*.19}
 \contentsline {paragraph}{Output}{35}{section*.20}
-\contentsline {chapter}{\numberline {4}Second Order SHAMPO}{36}{chapter.4}
-\contentsline {chapter}{\numberline {5}From Multi-task to Contextual Bandits}{43}{chapter.5}
-\contentsline {section}{\numberline {\@@number {5.1}}One-vs-Rest}{43}{section.5.1}
-\contentsline {section}{\numberline {\@@number {5.2}}One-vs-One}{44}{section.5.2}
-\contentsline {chapter}{\numberline {6}Experiments}{47}{chapter.6}
-\contentsline {paragraph}{Multi-task Binary Classification :}{48}{section*.21}
-\contentsline {paragraph}{Reduction of Multi-task to Contextual Bandits }{50}{section*.22}
-\contentsline {chapter}{\numberline {7}Related Work}{52}{chapter.7}
-\contentsline {chapter}{\numberline {8}Summary and Conclusions}{54}{chapter.8}
+\contentsline {chapter}{\numberline {4}Second Order Shampo}{36}{chapter.4}
+\contentsline {chapter}{\numberline {5}From Multi-task to Contextual Bandits}{42}{chapter.5}
+\contentsline {section}{\numberline {\@@number {5.1}}One-vs-Rest}{42}{section.5.1}
+\contentsline {section}{\numberline {\@@number {5.2}}One-vs-One}{43}{section.5.2}
+\contentsline {chapter}{\numberline {6}Experiments}{46}{chapter.6}
+\contentsline {paragraph}{Multi-task Binary Classification :}{47}{section*.21}
+\contentsline {paragraph}{Reduction of Multi-task to Contextual Bandits }{49}{section*.22}
+\contentsline {chapter}{\numberline {7}Related Work}{53}{chapter.7}
+\contentsline {chapter}{\numberline {8}Summary and Conclusions}{55}{chapter.8}

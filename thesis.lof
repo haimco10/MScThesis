@@ -11,5 +11,29 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {\@@number {6.1}}{\ignorespaces gjkhjkhljkh khjhjlkhjlkhl hljkhjk }}{50}{figure.6.1}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {MNIST one-vs-one}}}{50}{figure.6.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {MNIST one-vs-rest}}}{50}{figure.6.1}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {USPS one-vs-one}}}{50}{figure.6.1}
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {USPS one-vs-rest}}}{50}{figure.6.1}
+\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {VJ one-vs-one}}}{50}{figure.6.1}
+\contentsline {subfigure}{\numberline {(f)}{\ignorespaces {VJ one-vs-rest}}}{50}{figure.6.1}
+\contentsline {subfigure}{\numberline {(g)}{\ignorespaces {NLP ove-vs-one}}}{50}{figure.6.1}
+\contentsline {figure}{\numberline {\@@number {6.2}}{\ignorespaces gjkhjkhljkh khjhjlkhjlkhl hljkhjk }}{51}{figure.6.2}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {MNIST one-vs-one}}}{51}{figure.6.2}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {MNIST one-vs-rest}}}{51}{figure.6.2}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {USPS one-vs-one}}}{51}{figure.6.2}
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {USPS one-vs-rest}}}{51}{figure.6.2}
+\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {VJ one-vs-one}}}{51}{figure.6.2}
+\contentsline {subfigure}{\numberline {(f)}{\ignorespaces {VJ one-vs-rest}}}{51}{figure.6.2}
+\contentsline {subfigure}{\numberline {(g)}{\ignorespaces {NLP one-vs-one}}}{51}{figure.6.2}
+\contentsline {figure}{\numberline {\@@number {6.3}}{\ignorespaces gjkhjkhljkh khjhjlkhjlkhl hljkhjk }}{52}{figure.6.3}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {MNIST one-vs-one}}}{52}{figure.6.3}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {MNIST one-vs-rest}}}{52}{figure.6.3}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {USPS one-vs-one}}}{52}{figure.6.3}
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {USPS one-vs-rest}}}{52}{figure.6.3}
+\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {VJ one-vs-one}}}{52}{figure.6.3}
+\contentsline {subfigure}{\numberline {(f)}{\ignorespaces {VJ one-vs-rest}}}{52}{figure.6.3}
+\contentsline {subfigure}{\numberline {(g)}{\ignorespaces {NLP one-vs-one}}}{52}{figure.6.3}
 \addvspace {10\p@ }
 \addvspace {10\p@ }

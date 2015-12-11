@@ -2,11 +2,20 @@
 %To conclude
 We proposed a new framework for online multi-task learning, where  learners share a single annotator. 
 We presented an algorithm (SHAMPO) that works in this settings and analyzed it in the mistake-bound 
-model. We also showed how learning in such a model can be used to learn in contextual-bandits setting 
-with few types of feedback. Empirical results show that our algorithm does better for the same price. 
+model. We also suggested a few more variation of the SHAMPO algoritm: Aggressive 
+version, Adaptive version, Prior version and Second Order version. Mistake bound analysis was done for all
+of the proposed algorithms. 
+Then, we showed how learning in such model can be used to learn in contextual-bandits setting 
+with few types of feedback. Empirical results show that our algorithms does better than only random uniform
+choice of feedback for the same price. 
 It focuses the annotator on the harder instances, and is improving performance in various tasks and settings. 
-We plan to integrate other algorithms to our framework,  %and confidence weighted learning,
-extend it to other settings, investigate ways to generate good priors, and reduce multi-class to binary also via error-correcting output-codes.
+
+Further work can be done  to improve those algorithms. We have shown that there exist $b$ optimal value 
+that may vary for different multitask problems.  
+Now, after we know that such parameter exist, we can try to find a way to select the optimal value for every dataset.  
+We can also investigate ways to generate good priors for the SHAMPO with prior algorithm or derive another 
+distribution that select the task to be queried at every step, not only by the margin and the number of queried 
+up to the same step, but also consider the count of the mistaken queried for every task.
 
 % In this paper we extended the methods of partial feedback and selective sampling algorithms to the 
 %multi-task case and  introduced MUTSEA, a new multi-task selective sampling algorithm. 

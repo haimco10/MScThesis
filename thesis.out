@@ -10,11 +10,10 @@
 \BOOKMARK [1][-]{section.3.3}{prior distribution over tasks}{chapter.3}% 10
 \BOOKMARK [1][-]{section.3.4}{Kernel-based SHAMPO}{chapter.3}% 11
 \BOOKMARK [1][-]{section.3.5}{SHAMPO perceptron with Adaptive b parameter}{chapter.3}% 12
-\BOOKMARK [1][-]{section.3.6}{to do}{chapter.3}% 13
-\BOOKMARK [0][-]{chapter.4}{Second Order SHAMPO}{}% 14
-\BOOKMARK [0][-]{chapter.5}{From Multi-task to Contextual Bandits}{}% 15
-\BOOKMARK [1][-]{section.5.1}{One-vs-Rest}{chapter.5}% 16
-\BOOKMARK [1][-]{section.5.2}{One-vs-One}{chapter.5}% 17
-\BOOKMARK [0][-]{chapter.6}{Experiments}{}% 18
-\BOOKMARK [0][-]{chapter.7}{Related Work}{}% 19
-\BOOKMARK [0][-]{chapter.8}{Summary and Conclusions}{}% 20
+\BOOKMARK [0][-]{chapter.4}{Second Order Shampo}{}% 13
+\BOOKMARK [0][-]{chapter.5}{From Multi-task to Contextual Bandits}{}% 14
+\BOOKMARK [1][-]{section.5.1}{One-vs-Rest}{chapter.5}% 15
+\BOOKMARK [1][-]{section.5.2}{One-vs-One}{chapter.5}% 16
+\BOOKMARK [0][-]{chapter.6}{Experiments}{}% 17
+\BOOKMARK [0][-]{chapter.7}{Related Work}{}% 18
+\BOOKMARK [0][-]{chapter.8}{Summary and Conclusions}{}% 19

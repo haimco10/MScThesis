@@ -12,12 +12,54 @@
 %%\vspace{-0.3cm}
 %\end{wrapfigure}
 
+\begin{figure}[!t]
+\begin{centering}
+\subfigure[MNIST one-vs-one]{\includegraphics[width=0.4\textwidth]{figs/test-m1.eps}\label{fig:bars1}}
+\subfigure[MNIST one-vs-rest]{\includegraphics[width=0.4\textwidth]{figs/test-mr.eps}\label{fig:bars2}}
+\subfigure[USPS one-vs-one]{\includegraphics[width=0.4\textwidth]{figs/test-u1.eps}\label{fig:bars1}}
+\subfigure[USPS one-vs-rest]{\includegraphics[width=0.4\textwidth]{figs/test-ur.eps}\label{fig:bars2}}
+\subfigure[VJ one-vs-one]{\includegraphics[width=0.4\textwidth]{figs/test-v1.eps}\label{fig:bars1}}
+\subfigure[VJ one-vs-rest]{\includegraphics[width=0.4\textwidth]{figs/test-vr.eps}\label{fig:bars2}}
+\subfigure[NLP ove-vs-one]{\includegraphics[width=0.4\textwidth]{figs/test-n.eps}\label{fig:bars2}}
+\caption{gjkhjkhljkh khjhjlkhjlkhl hljkhjk  }
+\end{centering}
+\vspace{-0.5cm}
+\end{figure}
+
+\begin{figure}[!t]
+\begin{centering}
+\subfigure[MNIST one-vs-one]{\includegraphics[width=0.4\textwidth]{figs/train-m1.eps}\label{fig:bars1}}
+\subfigure[MNIST one-vs-rest]{\includegraphics[width=0.4\textwidth]{figs/train-mr.eps}\label{fig:bars2}}
+\subfigure[USPS one-vs-one]{\includegraphics[width=0.4\textwidth]{figs/train-u1.eps}\label{fig:bars1}}
+\subfigure[USPS one-vs-rest]{\includegraphics[width=0.4\textwidth]{figs/train-ur.eps}\label{fig:bars2}}
+\subfigure[VJ one-vs-one]{\includegraphics[width=0.4\textwidth]{figs/train-v1.eps}\label{fig:bars1}}
+\subfigure[VJ one-vs-rest]{\includegraphics[width=0.4\textwidth]{figs/train-vr.eps}\label{fig:bars2}}
+\subfigure[NLP one-vs-one]{\includegraphics[width=0.4\textwidth]{figs/train-n.eps}\label{fig:bars2}}
+\caption{gjkhjkhljkh khjhjlkhjlkhl hljkhjk  }
+\end{centering}
+\vspace{-0.5cm}
+\end{figure}
+
+\begin{figure}[!t]
+\begin{centering}
+\subfigure[MNIST one-vs-one]{\includegraphics[width=0.4\textwidth]{figs/queried-m1.eps}\label{fig:bars1}}
+\subfigure[MNIST one-vs-rest]{\includegraphics[width=0.4\textwidth]{figs/queried-mr.eps}\label{fig:bars2}}
+\subfigure[USPS one-vs-one]{\includegraphics[width=0.4\textwidth]{figs/queried-u1.eps}\label{fig:bars1}}
+\subfigure[USPS one-vs-rest]{\includegraphics[width=0.4\textwidth]{figs/queried-ur.eps}\label{fig:bars2}}
+\subfigure[VJ one-vs-one]{\includegraphics[width=0.4\textwidth]{figs/queried-v1.eps}\label{fig:bars1}}
+\subfigure[VJ one-vs-rest]{\includegraphics[width=0.4\textwidth]{figs/queried-vr.eps}\label{fig:bars2}}
+\subfigure[NLP one-vs-one]{\includegraphics[width=0.4\textwidth]{figs/queried-n.eps}\label{fig:bars2}}
+\caption{gjkhjkhljkh khjhjlkhjlkhl hljkhjk  }
+\end{centering}
+\vspace{-0.5cm}
+\end{figure}
+
 We evaluated the SHAMPO algorithm using four datasets: USPS, MNIST (both OCR), Vocal Joystick 
 (VJ, vowel recognition) and document classification. 
-The USPS dataset, contains $7,291$ training examples and $2,007$ test examples, each is a 
+The USPS dataset, contains $7,291$ training examples and $2,007$ test examples, each one of them is a 
 $16\times16$ pixels gray-scale images converted to a $256$ dimensional vector. 
-The MNIST dataset with $28\times28$ gray-scale images, contains $60,000$ ($10,000$) training (test) 
-examples. In both cases there are $10$ possible labels, digits. The VJ tasks is to predict a vowel from 
+The MNIST dataset with $28\times28$ gray-scale images, contains $60,000$ () training (test) 
+examples and $10,000$0011$10,000$. and  In both cases there are $10$ possible labels, digits. The VJ tasks is to predict a vowel from 
 eight possible vowels. Each example is a frame of spoken value described with $13$ MFCC coefficients 
 transformed into 27 features. There are $572,911$ training examples and $236,680$ test examples. 
 We created binary tasks from these multi-class datasets using two reductions: One-vs-Rest setting and 
@@ -26,21 +68,10 @@ $45$ binary one-vs-one tasks.  The NLP document classification include of spam f
 news-group classification, sentiment classification, and product domain categorization. 
 A total of $31$ binary prediction tasks over all, with a total of $252,609$ examples, and input dimension 
 varying between $8,768$ and $1,447,866$. Details of the individual binary tasks can be found 
-elsewhere~\cite{Crammer:2012:CLC:2343676.2343704}.  We created an eighth collection, named MIXED, 
-which consists of $40$ tasks: $10$ random tasks from each one of the four basic datasets 
-(one-vs-one versions).
-%\kc{ all pairs / other}.
-This yielded eight collections (USPS, MNIST and VJ; each as one-vs-rest or one-vs-one), document 
-classification and mixed.  From each of these eight collections we generated between $6$ to $10$ 
-combinations (or problems), each problem was created by sampling between $2$ and $8$ tasks which 
-yielded a total of $64$ multi-task problems. We tried to diversify problems difficulty by including both 
-hard and easy binary classification problems. The hardness of a binary problem is evaluated by the number 
-of mistakes the Perceptron algorithm performs on the problem.
+elsewhere~\cite{Crammer:2012:CLC:2343676.2343704}.
+This yielded seven collections (USPS, MNIST and VJ; each as one-vs-rest or one-vs-one) and document 
+classification.
 
-%\kc{the mean score is not the average of ranks in each dataset, why?}
-%\hc{fixed}
-%\kc{the bound sais $\lambda \leq b/2$ but you write $\lambda=b$ above, why not try $b/2$?}
-%\hc{we tried, but we found $\lambda=\b$ as a better choice}
 We evaluated two baselines as well as our algorithm. Algorithm {\em uniform} picks a random task to be 
 queried and updated (corresponding to $b\rightarrow\infty$), {\em exploit} which picks the tasks with the 
 lowest absolute margin (i.e. the ``hardest instance''), this combination corresponds to $b \approx 0$ of 
