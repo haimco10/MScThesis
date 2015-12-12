@@ -26,8 +26,8 @@ reduction as a multiclass prediction algorithm.
 \begin{corollary}
 Assume the SHAMPO algorithm is executed as above with $K=C$ one-vs-rest problems, on a sequence 
 $(\vx_1,Y_1),...(\vx_n,Y_n)\in\mathbb{R}^d\times\{1,...,C\}$, and input parameter $b>0$  and prior 
-$1\le a_i\forall i$. Then for all $\gamma>0$ and all $\vui{i}\in\mathbb{R}^d$, there exist 
-$0<\delta\le \sum_{i=1}^Ca_{i}$ such that the expected number of multi-class errors is bounded as follows
+$1\le a_i\forall i$. Then for all $\gamma>0$ and all $\vui{i}\in\mathbb{R}^d$, there 
+exists $0<\delta\le \sum_{i=1}^Ca_{i}$ such that the expected number of multi-class errors is bounded as follows
  \[
  \begin{split}
  &\mathbb{E}\brackets{\sum_t \1{Y_t \neq \hat{Y}_t}}\\
@@ -68,7 +68,7 @@ We now analyze the performance of this reduction as a multiclass prediction algo
 Assume the SHAMPO algorithm is executed as above, with $K={C \choose 2}$ one-vs-one problems, 
 on a sequence $(\vx_1,Y_1),...(\vx_n,Y_n)\in\mathbb{R}^d\times\{1,...,C\}$, and input parameter 
 $b>0$ and prior $1\le a_i\forall i$ . Then for all $\gamma>0$ and all $\vui{i}\in\mathbb{R}^d$, 
-there exist $0<\delta\le \sum_{i=1}^{C \choose 2}a_{i}$ such that the expected number of multi-class 
+there exists $0<\delta\le \sum_{i=1}^{C \choose 2}a_{i}$ such that the expected number of multi-class 
 errors can be bounded as follows
  \[
  \begin{split}

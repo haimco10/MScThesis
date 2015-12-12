@@ -15,7 +15,10 @@ that may vary for different multitask problems.
 Now, after we know that such parameter exist, we can try to find a way to select the optimal value for every dataset.  
 We can also investigate ways to generate good priors for the SHAMPO with prior algorithm or derive another 
 distribution that select the task to be queried at every step, not only by the margin and the number of queried 
-up to the same step, but also consider the count of the mistaken queried for every task.
+up to the same step, but also consider the count of the mistaken queried for every task. 
+The algorithm prediction results may be improved when we assume similarity between tasks, such that an 
+update can be done not only  to the queried task but also to all of the tasks, 
+based on the tasks relations.
 
 % In this paper we extended the methods of partial feedback and selective sampling algorithms to the 
 %multi-task case and  introduced MUTSEA, a new multi-task selective sampling algorithm. 

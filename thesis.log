@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  10 DEC 2015 17:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  12 DEC 2015 10:43
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1331,139 +1331,139 @@ nput line 82.
 [44]) (./experiments.tex [45]
 Chapter 6.
 Package epstopdf Info: Source file: <figs/test-m1.eps>
-(epstopdf)                    date: 2015-12-10 10:11:12
-(epstopdf)                    size: 15800 bytes
+(epstopdf)                    date: 2015-12-12 10:37:54
+(epstopdf)                    size: 15750 bytes
 (epstopdf)             Output file: <figs/test-m1-eps-converted-to.pdf>
-(epstopdf)                    date: 2015-12-10 10:22:49
-(epstopdf)                    size: 9343 bytes
+(epstopdf)                    date: 2015-12-12 10:42:57
+(epstopdf)                    size: 8826 bytes
 (epstopdf)             Command: <repstopdf --outfile=figs/test-m1-eps-converted
 -to.pdf figs/test-m1.eps>
 (epstopdf)             \includegraphics on input line 17.
 Package epstopdf Info: Output file is already uptodate.
-<figs/test-m1-eps-converted-to.pdf, id=596, 510.90875pt x 432.61626pt>
+<figs/test-m1-eps-converted-to.pdf, id=596, 510.90875pt x 410.53375pt>
 File: figs/test-m1-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/test-m1-eps-converted-to.pdf>
 Package pdftex.def Info: figs/test-m1-eps-converted-to.pdf used on input line 1
 7.
-(pdftex.def)             Requested size: 143.9978pt x 121.93047pt.
+(pdftex.def)             Requested size: 143.9978pt x 115.70663pt.
 Package epstopdf Info: Source file: <figs/test-mr.eps>
-(epstopdf)                    date: 2015-12-10 10:11:18
-(epstopdf)                    size: 15472 bytes
+(epstopdf)                    date: 2015-12-12 10:38:03
+(epstopdf)                    size: 15421 bytes
 (epstopdf)             Output file: <figs/test-mr-eps-converted-to.pdf>
-(epstopdf)                    date: 2015-12-10 10:22:51
-(epstopdf)                    size: 9083 bytes
+(epstopdf)                    date: 2015-12-12 10:42:59
+(epstopdf)                    size: 8564 bytes
 (epstopdf)             Command: <repstopdf --outfile=figs/test-mr-eps-converted
 -to.pdf figs/test-mr.eps>
 (epstopdf)             \includegraphics on input line 18.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/test-mr-eps-converted-to.pdf, id=597, 524.96124pt x 432.61626pt>
+<figs/test-mr-eps-converted-to.pdf, id=597, 524.96124pt x 410.53375pt>
 File: figs/test-mr-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/test-mr-eps-converted-to.pdf>
 Package pdftex.def Info: figs/test-mr-eps-converted-to.pdf used on input line 1
 8.
-(pdftex.def)             Requested size: 143.9978pt x 118.66287pt.
+(pdftex.def)             Requested size: 143.9978pt x 112.60583pt.
 Package epstopdf Info: Source file: <figs/test-u1.eps>
-(epstopdf)                    date: 2015-12-10 10:11:20
-(epstopdf)                    size: 15196 bytes
+(epstopdf)                    date: 2015-12-12 10:38:06
+(epstopdf)                    size: 15147 bytes
 (epstopdf)             Output file: <figs/test-u1-eps-converted-to.pdf>
-(epstopdf)                    date: 2015-12-10 10:22:53
-(epstopdf)                    size: 8623 bytes
+(epstopdf)                    date: 2015-12-12 10:43:01
+(epstopdf)                    size: 8079 bytes
 (epstopdf)             Command: <repstopdf --outfile=figs/test-u1-eps-converted
 -to.pdf figs/test-u1.eps>
 (epstopdf)             \includegraphics on input line 19.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/test-u1-eps-converted-to.pdf, id=598, 510.90875pt x 432.61626pt>
+<figs/test-u1-eps-converted-to.pdf, id=598, 510.90875pt x 410.53375pt>
 File: figs/test-u1-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/test-u1-eps-converted-to.pdf>
 Package pdftex.def Info: figs/test-u1-eps-converted-to.pdf used on input line 1
 9.
-(pdftex.def)             Requested size: 143.9978pt x 121.93047pt.
+(pdftex.def)             Requested size: 143.9978pt x 115.70663pt.
 Package epstopdf Info: Source file: <figs/test-ur.eps>
-(epstopdf)                    date: 2015-12-10 10:11:22
-(epstopdf)                    size: 15220 bytes
+(epstopdf)                    date: 2015-12-12 10:38:09
+(epstopdf)                    size: 15170 bytes
 (epstopdf)             Output file: <figs/test-ur-eps-converted-to.pdf>
-(epstopdf)                    date: 2015-12-10 10:22:55
-(epstopdf)                    size: 8770 bytes
+(epstopdf)                    date: 2015-12-12 10:43:02
+(epstopdf)                    size: 8223 bytes
 (epstopdf)             Command: <repstopdf --outfile=figs/test-ur-eps-converted
 -to.pdf figs/test-ur.eps>
 (epstopdf)             \includegraphics on input line 20.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/test-ur-eps-converted-to.pdf, id=599, 524.96124pt x 432.61626pt>
+<figs/test-ur-eps-converted-to.pdf, id=599, 524.96124pt x 410.53375pt>
 File: figs/test-ur-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/test-ur-eps-converted-to.pdf>
 Package pdftex.def Info: figs/test-ur-eps-converted-to.pdf used on input line 2
 0.
-(pdftex.def)             Requested size: 143.9978pt x 118.66287pt.
+(pdftex.def)             Requested size: 143.9978pt x 112.60583pt.
 Package epstopdf Info: Source file: <figs/test-v1.eps>
-(epstopdf)                    date: 2015-12-10 10:11:28
-(epstopdf)                    size: 15338 bytes
+(epstopdf)                    date: 2015-12-12 10:38:17
+(epstopdf)                    size: 15292 bytes
 (epstopdf)             Output file: <figs/test-v1-eps-converted-to.pdf>
-(epstopdf)                    date: 2015-12-10 10:22:56
-(epstopdf)                    size: 8772 bytes
+(epstopdf)                    date: 2015-12-12 10:43:04
+(epstopdf)                    size: 8267 bytes
 (epstopdf)             Command: <repstopdf --outfile=figs/test-v1-eps-converted
 -to.pdf figs/test-v1.eps>
 (epstopdf)             \includegraphics on input line 21.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/test-v1-eps-converted-to.pdf, id=600, 524.96124pt x 432.61626pt>
+<figs/test-v1-eps-converted-to.pdf, id=600, 524.96124pt x 410.53375pt>
 File: figs/test-v1-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/test-v1-eps-converted-to.pdf>
 Package pdftex.def Info: figs/test-v1-eps-converted-to.pdf used on input line 2
 1.
-(pdftex.def)             Requested size: 143.9978pt x 118.66287pt.
+(pdftex.def)             Requested size: 143.9978pt x 112.60583pt.
 Package epstopdf Info: Source file: <figs/test-vr.eps>
-(epstopdf)                    date: 2015-12-10 10:11:48
-(epstopdf)                    size: 15309 bytes
+(epstopdf)                    date: 2015-12-12 10:38:45
+(epstopdf)                    size: 15261 bytes
 (epstopdf)             Output file: <figs/test-vr-eps-converted-to.pdf>
-(epstopdf)                    date: 2015-12-10 10:22:58
-(epstopdf)                    size: 8832 bytes
+(epstopdf)                    date: 2015-12-12 10:43:06
+(epstopdf)                    size: 8328 bytes
 (epstopdf)             Command: <repstopdf --outfile=figs/test-vr-eps-converted
 -to.pdf figs/test-vr.eps>
 (epstopdf)             \includegraphics on input line 22.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/test-vr-eps-converted-to.pdf, id=601, 510.90875pt x 432.61626pt>
+<figs/test-vr-eps-converted-to.pdf, id=601, 510.90875pt x 410.53375pt>
 File: figs/test-vr-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/test-vr-eps-converted-to.pdf>
 Package pdftex.def Info: figs/test-vr-eps-converted-to.pdf used on input line 2
 2.
-(pdftex.def)             Requested size: 143.9978pt x 121.93047pt.
+(pdftex.def)             Requested size: 143.9978pt x 115.70663pt.
 Package epstopdf Info: Source file: <figs/test-n.eps>
-(epstopdf)                    date: 2015-12-10 10:11:50
-(epstopdf)                    size: 15175 bytes
+(epstopdf)                    date: 2015-12-12 10:38:53
+(epstopdf)                    size: 15127 bytes
 (epstopdf)             Output file: <figs/test-n-eps-converted-to.pdf>
-(epstopdf)                    date: 2015-12-10 10:23:00
-(epstopdf)                    size: 8678 bytes
+(epstopdf)                    date: 2015-12-12 10:43:08
+(epstopdf)                    size: 8200 bytes
 (epstopdf)             Command: <repstopdf --outfile=figs/test-n-eps-converted-
 to.pdf figs/test-n.eps>
 (epstopdf)             \includegraphics on input line 23.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/test-n-eps-converted-to.pdf, id=602, 510.90875pt x 432.61626pt>
+<figs/test-n-eps-converted-to.pdf, id=602, 510.90875pt x 410.53375pt>
 File: figs/test-n-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/test-n-eps-converted-to.pdf>
 Package pdftex.def Info: figs/test-n-eps-converted-to.pdf used on input line 23
 .
-(pdftex.def)             Requested size: 143.9978pt x 121.93047pt.
+(pdftex.def)             Requested size: 143.9978pt x 115.70663pt.
 
 
-LaTeX Warning: Float too large for page by 67.8067pt on input line 27.
+LaTeX Warning: Float too large for page by 43.07817pt on input line 27.
 
 Package epstopdf Info: Source file: <figs/train-m1.eps>
-(epstopdf)                    date: 2015-12-05 23:29:03
+(epstopdf)                    date: 2015-12-12 10:37:57
 (epstopdf)                    size: 15095 bytes
 (epstopdf)             Output file: <figs/train-m1-eps-converted-to.pdf>
-(epstopdf)                    date: 2015-12-09 14:03:50
+(epstopdf)                    date: 2015-12-12 10:43:10
 (epstopdf)                    size: 8324 bytes
 (epstopdf)             Command: <repstopdf --outfile=figs/train-m1-eps-converte
 d-to.pdf figs/train-m1.eps>
@@ -1477,10 +1477,10 @@ Package pdftex.def Info: figs/train-m1-eps-converted-to.pdf used on input line
 31.
 (pdftex.def)             Requested size: 143.9978pt x 115.70663pt.
 Package epstopdf Info: Source file: <figs/train-mr.eps>
-(epstopdf)                    date: 2015-12-05 23:29:15
+(epstopdf)                    date: 2015-12-12 10:38:04
 (epstopdf)                    size: 15346 bytes
 (epstopdf)             Output file: <figs/train-mr-eps-converted-to.pdf>
-(epstopdf)                    date: 2015-12-09 14:03:52
+(epstopdf)                    date: 2015-12-12 10:43:12
 (epstopdf)                    size: 8527 bytes
 (epstopdf)             Command: <repstopdf --outfile=figs/train-mr-eps-converte
 d-to.pdf figs/train-mr.eps>
@@ -1495,10 +1495,10 @@ Package pdftex.def Info: figs/train-mr-eps-converted-to.pdf used on input line
 32.
 (pdftex.def)             Requested size: 143.9978pt x 114.57907pt.
 Package epstopdf Info: Source file: <figs/train-u1.eps>
-(epstopdf)                    date: 2015-12-05 23:29:18
+(epstopdf)                    date: 2015-12-12 10:38:07
 (epstopdf)                    size: 15339 bytes
 (epstopdf)             Output file: <figs/train-u1-eps-converted-to.pdf>
-(epstopdf)                    date: 2015-12-09 14:03:54
+(epstopdf)                    date: 2015-12-12 10:43:13
 (epstopdf)                    size: 8508 bytes
 (epstopdf)             Command: <repstopdf --outfile=figs/train-u1-eps-converte
 d-to.pdf figs/train-u1.eps>
@@ -1513,10 +1513,10 @@ Package pdftex.def Info: figs/train-u1-eps-converted-to.pdf used on input line
 33.
 (pdftex.def)             Requested size: 143.9978pt x 115.70663pt.
 Package epstopdf Info: Source file: <figs/train-ur.eps>
-(epstopdf)                    date: 2015-12-05 23:29:22
+(epstopdf)                    date: 2015-12-12 10:38:10
 (epstopdf)                    size: 15092 bytes
 (epstopdf)             Output file: <figs/train-ur-eps-converted-to.pdf>
-(epstopdf)                    date: 2015-12-09 14:03:56
+(epstopdf)                    date: 2015-12-12 10:43:15
 (epstopdf)                    size: 8210 bytes
 (epstopdf)             Command: <repstopdf --outfile=figs/train-ur-eps-converte
 d-to.pdf figs/train-ur.eps>
@@ -1531,10 +1531,10 @@ Package pdftex.def Info: figs/train-ur-eps-converted-to.pdf used on input line
 34.
 (pdftex.def)             Requested size: 143.9978pt x 114.85922pt.
 Package epstopdf Info: Source file: <figs/train-v1.eps>
-(epstopdf)                    date: 2015-12-05 23:29:32
+(epstopdf)                    date: 2015-12-12 10:38:21
 (epstopdf)                    size: 15366 bytes
 (epstopdf)             Output file: <figs/train-v1-eps-converted-to.pdf>
-(epstopdf)                    date: 2015-12-09 14:03:58
+(epstopdf)                    date: 2015-12-12 10:43:17
 (epstopdf)                    size: 8426 bytes
 (epstopdf)             Command: <repstopdf --outfile=figs/train-v1-eps-converte
 d-to.pdf figs/train-v1.eps>
@@ -1549,10 +1549,10 @@ Package pdftex.def Info: figs/train-v1-eps-converted-to.pdf used on input line
 35.
 (pdftex.def)             Requested size: 143.9978pt x 112.60583pt.
 Package epstopdf Info: Source file: <figs/train-vr.eps>
-(epstopdf)                    date: 2015-12-05 23:29:56
+(epstopdf)                    date: 2015-12-12 10:38:49
 (epstopdf)                    size: 15093 bytes
 (epstopdf)             Output file: <figs/train-vr-eps-converted-to.pdf>
-(epstopdf)                    date: 2015-12-09 14:04:00
+(epstopdf)                    date: 2015-12-12 10:43:19
 (epstopdf)                    size: 8181 bytes
 (epstopdf)             Command: <repstopdf --outfile=figs/train-vr-eps-converte
 d-to.pdf figs/train-vr.eps>
@@ -1567,11 +1567,11 @@ Package pdftex.def Info: figs/train-vr-eps-converted-to.pdf used on input line
 36.
 (pdftex.def)             Requested size: 143.9978pt x 115.70663pt.
 Package epstopdf Info: Source file: <figs/train-n.eps>
-(epstopdf)                    date: 2015-12-05 23:30:01
+(epstopdf)                    date: 2015-12-12 10:38:56
 (epstopdf)                    size: 15324 bytes
 (epstopdf)             Output file: <figs/train-n-eps-converted-to.pdf>
-(epstopdf)                    date: 2015-12-09 14:04:02
-(epstopdf)                    size: 8649 bytes
+(epstopdf)                    date: 2015-12-12 10:43:21
+(epstopdf)                    size: 8667 bytes
 (epstopdf)             Command: <repstopdf --outfile=figs/train-n-eps-converted
 -to.pdf figs/train-n.eps>
 (epstopdf)             \includegraphics on input line 37.
@@ -1589,10 +1589,10 @@ Package pdftex.def Info: figs/train-n-eps-converted-to.pdf used on input line 3
 LaTeX Warning: Float too large for page by 45.0514pt on input line 41.
 
 Package epstopdf Info: Source file: <figs/queried-m1.eps>
-(epstopdf)                    date: 2015-12-05 23:29:04
+(epstopdf)                    date: 2015-12-11 16:48:35
 (epstopdf)                    size: 13527 bytes
 (epstopdf)             Output file: <figs/queried-m1-eps-converted-to.pdf>
-(epstopdf)                    date: 2015-12-09 14:04:04
+(epstopdf)                    date: 2015-12-11 16:59:49
 (epstopdf)                    size: 6860 bytes
 (epstopdf)             Command: <repstopdf --outfile=figs/queried-m1-eps-conver
 ted-to.pdf figs/queried-m1.eps>
@@ -1606,10 +1606,10 @@ Package pdftex.def Info: figs/queried-m1-eps-converted-to.pdf used on input lin
 e 45.
 (pdftex.def)             Requested size: 143.9978pt x 115.70663pt.
 Package epstopdf Info: Source file: <figs/queried-mr.eps>
-(epstopdf)                    date: 2015-12-05 23:29:15
+(epstopdf)                    date: 2015-12-11 16:48:35
 (epstopdf)                    size: 13406 bytes
 (epstopdf)             Output file: <figs/queried-mr-eps-converted-to.pdf>
-(epstopdf)                    date: 2015-12-09 14:04:06
+(epstopdf)                    date: 2015-12-11 16:59:51
 (epstopdf)                    size: 6920 bytes
 (epstopdf)             Command: <repstopdf --outfile=figs/queried-mr-eps-conver
 ted-to.pdf figs/queried-mr.eps>
@@ -1624,10 +1624,10 @@ Package pdftex.def Info: figs/queried-mr-eps-converted-to.pdf used on input lin
 e 46.
 (pdftex.def)             Requested size: 143.9978pt x 114.57907pt.
 Package epstopdf Info: Source file: <figs/queried-u1.eps>
-(epstopdf)                    date: 2015-12-05 23:29:19
+(epstopdf)                    date: 2015-12-11 16:48:35
 (epstopdf)                    size: 14015 bytes
 (epstopdf)             Output file: <figs/queried-u1-eps-converted-to.pdf>
-(epstopdf)                    date: 2015-12-09 14:04:08
+(epstopdf)                    date: 2015-12-11 16:59:53
 (epstopdf)                    size: 7291 bytes
 (epstopdf)             Command: <repstopdf --outfile=figs/queried-u1-eps-conver
 ted-to.pdf figs/queried-u1.eps>
@@ -1642,10 +1642,10 @@ Package pdftex.def Info: figs/queried-u1-eps-converted-to.pdf used on input lin
 e 47.
 (pdftex.def)             Requested size: 143.9978pt x 115.70663pt.
 Package epstopdf Info: Source file: <figs/queried-ur.eps>
-(epstopdf)                    date: 2015-12-05 23:29:23
+(epstopdf)                    date: 2015-12-11 16:48:35
 (epstopdf)                    size: 13767 bytes
 (epstopdf)             Output file: <figs/queried-ur-eps-converted-to.pdf>
-(epstopdf)                    date: 2015-12-09 14:04:09
+(epstopdf)                    date: 2015-12-11 16:59:55
 (epstopdf)                    size: 7064 bytes
 (epstopdf)             Command: <repstopdf --outfile=figs/queried-ur-eps-conver
 ted-to.pdf figs/queried-ur.eps>
@@ -1660,10 +1660,10 @@ Package pdftex.def Info: figs/queried-ur-eps-converted-to.pdf used on input lin
 e 48.
 (pdftex.def)             Requested size: 143.9978pt x 114.57907pt.
 Package epstopdf Info: Source file: <figs/queried-v1.eps>
-(epstopdf)                    date: 2015-12-05 23:29:32
+(epstopdf)                    date: 2015-12-11 16:48:35
 (epstopdf)                    size: 13524 bytes
 (epstopdf)             Output file: <figs/queried-v1-eps-converted-to.pdf>
-(epstopdf)                    date: 2015-12-09 14:04:12
+(epstopdf)                    date: 2015-12-11 16:59:57
 (epstopdf)                    size: 6851 bytes
 (epstopdf)             Command: <repstopdf --outfile=figs/queried-v1-eps-conver
 ted-to.pdf figs/queried-v1.eps>
@@ -1678,10 +1678,10 @@ Package pdftex.def Info: figs/queried-v1-eps-converted-to.pdf used on input lin
 e 49.
 (pdftex.def)             Requested size: 143.9978pt x 115.70663pt.
 Package epstopdf Info: Source file: <figs/queried-vr.eps>
-(epstopdf)                    date: 2015-12-05 23:29:57
+(epstopdf)                    date: 2015-12-11 16:48:35
 (epstopdf)                    size: 14150 bytes
 (epstopdf)             Output file: <figs/queried-vr-eps-converted-to.pdf>
-(epstopdf)                    date: 2015-12-09 14:04:14
+(epstopdf)                    date: 2015-12-11 16:59:59
 (epstopdf)                    size: 7267 bytes
 (epstopdf)             Command: <repstopdf --outfile=figs/queried-vr-eps-conver
 ted-to.pdf figs/queried-vr.eps>
@@ -1696,10 +1696,10 @@ Package pdftex.def Info: figs/queried-vr-eps-converted-to.pdf used on input lin
 e 50.
 (pdftex.def)             Requested size: 143.9978pt x 112.60583pt.
 Package epstopdf Info: Source file: <figs/queried-n.eps>
-(epstopdf)                    date: 2015-12-05 23:30:02
+(epstopdf)                    date: 2015-12-11 16:48:35
 (epstopdf)                    size: 13766 bytes
 (epstopdf)             Output file: <figs/queried-n-eps-converted-to.pdf>
-(epstopdf)                    date: 2015-12-09 14:04:15
+(epstopdf)                    date: 2015-12-11 17:00:00
 (epstopdf)                    size: 7215 bytes
 (epstopdf)             Command: <repstopdf --outfile=figs/queried-n-eps-convert
 ed-to.pdf figs/queried-n.eps>
@@ -1859,7 +1859,7 @@ ist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2014/texmf-dist/font
 s/type1/urw/times/utmb8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/ur
 w/times/utmr8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/times/ut
 mri8a.pfb>
-Output written on ./thesis.pdf (71 pages, 512309 bytes).
+Output written on ./thesis.pdf (71 pages, 508939 bytes).
 PDF statistics:
  1091 PDF objects out of 1200 (max. 8388607)
  920 compressed objects within 10 object streams

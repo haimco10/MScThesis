@@ -65,7 +65,7 @@ Israel Institute of Technology}
 \item Data comes in sequence \newline
 \item Big data \newline
 \end{itemize}
-\item Examples: stock market, advertisement etc.\newline
+\item Examples: stock market, advertisement, content recommendation etc.\newline
 
 \end{itemize}
 \end{frame}
@@ -93,7 +93,7 @@ Israel Institute of Technology}
 \item Limited resources (limited bandwidth) \newline
 \item Annotate one task at a time \newline
 
-\item Example: classify data news from many agencies\newline
+\item Examples: classify data news from many agencies, Medisafe\newline
 \end{itemize}
 \end{frame}
 
@@ -151,7 +151,7 @@ Our setting:
 Q=Queried,   NQ=Not Queried
 \end{frame}
 
-\subsection{work guidelines}
+\subsection{Work guidelines}
 
 \begin{frame}{In this work}
 \begin{itemize}
@@ -226,8 +226,8 @@ D_{t}&=\sum_{i=1}^{K}{\paren{b+\abs{\hat{p}_{i,t}}-\min_{m}\abs{\hat{p}_{m,t}}}^
 \end{aligned}
 \end{equation*}
 \begin{itemize}
-\item Large $b\Rightarrow$ uniform distribution - exploration \newline
-\item Small $b\Rightarrow$ delta distribution - exploitation\newline
+\item Large $b \paren{b >> 0 }\Rightarrow$ uniform distribution - exploration \newline
+\item Small $b\paren{b\rightarrow 0 } \Rightarrow$ delta distribution - exploitation\newline
 \item The data need to be  scaled into a ball with the same norm
 \end{itemize}
 \end{frame}
@@ -276,28 +276,30 @@ $\vwi{J_t,t} =\vwi{J_t,t-1}+M_{J_t,t} \,\yi{J_t,t}\, \vxi{J_t,t}$
 \begin{itemize}
 \item Aggressive update: correct prediction but low margin.\newline
 \item $\lambda\in \reals>0$, -  aggressiveness threshold\newline
-\item Aggressive update indicator $A_{i,t}=\mathbb{I}\brackets{\abs{\hat{p}_{i,t}}<\lambda,M_{i,t}=0}\in\braces{0,1}$\newline
-\item Update  indicator $U_{i,t}=M_{i,t}+A_{i,t}\in\braces{0,1}$\newline
+\item Aggressive update indicator $G_{i,t}=\mathbb{I}\brackets{\abs{\hat{p}_{i,t}}<\lambda,M_{i,t}=0}\in\braces{0,1}$\newline
+\item Update  indicator $U_{i,t}=M_{i,t}+G_{i,t}\in\braces{0,1}$\newline
 \end{itemize}
 \end{frame}
 
 
-%\subsection{SHAMPO with prior}
+\subsection{SHAMPO with prior}
 
-% \begin{frame}{SHAMPO with prior}
-%
-% If we have a prior knowledge about the  tasks, we prefer  to change the distribution to:\newline
-%
-% \begin{equation*}
-% \pr{J_t=j} =
-% \frac{1}{D_{t}}\frac{a_{j}}{\paren{b+\abs{\hat{p}_{j,t}}-\min_{m=1}^K\abs{\hat{p}_{m,t}}}}, \end{equation*}\newline
-% with the appropriate normalization factor $D_t$\newline
-% \begin{itemize}
-% \item The "prior" parameters $a_j\ge1$ (only for the analysis)\newline
-% \item Large $b\Rightarrow$ prior distribution \newline
-% \item Small $b\Rightarrow$ delta distribution\newline
-% \end{itemize}
-% \end{frame}
+ \begin{frame}{SHAMPO with prior}
+
+ If we have a prior knowledge about the  tasks, we prefer  to change the distribution to:\newline
+
+ \begin{equation*}
+ \pr{J_t=j} =
+ \frac{1}{D_{t}}\frac{a_{j}}{\paren{b+\abs{\hat{p}_{j,t}}-\min_{m=1}^K\abs{\hat{p}_{m,t}}}}, \end{equation*}\newline
+ with the appropriate normalization factor $D_t$\newline
+ \begin{itemize}
+ \item The "prior" parameters $a_j\ge1$ (only for the analysis)\newline
+ \item Large $b\Rightarrow$ prior distribution \newline
+ \item Small $b\Rightarrow$ delta distribution\newline
+ \end{itemize}
+ \end{frame}
+
+
 \subsection{Mistakes bound}
 \begin{frame}{Perceptron SHAMPO  loss}
 \begin{itemize}
@@ -305,46 +307,47 @@ $\vwi{J_t,t} =\vwi{J_t,t-1}+M_{J_t,t} \,\yi{J_t,t}\, \vxi{J_t,t}$
 \item Hinge loss function $\lossp{\gamma,i,t}(\vui{i})= \paren{\gamma-\yiit
   \vuti{i}\vxiit}_{+}~,~~\gamma>0$ \newline
 \item Expected loss over updates up to time $T$
-\end{itemize}
 \begin{equation*}
  \bar{L}_{\gamma,T}=\mathbb{E}\brackets{\sum_{t=1}^T \sum_{i=1}^{K}{Z_{i,t}U_{i,t}\lossp{\gamma,i,t}(\vui{i})}}\newline
 \end{equation*}
-\end{frame}
-
-
-\begin{frame}{Perceptron SHAMPO bound}
-\begin{block}{Expected mistakes bound}
-\emph{The expected number of mistakes  of the perceptron SHAMPO  up to time $T$ can be bounded as follows:}
-\begin{displaymath}
-\mathbb{E}\left[ \sum_{i=1}^{K}\sum_{t=1}^{T}{M_{i,t}} \right]
-\le \frac{K}{\gamma}\left(1+\frac{X^2}{2b} \right){\bar L}_{\gamma,T}
-+\frac{K\left({2b+X^2}\right)^2\tilde{U}^2}{8{\gamma}^2b}~
-\end{displaymath}
-\emph{where}~~~ $\tilde{U}^2=\sum_{i=1}^{K}\normt{\vui{i}}$~, ~~ $X=\max_{i,t}\Vert\vxiit\Vert$
-\end{block}
-\begin{itemize}
-
-\item When $b$ increase, the first term decrease and the second increase and vice versa\newline
-\item Get partial feedback, yet achieves good results
+\item $\tilde{U}^2=\sum_{i=1}^{K}\normt{\vui{i}}$~, ~~ $X=\max_{i,t}\Vert\vxiit\Vert$
 \end{itemize}
 \end{frame}
 
 
-\begin{frame}{Aggressive perceptron SHAMPO   bound }
+%\begin{frame}{Perceptron SHAMPO bound}
+%\begin{block}{Expected mistakes bound}
+%\emph{The expected number of mistakes  of the perceptron SHAMPO  up to time $T$ can be bounded as follows:}
+%\begin{displaymath}
+%\mathbb{E}\left[ \sum_{i=1}^{K}\sum_{t=1}^{T}{M_{i,t}} \right]
+%\le \frac{K}{\gamma}\left(1+\frac{X^2}{2b} \right){\bar L}_{\gamma,T}
+%+\frac{K\left({2b+X^2}\right)^2\tilde{U}^2}{8{\gamma}^2b}~
+%\end{displaymath}
+%\emph{where}~~~ $\tilde{U}^2=\sum_{i=1}^{K}\normt{\vui{i}}$~, ~~ $X=\max_{i,t}\Vert\vxiit\Vert$
+%\end{block}
+%\begin{itemize}
+%
+%\item When $b$ increase, the first term decrease and the second increase and vice versa\newline
+%\item Get partial feedback, yet achieves good results
+%\end{itemize}
+%\end{frame}
+
+
+\begin{frame}{Perceptron SHAMPO   bound }
 \begin{block}{Expected mistakes bound}
-\emph{The expected  number of mistakes  of the aggressive perceptron SHAMPO  up to time $T$ can be bounded as follows:}
+\emph{There exist $0<\delta\le\sum_{i=1}^Ka_{i  }$ such that the expected  number of mistakes  of the  perceptron SHAMPO  up to time $T$can be bounded as follows:}
 \begin{displaymath}
 \begin{split}
 \mathbb{E}\left[ \sum_{i=1}^{K}\sum_{t=1}^{T}{M_{i,t}} \right]
-\le& \frac{K}{\gamma}\left(1+\frac{X^2}{2b} \right){\bar L}_{\gamma,T}+
-\frac{K\left({2b+X^2}\right)^2\tilde{U}^2}{8{\gamma}^2b}\\
-&\textcolor{red}{-\paren{1-2\frac{\lambda}{b}}\mathbb{E}\brackets{\sum_{i=1}^{K}\sum_{t=1}^{T}{A_{i,t}}}}~
+\le& \frac{\delta}{\gamma}\brackets{\left(1+\frac{X^2}{2b} \right){\bar L}_{\gamma,T}+
+\frac{\left({2b+X^2}\right)^2\tilde{U}^2}{8{\gamma}b}}\\
+&\textcolor{red}{-\paren{1-2\frac{\lambda}{b}}\mathbb{E}\brackets{\sum_{i=1}^{K}\sum_{t=1}^{T}{a_iG_{i,t}}}}~
 \end{split}
 \end{displaymath}
 \end{block}
 \begin{itemize}
 \item A good choice $\lambda<b/2 $\newline
-\item When $\lambda\rightarrow0\Longrightarrow\mathbb{E}\brackets{\sum_{i=1}^{K}\sum_{t=1}^{n}{A_{i,t}}}\rightarrow0$
+\item When $\lambda\rightarrow0\Longrightarrow\mathbb{E}\brackets{\sum_{i=1}^{K}\sum_{t=1}^{n}{G_{i,t}}}\rightarrow0$
 \end{itemize}
 \end{frame}
 
@@ -365,7 +368,7 @@ $\vwi{J_t,t} =\vwi{J_t,t-1}+M_{J_t,t} \,\yi{J_t,t}\, \vxi{J_t,t}$
 % \item When $A_{i,t}=0~,\forall i=1,\cdots,K$ we get the non aggressive bound\newline
 % \end{itemize}
 %\end{frame}
-
+%
 % \begin{frame}
 % \begin{table}[h]
 % \caption{Bounds} % title name of the table
@@ -386,7 +389,7 @@ $\vwi{J_t,t} =\vwi{J_t,t-1}+M_{J_t,t} \,\yi{J_t,t}\, \vxi{J_t,t}$
 % \raisebox{1.5ex}{Prior}&$-\paren{1-2\frac{\lambda}{b}}\mathbb{E}\brackets{\sum_{i=1}^{K}\sum_{t=1}^{n}{a_{i}A_{i,t}}}
 % $\\[1ex]
 % \hline % inserts single-line
-% % Entering 1st row
+% Entering 1st row
 % \hline % inserts single-line
 % \end{tabular}
 %
@@ -442,37 +445,71 @@ $\vwi{J_t,t} =\vwi{J_t,t-1}+M_{J_t,t} \,\yi{J_t,t}\, \vxi{J_t,t}$
 % \end{frame}
 
 \begin{frame}{Second order SHAMPO}
+Adapting the RLS (Regularized Least squares) estimator from regression to binary 
+classification,
+%\begin{equation*}
+%\vwi{i,t}=A_{i,t}^{-1}\vvi{i,t}
+%\end{equation*}
+where:\newline
+\begin{itemize}
+\item $A_{i,0}=I_{d\times d}$\newline
+\item $A_{i,t}=\paren{A_{i,t-1}+ U_{i,t}Z_{i,t}\vxi{i,t} \vxti{i,t}}\in R^{d\times d}$\newline
+\item $\vwi{i,t}=\vwi{i,t-1}+U_{i,t}Z_{i,t}y_{i_t}\vxi{i,t}\in R^d$ \newline
+\end{itemize}
+$A_t$ can be viewed as covariance or "confidence " matrix\newline
+
+ [Cesa-Bianchi et al. 2006, Crammer  2014]
+\end{frame}
+
+\begin{frame}{Second order SHAMPO}
+Initialize: $\vwi_{i,0}$$= \vzero$, $A_{0}=I,~~b\in\mathbb{R}>0$\newline
+
+On each round $t$ \newline
+\begin{itemize}
+\item Observe $K$ instances $\vxi{i,t}$ \newline
+\item Compute  $K$ margins  $\hat{p}_{i,t}= \vxiit^T\paren{A_{i,t-1}+\vxiit\vxiit^T}^{-1}\vw_{i,t-1}$\newline
+\item Predict $K$ labels $\hat{y}_{i,t}=\sign\paren{\hat{p}_{i,t}}$\newline
+\item Query the label $y_{J_t,t}$ with same probability  $\pr{J_t=j}$ as in first order, \newline
+\item Update :~~~~
+$\vw_{J_t,t}~~,~~ A_{J_t,t} $\newline
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Second order SHAMPO}
+\begin{block}{Expected mistake bound}
+\emph{There exists $0<\delta\le K$, such that the  expected number of mistakes  of the second order perceptron SHAMPO  up to time $T$ can be bounded as follows:}
+  \begin{equation*}
+  \begin{split}
+   &\mathbb{E}\brackets{\sum_{i=1}^{K}\sum_{t=1}^{n}{M_{i,t}}} \\
+   &\le \frac{\delta}{\gamma}{\bar L}_{\gamma,n}(\vui{i})
++ \frac{\delta b}{2\gamma^2}\sum_{i=1}^{K}\vu_i^T\mathbb{E}\brackets{A_{i,n}}\vu_i+ 
+\frac{\delta}{2b}\sum_{i=1}^{K}\sum_{k=1}^{d}\mathbb{E}\brackets{\ln\paren{1+\lambda_{i,k}}}
+\end{split}
+\end{equation*} 
+\end{block}
+
+\begin{itemize}
+  \item  $\lambda_{i,k}$ is the $i^th$ eigenvalue of the matrix $A_{i,n}$
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Second order SHAMPO - Aggressive}
 This is the state in time $t$
 \begin{center}
 \includegraphics[width=0.7\textwidth]{figs/confidence.eps}
 \end{center}
 \end{frame}
 
-\begin{frame}{Second order SHAMPO}
+\begin{frame}{Second order SHAMPO - Aggressive}
 On $t+1$ we get a new example (black square). What will be it's label?
 \begin{center}
 \includegraphics[width=0.7\textwidth]{figs/confidence2.eps}
 \end{center}
 \end{frame}
 
-\begin{frame}{Second order SHAMPO}
-RLS (Regularized Least squares) estimator
-\begin{equation*}
-\vwi{i,t}=B_{i,t}^{-1}\vvi{i,t}
-\end{equation*}
-Where:\newline
-\begin{itemize}
-\item $B_{i,0}=I_{d\times d}$\newline
-\item $B_{i,t}=\paren{B_{i,t-1}+ U_{i,t}Z_{i,t}\vxi{i,t} \vxti{i,t}}\in R^{d\times d}$\newline
-\item $\vvi{i,t}=\vvi{i,t-1}+U_{i,t}Z_{i,t}y_{i_t}\vxi{i,t}\in R^d$ \newline
-\end{itemize}
-$B_t$ can be viewed as covariance or "confidence " matrix\newline
-
- [Cesa-Bianchi et al. 2006, Crammer  2014]
-\end{frame}
-
-\begin{frame}{Second order SHAMPO}
-Define $r_{i,t}= \vxiit^TB_{i,t-1}^{-1}\vxiit$  \newline
+\begin{frame}{Second order SHAMPO - Aggressive}
+Define $r_{i,t}= \vxiit^TA_{i,t-1}^{-1}\vxiit$  \newline
 \begin{itemize}
 \item $r_{i,t}$ - the confidence  in the prediction of $\hat{y}_{i,t}$\newline
 %\item $r_{i,t}$ does not depend explicitly on the  feedback \newline
@@ -482,14 +519,14 @@ Define $r_{i,t}= \vxiit^TB_{i,t-1}^{-1}\vxiit$  \newline
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Second order SHAMPO}
-An intuition for the confidence $r_{i,t}$
-\begin{center}
-\includegraphics[width=0.6\textwidth]{figs/Confidence_matrix.eps}
-\end{center}
-\end{frame}
+%\begin{frame}{Second order SHAMPO}
+%An intuition for the confidence $r_{i,t}$
+%\begin{center}
+%\includegraphics[width=0.6\textwidth]{figs/Confidence_matrix.eps}
+%\end{center}
+%\end{frame}
 
-\begin{frame}{Second order SHAMPO}
+\begin{frame}{Second order SHAMPO - Aggressive}
 Define:
 \begin{equation*}
 F\paren{\abs{\hat{p}_{i,t}},r_{i,t}}=\paren{1+r_{i,t}}\hat{p}_{i,t}^2+2\abs{\hat{p}_{i,t}}-\frac{r_{i,t}}{1+r_{i,t}}\newline
@@ -508,41 +545,19 @@ We build a new distribution:
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Second order SHAMPO}
-Initialize: $\vvi{i,0}=\vzero$, $B_{0}=I,~~b\in\mathbb{R}>0$\newline
+\begin{frame}{Second order SHAMPO - Aggressive}
+Initialize: $\vwi_{i,0}$$ =\vzero$, $A_{0}=I,~~b\in\mathbb{R}>0$\newline
 
 On each round $t$ \newline
 \begin{itemize}
 \item Observe $K$ instances $\vxi{i,t}$ \newline
-\item Compute  $K$ margins  $\hat{p}_{i,t}= \vxiit^T\paren{B_{i,t-1}+\vxiit\vxiit^T}^{-1}\vvi{i,t-1}$\newline
+\item Compute  $K$ margins  $\hat{p}_{i,t}= \vxiit^T\paren{A_{i,t-1}+\vxiit\vxiit^T}^{-1}\vw_{i,t-1}$\newline
 \item Predict $K$ labels $\hat{y}_{i,t}=\sign\paren{\hat{p}_{i,t}}$\newline
 \item Query the label $y_{J_t,t}$ with probability  $\pr{J_t=j}$ above, \newline
-\item If $F\paren{\abs{\hat{p}_{i,t}},r_{i,t}}\le0$ or $\hat{y}_{i,t}\ne y_{i,t}$ set $U_{i,t}=1$\newline
+\item If $F\paren{\abs{\hat{p}_{J_t,t}},r_{J_t,t}}\le0$ or $\hat{y}_{J_t,t}\ne y_{J_t,t}$ set $U_{J_t,t}=1$\newline
 \item Update :~~~~
-$\vvi{J_t,t}~~,~~ B_{J_t,t} $\newline
-\item h
+$\vw_{J_t,t}~~,~~ A_{J_t,t}$ iff $U_{iJ_tt}=1$\newline
 \end{itemize}
-
-\end{frame}
-
-
-\begin{frame}{Second order SHAMPO}
-Define:
-\begin{itemize}
-\item indicator $G_{i,t}=\mathbb{I}\brackets{F\paren{\abs{\hat{p}_{i,t}},r_{i,t}}<0}  $ - aggressive update\newline
-\item indicator $A_{i,t}=\mathbb{I}\brackets{F\paren{\abs{\hat{p}_{i,t}},r_{i,t}}<0,~~M_{i,t}=0}$ - aggressive, correct\newline
-\end{itemize}
-\begin{block}{Expected mistake bound}
-\emph{The  expected number of mistakes  of the second order perceptron SHAMPO  up to time $T$ can be bounded as follows:}
-\begin{equation*}
-\begin{split}
-\mathbb{E}\left[ \sum_{i=1}^{K}\sum_{t=1}^{T}{M_{i,t}} \right]
-\le &\frac{bK}{4}\sum_{i=1}^{K}\vu_i^T \mathbb{E}\brackets{A_{i,T}} \vu_i+K{\bar L}_{1,n}-\mathbb{E}\brackets{\sum_{i=1}^{K}\sum_{t=1}^{T}A_{i,t}}\\
-&+\frac{2}{b}\mathbb{E}\brackets{\sum_{i=1}^{K}\sum_{t=1}^{T}G_{i,t}\frac{r_{i,t}}{1+r_{i,t}}}
-\end{split}
-\end{equation*}
-\end{block}
-\
 \end{frame}
 
 \section{Variants}
@@ -579,11 +594,16 @@ On each round $t$:\newline
 
 \begin{frame}{One vs. rest}
 \begin{block}{Expected mistake bound}
-The  expected number of mistakes  of the One vs. Rest cotextual SHAMPO bandit  can be bounded as:
+There exists $0<\delta\le \sum_{i=1}^Ca_{i}$ such that the  expected number of mistakes  of the One vs. Rest contextual SHAMPO bandit  can be bounded as:
 
-\begin{displaymath}
-\mathbb{E}\brackets{\sum_t \mathbb{I}\brackets{Y_t \neq \hat{Y}_t}}\le \frac{C}{\gamma}\brackets{\paren{1+\frac{X^2}{2b} }{\bar L}_{\gamma,n}+\frac{\paren{{2b+X^2}}^2\tilde{U}^2}{8{\gamma}b}}~
-\end{displaymath}
+ \[
+ \begin{split}
+ &\mathbb{E}\brackets{\sum_t \1{Y_t \neq \hat{Y}_t}}\\
+ &\le \frac{\delta}{\gamma}\brackets{\left(1+\frac{X^2}{2b} \right){\bar L}_{\gamma,T}+
+ \frac{\left({2b+X^2}\right)^2U^2}{8{\gamma}b}}
+ +\paren{2\frac{\lambda}{b}-1}\mathbb{E}\brackets{\sum_{i=1}^{K}\sum_{t=1}^{T}{a_{i}G_{i,t}}}~,
+ \end{split}
+ \]
 \end{block}
 
 \begin{itemize}
@@ -611,18 +631,18 @@ At each round, the algorithm:\newline
 
 \begin{frame}{One vs. One}
 \begin{block}{Expected mistake bound}
-The  expected number of mistakes  of the One vs. One contextual SHAMPO bandit  is:
-\begin{displaymath}
-\begin{split}
-\mathbb{E}\brackets{\sum_t \mathbb{I}\brackets{Y_t \neq \hat{Y}_t}}\le
-\frac{4{C \choose 2}}{{C \choose 2}+1} \frac{1}{\gamma}\brackets{\paren{1+\frac{X^2}{2b} }{\bar L}_{\gamma,n}+\frac{\paren{{2b+X^2}}^2\tilde{U}^{2}}{8{\gamma}b}}
-\end{split}
-\end{displaymath}
+There exists $0<\delta\le \sum_{i=1}^{C \choose 2}a_{i}$ such that the  expected number of mistakes  of the One vs. One contextual SHAMPO bandit  is:
+ \[
+ \begin{split}
+ &\mathbb{E}\brackets{\sum_t \1{Y_t \neq \hat{Y}_t}}\le \frac{2}{({C \choose 2}-1)/2+1}\times\\
+ &\braces{ \frac{\delta}{\gamma}\brackets{\paren{1+\frac{X^2}{2b} }{\bar L}_{\gamma,T}+\frac{\paren{{2b+X^2}}^2U^{2}}{8{\gamma}b}}+\paren{2\frac{\lambda}{b}-1}\mathbb{E}\brackets{\sum_{i=1}^{K}\sum_{t=1}^{T}{a_{i}G_{i,t}}}}
+ \end{split}
+ \]
 \end{block}
 \begin{itemize}
 
 \item This bound is follows from $\mathbb{I}\brackets{Y_t \neq \hat{Y}_t} \leq \frac{2}{({C \choose 2}-1)/2+1}\sum_{i=1}^{ {C \choose 2}} M_{i,t}$\newline [Allwein et al., 2000]\newline
-\item The bound does not depend on $C$ because the bound coefficient is upper bounded by 4.
+\item The bound coefficient is upper bounded by 4.
 \end{itemize}
 \end{frame}
 
@@ -630,7 +650,7 @@ The  expected number of mistakes  of the One vs. One contextual SHAMPO bandit  i
 What if the prediction is not a mistake, nor correct , i.e.$y_{J_t,t}=0$?\newline
 \begin{itemize}
 \item No update -  this task will be chosen again\newline
-\item Random update - not allow zero feedback\newline
+\item Random update - not allow zero feedback (only $-1$ or $1$)\newline
 \item Weak update - increases the margin using $\eta>0$\newline
 
 $
@@ -687,7 +707,7 @@ $
 \end{itemize}
 \end{frame}
 
-\begin{frame}{One vs. Rest  dataset}
+\begin{frame}{One vs. Rest - USPS dataset}
 Right values correspond to pure exploration, while left values to pure exploitation.
 The only thing we see is the red curve. The "knee" can show the area of the tradeoff $b.$
 
@@ -728,27 +748,27 @@ The tradeoff   shows less errors for the appropriate queries distribution\newlin
 \end{frame}
 
 
-\begin{frame}{Error vs. b}
-\textbf{NLP Data - 2 hard tasks, 3 easy, second order} \newline
-Almost all of the tasks shows lower test error for the tradeoff $b$ value  \newline
-
-\begin{centering}
-\includegraphics[width=0.6\textwidth]{figs/NLP_SO_3_2_mean_error_tasks.eps}
-
-\end{centering}
-
-\end{frame}
-
+%\begin{frame}{Error vs. b}
+%\textbf{NLP Data - 2 hard tasks, 3 easy, second order} \newline
+%Almost all of the tasks shows lower test error for the tradeoff $b$ value  \newline
+%
+%\begin{centering}
+%\includegraphics[width=0.6\textwidth]{figs/NLP_SO_3_2_mean_error_tasks.eps}
+%
+%\end{centering}
+%
+%\end{frame}
 
 
 
 \begin{frame}{Error vs. b - different algorithms}
-\textbf{NLP Data - 2 hard tasks, 3 easy} \newline
-Comparison between different algorithms. All algorithms show the same behaviour. The first order algorithms used averaged perceptron. \newline
+\textbf{VJ one-vs-one} \newline
+Comparison between different algorithms. 
+First Order, Aggressive, Adaptive, Prior, Second order, Second order aggressive and ''Watch All''.
+All algorithms show the same behavior.  \newline
 
 \begin{centering}
-
-\includegraphics[width=1\textwidth]{figs/NLP_SO_3_2_mean_error_alg1.eps}
+\includegraphics[width=0.5\textwidth]{figs/test-v1.eps}
 
 \end{centering}
 
