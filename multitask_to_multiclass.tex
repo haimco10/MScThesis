@@ -1,4 +1,4 @@
-\chapter{From Multi-task to Contextual Bandits}
+\chapter{From Multi-task to Contextual Bandits}\label{chap:multiclass}
 Although our algorithm is designed for many binary-classification tasks that can be independent, 
 it can also be applied in two settings of contextual bandits, when decoupling exploration and 
 exploitation is allowed as in ~\cite{DBLP:conf/icml/YuM09,DBLP:conf/icml/AvnerMS12}. 
@@ -7,8 +7,6 @@ As before, the algorithm works in rounds. On round $t$ the algorithm receives an
 outputs  multicalss label $\hat{Y}_t\in\{1 \comdots C\}$. 
 Then, it queries for some information about the label via a single binary ``yes-no'' question, and uses the 
 feedback to update its model. We consider here two forms of binary questions.
-
-
 
 \section{One-vs-Rest}
 The first setting is termed {\em one-vs-rest}. The algorithm asks if the true label is some label 
@@ -87,7 +85,7 @@ is bounded by the multitask errors with a constant factor as following,
 The last fact is derived from \cite{allwein2001reducing} analysis of the training error 
 with the corresponding hamming distance of the ECOC matrix for the One-vs-One 
 setting. Note, that the bound is essentially  independent of $C$ as the coefficient in the bound is upper 
-bounded by $6$ \fbox{why not 2?} for $C \geq 3$.
+bounded by $4$.
 % as in Allwin et al. in 
 
 We conclude this section with two algorithmic modifications, we employed in this setting. 

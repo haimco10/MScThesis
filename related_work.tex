@@ -1,11 +1,11 @@
 \chapter{Related Work}
 
 In the past few years there is a large volume of work on multi-task learning, which clearly we can not 
-cover here. The reader is referred to a recent survey on the topic~\cite{10.1109/TKDE.2009.191}. 
-Most of this work is focused on exploring relations between tasks, i.e. %that is, 
-find similarities dissimilarities  between tasks, and use it to share data directly ,e.g. 
+cover here. The reader is referred to a recent survey on the topic by ~\cite{10.1109/TKDE.2009.191}. 
+Most of this work is focused on exploring relations between tasks, that is, 
+find similarities and dissimilarities  between tasks, and use it to share data directly ,e.g. 
 \cite{NIPS2012_0706}, or model parameters as in ~\cite{Evgeniou:2004:RML:1014052.1014067,Daume:2010:FES:1870526.1870534,DBLP:journals/ml/ArgyriouEP08}. 
-In the online settings there are only a handful of work on multi-task learning. 
+In the online settings, there are only a handful of work on multi-task learning. 
 ~\cite{DBLP:conf/colt/DekelLS06} consider the setting where all algorithms are evaluated using a 
 global loss function, and all work towards the shared goal of minimizing it. 
 ~\cite{DBLP:conf/colt/LugosiPS09}, assume that there are constraints on the predictions of all 
@@ -15,32 +15,40 @@ captures some assumption about the relation between the models.
 ~\cite{DBLP:journals/jmlr/CavallantiCG10} and ~\cite{cesa2006incremental}, 
 assume a known relation between tasks which is exploited during learning. 
 Unlike these approaches, we assume the ability to share an annotator rather than data or parameters, 
-thus our methods can be applied to problems with no common input space.
+thus our methods can be applied to problems with no common input space. One can 
+expand our algorithm in the case of a related task, and update all the tasks of the model  on each round, 
+based on the queried task and not only the queried task.
 
-Our analysis is derived from ~\cite{cesa2006worst}, yet they focus in selective 
-sampling (see also \cite{cesa2009robust,dekel2010robust}), that is, making individual binary decisions of 
-whether to query, while our algorithm always query, and needs to decide for which task to query on each 
-round.
-%
-Finally, there have been recent work in contextual bandits,~\cite{kakade2008efficient,
-hazan2011newtron,DBLP:journals/ml/CrammerG13}, each with slightly different assumptions. 
-To the best of our knowledge, we are the first to consider decoupled exploration and exploitation in this 
-context. Finally, there is recent work in learning with relative or preference feedback in various 
-settings~\cite{DBLP:conf/colt/YueBKJ09,DBLP:journals/jcss/YueBKJ12,DBLP:conf/icml/YueJ11,DBLP:journals/corr/abs-1111-0712}. 
-Unlike this work, our work allows again decoupled exploitation and exploration, 
-and also non-relevant feedback.
-
-\fbox{Check if the rest below is relevant}
 In the other hand, there are also works that have been done on binary classification with partial feedback . 
+Our analysis is derived from ~\cite{cesa2006worst}, yet they focus in selective 
+sampling (see also \cite{cesa2009robust,dekel2010robust,crammer2014doubly}), that is, making individual 
+binary decisions of whether to query, while our algorithm always query, and needs to decide for which task 
+to query on each round.
 Selective sampling algorithms such as first and second order selective sampling perceptron and   
 BBQ  of Cesa-Bianci et al~\cite{cesa2006worst,cesa2009robust} deals with binary selective 
 sampling algorithms. Dekel et al ~\cite{dekel2010robust} have also a multiple teachers selective sampling 
 algorithm, whit setting that is similar to SHAMPO with $\kappa$ updates per round , but is force all of the 
 inputs to be in the same space.
 
+%Finally, there have been recent work in contextual bandits,~\cite{kakade2008efficient,
+%hazan2011newtron,DBLP:journals/ml/CrammerG13}, each with slightly different assumptions. 
+%To the best of our knowledge, we are the first to consider decoupled exploration and exploitation in this 
+%context. 
+
 ~\cite{dietterich1995solving} introduced the use of ECOC matrix to reduce a 
-multi-class classification problem into a multi-task problem we can use this method, combines with 
-SHAMPO to get multiclass classification. Algorithms like contextual bandits such the Banditron of 
+multi-class classification problem into a multi-task problem we use this method, combines with 
+SHAMPO algorithms to get multi-class classification. There have been recent work in contextual bandits 
+each with slightly different assumptions. Algorithms like contextual bandits such the Banditron of 
 ~\cite{kakade2008efficient} and Newtron of ~\cite{hazan2011newtron}  used the 
 exploration exploitation method in order to reduce the regret, but in their setting, for each round the choice 
 is also the prediction, so it suitable to our setting only for the case of One-vs-Rest.
+To the best of our knowledge, we are the first to consider decoupled exploration and exploitation in this 
+context. 
+
+Finally, there is recent work in learning with relative or preference feedback in various 
+settings as in ~\cite{DBLP:conf/colt/YueBKJ09,DBLP:journals/jcss/YueBKJ12,DBLP:conf/icml/YueJ11,DBLP:journals/corr/abs-1111-0712}. 
+Unlike this work, our work allows again decoupled exploitation and exploration, and also 
+non-relevant feedback.
+
+
+

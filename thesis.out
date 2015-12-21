@@ -10,10 +10,14 @@
 \BOOKMARK [1][-]{section.3.3}{prior distribution over tasks}{chapter.3}% 10
 \BOOKMARK [1][-]{section.3.4}{Kernel-based SHAMPO}{chapter.3}% 11
 \BOOKMARK [1][-]{section.3.5}{SHAMPO perceptron with Adaptive b parameter}{chapter.3}% 12
-\BOOKMARK [0][-]{chapter.4}{Second Order Shampo}{}% 13
-\BOOKMARK [0][-]{chapter.5}{From Multi-task to Contextual Bandits}{}% 14
-\BOOKMARK [1][-]{section.5.1}{One-vs-Rest}{chapter.5}% 15
-\BOOKMARK [1][-]{section.5.2}{One-vs-One}{chapter.5}% 16
-\BOOKMARK [0][-]{chapter.6}{Experiments}{}% 17
-\BOOKMARK [0][-]{chapter.7}{Related Work}{}% 18
-\BOOKMARK [0][-]{chapter.8}{Summary and Conclusions}{}% 19
+\BOOKMARK [1][-]{section.3.6}{Second Order SHAMPO}{chapter.3}% 13
+\BOOKMARK [1][-]{section.3.7}{Second Order Adaptive SHAMPO}{chapter.3}% 14
+\BOOKMARK [0][-]{chapter.4}{From Multi-task to Contextual Bandits}{}% 15
+\BOOKMARK [1][-]{section.4.1}{One-vs-Rest}{chapter.4}% 16
+\BOOKMARK [1][-]{section.4.2}{One-vs-One}{chapter.4}% 17
+\BOOKMARK [0][-]{chapter.5}{Experiments}{}% 18
+\BOOKMARK [1][-]{section.5.1}{Hard and Easy Tasks }{chapter.5}% 19
+\BOOKMARK [1][-]{section.5.2}{Multi-task Binary Classification}{chapter.5}% 20
+\BOOKMARK [1][-]{section.5.3}{Reduction of Multi-task to Contextual Bandits}{chapter.5}% 21
+\BOOKMARK [0][-]{chapter.6}{Related Work}{}% 22
+\BOOKMARK [0][-]{chapter.7}{Summary and Conclusions}{}% 23

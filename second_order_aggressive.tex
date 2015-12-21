@@ -1,4 +1,4 @@
-\chapter{Second Order Adaptive SHAMPO}
+\section{Second Order Adaptive SHAMPO}
 
 
 \begin{algorithm}
@@ -48,12 +48,32 @@
 \caption{Second order aggressive SHAMPO. \label{alg:SHAMPO}}
 \end{algorithm}
 
+All the algorithms that were shown so far, exploited the uncertainty of the algorithm prediction using 
+the low margin rule. Another approach of estimating the certainty of prediction could be 
+comparing the input example with all the previous tagged examples. If the 
+algorithm already received similar examples before, and requested their labels, 
+probably the prediction that is based on those similar examples, can be considered with high confidence.
+\cite{crammer2014doubly} used the same approach in the selective 
+sampling setting, by introducing a distribution that depends on both margin and this uncertainty measure.
+An aggressive update was applied as well, based on the same measure.
 
-This algorithm and proof builds on the second order selective sampling by Cesa-Bianchi 
-et al ~\cite{cesa2006worst} define the function
+We adapt this approach to our setting of multitask learning sharing a single annotator. First, we introduce 
+another quantity that is the projection of the vector $\vxiit$ on the inverse of the covariance-like matrix $A_{i,t-1}$ 
+\[
+r_{i,t} = \vxiit^TA_{i,t-1}^{-1}\vxiit
+\]
+We can think about this quantity as an uncertainty measure. Where large values of $r_{i,t}$ 
+represent high uncertainty, whereas small value of the same quantity are related 
+to low uncertainty, since the algorithm already received labeled that are close 
+to $\vxiit$. In the edge case, when the example $\vxiit$ is orthogonal to all 
+previous queried examples that came from the same task, $r_{i,t}=1$. 
+
+Define the function
 \begin{equation}
 \Theta\paren{\abs{\hat{p}_{i,t}},r_{i,t}}=\paren{1+r_{i,t}}\hat{p}_{i,t}^2+2\abs{\hat{p}_{i,t}}-\frac{r_{i,t}}{1+r_{i,t}}
 \end{equation}
+
+
 
 
 \begin{proof} 

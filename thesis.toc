@@ -7,31 +7,18 @@
 \contentsline {chapter}{\numberline {2}The Shared Annotator Setting}{6}{chapter.2}
 \contentsline {chapter}{\numberline {3}SHMPO (SHared Annotator for Multiple Problems) Algorithms}{9}{chapter.3}
 \contentsline {section}{\numberline {\@@number {3.1}}SHAMPO perceptron}{9}{section.3.1}
-\contentsline {paragraph}{Parameters:}{13}{section*.6}
-\contentsline {paragraph}{Initialize:}{13}{section*.7}
-\contentsline {paragraph}{For}{13}{section*.8}
-\contentsline {paragraph}{End for}{13}{section*.9}
-\contentsline {paragraph}{Output}{13}{section*.10}
 \contentsline {section}{\numberline {\@@number {3.2}}Aggressive version}{18}{section.3.2}
-\contentsline {paragraph}{Parameters:}{19}{section*.11}
-\contentsline {paragraph}{Initialize:}{19}{section*.12}
-\contentsline {paragraph}{For}{19}{section*.13}
-\contentsline {paragraph}{End for}{19}{section*.14}
-\contentsline {paragraph}{Output}{19}{section*.15}
 \contentsline {section}{\numberline {\@@number {3.3}}prior distribution over tasks}{22}{section.3.3}
 \contentsline {section}{\numberline {\@@number {3.4}}Kernel-based SHAMPO}{25}{section.3.4}
 \contentsline {section}{\numberline {\@@number {3.5}}SHAMPO perceptron with Adaptive $b$ parameter}{26}{section.3.5}
-\contentsline {paragraph}{Parameters:}{35}{section*.16}
-\contentsline {paragraph}{Initialize:}{35}{section*.17}
-\contentsline {paragraph}{For}{35}{section*.18}
-\contentsline {paragraph}{End for}{35}{section*.19}
-\contentsline {paragraph}{Output}{35}{section*.20}
-\contentsline {chapter}{\numberline {4}Second Order Shampo}{36}{chapter.4}
-\contentsline {chapter}{\numberline {5}From Multi-task to Contextual Bandits}{42}{chapter.5}
-\contentsline {section}{\numberline {\@@number {5.1}}One-vs-Rest}{42}{section.5.1}
-\contentsline {section}{\numberline {\@@number {5.2}}One-vs-One}{43}{section.5.2}
-\contentsline {chapter}{\numberline {6}Experiments}{46}{chapter.6}
-\contentsline {paragraph}{Multi-task Binary Classification :}{47}{section*.21}
-\contentsline {paragraph}{Reduction of Multi-task to Contextual Bandits }{49}{section*.22}
-\contentsline {chapter}{\numberline {7}Related Work}{53}{chapter.7}
-\contentsline {chapter}{\numberline {8}Summary and Conclusions}{55}{chapter.8}
+\contentsline {section}{\numberline {\@@number {3.6}}Second Order SHAMPO}{35}{section.3.6}
+\contentsline {section}{\numberline {\@@number {3.7}}Second Order Adaptive SHAMPO}{39}{section.3.7}
+\contentsline {chapter}{\numberline {4}From Multi-task to Contextual Bandits}{47}{chapter.4}
+\contentsline {section}{\numberline {\@@number {4.1}}One-vs-Rest}{47}{section.4.1}
+\contentsline {section}{\numberline {\@@number {4.2}}One-vs-One}{48}{section.4.2}
+\contentsline {chapter}{\numberline {5}Experiments}{51}{chapter.5}
+\contentsline {section}{\numberline {\@@number {5.1}}Hard and Easy Tasks }{52}{section.5.1}
+\contentsline {section}{\numberline {\@@number {5.2}}Multi-task Binary Classification}{54}{section.5.2}
+\contentsline {section}{\numberline {\@@number {5.3}}Reduction of Multi-task to Contextual Bandits}{57}{section.5.3}
+\contentsline {chapter}{\numberline {6}Related Work}{63}{chapter.6}
+\contentsline {chapter}{\numberline {7}Summary and Conclusions}{65}{chapter.7}

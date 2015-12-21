@@ -24,7 +24,7 @@ otherwise, if there is no mistake, we set $M_{i,t}=0$. The goal of the
 algorithm is to minimize the cumulative mistakes, $\sum_t \sum_i
 M_{i,t}$. Models are also evaluated using the
 {\em Hinge-loss}. Specifically, let $\vui{i}\in\reals^d$ be some vector
-associated with problem $i$. We denote the Hinge-loss \fbox{show hinge loss plot} of it, with respect
+associated with problem $i$. We denote the Hinge-loss of it, with respect
 to some input-label  pair $\paren{\vxiit,\yiit}$, by
 $\lossp{\gamma,i,t}(\vui{i})= \paren{\gamma-\yiit
   \vuti{i}\vxiit}_{+}$, where, $(x)_+=\max\{x,0\}$, and $\gamma>0$ is
@@ -124,13 +124,13 @@ the label of the task $J_t$ is used in practice, as for other tasks $Z_{i,t}=0$.
 
 
 We call this algorithm {\em SHAMPO} for SHared Annotator for Multiple PrOblems. 
-The pseudo-code of this algorithm appears  in \figref{alg:SHAMPO_FO}.
+The pseudo-code of this algorithm appears  in \algoref{alg:SHAMPO_FO}.
 
-\label{sec:alg}
-\begin{figure}[h]
-\paragraph{Parameters:}$b\in\mathbb{R}>0$.
-\paragraph{Initialize:} $\vwi{i,0}=\vzero$ for $i=1\comdots K$
-\paragraph{For}  {$t=1,2, ..., n$} 
+\begin{algorithm}[h]
+\begin{algorithmic}
+   \State \textbf{Parameters:}  $b\in\mathbb{R}>0$.
+   \State \textbf{Initialize:} $\vwi{i,0}=\vzero$ for $i=1\comdots K$\\
+   \For {$t=1,2, ..., n$} 
 \begin{enumerate}
 \nolineskips
 \item Observe $K$ instance vectors, $\vxiit$, ($i=1 \comdots K$).
@@ -151,14 +151,11 @@ D_t &=
 &\vwi{i,t} ~~= \vwi{i,t-1}  \textrm{ for } i \neq J_t \nonumber
 \end{align}
 \end{enumerate}
-\paragraph{End for} 
-\paragraph{Output}: $\vwi{i,n}$ for $i=1 \comdots K$.
+   \EndFor  
+   \State {\bf Output}: $\vwi{i,n}$ for $i=1 \comdots K$.
+\end{algorithmic}
 \caption{SHAMPO: SHared Annotator for Multiple PrOblems. \label{alg:SHAMPO_FO}}
-\end{figure}  
-
-\fbox{We conclude} this section  by noting that the algorithm can be incorporated with
-Mercer-kernels as all operations depend implicitly on inner-product
-between inputs.
+\end{algorithm}
 
 The following theorem states that the expected cumulative number of mistakes
 that the algorithm makes, may not be higher than for an algorithm that
@@ -320,8 +317,6 @@ Plugging \eqref{eq:introducing_delta} in \eqref{step_3_in_proof} we get,
 \end{equation}
 Summing up the last inequality over all $K$ tasks and setting $\delta
 = \max_i \delta_i$ yields, 
-\fbox{try to replace with $\min_i{\delta_i}\le\delta
-\le\max_i \delta_i$}  
 \begin{equation}
 \begin{split}
 \frac{1}{\delta}\mathbb{E}\left[ \sum_{i=1}^{K}\sum_{t=1}^{n}{M_{i,t}} \right]
@@ -354,8 +349,6 @@ $L_{\gamma,n}$ leads to the following bound,
 \end{equation*}
 which has the same dependency in the number of inputs $n$ as algorithm
 that observes all of them.
-\fbox{show this statement}
-
 
 We continue now with an analysis of an extension of our
 algorithm that allows more than a single query per round. In this setting, the ability  
@@ -385,7 +378,6 @@ ${\bar L}^\kappa_{\gamma,n}$ is the expected loss of $K$ models
 $\{\vui{i}\}$ over the $\kappa$ instances that are annotated per round
 $t$.
 \end{corollary}
- \fbox{show full proof}
 \begin{proof}
   We follow the proof of \thmref{thm:bound} until \eqref{final_eq}. We
   repeat the process $\kappa$ times, and get the equivalent inequality
@@ -441,11 +433,11 @@ low ($G_{J_i,t}=1$). Note that these events are mutually exclusive thus, for sim
 indicator which is  $U_{i,t}=M_{i,t}+G_{i,t}$. This indicator is  $U_{i,t}=1$ on update trials and  $U_{i,t}=1$
 when no update has been made.
 
-\label{sec:FO_aggressive_alg}
-\begin{figure}[h]
-\paragraph{Parameters:}$b, \lambda \in\mathbb{R}>0$.
-\paragraph{Initialize:} $\vwi{i,0}=\vzero$ for $i=1\comdots K$
-\paragraph{For}  {$t=1,2, ..., n$} 
+\begin{algorithm}[h]
+\begin{algorithmic}
+   \State \textbf{Parameters:}  $b, \lambda \in\mathbb{R}>0$.
+   \State \textbf{Initialize:}  $\vwi{i,0}=\vzero$ for $i=1\comdots K$ \\
+   \For {$t=1,2, ..., n$} 
 \begin{enumerate}
 \nolineskips
 \item Observe $K$ instance vectors, $\vxiit$, ($i=1 \comdots K$).
@@ -467,10 +459,14 @@ D_t &=
 &\vwi{i,t} ~~= \vwi{i,t-1}  \textrm{ for } i \neq J_t \nonumber
 \end{align}
 \end{enumerate}
-\paragraph{End for} 
-\paragraph{Output}: $\vwi{i,n}$ for $i=1 \comdots K$.
+   \EndFor  
+   \State {\bf Output}: $\vwi{i,n}$ for $i=1 \comdots K$.
+\end{algorithmic}
 \caption{SHAMPO aggressive perceptron. \label{alg:SHAMPO_FO}}
-\end{figure}        
+\end{algorithm}    
+
+
+  
 
 
 \begin{theorem}
@@ -636,8 +632,6 @@ the others. In this case, we would like to add this prior knowledge to the distr
 exploration will be done with  a prior distribution. This is especially important in the first steps of the 
 algorithms when instead starting in pure uniform exploration (since we initialize our model vectors, $\vwi{i,0}=\vzero$)  
 we can start with a reasonable prior distribution.
-\fbox{Try to simulate the algorithm with varying in time $a_i$ prion that uses the distance between the centers of queried labeles of the task
-divided by the variance of the tasks in each direction or divided by the distance between the two most far examples   }
 In order to do that we change the probability to be 
 
 \begin{equation*}
@@ -803,12 +797,13 @@ Using those three new parameter we introduce the adaptive version of $b$
 b_{i,t-1}=\beta X_{i,t} \sqrt{1+N_{i,t-1}}
 \]
  The adaptive version of the  SHAMPO perceptron algorithm is  described in  \figref{alg:SHAMPO_adaptive}. 
- 
- \begin{figure}[h]
-\paragraph{Parameters:}$\beta\in\mathbb{R}>0$.
-\paragraph{Initialize:} $\vwi{i,0}=\vzero$ for $i=1\comdots K$
-\paragraph{For}  {$t=1,2, ..., n$} 
-\begin{enumerate}
+
+\begin{algorithm}[h]
+\begin{algorithmic}
+   \State \textbf{Parameters:}  $\beta\in\mathbb{R}>0$.
+   \State \textbf{Initialize:} $\vwi{i,0}=\vzero$ for $i=1\comdots K$\\
+   \For {$t=1,2, ..., n$} 
+   \begin{enumerate}
 \nolineskips
 \item Observe $K$ instance vectors, $\vxiit$, ($i=1 \comdots K$).
 \item Compute margins $\hat{p}_{i,t}=\vwti{i,t-1} \vxiit$.
@@ -830,11 +825,11 @@ Where $b_{i,t} = \beta X_{i,t}^2\sqrt{1+N_{i,t}}$.
 &\vwi{i,t} ~~= \vwi{i,t-1}  \textrm{ for } i \neq J_t \nonumber\\
 &N_{J_t,t} = N_{J_t,t} +M_{J_t,t} \nonumber
 \end{align}
-\end{enumerate}
-\paragraph{End for} 
-\paragraph{Output}: $\vwi{i,n}$ for $i=1 \comdots K$.
+\end{enumerate}   \EndFor  
+   \State {\bf Output}: $\vwi{i,n}$ for $i=1 \comdots K$.
+\end{algorithmic}
 \caption{Adaptive SHAMPO algorithm \label{alg:SHAMPO_adaptive}}
-\end{figure}  
+\end{algorithm}
 
 \begin{theorem}
   If adaptive SHAMPO algorithm runs on $K$ tasks with $K$ parallel example pair

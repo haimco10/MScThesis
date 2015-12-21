@@ -70,7 +70,8 @@ conditional expectation $\Exp{x \vert Z_{1},\ldots Z_{t-1}}$ given all previous 
 
 
 Schematic illustration of a single iteration of multi-task algorithms is shown in \figref{fig:ilustration}. 
-The top panel shows the standard setting of online multi-task algorithms with a shared annotator, that labels all inputs, which are fed to the corresponding algorithms to update corresponding models. The
+The top panel shows the standard setting of online multi-task algorithms with a shared annotator, that 
+labels all inputs, which are fed to the corresponding algorithms to update corresponding models. The
 bottom panel shows the SHAMPO algorithm, which couples labeling
 annotation and learning process, and synchronizes a single annotation
 per round.  At most one task performs an update per round, the one
@@ -83,5 +84,21 @@ with the annotated input.
 \label{fig:ilustration}
 \end{centering}
 \end{figure}
+
+As we have mentioned before, our setting is similar to the Selective Sampling 
+case, in a sense that at every round we ask a single binary question. However, 
+while the Selective Sampling algorithm asks ``when'' to issue a query, at each time step, our SAHMPO 
+algorithm asks on ``which one'' of the tasks to issue a query. As a result, when 
+we run multi-task problem as an independent Selective sampling tasks, we allow 
+at each round, to query more than one query, or even less than one query, i.e. 
+not asking for a feedback at all. The SHAMPO setting on the other hand, is more 
+limited, since for every round, the algorithm  issue one, and only one query. An 
+example for the difference between the Selective Sampling multi-task problem and 
+the SHAMPO setting is \tabref{tab:multitask_selective_sampling_example} and 
+\tabref{tab:multitask_SHAMPO_example}. Where the cells are assigned with 'Q' (Queried) for tasks and 
+rounds that the algorithm issue a query, and with 'NQ' (Not Queried) on tasks 
+and rounds that the algorithm decided not to issue a query.
+
+
 
 

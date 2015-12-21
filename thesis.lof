@@ -5,35 +5,43 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {\@@number {3.1}}{\ignorespaces Example for the using of the margin as a certainty measure. The circles and crosses represent two different classes and the separate hyperplane is shown. One of the circles examples have lower margin than the other, so its label can easily been replaced with the other one.}}{10}{figure.3.1}
 \contentsline {figure}{\numberline {\@@number {3.2}}{\ignorespaces Example of the distribution over 2 tasks.}}{12}{figure.3.2}
-\contentsline {figure}{\numberline {\@@number {3.3}}{\ignorespaces SHAMPO: SHared Annotator for Multiple PrOblems. }}{13}{figure.3.3}
-\contentsline {figure}{\numberline {\@@number {3.4}}{\ignorespaces SHAMPO aggressive perceptron. }}{19}{figure.3.4}
-\contentsline {figure}{\numberline {\@@number {3.5}}{\ignorespaces Adaptive SHAMPO algorithm }}{35}{figure.3.5}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\addvspace {10\p@ }
-\contentsline {figure}{\numberline {\@@number {6.1}}{\ignorespaces test error}}{50}{figure.6.1}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {MNIST one-vs-one}}}{50}{figure.6.1}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {MNIST one-vs-rest}}}{50}{figure.6.1}
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {USPS one-vs-one}}}{50}{figure.6.1}
-\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {USPS one-vs-rest}}}{50}{figure.6.1}
-\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {VJ one-vs-one}}}{50}{figure.6.1}
-\contentsline {subfigure}{\numberline {(f)}{\ignorespaces {VJ one-vs-rest}}}{50}{figure.6.1}
-\contentsline {subfigure}{\numberline {(g)}{\ignorespaces {NLP ove-vs-one}}}{50}{figure.6.1}
-\contentsline {figure}{\numberline {\@@number {6.2}}{\ignorespaces train }}{51}{figure.6.2}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {MNIST one-vs-one}}}{51}{figure.6.2}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {MNIST one-vs-rest}}}{51}{figure.6.2}
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {USPS one-vs-one}}}{51}{figure.6.2}
-\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {USPS one-vs-rest}}}{51}{figure.6.2}
-\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {VJ one-vs-one}}}{51}{figure.6.2}
-\contentsline {subfigure}{\numberline {(f)}{\ignorespaces {VJ one-vs-rest}}}{51}{figure.6.2}
-\contentsline {subfigure}{\numberline {(g)}{\ignorespaces {NLP one-vs-one}}}{51}{figure.6.2}
-\contentsline {figure}{\numberline {\@@number {6.3}}{\ignorespaces train error queried vs all -FO algorithm}}{52}{figure.6.3}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {MNIST one-vs-one}}}{52}{figure.6.3}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {MNIST one-vs-rest}}}{52}{figure.6.3}
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {USPS one-vs-one}}}{52}{figure.6.3}
-\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {USPS one-vs-rest}}}{52}{figure.6.3}
-\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {VJ one-vs-one}}}{52}{figure.6.3}
-\contentsline {subfigure}{\numberline {(f)}{\ignorespaces {VJ one-vs-rest}}}{52}{figure.6.3}
-\contentsline {subfigure}{\numberline {(g)}{\ignorespaces {NLP one-vs-one}}}{52}{figure.6.3}
+\contentsline {figure}{\numberline {\@@number {5.1}}{\ignorespaces Test error of aggressive SHAMPO on (a) four and (b) eight binary text classification tasks. Three algorithms are evaluated: uniform, exploit, and aggressive SHAMPO with $\lambda =b/2$. }}{54}{figure.5.1}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {4 text classification tasks}}}{54}{figure.5.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {8 text classification tasks}}}{54}{figure.5.1}
+\contentsline {figure}{\numberline {\@@number {5.2}}{\ignorespaces Multi-class error on VJ data for three bandit reductions and the banditron.}}{57}{figure.5.2}
+\contentsline {figure}{\numberline {\@@number {5.3}}{\ignorespaces train error queried vs all -FO algorithm}}{59}{figure.5.3}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {MNIST one-vs-one}}}{59}{figure.5.3}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {MNIST one-vs-rest}}}{59}{figure.5.3}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {USPS one-vs-one}}}{59}{figure.5.3}
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {USPS one-vs-rest}}}{59}{figure.5.3}
+\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {VJ one-vs-one}}}{59}{figure.5.3}
+\contentsline {subfigure}{\numberline {(f)}{\ignorespaces {VJ one-vs-rest}}}{59}{figure.5.3}
+\contentsline {subfigure}{\numberline {(g)}{\ignorespaces {NLP one-vs-one}}}{59}{figure.5.3}
+\contentsline {figure}{\numberline {\@@number {5.4}}{\ignorespaces test error}}{60}{figure.5.4}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {MNIST one-vs-one}}}{60}{figure.5.4}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {MNIST one-vs-rest}}}{60}{figure.5.4}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {USPS one-vs-one}}}{60}{figure.5.4}
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {USPS one-vs-rest}}}{60}{figure.5.4}
+\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {VJ one-vs-one}}}{60}{figure.5.4}
+\contentsline {subfigure}{\numberline {(f)}{\ignorespaces {VJ one-vs-rest}}}{60}{figure.5.4}
+\contentsline {subfigure}{\numberline {(g)}{\ignorespaces {NLP ove-vs-one}}}{60}{figure.5.4}
+\contentsline {figure}{\numberline {\@@number {5.5}}{\ignorespaces train }}{61}{figure.5.5}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {MNIST one-vs-one}}}{61}{figure.5.5}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {MNIST one-vs-rest}}}{61}{figure.5.5}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {USPS one-vs-one}}}{61}{figure.5.5}
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {USPS one-vs-rest}}}{61}{figure.5.5}
+\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {VJ one-vs-one}}}{61}{figure.5.5}
+\contentsline {subfigure}{\numberline {(f)}{\ignorespaces {VJ one-vs-rest}}}{61}{figure.5.5}
+\contentsline {subfigure}{\numberline {(g)}{\ignorespaces {NLP one-vs-one}}}{61}{figure.5.5}
+\contentsline {figure}{\numberline {\@@number {5.6}}{\ignorespaces scatter kjkulk jkhj }}{62}{figure.5.6}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {MNIST one-vs-one}}}{62}{figure.5.6}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {MNIST one-vs-rest}}}{62}{figure.5.6}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {USPS one-vs-one}}}{62}{figure.5.6}
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {USPS one-vs-rest}}}{62}{figure.5.6}
+\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {VJ one-vs-one}}}{62}{figure.5.6}
+\contentsline {subfigure}{\numberline {(f)}{\ignorespaces {VJ one-vs-rest}}}{62}{figure.5.6}
+\contentsline {subfigure}{\numberline {(g)}{\ignorespaces {NLP one-vs-one}}}{62}{figure.5.6}
 \addvspace {10\p@ }
 \addvspace {10\p@ }

@@ -79,24 +79,24 @@
         <attribute name="name" type="string">Seminar_haim</attribute>
         <attribute name="folder" type="string">/Users/haimcohen/Dropbox/HaimKoby/MScThesis/Seminar 2015</attribute>
         <relationship name="mainfile" type="1/1" destination="FILE" idrefs="z113"></relationship>
-        <relationship name="selected" type="1/1" destination="FILE"></relationship>
+        <relationship name="selected" type="1/1" destination="FILE" idrefs="z113"></relationship>
         <relationship name="settings" type="1/1" destination="SETTINGS" idrefs="z102"></relationship>
         <relationship name="uisettings" type="1/1" destination="UISETTINGS" idrefs="z104"></relationship>
-        <relationship name="items" type="0/0" destination="PROJECTITEM" idrefs="z105 z106 z107 z108 z109 z110 z111 z112 z113 z114 z115 z116 z117 z118 z119 z120 z121"></relationship>
+        <relationship name="items" type="0/0" destination="PROJECTITEM" idrefs="z108 z117 z106 z110 z114 z116 z112 z107 z113 z119 z120 z118 z115 z111 z105 z109 z121"></relationship>
     </object>
     <object type="UISETTINGS" id="z104">
-        <attribute name="pdfviewscrollrect" type="string">{{0, 0}, {0, 0}}</attribute>
+        <attribute name="pdfviewscrollrect" type="string">{{0, 10987.838821492191}, {371, 500.8821490456321}}</attribute>
         <attribute name="showpdfthumbnails" type="bool">0</attribute>
         <attribute name="selectedcontrolstab" type="int16">0</attribute>
         <attribute name="maxoutlinedepth" type="int16">7</attribute>
         <attribute name="logoutputlevel" type="int16">0</attribute>
-        <attribute name="editorwidth" type="float">694</attribute>
+        <attribute name="editorwidth" type="float">624</attribute>
         <attribute name="controlswidth" type="float">220</attribute>
         <attribute name="consoleview" type="int16">0</attribute>
         <relationship name="project" type="1/1" destination="PROJECT" idrefs="z103"></relationship>
     </object>
     <object type="FILE" id="z105">
-        <attribute name="wasopen" type="bool">0</attribute>
+        <attribute name="wasopen" type="bool">8</attribute>
         <attribute name="lasteditdate" type="date">471537055.11138898134231567383</attribute>
         <attribute name="istext" type="bool">0</attribute>
         <attribute name="fileloaddate" type="date">471537055.11138600111007690430</attribute>
@@ -112,7 +112,7 @@
         <relationship name="bookmarks" type="0/0" destination="BOOKMARK"></relationship>
     </object>
     <object type="FILE" id="z106">
-        <attribute name="wasopen" type="bool">0</attribute>
+        <attribute name="wasopen" type="bool">3</attribute>
         <attribute name="lasteditdate" type="date">471537055.08850902318954467773</attribute>
         <attribute name="istext" type="bool">0</attribute>
         <attribute name="fileloaddate" type="date">471537055.08850502967834472656</attribute>
@@ -144,10 +144,10 @@
         <relationship name="bookmarks" type="0/0" destination="BOOKMARK"></relationship>
     </object>
     <object type="TEXFILE" id="z108">
-        <attribute name="wasopen" type="bool">0</attribute>
+        <attribute name="wasopen" type="bool">11</attribute>
         <attribute name="lasteditdate" type="date">471537055.03122800588607788086</attribute>
         <attribute name="istext" type="bool">1</attribute>
-        <attribute name="fileloaddate" type="date">471537055.03122299909591674805</attribute>
+        <attribute name="fileloaddate" type="date">471683782.95702201128005981445</attribute>
         <attribute name="extension" type="string">tex</attribute>
         <attribute name="sortindex" type="int32">1</attribute>
         <attribute name="name" type="string">prela.tex</attribute>
@@ -160,7 +160,7 @@
         <relationship name="bookmarks" type="0/0" destination="BOOKMARK"></relationship>
     </object>
     <object type="FILE" id="z109">
-        <attribute name="wasopen" type="bool">0</attribute>
+        <attribute name="wasopen" type="bool">7</attribute>
         <attribute name="lasteditdate" type="date">471537055.18977302312850952148</attribute>
         <attribute name="istext" type="bool">0</attribute>
         <attribute name="fileloaddate" type="date">471537055.18976902961730957031</attribute>
@@ -176,7 +176,7 @@
         <relationship name="bookmarks" type="0/0" destination="BOOKMARK"></relationship>
     </object>
     <object type="FILE" id="z110">
-        <attribute name="wasopen" type="bool">0</attribute>
+        <attribute name="wasopen" type="bool">9</attribute>
         <attribute name="lasteditdate" type="date">471537055.09731298685073852539</attribute>
         <attribute name="istext" type="bool">0</attribute>
         <attribute name="fileloaddate" type="date">471537055.09731000661849975586</attribute>
@@ -200,7 +200,7 @@
         <relationship name="children" type="0/0" destination="PROJECTITEM" idrefs="z105 z106 z107 z109 z110 z114 z112 z115 z116 z117 z118 z119 z120 z121"></relationship>
     </object>
     <object type="FILE" id="z112">
-        <attribute name="wasopen" type="bool">0</attribute>
+        <attribute name="wasopen" type="bool">13</attribute>
         <attribute name="lasteditdate" type="date">471537055.13955700397491455078</attribute>
         <attribute name="istext" type="bool">0</attribute>
         <attribute name="fileloaddate" type="date">471537055.13955301046371459961</attribute>
@@ -216,10 +216,12 @@
         <relationship name="bookmarks" type="0/0" destination="BOOKMARK"></relationship>
     </object>
     <object type="TEXFILE" id="z113">
-        <attribute name="wasopen" type="bool">0</attribute>
-        <attribute name="lasteditdate" type="date">471537055.01964902877807617188</attribute>
+        <attribute name="visiblerect" type="string">{{66, 1357}, {597, 543}}</attribute>
+        <attribute name="cursor" type="string">{2394, 0}</attribute>
+        <attribute name="wasopen" type="bool">6</attribute>
+        <attribute name="lasteditdate" type="date">471691111.84510302543640136719</attribute>
         <attribute name="istext" type="bool">1</attribute>
-        <attribute name="fileloaddate" type="date">471537055.01962000131607055664</attribute>
+        <attribute name="fileloaddate" type="date">471691115.83869600296020507812</attribute>
         <attribute name="extension" type="string">tex</attribute>
         <attribute name="sortindex" type="int32">0</attribute>
         <attribute name="name" type="string">Seminar_haim.tex</attribute>
@@ -232,7 +234,7 @@
         <relationship name="bookmarks" type="0/0" destination="BOOKMARK"></relationship>
     </object>
     <object type="FILE" id="z114">
-        <attribute name="wasopen" type="bool">0</attribute>
+        <attribute name="wasopen" type="bool">1</attribute>
         <attribute name="lasteditdate" type="date">471537055.10735201835632324219</attribute>
         <attribute name="istext" type="bool">0</attribute>
         <attribute name="fileloaddate" type="date">471537055.10734897851943969727</attribute>
@@ -248,7 +250,7 @@
         <relationship name="bookmarks" type="0/0" destination="BOOKMARK"></relationship>
     </object>
     <object type="FILE" id="z115">
-        <attribute name="wasopen" type="bool">0</attribute>
+        <attribute name="wasopen" type="bool">12</attribute>
         <attribute name="lasteditdate" type="date">471537055.18756097555160522461</attribute>
         <attribute name="istext" type="bool">0</attribute>
         <attribute name="fileloaddate" type="date">471537055.18755799531936645508</attribute>
@@ -264,7 +266,7 @@
         <relationship name="bookmarks" type="0/0" destination="BOOKMARK"></relationship>
     </object>
     <object type="FILE" id="z116">
-        <attribute name="wasopen" type="bool">0</attribute>
+        <attribute name="wasopen" type="bool">5</attribute>
         <attribute name="lasteditdate" type="date">471537055.09611600637435913086</attribute>
         <attribute name="istext" type="bool">0</attribute>
         <attribute name="fileloaddate" type="date">471537055.09611201286315917969</attribute>
@@ -280,7 +282,7 @@
         <relationship name="bookmarks" type="0/0" destination="BOOKMARK"></relationship>
     </object>
     <object type="FILE" id="z117">
-        <attribute name="wasopen" type="bool">0</attribute>
+        <attribute name="wasopen" type="bool">10</attribute>
         <attribute name="lasteditdate" type="date">471537055.14113497734069824219</attribute>
         <attribute name="istext" type="bool">0</attribute>
         <attribute name="fileloaddate" type="date">471537055.14113301038742065430</attribute>
@@ -296,7 +298,7 @@
         <relationship name="bookmarks" type="0/0" destination="BOOKMARK"></relationship>
     </object>
     <object type="FILE" id="z118">
-        <attribute name="wasopen" type="bool">0</attribute>
+        <attribute name="wasopen" type="bool">4</attribute>
         <attribute name="lasteditdate" type="date">471537055.14597797393798828125</attribute>
         <attribute name="istext" type="bool">0</attribute>
         <attribute name="fileloaddate" type="date">471537055.14597499370574951172</attribute>
@@ -312,7 +314,7 @@
         <relationship name="bookmarks" type="0/0" destination="BOOKMARK"></relationship>
     </object>
     <object type="FILE" id="z119">
-        <attribute name="wasopen" type="bool">0</attribute>
+        <attribute name="wasopen" type="bool">14</attribute>
         <attribute name="lasteditdate" type="date">471537055.19447702169418334961</attribute>
         <attribute name="istext" type="bool">0</attribute>
         <attribute name="fileloaddate" type="date">471537055.19447201490402221680</attribute>
@@ -328,7 +330,7 @@
         <relationship name="bookmarks" type="0/0" destination="BOOKMARK"></relationship>
     </object>
     <object type="FILE" id="z120">
-        <attribute name="wasopen" type="bool">0</attribute>
+        <attribute name="wasopen" type="bool">2</attribute>
         <attribute name="lasteditdate" type="date">471537055.19854497909545898438</attribute>
         <attribute name="istext" type="bool">0</attribute>
         <attribute name="fileloaddate" type="date">471537055.19853997230529785156</attribute>
@@ -344,7 +346,7 @@
         <relationship name="bookmarks" type="0/0" destination="BOOKMARK"></relationship>
     </object>
     <object type="FILE" id="z121">
-        <attribute name="wasopen" type="bool">0</attribute>
+        <attribute name="wasopen" type="bool">15</attribute>
         <attribute name="lasteditdate" type="date">471537055.20315700769424438477</attribute>
         <attribute name="istext" type="bool">0</attribute>
         <attribute name="fileloaddate" type="date">471537055.20315200090408325195</attribute>
