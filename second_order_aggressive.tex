@@ -5,7 +5,7 @@
 \begin{algorithmic}
    \State \textbf{Parameters:}  $c\in\mathbb{R}>0$.
    \State \textbf{Initialize:} $\vwi{i,0}=\vzero$, $A_0=I$ \\
-   \For {$t=1,2, ..., n$} 
+   \For {$t=1,2, \ldots, n$} 
      \begin{enumerate}
      \nolineskips
      \item Observe $K$ instance vectors, $\vxiit$, ($i=1 \comdots K$).
@@ -20,7 +20,7 @@
      D_t &=2c
      \sum_i \paren{2c+\paren{\Theta\paren{\abs{\hat{p}_{i,t}},r_{i,t}}}_+}^{-1}. \nonumber
      \end{align}
-     Where $m,i\in\{1,...,K\}$ and $D_t$ is the normalization factor. \\
+     Where $m,i\in\{1,\ldots,K\}$ and $D_t$ is the normalization factor. \\
      Set $Z_{J,t}=1,~Z_{i,t}=0 , ~\forall i\ne J $.
 
      
@@ -45,7 +45,7 @@
    \EndFor  
    \State {\bf Output}: $\vwi{i,n}$ for $i=1 \comdots K$.
 \end{algorithmic}
-\caption{Second order aggressive SHAMPO. \label{alg:SHAMPO}}
+\caption{Second order aggressive SHAMPO.}\label{alg:SHAMPO}
 \end{algorithm}
 
 All the algorithms that were shown so far, exploited the uncertainty of the algorithm prediction using 
@@ -60,7 +60,7 @@ An aggressive update was applied as well, based on the same measure.
 We adapt this approach to our setting of multitask learning sharing a single annotator. First, we introduce 
 another quantity that is the projection of the vector $\vxiit$ on the inverse of the covariance-like matrix $A_{i,t-1}$ 
 \[
-r_{i,t} = \vxiit^TA_{i,t-1}^{-1}\vxiit
+r_{i,t} = \vxiit^{T}A_{i,t-1}^{-1}\vxiit
 \]
 We can think about this quantity as an uncertainty measure. Where large values of $r_{i,t}$ 
 represent high uncertainty, whereas small value of the same quantity are related 

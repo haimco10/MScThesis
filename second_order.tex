@@ -1,11 +1,11 @@
 \section{Second Order SHAMPO}
 Te second order version of the perceptron algorithm, was proposed and analyzed by 
-\cite{CesaBianchiCoGe05}. This algorithm was adopted to the online binary classification 
+~\cite{CesaBianchiCoGe05}. This algorithm was adopted to the online binary classification 
 settings from the ridge-regression (squared loss and Euclidean regularization) framework as described by 
-\cite{hoerl1970ridge} and \cite{Vovk97}, and further analyzed in \cite{AzouryWa01} and  \cite{forster2002relative}. 
+~\cite{hoerl1970ridge} and ~\cite{Vovk97}, and further analyzed in ~\cite{AzouryWa01} and  ~\cite{forster2002relative}. 
 It was also shown that this variation has the effect of reducing the number of mistakes compare to the first order version. 
-\cite{DBLP:journals/jmlr/Cesa-BianchiGZ06a} also adapted the second order 
-perceptron algorithm to the selective sampling case, which was extended later by \cite{crammer2014doubly}.
+~\cite{DBLP:journals/jmlr/Cesa-BianchiGZ06a} also adapted the second order 
+perceptron algorithm to the selective sampling case, which was extended later by ~\cite{crammer2014doubly}.
 
 In this algorithm, we store and update two quantities per task instead of one, the matrix 
 $A_{i,t} = I+\sum_{t}M_{i,t}Z_{i,t}\vxiit\vxiit^T$ and the vector $\vwi{i,t} = \sum_{t}M_{i,t}Z_{i,t} \vxi{i,t}  \yi{i,t}$.
@@ -17,7 +17,7 @@ The pseudo code of the second order SHAMPO is shown in \algoref{alg:SO_SHAMPO}
 \begin{theorem}
   If second order SHAMPO algorithm runs on $K$ tasks with $K$ parallel example pair
   sequences
-  $(\vxi{i,1},y_{i,1}),...(\vxi{i,n},y_{i,n})\in\mathbb{R}^d\times\{-1,1\}$,
+  $(\vxi{i,1},y_{i,1}),\ldots (\vxi{i,n},y_{i,n})\in\mathbb{R}^d\times\{-1,1\}$,
   $i=1,...,K$ with input parameter $b>0$, then for all $\gamma>0$, all
   $\vui{i}\in\mathbb{R}^d$ and all $n\ge1$, there exists $0<\delta\le K$, such that,
   \begin{equation*}
@@ -70,8 +70,8 @@ $i$ up to the round $t$ by
 \begin{equation*}
 \Phi_{i,t}(\vu_i)=\half\normt{\vu_i}+\half\sum_{s=1}^{t}{Z_{i,t}M_{i,t}\paren{y_{i,t}-\vu_i^T\vx_{i,t}}}^2.
 \end{equation*}
-It was proved by \cite{Forster} in the linear regression case and adopted by
-~\cite{cesa2006worst} and Crammer \cite{crammer2014doubly} for the second order classification that of the single task,
+It was proved by ~\cite{Forster} in the linear regression case and adopted by
+~\cite{cesa2006worst} and Crammer ~\cite{crammer2014doubly} for the second order classification that of the single task,
 \begin{equation*}
 \begin{split}
 \half Z_{i,t}M_{i,t}\paren{y_{i,t}-\hat{p}_{i,t}}^{2}= &\inf_{\vu_i}{\Phi_{i,t+1}}(\vu_i)-\inf_{\vu_i}{\Phi_{i,t}}(\vu_i)
@@ -115,7 +115,7 @@ in the form
 \end{split}
 \end{equation} 
 % https://books.google.co.il/books?hl=en&lr=&id=Pd8bQNTjLEcC&oi=fnd&pg=PA269&ots=IU3lTn2wbb&sig=xFEXkSmP51J1rmXlFvCMa1SCXYU&redir_esc=y#v=onepage&q&f=false
-Denote the $k_i^{th}$ eigenvalue of the matrix $A_{i,n}$ by $1+\lambda_{i,k}$, as proved by \cite{Forster},
+Denote the $k_i^{th}$ eigenvalue of the matrix $A_{i,n}$ by $1+\lambda_{i,k}$, as proved by ~\cite{Forster},
 we  bound the last term  by
 
 \begin{equation} \label{eq:so_third_step}
@@ -127,7 +127,7 @@ we  bound the last term  by
 \end{split}
 \end{equation} 
 
-Plugging \eqref{eq:so_second_step} and \eqref{eq:so_third_step} back into \eqref{eq:so_first_step}  and dropping the positive term from 
+Plugging ~\eqref{eq:so_second_step} and ~\eqref{eq:so_third_step} back into ~\eqref{eq:so_first_step}  and dropping the positive term from 
 the left hand side, recall that on round when there is a mistake ($M_{i,t}=1$), $\hat{p}_{i,t}y_{i,t}\le0$ 
 , we obtain 
 \begin{equation*}
@@ -166,7 +166,7 @@ Taking the expectation from the right hand side the equation becomes
    + \frac{b^2}{2\gamma^2}\vu_i^T\mathbb{E}\brackets{A_{i,n}}\vu_i+ \half\sum_{k=1}^{d}\mathbb{E}\brackets{\ln\paren{1+\lambda_{i,k}}}.
 \end{split}
 \end{equation*} 
-We use now \eqref{eq:introducing_delta} and get
+We use now ~\eqref{eq:introducing_delta} and get
 \begin{equation*}
   \begin{split}
    \frac{b}{\delta_i}\mathbb{E}\brackets{\sum_{t=1}^{n}{M_{i,t}}}

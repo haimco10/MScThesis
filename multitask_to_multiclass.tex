@@ -23,9 +23,9 @@ reduction as a multiclass prediction algorithm.
 
 \begin{corollary}
 Assume the SHAMPO algorithm is executed as above with $K=C$ one-vs-rest problems, on a sequence 
-$(\vx_1,Y_1),...(\vx_n,Y_n)\in\mathbb{R}^d\times\{1,...,C\}$, and input parameter $b>0$  and prior 
+$(\vx_1,Y_1),\ldots,(\vx_n,Y_n)\in\mathbb{R}^d\times\{1,...,C\}$, and input parameter $b>0$  and prior 
 $1\le a_i\forall i$. Then for all $\gamma>0$ and all $\vui{i}\in\mathbb{R}^d$, there 
-exists $0<\delta\le \sum_{i=1}^Ca_{i}$ such that the expected number of multi-class errors is bounded as follows
+exists $0<\delta\le \sum_{i=1}^{C}a_{i}$ such that the expected number of multi-class errors is bounded as follows
  \[
  \begin{split}
  &\mathbb{E}\brackets{\sum_t \1{Y_t \neq \hat{Y}_t}}\\
@@ -64,7 +64,7 @@ We now analyze the performance of this reduction as a multiclass prediction algo
 
 \begin{corollary}
 Assume the SHAMPO algorithm is executed as above, with $K={C \choose 2}$ one-vs-one problems, 
-on a sequence $(\vx_1,Y_1),...(\vx_n,Y_n)\in\mathbb{R}^d\times\{1,...,C\}$, and input parameter 
+on a sequence $(\vx_1,Y_1),\ldots,(\vx_n,Y_n)\in\mathbb{R}^d\times\{1,\ldots,C\}$, and input parameter 
 $b>0$ and prior $1\le a_i\forall i$ . Then for all $\gamma>0$ and all $\vui{i}\in\mathbb{R}^d$, 
 there exists $0<\delta\le \sum_{i=1}^{C \choose 2}a_{i}$ such that the expected number of multi-class 
 errors can be bounded as follows
@@ -82,7 +82,7 @@ is bounded by the multitask errors with a constant factor as following,
 \[
 \1{Y_t \neq \hat{Y}_t} \leq \frac{2}{({C \choose 2}-1)/2+1}\sum_{i=1}^{ {C \choose 2}} M_{i,t}. 
 \]
-The last fact is derived from \cite{allwein2001reducing} analysis of the training error 
+The last fact is derived from ~\cite{allwein2001reducing} analysis of the training error 
 with the corresponding hamming distance of the ECOC matrix for the One-vs-One 
 setting. Note, that the bound is essentially  independent of $C$ as the coefficient in the bound is upper 
 bounded by $4$.
@@ -103,7 +103,7 @@ Perceptron's rule. Otherwise, the weights are updated such that the absolute mar
 as 
 \[
 \begin{split}
-\vert \vwti{J_t,t} \vxi{J_t,t} \vert &= \paren{\vwi{J_t,t-1}+ \eta \hyi{J_t,t}\vxi{J_t,t})^\top\vxi{J_t,t}}\\ 
+\vert \vwti{J_t,t} \vxi{J_t,t} \vert &= \paren{\vwi{J_t,t-1}+ \eta \hyi{J_t,t}\vxi{J_t,t})^{\top}\vxi{J_t,t}}\\ 
 &= \vert \vwti{J_t,t-1}\vxi{J_t,t}+ \eta \sign(\vwti{J_t,t-1}\vxi{J_t,t}) \Vert\vxi{J_t,t}\Vert^2 \vert\\
 &=\vert \vwti{J_t,t-1}\vxi{J_t,t}\vert + \eta \Vert\vxi{J_t,t}\Vert^2 >\vert \vwti{J_t,t-1}\vxi{J_t,t}\vert. 
 \end{split}

@@ -31,7 +31,7 @@ the $0$ to $9$ digits. The VJ project was built to enable individuals with motor
  and product domain categorization. A total of $36$ binary prediction tasks over all, with a total of 
  $252,609$ examples, and input dimension varying between $8,768$ and $1,447,866$. 
  Details of the individual binary tasks can be found elsewhere~\cite{Crammer:2012:CLC:2343676.2343704}.
-This yielded seven collections (USPS, MNIST and VJ; each as one-vs-rest or one-vs-one) and document 
+This yielded seven collections (USPS, MNIST and VJ\@; each as one-vs-rest or one-vs-one) and document 
 classification.
 
 \section{Hard and Easy Tasks }
@@ -51,7 +51,7 @@ on the problem where for each multitask problem, we sample uniformly from each g
 We evaluated two baselines as well as our algorithm. Algorithm {\em uniform} picks a random task to be 
 queried and updated (corresponding to $b\rightarrow\infty$), {\em exploit} which picks the tasks with the 
 lowest absolute margin (i.e. the ``hardest instance''), this combination corresponds to $b \approx 0$ of 
-SHAMPO. We tried for SHAMPO $13$ values for $b$, equally spaced on a logarithmic scale between 
+SHAMPO.\@ We tried for SHAMPO $13$ values for $b$, equally spaced on a logarithmic scale between 
 $10^{-7}$ and $10^{5}$. 
 All algorithms made a single pass over the training data.  We ran two versions of the our First Order algorithm: 
 plain version, without aggressiveness (updates on mistakes only, $\lambda=0$) and an 
@@ -225,17 +225,17 @@ $b$ automatically on-the-fly.
 
 \begin{figure}[!htb]
 \begin{centering}
-\subfigure[MNIST one-vs-one]{\includegraphics[width=0.4\textwidth]{figs/queried-m1.eps}\label{fig:bars1}}
-\subfigure[MNIST one-vs-rest]{\includegraphics[width=0.4\textwidth]{figs/queried-mr.eps}\label{fig:bars2}}
-\subfigure[USPS one-vs-one]{\includegraphics[width=0.4\textwidth]{figs/queried-u1.eps}\label{fig:bars1}}
-\subfigure[USPS one-vs-rest]{\includegraphics[width=0.4\textwidth]{figs/queried-ur.eps}\label{fig:bars2}}
-\subfigure[VJ one-vs-one]{\includegraphics[width=0.4\textwidth]{figs/queried-v1.eps}\label{fig:bars1}}
-\subfigure[VJ one-vs-rest]{\includegraphics[width=0.4\textwidth]{figs/queried-vr.eps}\label{fig:bars2}}
-\subfigure[NLP one-vs-one]{\includegraphics[width=0.4\textwidth]{figs/queried-n.eps}\label{fig:bars2}}
-\caption{train error queried vs all -FO algorithm}
+\subfigure[MNIST 
+one-vs-one]{\includegraphics[width=0.37\textwidth]{figs/queried-m1.eps}\label{fig:queried_m1}}\hfill
+\subfigure[MNIST one-vs-rest]{\includegraphics[width=0.37\textwidth]{figs/queried-mr.eps}\label{fig:queried_mr}}
+\subfigure[USPS one-vs-one]{\includegraphics[width=0.37\textwidth]{figs/queried-u1.eps}\label{fig:queried_u1}}\hfill
+\subfigure[USPS one-vs-rest]{\includegraphics[width=0.37\textwidth]{figs/queried-ur.eps}\label{fig:queried_ur}}
+\subfigure[VJ one-vs-one]{\includegraphics[width=0.37\textwidth]{figs/queried-v1.eps}\label{fig:queried_v1}}\hfill
+\subfigure[VJ one-vs-rest]{\includegraphics[width=0.37\textwidth]{figs/queried-vr.eps}\label{fig:queried_vr}}
+\subfigure[NLP one-vs-one]{\includegraphics[width=0.37\textwidth]{figs/queried-n.eps}\label{fig:queried_n}}
+\caption{Training error: queried vs all -FO algorithm, all datasets}
 \label{fig:queried}
 \end{centering}
-\vspace{-0.5cm}
 \end{figure}
 
 
@@ -260,31 +260,31 @@ hard-examples too much, as SHAMPO has a randomness mechanism.
 
  % In fact in the USPS dataset we found a good prior that can improves the performances.  In order to create this prior, we ran over the examples first simple perceptron algorithm with full feedback, and computes the prior as a fraction of the error from the initial run. The results are shown in \tabref{tab:table2} and as.  In addision, the results for the MIXED dataset support the claim that the tasks can comes from different fields and different dimensions.
 
-\begin{figure}[!t]
+\begin{figure}[t]
 \begin{centering}
-\subfigure[MNIST one-vs-one]{\includegraphics[width=0.4\textwidth]{figs/test-m1.eps}\label{fig:tst_err_m1}}
-\subfigure[MNIST one-vs-rest]{\includegraphics[width=0.4\textwidth]{figs/test-mr.eps}\label{fig:tst_err_mr}}
-\subfigure[USPS one-vs-one]{\includegraphics[width=0.4\textwidth]{figs/test-u1.eps}\label{fig:tst_err_u1}}
-\subfigure[USPS one-vs-rest]{\includegraphics[width=0.4\textwidth]{figs/test-ur.eps}\label{fig:tst_err_ur}}
-\subfigure[VJ one-vs-one]{\includegraphics[width=0.4\textwidth]{figs/test-v1.eps}\label{fig:tst_err_v1}}
-\subfigure[VJ one-vs-rest]{\includegraphics[width=0.4\textwidth]{figs/test-vr.eps}\label{fig:tst_err_vr}}
-\subfigure[NLP ove-vs-one]{\includegraphics[width=0.4\textwidth]{figs/test-n.eps}\label{fig:tst_err_n}}
-\caption{test error}
+\subfigure[MNIST one-vs-one]{\includegraphics[width=0.37\textwidth]{figs/test-m1.eps}\label{fig:tst_err_m1}}\hfill
+\subfigure[MNIST one-vs-rest]{\includegraphics[width=0.37\textwidth]{figs/test-mr.eps}\label{fig:tst_err_mr}}
+\subfigure[USPS one-vs-one]{\includegraphics[width=0.37\textwidth]{figs/test-u1.eps}\label{fig:tst_err_u1}}\hfill
+\subfigure[USPS one-vs-rest]{\includegraphics[width=0.37\textwidth]{figs/test-ur.eps}\label{fig:tst_err_ur}}
+\subfigure[VJ one-vs-one]{\includegraphics[width=0.37\textwidth]{figs/test-v1.eps}\label{fig:tst_err_v1}}\hfill
+\subfigure[VJ one-vs-rest]{\includegraphics[width=0.37\textwidth]{figs/test-vr.eps}\label{fig:tst_err_vr}}
+\subfigure[NLP ove-vs-one]{\includegraphics[width=0.37\textwidth]{figs/test-n.eps}\label{fig:tst_err_n}}
+\caption{Testing error - all datasets and algorithms}
 \label{fig:test_errors}
 \end{centering}
-\vspace{-0.5cm}
+%\vspace{-0.5cm}
 \end{figure}
 
 \begin{figure}[!t]
 \begin{centering}
-\subfigure[MNIST one-vs-one]{\includegraphics[width=0.4\textwidth]{figs/train-m1.eps}\label{fig:bars1}}
-\subfigure[MNIST one-vs-rest]{\includegraphics[width=0.4\textwidth]{figs/train-mr.eps}\label{fig:bars2}}
-\subfigure[USPS one-vs-one]{\includegraphics[width=0.4\textwidth]{figs/train-u1.eps}\label{fig:bars1}}
-\subfigure[USPS one-vs-rest]{\includegraphics[width=0.4\textwidth]{figs/train-ur.eps}\label{fig:bars2}}
-\subfigure[VJ one-vs-one]{\includegraphics[width=0.4\textwidth]{figs/train-v1.eps}\label{fig:bars1}}
-\subfigure[VJ one-vs-rest]{\includegraphics[width=0.4\textwidth]{figs/train-vr.eps}\label{fig:bars2}}
-\subfigure[NLP one-vs-one]{\includegraphics[width=0.4\textwidth]{figs/train-n.eps}\label{fig:bars2}}
-\caption{train }
+\subfigure[MNIST one-vs-one]{\includegraphics[width=0.37\textwidth]{figs/train-m1.eps}\label{fig:trn_err_m1}}\hfill
+\subfigure[MNIST one-vs-rest]{\includegraphics[width=0.37\textwidth]{figs/train-mr.eps}\label{fig:trn_err_mr}}
+\subfigure[USPS one-vs-one]{\includegraphics[width=0.37\textwidth]{figs/train-u1.eps}\label{fig:trn_err_u1}}\hfill
+\subfigure[USPS one-vs-rest]{\includegraphics[width=0.37\textwidth]{figs/train-ur.eps}\label{fig:trn_err_ur}}
+\subfigure[VJ one-vs-one]{\includegraphics[width=0.37\textwidth]{figs/train-v1.eps}\label{fig:trn_err_v1}}\hfill
+\subfigure[VJ one-vs-rest]{\includegraphics[width=0.37\textwidth]{figs/train-vr.eps}\label{fig:trn_err_vr}}
+\subfigure[NLP one-vs-one]{\includegraphics[width=0.37\textwidth]{figs/train-n.eps}\label{fig:trn_err_n}}
+\caption{Training error - all datasets and algorithms}
 \label{fig:train_errors}
 \end{centering}
 \vspace{-0.5cm}
@@ -293,14 +293,14 @@ hard-examples too much, as SHAMPO has a randomness mechanism.
 
 \begin{figure}[!t]
 \begin{centering}
-\subfigure[MNIST one-vs-one]{\includegraphics[width=0.4\textwidth]{figs/scatter-m1.eps}\label{fig:scatter_m1}}
-\subfigure[MNIST one-vs-rest]{\includegraphics[width=0.4\textwidth]{figs/scatter-mr.eps}\label{fig:scatter_mr}}
-\subfigure[USPS one-vs-one]{\includegraphics[width=0.4\textwidth]{figs/scatter-u1.eps}\label{fig:scatter_u1}}
-\subfigure[USPS one-vs-rest]{\includegraphics[width=0.4\textwidth]{figs/scatter-ur.eps}\label{fig:scatter_ur}}
-\subfigure[VJ one-vs-one]{\includegraphics[width=0.4\textwidth]{figs/scatter-v1.eps}\label{fig:scatter_v1}}
-\subfigure[VJ one-vs-rest]{\includegraphics[width=0.4\textwidth]{figs/scatter-vr.eps}\label{fig:scatter_vr}}
-\subfigure[NLP one-vs-one]{\includegraphics[width=0.4\textwidth]{figs/scatter-n.eps}\label{fig:scatter_n}}
-\caption{scatter kjkulk jkhj }
+\subfigure[MNIST one-vs-one]{\includegraphics[width=0.37\textwidth]{figs/scatter-m1.eps}\label{fig:scatter_m1}}\hfill
+\subfigure[MNIST one-vs-rest]{\includegraphics[width=0.37\textwidth]{figs/scatter-mr.eps}\label{fig:scatter_mr}}
+\subfigure[USPS one-vs-one]{\includegraphics[width=0.37\textwidth]{figs/scatter-u1.eps}\label{fig:scatter_u1}}\hfill
+\subfigure[USPS one-vs-rest]{\includegraphics[width=0.37\textwidth]{figs/scatter-ur.eps}\label{fig:scatter_ur}}
+\subfigure[VJ one-vs-one]{\includegraphics[width=0.37\textwidth]{figs/scatter-v1.eps}\label{fig:scatter_v1}}\hfill
+\subfigure[VJ one-vs-rest]{\includegraphics[width=0.37\textwidth]{figs/scatter-vr.eps}\label{fig:scatter_vr}}
+\subfigure[NLP one-vs-one]{\includegraphics[width=0.37\textwidth]{figs/scatter-n.eps}\label{fig:scatter_n}}
+\caption{Queries vs. Testing error - all datasets and algorithms}
 \label{fig:test_scatter}
 \end{centering}
 \vspace{-0.5cm}
