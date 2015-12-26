@@ -34,10 +34,10 @@ $n$ input steps, is
 $ L_{\gamma,n} =L_{\gamma}(\{ \vui{i} \})=\sum_{t=1}^{n} \sum_{i=1}^{K}\ {\lossp{\gamma,i,t}(\vui{i})}$.
 We also use the following expected hinge-loss over the random queried choices
 of the algorithm, 
-\begin{equation}
+\begin{equation*}
 \bar{L}_{\gamma,n}=\bar{L}_{ \{ \vui{i}\}}
 =\Exp{\sum_{t=1}^n \sum_{i=1}^{K}{M_{i,t}Z_{i,t}\lossp{\gamma,i,t}(\vui{i})}}. 
- \end{equation}
+ \end{equation*}
 Now, we proceed by  describing our algorithm and specify how to choose a task to query its label,
  and how to perform an update.
  
@@ -436,6 +436,28 @@ $\kappa=K$ we have $C(\kappa,K)>\ln(K+1)$, thus recovering the
 bound of $K$ Perceptron trained in parallel, with a sightly ($1/\ln(K+1)$)
 worse dependency in the number of tasks.
 
+\section{Kernel-based SHAMPO}
+SHAMPO algorithm can also be used with Kernels in order to get a non linear 
+classifiers in case of non separated data set, by transforming the feature vector $\vx$ to $\Phi(\vx)$.
+Define the binary parameter $\alpha_{i,t} = Z_{i,t}M_{i,t}$, we can rewrite the weight vector $\vw_{i,t}$ in its 
+dual form as a linear combination of the input vectors
+\[
+\vw_{i,t} = \vw_{i,t-1}+Z_{i,t}M_{i,t}y_{i,t}\vxiit =\sum_{s=1}^t{Z_{i,s}M_{i,s}y_{i,s}\vx_{i,s}} 
+= \sum_{s=1}^t{\alpha_{i,s}y_{i,s}\vx_{i,s}}.
+\]
+Now wee can rid of the weight algorithm and store $\alpha_{i,t}$ values and the relevant input-label pairs. 
+Doing that, we get a new representation of the margin
+\begin{equation*}
+\begin{split}
+\hat{p}_{i,t}=\vwti{i,t-1} \vxiit
+= \tran{\paren{\sum_{s=1}^t{\alpha_{i,s}y_{i,s}\vx_{i,s}}}}\vxiit 
+= &\sum_{s=1}^t{\alpha_{i,s}y_{i,s}\paren{\tran{\vx_{i,s}}\vxiit}}\\
+=&\sum_{s=1}^t{\alpha_{i,s}y_{i,s}K(\vx_{i,s},\vxiit)}
+\end{split}
+\end{equation*}
+where $K(\vx,\vv)  = \tran{\Phi(\vx)}\Phi(\vv)$ is the kernel function that represents the inner product of 
+a high dimension space. 
+
 \section{Aggressive version}
 
 So far we used the margin to build the distribution over the tasks,  but in the update stage,
@@ -637,16 +659,20 @@ Which concludes the proof
 
 We saw before that $b$ is a tradeoff parameter between  exploitation and uniform  distribution over the 
 tasks (exploration). It is possible that we have prior knowledge about the tasks, which tasks are harder than 
-the others. In this case, we would like to add this prior knowledge to the distribution such that in the 
-exploration will be done with  a prior distribution. This is especially important in the first steps of the 
-algorithms when instead starting in pure uniform exploration (since we initialize our model vectors, $\vwi{i,0}=\vzero$)  
+the others. In this case, we would like to add this prior knowledge to the distribution such that the 
+exploration will be done with a prior distribution. This is especially important in the first steps of the 
+algorithms when instead starting in pure uniform exploration (since we initialize our model vectors, $\vwi{i,0}=\vzero$),  
 we can start with a reasonable prior distribution.
 In order to do that we change the probability to be 
 
 \begin{equation*}
 \pr{J_t=j} =
 \frac{1}{D_{t}}\frac{a_{j}}{\paren{b+\abs{\hat{p}_{j,t}}-\min_{m=1}^K\abs{\hat{p}_{m,t}}}} \end{equation*}
-where $a_j>1~~\forall j\in\braces{1,\ldots,K}$ and  $D_t$ is the normalization factor. We can use this distribution with the SHAMPO perceptron algorithm, but we would like to analyse the bound of the SHAMPO aggressive perceptron algorithm because it's more global. 
+where $a_j>1~~\forall j\in\braces{1,\ldots,K}$ and  $D_t$ is the normalization factor. 
+I fact, the bound on $a_i$ is for the analysis only and even lower nonnegative 
+values are acceptable since we normalize it.
+We can use this distribution with the SHAMPO perceptron algorithm, but for generalization, we would like to analyze the 
+bound of the SHAMPO aggressive perceptron algorithm. 
 
 \begin{theorem}
   If Aggressive SHAMPO algorithm with prior runs on $K$ problems with $K$ parallel example pair
@@ -669,15 +695,24 @@ where $a_j>1~~\forall j\in\braces{1,\ldots,K}$ and  $D_t$ is the normalization f
 $\tilde{U}^2=\sum_{i=1}^{K}\normt{\vui{i}}$ and the expectation is over the
 random choices of the algorithm.
 \end{theorem} \label{thm:FO_bound_aggressive}
-This bound brings an advantage and disadvantage. We can reduce the last term in the bound choosing the right weights for $a_i$, but then, we suffer the factor of $\sum_{j=1}^Ka_{j}$ in rest part of the bound. 
+This bound brings an advantage and disadvantage. We can reduce the last term in the bound choosing
+ the right weights for $a_i$, but then, we suffer the factor of $\sum_{j=1}^Ka_{j}$ in rest part of the bound. In 
+ addition, now the expected loss is changed a bit to be 
+ \begin{equation*}
+\bar{L}_{\gamma,n}=\Exp{\sum_{t=1}^n \sum_{i=1}^{K}{U_{i,t}Z_{i,t}\lossp{\gamma,i,t}(\vui{i})}},
+ \end{equation*}
+ since we update sometimes on a correct prediction.  
 \\
+
 \begin{proof}
-We follow the proof of ~\sthmref{bound_aggressive_FO_SHAMPO} until ~\eqref{eq:step_3_in_proof_agressive}, 
+We follow the proof of ~\thmref{bound_aggressive_FO_SHAMPO} until ~\eqref{eq:step_3_in_proof_agressive}, 
 than we take the expectation of this term. First, we take the expectation of the left hand side 
 where now the conditional expectation of $Z_{i,t}$ changed to 
 \[
 \mathbb{E}\brackets{Z_{i,t}}=\frac{1}{D_{t}}\frac{a_{i}}{\paren{b+\abs{\hat{p}_{i,t}}-\min_{m=1}^K\abs{\hat{p}_{m,t}}}}.
 \]
+
+\noindent
 Doing that, the expectation becomes
 \begin{align*}
 \begin{split}
@@ -686,16 +721,20 @@ Doing that, the expectation becomes
 &=\mathbb{E}\brackets{\sum_{t=1}^{n}{\frac{a_{i}}{D_{t}}\paren{M_{i,t}+\frac{b-\abs{\hat{p}_{j,t}}-\min_{j}{\abs{\hat{p}_{j,t}} }}{b+\abs{\hat{p}_{j,t}}-\min_{j}{\abs{\hat{p}_{j,t}}}}G_{i,t} }}}~.
 \end{split}
 \end{align*}
-Reminding that $a_{i} \ge 1 \forall i$, we can bound $M_{i,t} \le M_{i,t}a_{i}$ and get 
+
+\noindent
+Recall that $a_{i} \ge 1 \forall i$, we can bound $M_{i,t} \le M_{i,t}a_{i}$ and get 
 \begin{equation}
 \begin{split}
 \mathbb{E}\left[ \sum_{t=1}^{n}{\frac{1}{D_{t}}}\paren{M_{i,t}+\frac{b-\abs{\hat{p}_{j,t}}-\min_{j}{\abs{\hat{p}_{j,t}} }}{b+\abs{\hat{p}_{j,t}}-\min_{j}{\abs{\hat{p}_{j,t}}}}G_{i,t}a_{i} } \right]
 &\le \\ \frac{2b+X^2}{2\gamma}{\bar
   L}_{\gamma,i,n}(u_i)+&\frac{\left({2b+X^2}\right)^2}{8{\gamma}^2}{\left\Vert
     \vui{i} \right\Vert}^2~.
-\label{step_3_in_proof_prior}
+\label{eq:step_3_in_proof_prior}
 \end{split}
 \end{equation}
+
+\noindent
 We use now the same bound as in ~\eqref{eq:bound_on_agressive_multiplier}
 and plug it into the left side of the inequality,
 
@@ -705,6 +744,7 @@ and plug it into the left side of the inequality,
 \mathbb{E}\left[ \sum_{t=1}^{n}{\frac{1}{D_{t}}}\paren{M_{i,t}+\frac{b-\abs{\hat{p}_{j,t}}-\min_{j}{\abs{\hat{p}_{j,t}} }}{b+\abs{\hat{p}_{j,t}}-\min_{j}{\abs{\hat{p}_{j,t}}}}G_{i,t}a_{i} } \right].
 \end{multline*}
 
+\noindent
 Since $b/2 \geq \lambda$ we have that
 $M_{i,t}+\paren{1-2\frac{\lambda}{b}}G_{i,t}a_{i}\geq 0$, thus there
 exists $\delta_i$ such that, 
@@ -719,27 +759,33 @@ exists $\delta_i$ such that,
   } \right] ~,
 \end{multline}
 
+\noindent
 and 
 \[
 \frac{b}{\delta_i} \geq \min\frac{1}{D_t}  = \frac{1}{\max D_t}  \geq \frac{b}{\sum_{j=1}^Ka_{j}}~,
 \]
 where the last inequality follows from,
-\begin{equation}\label{eq:bound_D}
+\begin{equation*}
 D_{t}=\sum_{j=1}^K\frac{a_{j}}{\paren{b+\abs{\hat{p}_{j,t}}-\min_{m=1}^K\abs{\hat{p}_{m,t}}}}\le \frac{\sum_{j=1}^Ka_{j}}{b}.
-\end{equation}
-The previous bound implies that $0<\delta_i\le\sum_{i=1}^Ka_{i  }$.
+\end{equation*}
 
-Combining ~\eqref{step_3_in_proof_prior} and ~\eqref{eq:bound_delta_prior}, 
-\begin{multline}
+\noindent
+The last bound implies that $0<\delta_i\le\sum_{i=1}^Ka_{i  }$.
+
+\noindent
+Combining ~\eqref{eq:step_3_in_proof_prior} and ~\eqref{eq:bound_delta_prior} leads to, 
+\begin{multline*}
 \label{eq:bound_for_i}
 \frac{b}{\delta_i}\mathbb{E}\left[ \sum_{t=1}^{n}{M_{i,t}} \right]
 \le \frac{2b+X^2}{2\gamma}{\bar L}_{\gamma,i,n}(\vui{i}) 
 \\+\frac{\left({2b+X^2}\right)^2}{8{\gamma}^2}{\left\Vert \vui{i} \right\Vert}^2 
 +\frac{b}{\delta_i}\paren{2\frac{\lambda}{b}-1}a_{i}\mathbb{E}\brackets{\sum_{t=1}^{n}{G_{i,t}}}.
-\end{multline}
+\end{multline*}
+
+\noindent
 Summing up the last inequality over all $K$ tasks and setting $\delta
 = \max_i \delta_i$ yields,
-\begin{equation}\label{eq:final_eq}
+\begin{equation*}
 \begin{split}
 \mathbb{E}\left[ \sum_{i=1}^{K}\sum_{t=1}^{n}{M_{i,t}} \right]
 \le&\frac{\delta}{\gamma }\brackets{\left(1+\frac{X^2}{2b} \right){\bar L}_{\gamma,n}+
@@ -747,37 +793,17 @@ Summing up the last inequality over all $K$ tasks and setting $\delta
 &+
 \paren{2\frac{\lambda}{b}-1}\mathbb{E}\brackets{\sum_{i=1}^{K}\sum_{t=1}^{n}{a_{i}G_{i,t}}}~,
 \end{split}
-\end{equation}
+\end{equation*}
 which concludes the proof.
 \QED
 \end{proof}
 
+\noindent
 We see that when this  bound is a global bound for the last two algorithms. 
 If we set $a_i=1, ~~\forall i\in\braces{1,\cdots,K}$ we get the same bound as  SHAMPO aggressive 
 algorithm and if we update only when a prediction mistake occurs, it means that 
 $G_{i,t}=0,~~\forall i\in\braces{a,\cdots,K},t>0$ and we get the bound of  the ordinary 
 SHAMPO perceptron algorithm.
-
-\section{Kernel-based SHAMPO}
-SHAMPO algorithm can also be used with Kernels in order to get a non linear 
-classifiers in case of non separated data set by transforming the feature vector $\vx$ to $\Phi(\vx)$.
-Define the binary parameter $\alpha_{i,t} = Z_{i,t}M_{i,t}$, we can rewrite the weight vector $\vw_{i,t}$ in its 
-dual form as a linar combination of the input vectors
-\[
-\vw_{i,t} = \vw_{i,t-1}+Z_{i,t}M_{i,t}y_{i,t}\vxiit =\sum_{s=1}^t{Z_{i,s}M_{i,s}y_{i,s}\vx_{i,s}} 
-= \sum_{s=1}^t{\alpha_{i,s}y_{i,s}\vx_{i,s}}.
-\]
-Now wee can rid of the weight algorithm and only store $\alpha_{i,t}$ values. 
-Doing that, we get a new representation of the margin
-\[
-\hat{p}_{i,t}=\vwti{i,t-1} \vxiit = 
-\tran{\paren{\sum_{s=1}^t{\alpha_{i,s}y_{i,s}\vx_{i,s}}}}\vxiit = 
-\sum_{s=1}^t{\alpha_{i,s}y_{i,s}\paren{\tran{\vx_{i,s}}\vxiit}}= \sum_{s=1}^t{\alpha_{i,s}y_{i,s}K(\vx_{i,s},\vxiit})}
-\]
-where $K(\vx,\vy)  = \tran{\Phi(\vx)}\Phi(\vy)$ is the kernel function that represents the inner product of 
-a high dimension space. 
- 
-
 
 
 \section{SHAMPO perceptron with Adaptive $b$ parameter}

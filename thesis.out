@@ -6,9 +6,9 @@
 \BOOKMARK [0][-]{chapter.2}{The Shared Annotator Setting}{}% 6
 \BOOKMARK [0][-]{chapter.3}{SHMPO \(SHared Annotator for Multiple Problems\) Algorithms}{}% 7
 \BOOKMARK [1][-]{section.3.1}{SHAMPO perceptron}{chapter.3}% 8
-\BOOKMARK [1][-]{section.3.2}{Aggressive version}{chapter.3}% 9
-\BOOKMARK [1][-]{section.3.3}{prior distribution over tasks}{chapter.3}% 10
-\BOOKMARK [1][-]{section.3.4}{Kernel-based SHAMPO}{chapter.3}% 11
+\BOOKMARK [1][-]{section.3.2}{Kernel-based SHAMPO}{chapter.3}% 9
+\BOOKMARK [1][-]{section.3.3}{Aggressive version}{chapter.3}% 10
+\BOOKMARK [1][-]{section.3.4}{prior distribution over tasks}{chapter.3}% 11
 \BOOKMARK [1][-]{section.3.5}{SHAMPO perceptron with Adaptive b parameter}{chapter.3}% 12
 \BOOKMARK [1][-]{section.3.6}{Second Order SHAMPO}{chapter.3}% 13
 \BOOKMARK [1][-]{section.3.7}{Second Order Adaptive SHAMPO}{chapter.3}% 14

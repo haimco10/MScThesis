@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  26 DEC 2015 02:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  26 DEC 2015 03:50
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -696,8 +696,8 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.9}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.37 \begin{equation}
-                      [9
+l.37 \begin{equation*}
+                       [9
 
 ]
 Package epstopdf Info: Source file: <figs/margin.eps>
@@ -762,7 +762,7 @@ rted-to.pdf figs/probability.eps>
 (epstopdf)             \includegraphics on input line 110.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/probability-eps-converted-to.pdf, id=297, 392.46625pt x 225.84375pt>
+<figs/probability-eps-converted-to.pdf, id=296, 392.46625pt x 225.84375pt>
 File: figs/probability-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/probability-eps-converted-to.pdf>
@@ -818,76 +818,56 @@ Underfull \hbox (badness 10000) in paragraph at lines 412--418
 
  []
 
-[18]
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[19] [20] [21]
-Overfull \hbox (3.05595pt too wide) detected at line 609
+[18] [19] [20] [21] [22]
+Overfull \hbox (3.05595pt too wide) detected at line 631
 \U/msb/m/n/10.95 E [] \OT1/cmr/m/n/10.95 = []\U/msb/m/n/10.95 E []  \OML/cmm/m/
 it/10.95 :
  []
 
-[22]
-Underfull \hbox (badness 10000) in paragraph at lines 631--635
-
- []
-
 [23]
-Underfull \hbox (badness 10000) in paragraph at lines 672--674
+Underfull \hbox (badness 10000) in paragraph at lines 653--657
 
  []
 
-[24] [25]
-Underfull \hbox (badness 10000) in paragraph at lines 750--754
+[24]
+Underfull \hbox (badness 10000) in paragraph at lines 703--706
 
  []
 
-./SHAMPO.tex:775: Extra }, or forgotten $.
-l.775 ...{\alpha_{i,s}y_{i,s}K(\vx_{i,s},\vxiit})}
-                                                  
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
+[25] [26]
+Underfull \hbox (badness 10000) in paragraph at lines 796--800
 
-
-Overfull \hbox (70.48093pt too wide) detected at line 776
-[] \OT1/cmr/m/n/10.95 = \OT1/cmr/bx/n/10.95 w[]x[] \OT1/cmr/m/n/10.95 = [][]\OT
-1/cmr/bx/n/10.95 x[] \OT1/cmr/m/n/10.95 = [] [] = [] [])
  []
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 783.
+(hyperref)                removing `math shift' on input line 809.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 783.
-
-[26]
-
-LaTeX Warning: Reference `sec:alg' on page 27 undefined on input line 796.
+(hyperref)                removing `math shift' on input line 809.
 
 
-LaTeX Warning: Reference `sec:alg' on page 27 undefined on input line 803.
+LaTeX Warning: Reference `sec:alg' on page 27 undefined on input line 822.
 
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+LaTeX Warning: Reference `sec:alg' on page 27 undefined on input line 829.
 
 [27]
 
-LaTeX Warning: Reference `thm:bound' on page 28 undefined on input line 860.
+LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Overfull \hbox (19.05771pt too wide) in paragraph at lines 875--875
+LaTeX Warning: Reference `thm:bound' on page 28 undefined on input line 886.
+
+
+Overfull \hbox (19.05771pt too wide) in paragraph at lines 901--901
 [] 
  []
 
 [28] [29] [30] [31] [32] [33]
-./SHAMPO.tex:1062: Misplaced alignment tab character &.
-l.1062 \sum_{i=1}^{K}\mathbb{E}&
+./SHAMPO.tex:1088: Misplaced alignment tab character &.
+l.1088 \sum_{i=1}^{K}\mathbb{E}&
                                 \brackets{\sum_{t=1}^{n}M_{i,t}Z_{i,t}{\pare...
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -897,14 +877,15 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 [34]
-Overfull \hbox (28.92358pt too wide) in paragraph at lines 1114--1114
+Overfull \hbox (28.92358pt too wide) in paragraph at lines 1140--1140
 [] 
  []
 
-./SHAMPO.tex:1115: Missing } inserted.
+[35]
+./SHAMPO.tex:1141: Missing } inserted.
 <inserted text> 
                 }
-l.1115 ...\sum_{i=1}^{K}\sum_{t=1}^{n}{M_{i,t}} }$
+l.1141 ...\sum_{i=1}^{K}\sum_{t=1}^{n}{M_{i,t}} }$
                                                   .
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -912,22 +893,21 @@ With luck, this will get me unwedged. But if you
 really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
-[35]) (./second_order.tex
-Underfull \hbox (badness 10000) in paragraph at lines 1121--1
+) (./second_order.tex
+Underfull \hbox (badness 10000) in paragraph at lines 1147--1
 
  []
 
-[36] [37]
+[36]
 Overfull \hbox (16.16438pt too wide) in paragraph at lines 94--94
 [] 
  []
 
-
+[37] [38]
 Overfull \hbox (10.78635pt too wide) in paragraph at lines 106--106
 [] 
  []
 
-[38]
 ./second_order.tex:127: Extra alignment tab has been changed to \cr.
 <template> }$\hfill \endtemplate 
                                  
@@ -946,6 +926,7 @@ You have given more \span or & marks than there were
 in the preamble to the \halign or \valign now in progress.
 So I'll assume that you meant to type \cr instead.
 
+[39]
 ./second_order.tex:134: Misplaced alignment tab character &.
 l.134    \sum_{t=1}^{n}&
                         Z_{i,t}M_{i,t}\paren{\abs{\hat{p}_{i,t}}+\vu_i^T\vx_...
@@ -968,7 +949,7 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
-[39]) (./second_order_aggressive.tex
+[40]) (./second_order_aggressive.tex
 ./second_order_aggressive.tex:28: Missing } inserted.
 <inserted text> 
                 }
@@ -991,7 +972,7 @@ you forgot something else, as in `\hbox{$x}'. In such cases
 the way to recover is to insert both the forgotten and the
 deleted material, e.g., by typing `I$}'.
 
-[40] [41]
+[41] [42]
 Overfull \hbox (36.56804pt too wide) in paragraph at lines 100--100
 [] 
  []
@@ -1001,7 +982,7 @@ Overfull \hbox (51.95059pt too wide) in paragraph at lines 108--108
 [] 
  []
 
-[42] [43] [44]
+[43] [44] [45]
 ./second_order_aggressive.tex:182: Extra alignment tab has been changed to \cr.
 <template> }$\hfill \endtemplate 
                                  
@@ -1025,7 +1006,7 @@ Overfull \hbox (41.91682pt too wide) in paragraph at lines 183--183
 [] 
  []
 
-[45] [46]) (./multitask_to_multiclass.tex [47]
+[46] [47]) (./multitask_to_multiclass.tex [48]
 Chapter 4.
 
 Overfull \hbox (3.37468pt too wide) in paragraph at lines 2--10
@@ -1034,11 +1015,11 @@ s pre-dict-ing a la-bel $[] \OMS/cmsy/m/n/10.95 2 f\OT1/cmr/m/n/10.95 1\OML/cmm
 /m/it/10.95 ; [] ; C\OMS/cmsy/m/n/10.95 g$
  []
 
-[48
+[49
 
 ]
 
-LaTeX Warning: Reference `thm:bound_aggressive_prior' on page 49 undefined on i
+LaTeX Warning: Reference `thm:bound_aggressive_prior' on page 50 undefined on i
 nput line 41.
 
 
@@ -1060,14 +1041,14 @@ s-one\OT1/ptm/m/n/10.95 , the al-go-rithm picks two la-bels $[]\OML/cmm/m/it/10
 .95 ; [] \OMS/cmsy/m/n/10.95 2$
  []
 
-[49]
+[50]
 
-LaTeX Warning: Reference `thm:bound_aggressive_prior' on page 50 undefined on i
+LaTeX Warning: Reference `thm:bound_aggressive_prior' on page 51 undefined on i
 nput line 80.
 
-[50]) (./experiments.tex [51]
+[51]) (./experiments.tex [52]
 Chapter 5.
-[52
+[53
 
 ]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
@@ -1080,7 +1061,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 74--91
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[53] [54pdfTeX warning (ext4): destination with the same identifier (name{table
+[54] [55pdfTeX warning (ext4): destination with the same identifier (name{table
 .5.1}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -1105,7 +1086,7 @@ f>
 (epstopdf)             \includegraphics on input line 138.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/problem-9_4_2_2-1-eps-converted-to.pdf, id=703, 502.87875pt x 405.515pt>
+<figs/problem-9_4_2_2-1-eps-converted-to.pdf, id=701, 502.87875pt x 405.515pt>
 File: figs/problem-9_4_2_2-1-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/problem-9_4_2_2-1-eps-converted-to.pdf>
@@ -1124,14 +1105,14 @@ f>
 (epstopdf)             \includegraphics on input line 139.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/problem-9_4_4_4-1-eps-converted-to.pdf, id=704, 502.87875pt x 405.515pt>
+<figs/problem-9_4_4_4-1-eps-converted-to.pdf, id=702, 502.87875pt x 405.515pt>
 File: figs/problem-9_4_4_4-1-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/problem-9_4_4_4-1-eps-converted-to.pdf>
 Package pdftex.def Info: figs/problem-9_4_4_4-1-eps-converted-to.pdf used on in
 put line 139.
 (pdftex.def)             Requested size: 161.9989pt x 130.63371pt.
- [55pdfTeX warning (ext4): destination with the same identifier (name{figure.5.
+ [56pdfTeX warning (ext4): destination with the same identifier (name{figure.5.
 1}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -1140,10 +1121,10 @@ l.182
        <./figs/problem-9_4_2_2-1-eps-converted-to.pdf> <./figs/problem-9_4_4_4-
 1-eps-converted-to.pdf>]
 
-LaTeX Warning: Reference `thm:FO_bound' on page 56 undefined on input line 207.
+LaTeX Warning: Reference `thm:FO_bound' on page 57 undefined on input line 207.
 
 
-[56]
+[57]
 Package epstopdf Info: Source file: <figs/VJ_three_methods.eps>
 (epstopdf)                    date: 2013-05-31 16:21:23
 (epstopdf)                    size: 18989 bytes
@@ -1156,7 +1137,7 @@ converted-to.pdf figs/VJ_three_methods.eps>
 (epstopdf)             \includegraphics on input line 221.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/VJ_three_methods-eps-converted-to.pdf, id=729, 504.88625pt x 412.54124pt>
+<figs/VJ_three_methods-eps-converted-to.pdf, id=727, 504.88625pt x 412.54124pt>
 File: figs/VJ_three_methods-eps-converted-to.pdf Graphic file (type pdf)
 <use figs/VJ_three_methods-eps-converted-to.pdf>
 Package pdftex.def Info: figs/VJ_three_methods-eps-converted-to.pdf used on inp
@@ -1173,7 +1154,7 @@ ted-to.pdf figs/queried-m1.eps>
 (epstopdf)             \includegraphics on input line 229.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/queried-m1-eps-converted-to.pdf, id=730, 510.90875pt x 410.53375pt>
+<figs/queried-m1-eps-converted-to.pdf, id=728, 510.90875pt x 410.53375pt>
 File: figs/queried-m1-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/queried-m1-eps-converted-to.pdf>
@@ -1191,7 +1172,7 @@ ted-to.pdf figs/queried-mr.eps>
 (epstopdf)             \includegraphics on input line 230.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/queried-mr-eps-converted-to.pdf, id=731, 515.9275pt x 410.53375pt>
+<figs/queried-mr-eps-converted-to.pdf, id=729, 515.9275pt x 410.53375pt>
 File: figs/queried-mr-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/queried-mr-eps-converted-to.pdf>
@@ -1209,7 +1190,7 @@ ted-to.pdf figs/queried-u1.eps>
 (epstopdf)             \includegraphics on input line 231.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/queried-u1-eps-converted-to.pdf, id=732, 510.90875pt x 410.53375pt>
+<figs/queried-u1-eps-converted-to.pdf, id=730, 510.90875pt x 410.53375pt>
 File: figs/queried-u1-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/queried-u1-eps-converted-to.pdf>
@@ -1227,7 +1208,7 @@ ted-to.pdf figs/queried-ur.eps>
 (epstopdf)             \includegraphics on input line 232.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/queried-ur-eps-converted-to.pdf, id=733, 515.9275pt x 410.53375pt>
+<figs/queried-ur-eps-converted-to.pdf, id=731, 515.9275pt x 410.53375pt>
 File: figs/queried-ur-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/queried-ur-eps-converted-to.pdf>
@@ -1245,7 +1226,7 @@ ted-to.pdf figs/queried-v1.eps>
 (epstopdf)             \includegraphics on input line 233.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/queried-v1-eps-converted-to.pdf, id=734, 510.90875pt x 410.53375pt>
+<figs/queried-v1-eps-converted-to.pdf, id=732, 510.90875pt x 410.53375pt>
 File: figs/queried-v1-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/queried-v1-eps-converted-to.pdf>
@@ -1263,7 +1244,7 @@ ted-to.pdf figs/queried-vr.eps>
 (epstopdf)             \includegraphics on input line 234.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/queried-vr-eps-converted-to.pdf, id=735, 510.90875pt x 410.53375pt>
+<figs/queried-vr-eps-converted-to.pdf, id=733, 510.90875pt x 410.53375pt>
 File: figs/queried-vr-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/queried-vr-eps-converted-to.pdf>
@@ -1281,7 +1262,7 @@ ed-to.pdf figs/queried-n.eps>
 (epstopdf)             \includegraphics on input line 235.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/queried-n-eps-converted-to.pdf, id=736, 510.90875pt x 410.53375pt>
+<figs/queried-n-eps-converted-to.pdf, id=734, 510.90875pt x 410.53375pt>
 File: figs/queried-n-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/queried-n-eps-converted-to.pdf>
@@ -1292,7 +1273,7 @@ Package pdftex.def Info: figs/queried-n-eps-converted-to.pdf used on input line
 
 LaTeX Warning: Float too large for page by 24.63654pt on input line 239.
 
-[57]
+[58]
 Package epstopdf Info: Source file: <figs/test-m1.eps>
 (epstopdf)                    date: 2015-12-24 21:07:08
 (epstopdf)                    size: 15937 bytes
@@ -1303,7 +1284,7 @@ Package epstopdf Info: Source file: <figs/test-m1.eps>
 -to.pdf figs/test-m1.eps>
 (epstopdf)             \includegraphics on input line 265.
 Package epstopdf Info: Output file is already uptodate.
- <figs/test-m1-eps-converted-to.pdf, id=742, 510.90875pt x 411.5375pt>
+ <figs/test-m1-eps-converted-to.pdf, id=740, 510.90875pt x 411.5375pt>
 File: figs/test-m1-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/test-m1-eps-converted-to.pdf>
@@ -1321,7 +1302,7 @@ Package epstopdf Info: Source file: <figs/test-mr.eps>
 (epstopdf)             \includegraphics on input line 266.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/test-mr-eps-converted-to.pdf, id=743, 524.96124pt x 411.5375pt>
+<figs/test-mr-eps-converted-to.pdf, id=741, 524.96124pt x 411.5375pt>
 File: figs/test-mr-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/test-mr-eps-converted-to.pdf>
@@ -1339,7 +1320,7 @@ Package epstopdf Info: Source file: <figs/test-u1.eps>
 (epstopdf)             \includegraphics on input line 267.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/test-u1-eps-converted-to.pdf, id=744, 510.90875pt x 411.5375pt>
+<figs/test-u1-eps-converted-to.pdf, id=742, 510.90875pt x 411.5375pt>
 File: figs/test-u1-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/test-u1-eps-converted-to.pdf>
@@ -1357,7 +1338,7 @@ Package epstopdf Info: Source file: <figs/test-ur.eps>
 (epstopdf)             \includegraphics on input line 268.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/test-ur-eps-converted-to.pdf, id=745, 524.96124pt x 411.5375pt>
+<figs/test-ur-eps-converted-to.pdf, id=743, 524.96124pt x 411.5375pt>
 File: figs/test-ur-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/test-ur-eps-converted-to.pdf>
@@ -1375,7 +1356,7 @@ Package epstopdf Info: Source file: <figs/test-v1.eps>
 (epstopdf)             \includegraphics on input line 269.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/test-v1-eps-converted-to.pdf, id=746, 524.96124pt x 411.5375pt>
+<figs/test-v1-eps-converted-to.pdf, id=744, 524.96124pt x 411.5375pt>
 File: figs/test-v1-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/test-v1-eps-converted-to.pdf>
@@ -1393,7 +1374,7 @@ Package epstopdf Info: Source file: <figs/test-vr.eps>
 (epstopdf)             \includegraphics on input line 270.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/test-vr-eps-converted-to.pdf, id=747, 510.90875pt x 411.5375pt>
+<figs/test-vr-eps-converted-to.pdf, id=745, 510.90875pt x 411.5375pt>
 File: figs/test-vr-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/test-vr-eps-converted-to.pdf>
@@ -1411,7 +1392,7 @@ to.pdf figs/test-n.eps>
 (epstopdf)             \includegraphics on input line 271.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/test-n-eps-converted-to.pdf, id=748, 510.90875pt x 411.5375pt>
+<figs/test-n-eps-converted-to.pdf, id=746, 510.90875pt x 411.5375pt>
 File: figs/test-n-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/test-n-eps-converted-to.pdf>
@@ -1432,7 +1413,7 @@ Package epstopdf Info: Source file: <figs/train-m1.eps>
 d-to.pdf figs/train-m1.eps>
 (epstopdf)             \includegraphics on input line 280.
 Package epstopdf Info: Output file is already uptodate.
-<figs/train-m1-eps-converted-to.pdf, id=749, 510.90875pt x 411.5375pt>
+<figs/train-m1-eps-converted-to.pdf, id=747, 510.90875pt x 411.5375pt>
 File: figs/train-m1-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/train-m1-eps-converted-to.pdf>
@@ -1450,7 +1431,7 @@ d-to.pdf figs/train-mr.eps>
 (epstopdf)             \includegraphics on input line 281.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/train-mr-eps-converted-to.pdf, id=750, 515.9275pt x 411.5375pt>
+<figs/train-mr-eps-converted-to.pdf, id=748, 515.9275pt x 411.5375pt>
 File: figs/train-mr-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/train-mr-eps-converted-to.pdf>
@@ -1468,7 +1449,7 @@ d-to.pdf figs/train-u1.eps>
 (epstopdf)             \includegraphics on input line 282.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/train-u1-eps-converted-to.pdf, id=751, 510.90875pt x 411.5375pt>
+<figs/train-u1-eps-converted-to.pdf, id=749, 510.90875pt x 411.5375pt>
 File: figs/train-u1-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/train-u1-eps-converted-to.pdf>
@@ -1486,7 +1467,7 @@ d-to.pdf figs/train-ur.eps>
 (epstopdf)             \includegraphics on input line 283.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/train-ur-eps-converted-to.pdf, id=752, 515.9275pt x 412.54124pt>
+<figs/train-ur-eps-converted-to.pdf, id=750, 515.9275pt x 412.54124pt>
 File: figs/train-ur-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/train-ur-eps-converted-to.pdf>
@@ -1504,7 +1485,7 @@ d-to.pdf figs/train-v1.eps>
 (epstopdf)             \includegraphics on input line 284.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/train-v1-eps-converted-to.pdf, id=753, 515.9275pt x 411.5375pt>
+<figs/train-v1-eps-converted-to.pdf, id=751, 515.9275pt x 411.5375pt>
 File: figs/train-v1-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/train-v1-eps-converted-to.pdf>
@@ -1522,7 +1503,7 @@ d-to.pdf figs/train-vr.eps>
 (epstopdf)             \includegraphics on input line 285.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/train-vr-eps-converted-to.pdf, id=754, 510.90875pt x 411.5375pt>
+<figs/train-vr-eps-converted-to.pdf, id=752, 510.90875pt x 411.5375pt>
 File: figs/train-vr-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/train-vr-eps-converted-to.pdf>
@@ -1540,7 +1521,7 @@ Package epstopdf Info: Source file: <figs/train-n.eps>
 (epstopdf)             \includegraphics on input line 286.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/train-n-eps-converted-to.pdf, id=755, 510.90875pt x 411.5375pt>
+<figs/train-n-eps-converted-to.pdf, id=753, 510.90875pt x 411.5375pt>
 File: figs/train-n-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/train-n-eps-converted-to.pdf>
@@ -1561,7 +1542,7 @@ Package epstopdf Info: Source file: <figs/scatter-m1.eps>
 ted-to.pdf figs/scatter-m1.eps>
 (epstopdf)             \includegraphics on input line 296.
 Package epstopdf Info: Output file is already uptodate.
-<figs/scatter-m1-eps-converted-to.pdf, id=756, 501.875pt x 405.515pt>
+<figs/scatter-m1-eps-converted-to.pdf, id=754, 501.875pt x 405.515pt>
 File: figs/scatter-m1-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/scatter-m1-eps-converted-to.pdf>
@@ -1579,7 +1560,7 @@ ted-to.pdf figs/scatter-mr.eps>
 (epstopdf)             \includegraphics on input line 297.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/scatter-mr-eps-converted-to.pdf, id=757, 501.875pt x 405.515pt>
+<figs/scatter-mr-eps-converted-to.pdf, id=755, 501.875pt x 405.515pt>
 File: figs/scatter-mr-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/scatter-mr-eps-converted-to.pdf>
@@ -1597,7 +1578,7 @@ ted-to.pdf figs/scatter-u1.eps>
 (epstopdf)             \includegraphics on input line 298.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/scatter-u1-eps-converted-to.pdf, id=758, 501.875pt x 405.515pt>
+<figs/scatter-u1-eps-converted-to.pdf, id=756, 501.875pt x 405.515pt>
 File: figs/scatter-u1-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/scatter-u1-eps-converted-to.pdf>
@@ -1615,7 +1596,7 @@ ted-to.pdf figs/scatter-ur.eps>
 (epstopdf)             \includegraphics on input line 299.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/scatter-ur-eps-converted-to.pdf, id=759, 501.875pt x 405.515pt>
+<figs/scatter-ur-eps-converted-to.pdf, id=757, 501.875pt x 405.515pt>
 File: figs/scatter-ur-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/scatter-ur-eps-converted-to.pdf>
@@ -1633,7 +1614,7 @@ ted-to.pdf figs/scatter-v1.eps>
 (epstopdf)             \includegraphics on input line 300.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/scatter-v1-eps-converted-to.pdf, id=760, 501.875pt x 405.515pt>
+<figs/scatter-v1-eps-converted-to.pdf, id=758, 501.875pt x 405.515pt>
 File: figs/scatter-v1-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/scatter-v1-eps-converted-to.pdf>
@@ -1651,7 +1632,7 @@ ted-to.pdf figs/scatter-vr.eps>
 (epstopdf)             \includegraphics on input line 301.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/scatter-vr-eps-converted-to.pdf, id=761, 501.875pt x 407.5225pt>
+<figs/scatter-vr-eps-converted-to.pdf, id=759, 501.875pt x 407.5225pt>
 File: figs/scatter-vr-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/scatter-vr-eps-converted-to.pdf>
@@ -1669,7 +1650,7 @@ ed-to.pdf figs/scatter-n.eps>
 (epstopdf)             \includegraphics on input line 302.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/scatter-n-eps-converted-to.pdf, id=762, 501.875pt x 405.515pt>
+<figs/scatter-n-eps-converted-to.pdf, id=760, 501.875pt x 405.515pt>
 File: figs/scatter-n-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/scatter-n-eps-converted-to.pdf>
@@ -1680,14 +1661,14 @@ Package pdftex.def Info: figs/scatter-n-eps-converted-to.pdf used on input line
 
 LaTeX Warning: Float too large for page by 14.37253pt on input line 307.
 
-[58pdfTeX warning (ext4): destination with the same identifier (name{figure.5.2
+[59pdfTeX warning (ext4): destination with the same identifier (name{figure.5.2
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.333 
        <./figs/VJ_three_methods-eps-converted-to.pdf>]) (./related_work.tex
-[59] [60pdfTeX warning (ext4): destination with the same identifier (name{figur
+[60] [61pdfTeX warning (ext4): destination with the same identifier (name{figur
 e.5.3}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -1697,7 +1678,7 @@ l.1 \chapter
 ried-mr-eps-converted-to.pdf> <./figs/queried-u1-eps-converted-to.pdf> <./figs/
 queried-ur-eps-converted-to.pdf> <./figs/queried-v1-eps-converted-to.pdf> <./fi
 gs/queried-vr-eps-converted-to.pdf> <./figs/queried-n-eps-converted-to.pdf>]
-[61pdfTeX warning (ext4): destination with the same identifier (name{figure.5.4
+[62pdfTeX warning (ext4): destination with the same identifier (name{figure.5.4
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -1706,7 +1687,7 @@ l.1 \chapter
             {Related Work} <./figs/test-m1-eps-converted-to.pdf> <./figs/test-m
 r-eps-converted-to.pdf> <./figs/test-u1-eps-converted-to.pdf> <./figs/test-ur-e
 ps-converted-to.pdf> <./figs/test-v1-eps-converted-to.pdf> <./figs/test-vr-eps-
-converted-to.pdf> <./figs/test-n-eps-converted-to.pdf>] [62pdfTeX warning (ext4
+converted-to.pdf> <./figs/test-n-eps-converted-to.pdf>] [63pdfTeX warning (ext4
 ): destination with the same identifier (name{figure.5.5}) has been already use
 d, duplicate ignored
 
@@ -1716,7 +1697,7 @@ l.1 \chapter
             {Related Work} <./figs/train-m1-eps-converted-to.pdf> <./figs/train
 -mr-eps-converted-to.pdf> <./figs/train-u1-eps-converted-to.pdf> <./figs/train-
 ur-eps-converted-to.pdf> <./figs/train-v1-eps-converted-to.pdf> <./figs/train-v
-r-eps-converted-to.pdf> <./figs/train-n-eps-converted-to.pdf>] [63pdfTeX warnin
+r-eps-converted-to.pdf> <./figs/train-n-eps-converted-to.pdf>] [64pdfTeX warnin
 g (ext4): destination with the same identifier (name{figure.5.6}) has been alre
 ady used, duplicate ignored
 
@@ -1728,11 +1709,11 @@ tter-mr-eps-converted-to.pdf> <./figs/scatter-u1-eps-converted-to.pdf> <./figs/
 scatter-ur-eps-converted-to.pdf> <./figs/scatter-v1-eps-converted-to.pdf> <./fi
 gs/scatter-vr-eps-converted-to.pdf> <./figs/scatter-n-eps-converted-to.pdf>]
 Chapter 6.
-[64
+[65
 
-]) (./conclusions.tex [65]
+]) (./conclusions.tex [66]
 Chapter 7.
-) [66
+) [67
 
 ] (./thesis.bbl
 LaTeX Font Info:    Try loading font information for OT1+pcr on input line 15.
@@ -1745,7 +1726,7 @@ Underfull \hbox (badness 3965) in paragraph at lines 10--16
 Berke-ley, Oct
  []
 
-[67
+[68
 
 
 ]
@@ -1754,15 +1735,15 @@ Underfull \hbox (badness 4144) in paragraph at lines 89--93
 n-for-ma-tion Pro-cess-ing Sys-tems
  []
 
-[68] [69])
+[69] [70])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 128.
- [70]
+ [71]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 128.
  (./thesis.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 128.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 128.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 6C25A30D4DC93DC819564D55A08E05BB;1531.
+(rerunfilecheck)             Checksum: 2A7BD51793E1410776E8C330C03F617D;1531.
 
 
 LaTeX Warning: There were undefined references.
@@ -1773,10 +1754,10 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 128.
  ) 
 Here is how much of TeX's memory you used:
- 10174 strings out of 493117
- 145875 string characters out of 6135433
- 255510 words of memory out of 5000000
- 13086 multiletter control sequences out of 15000+600000
+ 10168 strings out of 493117
+ 145784 string characters out of 6135433
+ 255303 words of memory out of 5000000
+ 13083 multiletter control sequences out of 15000+600000
  38391 words of font info for 97 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,26n,40p,521b,499s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1800,10 +1781,10 @@ ist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2014/texmf-dist/font
 s/type1/urw/times/utmb8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/ur
 w/times/utmr8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/times/ut
 mri8a.pfb>
-Output written on ./thesis.pdf (83 pages, 609458 bytes).
+Output written on ./thesis.pdf (84 pages, 609810 bytes).
 PDF statistics:
- 1281 PDF objects out of 1440 (max. 8388607)
- 1076 compressed objects within 11 object streams
- 272 named destinations out of 1000 (max. 500000)
+ 1278 PDF objects out of 1440 (max. 8388607)
+ 1072 compressed objects within 11 object streams
+ 269 named destinations out of 1000 (max. 500000)
  355 words of extra memory for PDF output out of 10000 (max. 10000000)
 
