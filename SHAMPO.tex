@@ -1,19 +1,20 @@
 \chapter{SHMPO (SHared Annotator for Multiple Problems) Algorithms}
 
-We now describe algorithms for multi-task learning with
-a shared annotator setting, that uses linear models. Two steps are
-yet to be specified: how to pick a task to be labeled  and how to
-perform an update, once the true label for that task is given.
-Our first algorithm is based on the perceptron algorithm 
+I this chapter, we describe algorithms for multi-task learning with
+a shared annotator setting, that uses linear models. We start with a basic first order SHAMPO algorithm 
+which is based on the perceptron algorithm 
+and continue to number of algorithms that extends the basic one. Two steps are
+yet to be specified: how to pick a task to be labeled at each round and how to
+perform an update, once the true label for that task is given.. 
 
 \section{SHAMPO perceptron}
 
-We focus now on linear-functions of the form $f(\vx)=\sign(p)$ for the
+We focus here on linear-functions of the form $f(\vx)=\sign(p)$ for the
 quantity $p=\vwt\vx$, $\vw\in\reals^d$,  which often called the
 \textit{margin}.
 Specifically, the algorithm maintains a set of $K$ weight
 vectors, $\vwi{i,t},~i\in\braces{1\comdots K}$. On round $t$, the algorithm predicts a label for each
- one of the tasks, $\hyi{i,t}=\sign(\hat{p}_{i,t})$ where $\hat{p}_{i,t}=\vwti{i,t-1}\vxii$. 
+ one of the tasks, $\hyi{i,t}=\sign(\hat{p}_{i,t})$ where $\hat{p}_{i,t}=\vwti{i,t-1}\vxiit$. 
  On rounds for which the label of some task $J_t$ is queried, the algorithm update the model of the
  queried task only, such that for the rest of the tasks, $i\neq J_t$, we have $\vwi{i,t}=\vwi{i,t-1}$ and no
  update is made for those unqueried tasks.       
@@ -30,26 +31,30 @@ $\lossp{\gamma,i,t}(\vui{i})= \paren{\gamma-\yiit
   \vuti{i}\vxiit}_+$, where, $(x)_+=\max\{x,0\}$, and $\gamma>0$ is
 some parameter. The cumulative loss over all tasks and a sequence of
 $n$ input steps, is
-$ %\begin{equation}
-L_{\gamma,n} =L_{\gamma}(\{ \vui{i} \})=\sum_{t=1}^{n} \sum_{i=1}^{K}\ {\lossp{\gamma,i,t}(\vui{i})}
-$. %\end{equation}  
+$ L_{\gamma,n} =L_{\gamma}(\{ \vui{i} \})=\sum_{t=1}^{n} \sum_{i=1}^{K}\ {\lossp{\gamma,i,t}(\vui{i})}$.
 We also use the following expected hinge-loss over the random queried choices
 of the algorithm, 
 \begin{equation}
 \bar{L}_{\gamma,n}=\bar{L}_{ \{ \vui{i}\}}
-=\Exp{\sum_t^n \sum_{i=1}^{K}{M_{i,t}Z_{i,t}\lossp{\gamma,i,t}(\vui{i})}}. 
+=\Exp{\sum_{t=1}^n \sum_{i=1}^{K}{M_{i,t}Z_{i,t}\lossp{\gamma,i,t}(\vui{i})}}. 
  \end{equation}
 Now, we proceed by  describing our algorithm and specify how to choose a task to query its label,
  and how to perform an update.
  
 
-In order to select a task to query on, the algorithm uses the absolute margin
+In order to select a task to query on, the algorithm uses the absolute value of the margin 
 $\hat{p}_{i,t}$. We can see $\abs{\hat{p}_{i,t}}$ as the certainty measure of the label prediction.
  intuitively if $\abs{\hat{p}_{i,t}}$ is small,
 then there is uncertainty about the labeling of $\vxi{i,t}$, and vice-versa for 
 large values of $\abs{\hat{p}_{i,t}}$. 
 Similar argument was used by ~\cite{DBLP:conf/icml/TongK00} for picking an example to be labeled in 
-batch active learning. Prima facie, under this claim, at each point we should query the true label for the task
+batch active learning. 
+Example for the using of the margin as a certainty measure is shown in \figref{fig:margin} which illustrated 
+a state of a linear binary classification algorithm of two dimensional problem. 
+The circles and crosses represent two different classes and the separate hyperplane is shown. 
+One of the circles examples have lower margin than the other, so its label can easily been replaced 
+with the other one.
+Prima facie, under this claim, at each point we should query the true label for the task
  that corresponds to the smallest margin.  Yet, if the model $\vwi{i,t-1}$ is not accurate enough, due to
  small number of observed examples, this estimation may be rough, and may lead to a wrong
 conclusion. We thus perform an exploration-exploitation strategy, and
@@ -59,10 +64,7 @@ $\vert \hat{p}_{i,t} \vert$.
 \begin{figure}[h]
 \begin{centering}
 \includegraphics[width=0.5\textwidth]{figs/margin.eps}
-\caption{Example for the using of the margin as a certainty measure. 
-The circles and crosses represent two different classes and the separate hyperplane is shown. 
-One of the circles examples have lower margin than the other, so its label can easily been replaced 
-with the other one.}
+\caption{Example for the using of the margin as a certainty measure.}
 \label{fig:margin}
 \end{centering}
 \end{figure}
@@ -84,17 +86,17 @@ D_{t}&=\sum_{i=1}^{K}{\paren{b+\abs{\hat{p}_{i,t}}-\min_{m}\abs{\hat{p}_{m,t}}}^
 \end{aligned}
 \end{equation} 
 %
-where $b\geq 0, b\in\reals$ is a tradeoff parameter, between exploration and
+where $m=1 \comdots K$ and $b\geq 0, b\in\reals$ is a tradeoff parameter, between exploration and
 exploitation. Clearly, it is a distribution, since $\pr{J_t=j}\geq 0$ and $\sum_j \pr{J_t=j}=1$. 
 When we examine the extreme cases  of $b$ we see that  for $b\rightarrow0$
-we have $\pr{J_t=j}\rightarrow1$ and  for the task with minimal margin, $J_t=\arg\min_{i=1}^K\abs{\hat{p}_{i,t}}$,  and $\pr{J_t=j}\rightarrow0$ for all the rest. In this case , pure exploitation is being made. The pure exploration happens when   $b\rightarrow \infty$
-, then the distribution is uniform, $ \pr{J_t=j}= 1/K,~~ \forall j $. \figref{fig:fig:probability_example} 
+we have $\pr{J_t=j}\rightarrow1$ for the task with minimal margin, $J_t=\arg\min_{i=1}^K\abs{\hat{p}_{i,t}}$,  and $\pr{J_t=j}\rightarrow0$ for all the rest. In this case , pure exploitation is being made. The pure exploration happens when   $b\rightarrow \infty$
+, then the distribution is uniform, $ \pr{J_t=j}= 1/K,~~ \forall j $. \figref{fig:probability_example} 
 shows an example of this distribution for the case of two tasks ($K=2$) at an arbitrary step $t^*$. 
 For visualization purpose, we fix 
 $\abs{\hat{p}_{2,t^*}}=0.5$ and see how the probability of task $1$ to be chosen,
  is affected by varying $b$ and $\abs{\hat{p}_{1,t^*}}$ values. 
  Three different vertical areas  can be easily seen 
-in the graph. The upper (green) area, where $b>>\max{\braces{\hat{p}_{1,{t^*}},\hat{p}_{2,t{^*}}}$,
+in the graph. The upper (green) area, where $b>>\max{\braces{\abs{\hat{p}_{1,{t^*}}},\abs{\hat{p}_{2,t{^*}}}}$,
  shows uniform distribution ($\pr{J_{t^*}=2}=\pr{J_{t^*}=1}=1/K=0.5$) 
  which represents the exploration over the tasks.
  In the lower area, the probability is compatible with the exploitation method and is changing between
@@ -104,10 +106,10 @@ in the graph. The upper (green) area, where $b>>\max{\braces{\hat{p}_{1,{t^*}},\
  given by a distribution that is biased toward the lowest margin task.
 
 \begin{figure}[h]
-\label{fig:probability_example}
 \begin{center}
 \includegraphics[width=0.80\textwidth]{figs/probability.eps}
 \caption{Example of the distribution over 2 tasks.}
+\label{fig:probability_example}
 \end{center}
 \end{figure}
 
@@ -118,13 +120,29 @@ that is $\vwi{J_t,t} = \vwi{J_t,t-1}+M_{J_t,t} \, \yi{J_t,t}\,
 For simplicity of presentation we write the update for all of the tasks in one term  as, $\vwi{i,t} =
 \vwi{i,t-1} + Z_{i,t}\, M_{i,t} \, \yi{i,t}\, \vxi{i,t}$. One can notice that although
 this notation uses labels for all tasks,  %(via $M_{i,t}$)
- only
-the label of the task $J_t$ is used in practice, as for other tasks $Z_{i,t}=0$.
-
-
-
+onlythe label of the task $J_t$ is used in practice, as for other tasks $Z_{i,t}=0$.
 We call this algorithm {\em SHAMPO} for SHared Annotator for Multiple PrOblems. 
 The pseudo-code of this algorithm appears  in \algoref{alg:SHAMPO_FO}.
+
+The following theorem states that the expected cumulative number of mistakes
+that the algorithm makes, may not be higher than for an algorithm that
+observes the labels of all inputs. 
+\begin{theorem}
+  If SHAMPO algorithm runs on $K$ tasks with $K$ parallel example pair
+  sequences
+  $(\vxi{i,1},y_{i,1}),\ldots,(\vxi{i,n},y_{i,n})\in\mathbb{R}^d\times\{-1,1\}$,
+  $i=1,...,K$ with input parameter $b>0$, then for all $\gamma>0$, all
+  $\vui{i}\in\mathbb{R}^d$ and all $n\ge1$, there exists $0<\delta\le K$, such that,
+  
+\begin{equation}\label{eq:bound_FO_SHAMPO}
+\mathbb{E}\left[ \sum_{i=1}^{K}\sum_{t=1}^{n}{M_{i,t}} \right]
+\le \frac{\delta}{\gamma}\brackets{\left(1+\frac{X^2}{2b} \right){\bar L}_{\gamma,n}
++\frac{\braces{2b+X^2}^2\tilde{U}^2}{8{\gamma}b}}~,
+\end{equation}
+ where $X=\max_{i,t}\Vert\vxiit\Vert$,
+$\tilde{U}^2=\sum_{i=1}^{K}\normt{\vui{i}}$ and the expectation is over the
+random choices of the algorithm.
+\end{theorem} \label{thm:FO_theorem}
 
 \begin{algorithm}[h]
 \begin{algorithmic}
@@ -139,7 +157,7 @@ The pseudo-code of this algorithm appears  in \algoref{alg:SHAMPO_FO}.
 \item Draw task $J_t$  with the distribution:
 \begin{align}
 \pr{J_t=j} &=
-\frac{\paren{b+\abs{\hat{p}_{j,t}}-\min_{m=1}^K\abs{\hat{p}_{m,t}}}^{-1}}{D_{t}}, ~\eqref{prob}\nonumber\\
+\frac{\paren{b+\abs{\hat{p}_{j,t}}-\min_{m=1}^K\abs{\hat{p}_{m,t}}}^{-1}}{D_{t}}, \nonumber\\
 D_t &=
 \sum_i \paren{b+\abs{\hat{p}_{i,t}}-\min_{m=1}^K\abs{\hat{p}_{m,t}}}^{-1}. \nonumber
 \end{align}
@@ -147,7 +165,7 @@ D_t &=
 \item Set the indicator $M_{J_t, t}=1$ iff $\yi{J_t,t} \neq \hyi{J_t,t}$.
 \item Update with the perceptron rule:
 \begin{align}
-&\vwi{J_t,t} = \vwi{J_t,t-1}+M_{J_t,t} \, \yi{J_t,t}\, \vxi{J_t,t} \label{perc_update}\\
+&\vwi{J_t,t} = \vwi{J_t,t-1}+M_{J_t,t} \, \yi{J_t,t}\, \vxi{J_t,t}\label{eq:update_rule} \\
 &\vwi{i,t} ~~= \vwi{i,t-1}  \textrm{ for } i \neq J_t \nonumber
 \end{align}
 \end{enumerate}
@@ -156,28 +174,6 @@ D_t &=
 \end{algorithmic}
 \caption{SHAMPO:\@ SHared Annotator for Multiple PrOblems.}\label{alg:SHAMPO_FO}
 \end{algorithm}
-
-The following theorem states that the expected cumulative number of mistakes
-that the algorithm makes, may not be higher than for an algorithm that
-observes the labels of all inputs. 
-\begin{theorem}
-  If SHAMPO algorithm runs on $K$ tasks with $K$ parallel example pair
-  sequences
-  $(\vxi{i,1},y_{i,1}),\ldots,(\vxi{i,n},y_{i,n})\in\mathbb{R}^d\times\{-1,1\}$,
-  $i=1,...,K$ with input parameter $b>0$, then for all $\gamma>0$, all
-  $\vui{i}\in\mathbb{R}^d$ and all $n\ge1$, there exists $0<\delta\le K$, such that,
-  
-\begin{displaymath}
-\mathbb{E}\left[ \sum_{i=1}^{K}\sum_{t=1}^{n}{M_{i,t}} \right]
-\le \frac{\delta}{\gamma}\brackets{\left(1+\frac{X^2}{2b} \right){\bar L}_{\gamma,n}
-+\frac{\braces{2b+X^2}^2\tilde{U}^2}{8{\gamma}b}}~,
-\label{bound_FO_SHAMPO}
-\end{displaymath}
- where $X=\max_{i,t}\Vert\vxiit\Vert$,
-$\tilde{U}^2=\sum_{i=1}^{K}\normt{\vui{i}}$ and the expectation is over the
-random choices of the algorithm.
-\end{theorem} \label{thm:FO_bound}
-
 
 \begin{proof}
 Fix $n$ examples sequences, $(\vxi{i,1},y_{i,1}),\ldots,(\vxi{i,n},y_{i,n})$ for each one of the $K$ tasks. 
@@ -195,6 +191,7 @@ We can write,
         -\frac{1}{2}{\normt{\vu_i-\vwiit}}+\frac{1}{2}{\normt{\vwi{i,t-1}-\vwiit}}~.
 \end{align*}
 
+\noindent
 The last inequality holds for all $\gamma>0$ and for all
 $\vu_i\in\mathbb{R}^d$, so we can replace $\gamma$ and $\vu_i$ by their
 scaling $\alpha\gamma$ and $\alpha \vu_i$ respectively, where $\alpha>0$
@@ -207,6 +204,7 @@ $y_{i,t}\hat{p}_{i,t}\le0$ holds , i.e. $y_{i,t}\hat{p}_{i,t}=-\abs{\hat{p}_{i,t
 &\alpha\lossp{\gamma,i,t}(\vu_i)+\frac{1}{2}{\normt{\alpha \vu_i-\vwi{i,t-1}}}-\frac{1}{2}{\normt{\alpha \vu_i-\vwiit}}+\frac{1}{2}{\normt{\vwi{i,t-1}-\vwiit}} .\end{split}
 \end{equation*}
 
+\noindent
 Now, in order to generalize the inequality, we multiply it by the indicator $M_{i,t}Z_{i,t}$ , 
 which means that the inequality holds for  trials and tasks where there is an update, as stated above.
 
@@ -218,18 +216,20 @@ M_{i,t}&Z_{i,t}{\paren{\alpha\gamma \!-\!\abs{\hat{p}_{i,t}}}} \!\le\! M_{i,t}Z_
 \end{split}
 \end{equation*} 
 
- Yet, in the other cases,  when no update is performed and  $M_{i,t}Z_{i,t}=0$,
+ \noindent
+Yet, in the other cases,  when no update is performed and  $M_{i,t}Z_{i,t}=0$,
 the equality $\vwiit=\vwi{i,t-1}$ holds as well, so we can rid off the indicator for any one of the last three 
 terms and we have
 
-\begin{equation}
+\begin{equation*}
 \begin{split}
 M_{i,t}Z_{i,t}{\paren{\alpha\gamma +\abs{\hat{p}_{i,t}}}} \le M_{i,t}&Z_{i,t}\alpha \lossp{\gamma,i,t}(\vu_i)+\\ 
 \frac{1}{2}\normt{\alpha \vu_i-\vwi{i,t-1}}&-\frac{1}{2}\normt{\alpha \vu_i-\vwiit}+
 \frac{M_{i,t}Z_{i,t}}{2}\normt{\vwi{i,t-1}-\vwiit}.
 \end{split}
-\end{equation}\label{step_1_in_proof} 
+\end{equation*}
 
+\noindent
 Next, we sum the inequality above, over $t$,  recall the facts that
 $\vwi{i,0}=0$ and $\normt{\vwi{i,t-1}-\vwiit}\le X^2$ for $X=\max_{i,t}\Vert\vxiit\Vert$ to get,
 
@@ -239,10 +239,12 @@ $\vwi{i,0}=0$ and $\normt{\vwi{i,t-1}-\vwiit}\le X^2$ for $X=\max_{i,t}\Vert\vxi
 \le\alpha\sum_{t=1}^{n}{ M_{i,t}Z_{i,t}
   \lossp{\gamma,i,t}(\vu_i)}&+\frac{\alpha^2}{2}\normt{\vu_i}.
 \end{split}
-\label{step_2_in_proof}
+\label{step_1_in_proof}
 \end{equation}
+
+\noindent
 Substituting $\alpha=(2b+X^2)/2\gamma$ (where $b\in\mathbb{R},~~b>0$)
-in ~\eqref{step_2_in_proof}, we get
+in ~\eqref{step_1_in_proof}, we get
 \begin{equation*}
 \begin{split}
 \sum_{t=1}^{n}{M_{i,t}Z_{i,t}{\paren{b +\abs{\hat{p}_{i,t}}}}}
@@ -250,6 +252,8 @@ in ~\eqref{step_2_in_proof}, we get
 +\frac{\left({2b+X^2}\right)^2}{8{\gamma}^2}\normt{\vu_i}.
 \end{split}
 \end{equation*} 
+
+\noindent
 Now, we subtract a non negative quantity $\sum_{t=1}^{n}M_{i,t}Z_{i,t}
 {{\min_j{\abs{\hat{p}_{j,t}}}}}$ from the l.h.s. and get,
 \begin{equation}
@@ -260,6 +264,8 @@ Now, we subtract a non negative quantity $\sum_{t=1}^{n}M_{i,t}Z_{i,t}
 \label{step_2_in_proof}
 \end{split}
 \end{equation}
+
+\noindent
 At this point we take  the expectation of all the terms.  Recall that the conditional expectation of $Z_{i,t}$ is 
 $(b+|\hat{p}_{i,t}|-\min_j| \hat{p}_{j,t}|)^{-1}/D_{t}$
 and that $M_{i,t}$ and $\hat{p}_{i,t}$ are measurable with respect to the $\sigma$-algebra that generated by $Z_1,\ldots,Z_{t-1}$. 
@@ -274,6 +280,7 @@ We start with the left term,
 \end{split}
 \end{align*}
 
+\noindent
 Substituting the last term in the expectation of
 \eqref{step_2_in_proof}, % we get,
 \begin{equation}
@@ -284,20 +291,21 @@ Substituting the last term in the expectation of
 \label{step_3_in_proof}
 \end{equation} 
 
+\noindent
 Since that the normalization factor is a sum of positive components,
 hence $D_t$ is maximal when each of the components gets its maximal
 value. This happens when $\left\vert \hat{p}_{m,t}
 \right\vert=\left\vert \hat{p}_{j,t} \right\vert ~~  \forall
 m,j \in\{1,\ldots K\}$. This allows us to bound the normalization factor as
 follows,
-\begin{equation}
+\begin{equation*}
 D_{t}=\sum_{m=1}^{K}{\left({b+\left\vert \hat{p}_{m,t}
       \right\vert-\min_{j}{\left\vert \hat{p}_{j,t}
         \right\vert}}\right)^{-1}} \le \sum_{m=1}^{K}{b^{-1}}=\frac{K}{b}~.
-\label{bound_D}
-\end{equation}
+\end{equation*}
 
 
+\noindent
 Since $M_{i,t}>0 ~\forall{i,t}$, thus there exists $\delta_i\in\reals>0$ such that 
 \begin{equation}
 \label{eq:introducing_delta}
@@ -305,16 +313,21 @@ Since $M_{i,t}>0 ~\forall{i,t}$, thus there exists $\delta_i\in\reals>0$ such th
 \frac{b}{\delta_i}\mathbb{E}\brackets{\sum_{t=1}^{n}{M_{i,t}}}.
 \end{equation}
 and
-\[
+\begin{equation}
 \frac{b}{\delta_i} \geq \min\frac{1}{D_t}  = \frac{1}{\max D_t}  \geq 
 \frac{b}{K}~.
-\]
+\label{eq:FO_bound_on_D}
+\end{equation}
+
+\noindent
 Which implies that $0<\delta_i\le K$.\\
 Plugging ~\eqref{eq:introducing_delta} in ~\eqref{step_3_in_proof} we get,
-\begin{equation}\label{eq:bound_for_i}
+\begin{equation*}
 \frac{b}{\delta_i}\mathbb{E}\left[ \sum_{t=1}^{n}{M_{i,t}} \right]
 \le \frac{2b+X^2}{2\gamma}{\bar L}_{\gamma,i,n}(\vui{i})+\frac{\left({2b+X^2}\right)^2}{8{\gamma}^2}{\left\Vert \vui{i} \right\Vert}^2.
-\end{equation}
+\end{equation*}
+
+\noindent
 Summing up the last inequality over all $K$ tasks and setting $\delta
 = \max_i \delta_i$ yields, 
 \begin{equation}
@@ -324,24 +337,27 @@ Summing up the last inequality over all $K$ tasks and setting $\delta
 \frac{\left({2b+X^2}\right)^2}{8{\gamma}^2b}\sum_{i=1}^{K}{{\left\Vert \vui{i} 
 \right\Vert}^2}~,
 \end{split}
-\label{final_eq}
+\label{eq:FO_final_eq_in_proof}
 \end{equation}
 which concludes the proof.
 \QED
 \end{proof}
 
-One can use the bound to tune the algorithm for an optimal  value of
+\noindent
+One can use the bound to tune the algorithm for an optimal value of
 $b$. However, this may not be possible as unfortunately ${\bar L}_{\gamma,n}$ depends
-implicitly on the value of $b$\footnote{Similar issue appears also
-  after the discussion of Theorem~1 in a different context~\cite{cesa2006worst}.}.
- Alternatively, we can take a
+implicitly on the value of $b$\ (Similar issue appears also 
+after the discussion of Theorem~1 in a different context by~\cite{cesa2006worst}).
+
+\noindent
+Alternatively, we can take a
 loose estimate of ${\bar L}_{\gamma,n}$, and replace it with
 $L_{\gamma,n}$ (which is $\sim K$ times larger). The optimal value of
 $b$ can be now calculated, 
 \begin{displaymath}
 b=\frac{X^2}{2}{\sqrt{1+\frac{4\gamma L_{\gamma,n}}{U^{2}X^2}}}.
 \end{displaymath}
-Substituting this value in the bound of ~\eqref{bound} with
+Substituting this value in the bound of ~\eqref{eq:bound_FO_SHAMPO} with
 $L_{\gamma,n}$ leads to the following bound, 
 \begin{equation*}
 \mathbb{E}\brackets{\sum_{i=1}^{K}\sum_{t=1}^{n}{M_{i,t}}}
@@ -354,16 +370,18 @@ We continue now with an analysis of an extension of our
 algorithm that allows more than a single query per round. In this setting, the ability  
 of the annotator to annotate data instances is less limited. Here, we
 allow the algorithm to query $\kappa$ labels at a time ( $\kappa<K$), instead of one. On each
-iteration $t$, the modified algorithm samples without repetitions
+iteration $t$, the modified algorithm samples without repetitions,
 $\kappa$ labels to be annotated, and perform the same update as of
-\eqref{update_rule}. Formally, on each round we have $\sum_i
+\eqref{eq:update_rule}. Formally, on each round we have $\sum_i
 Z_{i,t}=\kappa$ for $Z_{i,t}\in\{0,1\}$ where the first task-index to
 be queried is
 drawn according to ~\eqref{eq:prob}. The second task is drawn from the
 same distribution, eliminating the first choice and adjusting the normalization factor, and so on. Once
 $\kappa$ problems are drawn, the algorithm receives $\kappa$ labels for
 the $\kappa$ corresponding inputs, and updates the $\kappa$ models
-according to ~\eqref{update_rule}.
+according to ~\eqref{eq:update_rule}.
+
+\noindent
 \begin{corollary}
   If SHAMPO algorithm gets feedback for $\kappa$ tasks on each round,
   instead of only a single problem, the expected cumulative weighted
@@ -378,8 +396,10 @@ ${\bar L}^\kappa_{\gamma,n}$ is the expected loss of $K$ models
 $\{\vui{i}\}$ over the $\kappa$ instances that are annotated per round
 $t$.
 \end{corollary}
+
+\noindent
 \begin{proof}
-  We follow the proof of \thmref{thm:bound} until \eqref{final_eq}. We
+We follow the proof of \thmref{thm:FO_theorem} until \eqref{eq:FO_final_eq_in_proof}, recall $\delta_i < K$. We
   repeat the process $\kappa$ times, and get the equivalent inequality
   for sampling $\kappa$ problems without repetitions,
 \begin{equation}
@@ -396,22 +416,24 @@ expected loss of a set of linear models $\{ \vui{i} \}$ where $\kappa$
 problems are sampled rather than a single one.
 \QED
 
- in \eqref{eq:bound_for_i} we saw a bound for the expectation of the sum of errors for the case of $K$ tasks. After we chose one task and got it's feedback, we want to choose another task to issue a query on in the same way. Now we have $K-1$ tasks and the bound
- \begin{equation}
- \sum_{t=1}^{n}\Exp{M_{i,t}\frac{b}{K-1}}
- \le \frac{2b+X^2}{2\gamma}{\bar L}_{\gamma,i,n}(\vui{i})+\frac{\left({2b+X^2}\right)^2}{8{\gamma}^2}{\left\Vert \vui{i} \right\Vert}^2
- \end{equation}
- when $i\ne J_t$. Now we can choose another task out of the $K-2$ tasks and so on. summing over all of the tasks we get the bound expectation of the weight errors over time and tasks
- \begin{equation}
- \Exp{\sum_{t=1}^{n}\brackets{\sum_{J=1}^{\kappa-1}M_{J,t}\frac{1}{K+1-J}+\sum_{i=\kappa }^{K}M_{i,t}\frac{1}{K+1-\kappa}}}
- \le \frac{2b+X^2}{2b\gamma}{\bar L}_{\gamma,n}+\frac{\left({2b+X^2}\right)^2}{8b{\gamma}^2}U.
- \end{equation}
+% in \eqref{eq:bound_for_i} we saw a bound for the expectation of the sum of errors for the case of $K$ tasks. After we chose one task and got it's feedback, we want to choose another task to issue a query on in the same way. Now we have $K-1$ tasks and the bound
+% \begin{equation}
+% \sum_{t=1}^{n}\Exp{M_{i,t}\frac{b}{K-1}}
+% \le \frac{2b+X^2}{2\gamma}{\bar L}_{\gamma,i,n}(\vui{i})+\frac{\left({2b+X^2}\right)^2}{8{\gamma}^2}{\left\Vert \vui{i} \right\Vert}^2
+% \end{equation}
+% when $i\ne J_t$. Now we can choose another task out of the $K-2$ tasks and so on. summing over all of the tasks we get the bound expectation of the weight errors over time and tasks
+% \begin{equation}
+% \Exp{\sum_{t=1}^{n}\brackets{\sum_{J=1}^{\kappa-1}M_{J,t}\frac{1}{K+1-J}+\sum_{i=\kappa }^{K}M_{i,t}\frac{1}{K+1-\kappa}}}
+% \le \frac{2b+X^2}{2b\gamma}{\bar L}_{\gamma,n}+\frac{\left({2b+X^2}\right)^2}{8b{\gamma}^2}U.
+% \end{equation}
  
 \end{proof}
 
-It can be shown that this bound  is a generalized form of \thmref{thm:bound}. For $\kappa=1$ we get the bound of \thmref{thm:bound}, while for
-$\kappa=K$ we have $C(\kappa,K)\approx\log(K)$, thus recovering the
-bound of $K$ Perceptron trained in parallel, with a sightly ($log K$)
+\noindent
+It can be shown that this bound  is a generalized form of \thmref{thm:FO_theorem}. 
+For $\kappa=1$ we get the bound of \thmref{thm:FO_theorem} (with $\delta = K$), while for
+$\kappa=K$ we have $C(\kappa,K)>\ln(K+1)$, thus recovering the
+bound of $K$ Perceptron trained in parallel, with a sightly ($1/\ln(K+1)$)
 worse dependency in the number of tasks.
 
 \section{Aggressive version}
@@ -427,11 +449,11 @@ but also in the case of correct prediction with low margin, i.e. low certainty. 
 $\lambda \in\reals>0$. In addition to the previous mistake indicator, $M_{i,t}$,  we introduce one more 
 indicator,  $G_{i,t}$. We keep the notation of  $M_{i,t}=1$ when there is wrong prediction on the task $i$
 in round $t$ and $M_{i,t}=0$ otherwise, and set $G_{i,t}=1$ when there is no prediction mistake on the task 
-$i$ in round $t$, but the margin is lower than our threshold, i.e. $0<\hat{p}_{i,t}<\lambda,$ therefore an
+$i$ in round $t$, but the margin is lower than our threshold, i.e. $0<\abs{\hat{p}_{i,t}}<\lambda,$ therefore an
 aggressive update takes place, and $G_{i,t}=0$  otherwise. 
 An update is performed if either there is a mistake ($M_{J_i,t}=1$) or the margin is
 low ($G_{J_i,t}=1$). Note that these events are mutually exclusive thus, for simplicity, we define the update
-indicator which is  $U_{i,t}=M_{i,t}+G_{i,t}$. This indicator is  $U_{i,t}=1$ on update trials and  $U_{i,t}=1$
+indicator which is  $U_{i,t}=M_{i,t}+G_{i,t}$. This indicator is  $U_{i,t}=1$ on update trials and  $U_{i,t}=0$
 when no update has been made.
 
 \begin{algorithm}[h]
@@ -447,7 +469,7 @@ when no update has been made.
 \item Draw problem $J_t$  with the distribution:
 \begin{align}
 \pr{J_t=j} &=
-\frac{\paren{b+\abs{\hat{p}_{j,t}}-\min_{m=1}^K\abs{\hat{p}_{m,t}}}^{-1}}{D_{t}}, ~\eqref{prob}\nonumber\\
+\frac{\paren{b+\abs{\hat{p}_{j,t}}-\min_{m=1}^K\abs{\hat{p}_{m,t}}}^{-1}}{D_{t}}, ~\nonumber\\
 D_t &=
 \sum_i \paren{b+\abs{\hat{p}_{i,t}}-\min_{m=1}^K\abs{\hat{p}_{m,t}}}^{-1}. \nonumber
 \end{align}
@@ -456,14 +478,15 @@ D_t &=
 \item Iff $M_{J_t, t}=0$ and $\abs{p_{J_t,t}}<\lambda$, set  the indicator $G_{J_t,t}=1$
 \item For $U_{i,t}=M_{i,t}+G_{i,t}$ update with the perceptron rule:
 \begin{align}
-&\vwi{J_t,t} = \vwi{J_t,t-1}+U_{J_t,t} \, \yi{J_t,t}\, \vxi{J_t,t} \\
+&\vwi{J_t,t} = \vwi{J_t,t-1}+U_{J_t,t} \, \yi{J_t,t}\, \vxi{J_t,t}  \nonumber\\
 &\vwi{i,t} ~~= \vwi{i,t-1}  \textrm{ for } i \neq J_t \nonumber
 \end{align}
 \end{enumerate}
    \EndFor  
    \State {\bf Output}: $\vwi{i,n}$ for $i=1 \comdots K$.
 \end{algorithmic}
-\caption{SHAMPO aggressive perceptron. \label{alg:SHAMPO_FO}}
+\caption{SHAMPO aggressive perceptron.}
+\label{alg:SHAMPO_FO_aggressive}
 \end{algorithm}    
 
 
@@ -480,8 +503,8 @@ D_t &=
 \begin{displaymath}
 \begin{split}
 \mathbb{E}\left[ \sum_{i=1}^{K}\sum_{t=1}^{n}{M_{i,t}} \right]
-\le \frac{\delta}{\gamma}\brackets{\left(1+\frac{X^2}{2b} \right){\bar L}_{\gamma,n}
-+&\frac{\left({2b+X^2}\right)^2\tilde{U}^2}{8{\gamma}b}}\\ 
+\le \frac{\delta}{\gamma}&\brackets{\left(1+\frac{X^2}{2b} \right){\bar L}_{\gamma,n}
++\frac{\left({2b+X^2}\right)^2\tilde{U}^2}{8{\gamma}b}}\\ 
 +&\paren{2\frac{\lambda}{b}-1}\mathbb{E}\brackets{\sum_{i=1}^{K}\sum_{t=1}^{n}{G_{i,t}}}~,
 \label{bound_aggressive_FO_SHAMPO}
 \end{split}
@@ -491,21 +514,21 @@ $\tilde{U}^2=\sum_{i=1}^{K}\normt{\vui{i}}$ and the expectation is over the
 random choices of the algorithm.
 \end{theorem} \label{thm:FO_bound_aggressive}
 
+\noindent
 The theorem above, states that when the update is aggressive, the bound on the expected number of errors
-can be tighter than the non aggressive algorithm because we have added a new term term to the bound 
+can be tighter than the non aggressive algorithm because we have added a new term to the bound 
 which can be negative.     
 
 In order to achieve tighter bound on the expected cumulative mistakes than we had in the regular SHAMPO 
-perceptron algorithm (\sthmref{bound_FO_SHAMPO}), we need to restrict the aggressive margin  $\lambda$ 
-to be $\lambda\le b/2$. Indeed, one can say that this bound shows that the best choice of $\lambda$ is 
-$\lambda=0$, i.e. it seems that aggressive update is not a good idea. However, in this case, 
-$G_{i,t}=0,~ \forall i,t$ which means that this would not be the best choice. 
+perceptron algorithm (\thmref{thm:FO_theorem}), we need to restrict the aggressive margin  $\lambda$ 
+to be $\lambda\le b/2$ so the last term will be negative. Indeed, one can say that this bound shows that the best choice of $\lambda$ is 
+$\lambda=0$, i.e. it seems that aggressive update is not a good idea. However, in such case, 
+$G_{i,t}=0,~ \forall i,t$ which means that this would not be the best choice of $\lambda$. 
 This discrimination actually shows  that there is a sweet point where $0<\lambda<b/2$ such that the 
 bound will be the  tightest as this bound allows . 
-\\
 
 \begin{proof}
-We follow the proof of $\sthmref{thm:FO_bound}$ on an update trial, reminding that now the update 
+We follow the proof of $\thmref{thm:FO_theorem}$ on an update trial, reminding that now the update 
 indicator is  $U_{i,t}=1, $ until we get,  
 
 \begin{align*}
@@ -513,53 +536,12 @@ indicator is  $U_{i,t}=1, $ until we get,
 &y_{i,t}\hat{p}_{i,t}+\frac{1}{2}{\normt{\vu_{i}-\vwi{i,t-1}}}
         -\frac{1}{2}{\normt{\vu_i-\vwiit}}+\frac{1}{2}{\normt{\vwi{i,t-1}-\vwiit}}~.
 \end{align*}
-Whereas in the non aggressive version proof we claimed that $y_{i,t}\hat{p}_{i,t}=-\abs{\hat{p}_{i,t}}$ in an update trial, here, it is not true when an aggressive update takes place since we update when the prediction is correct as well. For this reason, we  remain with the term $y_{i,t}\hat{p}_{i,t}$ as is for now and we will deal with it later. In addition, in this proof,  we change the update indicator from $M_{i,t}$ to $U_{i,t}$. Considering these two changes, we proceed the proof until $\eqref{step_2_in_proof}$. Now we have,
+Whereas in the non aggressive version proof we claimed that $y_{i,t}\hat{p}_{i,t}=-\abs{\hat{p}_{i,t}}$ in an 
+update trial, here, it is not true when an aggressive update takes place since we update when the prediction 
+is correct as well. For that reason, we  remain with the term $y_{i,t}\hat{p}_{i,t}$ as is for now and we will 
+deal with it later. In addition, in this proof,  we change the update indicator from $M_{i,t}$ to $U_{i,t}$. 
+Considering these two changes, we proceed the proof until $\eqref{step_2_in_proof}$. Now we have,
 
-
- 
-% \begin{equation*}
-% \begin{split}
-% \alpha\gamma  -&y_{i,t}\hat{p}_{i,t} \le\\
-% &\alpha\lossp{\gamma,i,t}(\vu_i)+\frac{1}{2}{\normt{\alpha \vu_i-\vwi{i,t-1}}}-\frac{1}{2}{\normt{\alpha \vu_i-\vwiit}}+\frac{1}{2}{\normt{\vwi{i,t-1}-\vwiit}} .\end{split}
-% \end{equation*}
-% Now, in order to generalize the inequality, we multiply it by the indicator $M_{i,t}Z_{i,t}$ , which means that the inequality holds for  trials and tasks where there is an update, as stated above.
-% \begin{equation*}
-% \begin{split}
-% U_{i,t}&Z_{i,t}{\paren{\alpha\gamma \!-\!y_{i,t}\hat{p}_{i,t}}} \!\le\! U_{i,t}Z_{i,t}\alpha \lossp{\gamma,i,t}(\vu_i)
-% +\\ &\frac{U_{i,t}Z_{i,t}}{2}\normt{\alpha \vu_i\!-\!\vwi{i,t\!-\!1}}\!-\!\frac{U_{i,t}Z_{i,t}}{2}\normt{\alpha \vu_i\!-\!\vwiit}\!+\!
-% \frac{U_{i,t}Z_{i,t}}{2}\normt{\vwi{i,t\!-\!1}\!-\!\vwiit}\!.
-% \end{split}
-% \end{equation*} 
-%  Yet, in the other cases,  when,  $U_{i,t}Z_{i,t}=0$,
-% the equality $\vwiit=\vwi{i,t-1}$ holds as well, so we can rid off the indicator for the last three terms and we have
-% \begin{equation}
-% \begin{split}
-% U_{i,t}Z_{i,t}{\paren{\alpha\gamma -y_{i,t}\hat{p}_{i,t}}} \le U_{i,t}&Z_{i,t}\alpha \lossp{\gamma,i,t}(\vu_i)+\\ 
-% \frac{1}{2}\normt{\alpha \vu_i-\vwi{i,t-1}}&-\frac{1}{2}\normt{\alpha \vu_i-\vwiit}+
-% \frac{U_{i,t}Z_{i,t}}{2}\normt{\vwi{i,t-1}-\vwiit}.
-% \end{split}
-% \end{equation}\label{step_1_in_proof} 
-% Next, we sum the inequality above, over $t$,  recall the facts that
-% $\vwi{i,0}=0$ and $\normt{\vwi{i,t-1}-\vwiit}\le X^2$ to get,
-% \begin{equation}
-% \begin{split}
-% \sum_{t=1}^{n}{U_{i,t}Z_{i,t}{\paren{\alpha\gamma-y_{i,t}\hat{p}_{i,t}-\frac{X^2}{2}}}}
-% \le\alpha\sum_{t=1}^{n}{ U_{i,t}Z_{i,t}
-%   \lossp{\gamma,i,t}(\vu_i)}&+\frac{\alpha^2}{2}\normt{\vu_i}.
-% \end{split}
-% \label{step_2_in_proof}
-% \end{equation}
-% Substituting $\alpha=(2b+X^2)/2\gamma$ (where $b\in\mathbb{R},~~b>0$)
-% in \eqref{step_2_in_proof}, we get
-% \begin{equation*}
-% \begin{split}
-% \sum_{t=1}^{n}{U_{i,t}Z_{i,t}{\paren{b -y_{i,t}\hat{p}_{i,t}}}}
-% \le \frac{2b+X^2}{2\gamma}\sum_{t=1}^{n}{ U_{i,t}Z_{i,t}\lossp{\gamma,i,t}(\vu_i)}
-% +\frac{\left({2b+X^2}\right)^2}{8{\gamma}^2}\normt{\vu_i}.
-% \end{split}
-% \end{equation*} 
-% We subtract a non negative quantity $\sum_{t=1}^{n}U_{i,t}Z_{i,t}
-% {{\min_j{\abs{\hat{p}_{j,t}}}}}$ from the l.h.s. and get,
 \begin{equation}
 \begin{split}
 \sum_{t=1}^{n}U_{i,t}Z_{i,t}{\paren{b -y_{i,t}\hat{p}_{i,t}-\min_j{\abs{\hat{p}_{j,t}}}}}&\le\\
@@ -583,6 +565,8 @@ We start with the left term,
 &=\mathbb{E}\brackets{\sum_{t=1}^{n}{\frac{1}{D_{t}}\paren{M_{i,t}+\frac{b-\abs{\hat{p}_{i,t}}-\min_{j}{\abs{\hat{p}_{j,t}} }}{b+\abs{\hat{p}_{i,t}}-\min_{j}{\abs{\hat{p}_{j,t}}}}G_{i,t} }}}~.
 \end{split}
 \end{align*}
+
+\noindent
 Substituting the last term in the expectation of
 \eqref{eq:step_3_in_proof_agressive} we get,
 \begin{equation}
@@ -594,31 +578,55 @@ Substituting the last term in the expectation of
 \label{step_3_in_proof_aggressive}
 \end{split}
 \end{equation} 
+
+\noindent
 Now we bound the factor that is multiplied by $G_{i,t}$ using the fact that $G_{i,t}=1$ only when 
 $\abs{\hat{p}_{i,t}}<\lambda$ ,
 \begin{equation}
 \label{eq:bound_on_agressive_multiplier}
 \paren{1-2\frac{\lambda}{b}}=\frac{b-2\lambda}{b} \le\frac{b-\abs{\hat{p}_{i,t}}-\min_{j}{\abs{\hat{p}_{j,t}} }}{b+\abs{\hat{p}_{i,t}}-\min_{j}{\abs{\hat{p}_{j,t}}}}\le1.
 \end{equation}
-As stated before, there exists $\delta_i\in\reals,~ 0<\delta_i\le K$ such that ~\eqref{eq:introducing_delta}
-holds.
+
+\noindent
+We can use now \eqref{eq:bound_on_agressive_multiplier} to substitute the left hand 
+side of \eqref{step_3_in_proof_aggressive} with the lower term
+
+\begin{equation*}
+\mathbb{E}\brackets{
+  \sum_{t=1}^{n}{\frac{1}{D_{t}}}\paren{M_{i,t}+\paren{1-2\frac{\lambda}{b}}G_{i,t}}}.
+\end{equation*}
+
+\noindent
+Since $b/2 \geq \lambda$ we have that
+$M_{i,t}+\paren{1-2\frac{\lambda}{b}}G_{i,t}\geq 0$,  and as stated before in \eqref{eq:FO_bound_on_D}, 
+there exists $\delta_i\in\reals,~ 0<\delta_i\le K$ such that, 
+\begin{equation*}
+\mathbb{E}\left[
+  \sum_{t=1}^{n}{\frac{1}{D_{t}}}\paren{M_{i,t}+\paren{1-2\frac{\lambda}{b}}G_{i,t}
+  } \right]=\frac{b}{\delta_i}\mathbb{E}\left[
+  \sum_{t=1}^{n}\paren{M_{i,t}+\paren{1-2\frac{\lambda}{b}}G_{i,t}
+  } \right] ~.
+\end{equation*}
+
+\noindent
 Plugging this in ~\eqref{step_3_in_proof_aggressive} we get,
-\begin{equation}\label{eq:bound_for_i_aggressive}
+\begin{equation*}
 \begin{split}
 \frac{b}{\delta_i}\mathbb{E}\brackets{\sum_{t=1}^{n}{M_{i,t}}}
-&\le \frac{2b+X^2}{2\gamma}{\bar L}_{\gamma,i,n}(\vui{i})\\
-+&\frac{\left({2b+X^2}\right)^2}{8{\gamma}^2}{\left\Vert \vui{i} \right\Vert}^2+ 
+\le& \frac{2b+X^2}{2\gamma}{\bar L}_{\gamma,i,n}(\vui{i})\\
+&+\frac{\left({2b+X^2}\right)^2}{8{\gamma}^2}{\left\Vert \vui{i} \right\Vert}^2+ 
      \frac{b}{\delta_i}\paren{2\frac{\lambda}{b}-1}\mathbb{E}\brackets{\sum_{t=1}^{n}{G_{i,t}}}.
 \end{split}
-\end{equation}
+\end{equation*}
 
+\noindent
 Summing up the last inequality over all $K$ tasks and setting $\delta
 = \max_i \delta_i$ yields,
 \begin{equation*}
 \begin{split}
 \frac{1}{\delta}\mathbb{E}\left[ \sum_{i=1}^{K}\sum_{t=1}^{n}{M_{i,t}} \right]
 \le&\frac{1}{\gamma}\left(1+\frac{X^2}{2b} \right){\bar L}_{\gamma,n}\\
-+\frac{\left({2b+X^2}\right)^2}{8{\gamma}^2b}&\sum_{i=1}^{K}{{\left\Vert \vui{i} \right\Vert}^2}+ \frac{1}{\delta}\paren{2\frac{\lambda}{b}-1}\mathbb{E}\brackets{\sum_{i=1}^{K}\sum_{t=1}^{n}{G_{i,t}}}
+&+\frac{\left({2b+X^2}\right)^2}{8{\gamma}^2b}\sum_{i=1}^{K}{{\left\Vert \vui{i} \right\Vert}^2}+ \frac{1}{\delta}\paren{2\frac{\lambda}{b}-1}\mathbb{E}\brackets{\sum_{i=1}^{K}\sum_{t=1}^{n}{G_{i,t}}}
 \end{split}
 \end{equation*}
 Which concludes the proof

@@ -1,4 +1,4 @@
-\begin{thebibliography}{36}
+\begin{thebibliography}{35}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -54,25 +54,18 @@ Nicolo Cesa-Bianchi, Alex Conconi, and Claudio Gentile.
   640--668, 2005.
 
 \bibitem[Cesa-Bianchi et~al.(2006{\natexlab{a}})Cesa-Bianchi, Gentile, and
-  Zaniboni]{DBLP:journals/jmlr/Cesa-BianchiGZ06a}
-Nicol{\`o} Cesa-Bianchi, Claudio Gentile, and Luca Zaniboni.
-\newblock Worst-case analysis of selective sampling for linear classification.
-\newblock \emph{Journal of Machine Learning Research}, 7:\penalty0 1205--1230,
-  2006{\natexlab{a}}.
-
-\bibitem[Cesa-Bianchi et~al.(2006{\natexlab{b}})Cesa-Bianchi, Gentile, and
   Zaniboni]{cesa2006incremental}
 Nicol{\`o} Cesa-Bianchi, Claudio Gentile, and Luca Zaniboni.
 \newblock Incremental algorithms for hierarchical classification.
 \newblock \emph{The Journal of Machine Learning Research}, 7:\penalty0 31--54,
-  2006{\natexlab{b}}.
+  2006{\natexlab{a}}.
 
-\bibitem[Cesa-Bianchi et~al.(2006{\natexlab{c}})Cesa-Bianchi, Gentile, and
+\bibitem[Cesa-Bianchi et~al.(2006{\natexlab{b}})Cesa-Bianchi, Gentile, and
   Zaniboni]{cesa2006worst}
 Nicol{\`o} Cesa-Bianchi, Claudio Gentile, and Luca Zaniboni.
 \newblock Worst-case analysis of selective sampling for linear classification.
 \newblock \emph{The Journal of Machine Learning Research}, 7:\penalty0
-  1205--1230, 2006{\natexlab{c}}.
+  1205--1230, 2006{\natexlab{b}}.
 
 \bibitem[Cesa-Bianchi et~al.(2009)Cesa-Bianchi, Gentile, and
   Orabona]{cesa2009robust}

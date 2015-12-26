@@ -1,9 +1,9 @@
 \select@language {english}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {\@@number {2.1}}{\ignorespaces Illustration of a single iteration of multi-task algorithms (a) standard setting, shared annotator labels all inputs, and algorithms update models. (b) SHAMPO algorithm couples labeling annotation and learning process, and synchronizes a single annotation per round.}}{8}{figure.2.1}
+\contentsline {figure}{\numberline {\@@number {2.1}}{\ignorespaces Illustration of a single iteration of multi-task algorithms: (a) standard setting and (b) SHAMPO setting}}{8}{figure.2.1}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {\@@number {3.1}}{\ignorespaces Example for the using of the margin as a certainty measure. The circles and crosses represent two different classes and the separate hyperplane is shown. One of the circles examples have lower margin than the other, so its label can easily been replaced with the other one.}}{10}{figure.3.1}
+\contentsline {figure}{\numberline {\@@number {3.1}}{\ignorespaces Example for the using of the margin as a certainty measure.}}{11}{figure.3.1}
 \contentsline {figure}{\numberline {\@@number {3.2}}{\ignorespaces Example of the distribution over 2 tasks.}}{12}{figure.3.2}
 \addvspace {10\p@ }
 \addvspace {10\p@ }

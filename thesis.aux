@@ -47,8 +47,8 @@
 \newlabel{tab:multitask_selective_sampling_example}{{\@@number {2.1}}{7}{In selective sampling we focus on when to issue a query for a single task (a row)}{table.2.1}{}}
 \newlabel{tab:multitask_SHAMPO_example}{{2}{7}{The Shared Annotator Setting}{table.2.1}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {\@@number {2.2}}{\ignorespaces  In the SHAMPO setting we focus on when to issue a query for a single step (a column).}}{7}{table.2.2}}
-\@writefile{lof}{\contentsline {figure}{\numberline {\@@number {2.1}}{\ignorespaces Illustration of a single iteration of multi-task algorithms (a) standard setting, shared annotator labels all inputs, and algorithms update models. (b) SHAMPO algorithm couples labeling annotation and learning process, and synchronizes a single annotation per round.}}{8}{figure.2.1}}
-\newlabel{fig:ilustration}{{\@@number {2.1}}{8}{Illustration of a single iteration of multi-task algorithms (a) standard setting, shared annotator labels all inputs, and algorithms update models. (b) SHAMPO algorithm couples labeling annotation and learning process, and synchronizes a single annotation per round}{figure.2.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {\@@number {2.1}}{\ignorespaces Illustration of a single iteration of multi-task algorithms: (a) standard setting and (b) SHAMPO setting}}{8}{figure.2.1}}
+\newlabel{fig:ilustration}{{\@@number {2.1}}{8}{Illustration of a single iteration of multi-task algorithms: (a) standard setting and (b) SHAMPO setting}{figure.2.1}{}}
 \@writefile{toc}{\contentsline {chapter}{\numberline {3}SHMPO (SHared Annotator for Multiple Problems) Algorithms}{9}{chapter.3}}
 \@writefile{cot}{\contentsline {chapter}{\numberline {3}SHMPO (SHared Annotator for Multiple Problems) Algorithms}{9}{chapter.3}}
 \@writefile{lof}{\addvspace {10\p@ }}
@@ -58,89 +58,86 @@
 \@writefile{toc}{\contentsline {section}{\numberline {\@@number {3.1}}SHAMPO perceptron}{9}{section.3.1}}
 \@writefile{cot}{\contentsline {section}{\numberline {\@@number {3.1}}SHAMPO perceptron}{9}{section.3.1}}
 \citation{DBLP:conf/icml/TongK00}
-\@writefile{lof}{\contentsline {figure}{\numberline {\@@number {3.1}}{\ignorespaces Example for the using of the margin as a certainty measure. The circles and crosses represent two different classes and the separate hyperplane is shown. One of the circles examples have lower margin than the other, so its label can easily been replaced with the other one.}}{10}{figure.3.1}}
-\newlabel{fig:margin}{{\@@number {3.1}}{10}{Example for the using of the margin as a certainty measure. The circles and crosses represent two different classes and the separate hyperplane is shown. One of the circles examples have lower margin than the other, so its label can easily been replaced with the other one}{figure.3.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {\@@number {3.1}}{\ignorespaces Example for the using of the margin as a certainty measure.}}{11}{figure.3.1}}
+\newlabel{fig:margin}{{\@@number {3.1}}{11}{Example for the using of the margin as a certainty measure}{figure.3.1}{}}
 \newlabel{eq:prob}{{\@@number {3.2}}{11}{SHAMPO perceptron}{equation.3.1.2}{}}
-\newlabel{fig:probability_example}{{\@@number {3.1}}{12}{SHAMPO perceptron}{equation.3.1.2}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {\@@number {3.2}}{\ignorespaces Example of the distribution over 2 tasks.}}{12}{figure.3.2}}
-\newlabel{bound_FO_SHAMPO}{{1}{12}{SHAMPO perceptron}{theorem.1}{}}
-\newlabel{thm:FO_bound}{{\@@number {3.1}}{12}{SHAMPO perceptron}{theorem.1}{}}
-\newlabel{perc_update}{{\@@number {3.3}}{13}{SHAMPO perceptron}{equation.3.1.3}{}}
+\newlabel{fig:probability_example}{{\@@number {3.2}}{12}{Example of the distribution over 2 tasks}{figure.3.2}{}}
+\newlabel{eq:bound_FO_SHAMPO}{{\@@number {3.3}}{13}{SHAMPO perceptron}{equation.3.1.3}{}}
+\newlabel{thm:FO_theorem}{{\@@number {3.1}}{13}{SHAMPO perceptron}{equation.3.1.3}{}}
+\newlabel{eq:update_rule}{{\@@number {3.4}}{13}{SHAMPO perceptron}{equation.3.1.4}{}}
 \@writefile{loa}{\contentsline {algorithm}{\numberline {3.1}{\ignorespaces SHAMPO:\spacefactor \@m  SHared Annotator for Multiple PrOblems.}}{13}{algorithm.3.1}}
 \newlabel{alg:SHAMPO_FO}{{3.1}{13}{SHAMPO perceptron}{algorithm.3.1}{}}
-\newlabel{step_1_in_proof}{{\@@number {3.1}}{14}{SHAMPO perceptron}{equation.3.1.4}{}}
-\newlabel{step_2_in_proof}{{\@@number {3.5}}{14}{SHAMPO perceptron}{equation.3.1.5}{}}
+\newlabel{step_1_in_proof}{{\@@number {3.5}}{15}{SHAMPO perceptron}{equation.3.1.5}{}}
 \newlabel{step_2_in_proof}{{\@@number {3.6}}{15}{SHAMPO perceptron}{equation.3.1.6}{}}
-\newlabel{step_3_in_proof}{{\@@number {3.7}}{15}{SHAMPO perceptron}{equation.3.1.7}{}}
+\newlabel{step_3_in_proof}{{\@@number {3.7}}{16}{SHAMPO perceptron}{equation.3.1.7}{}}
+\newlabel{eq:introducing_delta}{{\@@number {3.8}}{16}{SHAMPO perceptron}{equation.3.1.8}{}}
+\newlabel{eq:FO_bound_on_D}{{\@@number {3.9}}{16}{SHAMPO perceptron}{equation.3.1.9}{}}
 \citation{cesa2006worst}
-\newlabel{bound_D}{{\@@number {3.8}}{16}{SHAMPO perceptron}{equation.3.1.8}{}}
-\newlabel{eq:introducing_delta}{{\@@number {3.9}}{16}{SHAMPO perceptron}{equation.3.1.9}{}}
-\newlabel{eq:bound_for_i}{{\@@number {3.10}}{16}{SHAMPO perceptron}{equation.3.1.10}{}}
-\newlabel{final_eq}{{\@@number {3.11}}{16}{SHAMPO perceptron}{equation.3.1.11}{}}
-\newlabel{final_eq_k}{{\@@number {3.12}}{17}{SHAMPO perceptron}{equation.3.1.12}{}}
+\newlabel{eq:FO_final_eq_in_proof}{{\@@number {3.10}}{17}{SHAMPO perceptron}{equation.3.1.10}{}}
+\newlabel{final_eq_k}{{\@@number {3.11}}{18}{SHAMPO perceptron}{equation.3.1.11}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {\@@number {3.2}}Aggressive version}{18}{section.3.2}}
 \@writefile{cot}{\contentsline {section}{\numberline {\@@number {3.2}}Aggressive version}{18}{section.3.2}}
-\newlabel{alg:SHAMPO_FO}{{3.2}{19}{Aggressive version}{algorithm.3.2}{}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {3.2}{\ignorespaces SHAMPO aggressive perceptron. }}{19}{algorithm.3.2}}
-\newlabel{bound_aggressive_FO_SHAMPO}{{3}{20}{Aggressive version}{theorem.3}{}}
-\newlabel{thm:FO_bound_aggressive}{{\@@number {3.2}}{20}{Aggressive version}{theorem.3}{}}
-\newlabel{eq:step_3_in_proof_agressive}{{\@@number {3.16}}{21}{Aggressive version}{equation.3.2.16}{}}
-\newlabel{step_3_in_proof_aggressive}{{\@@number {3.17}}{22}{Aggressive version}{equation.3.2.17}{}}
-\newlabel{eq:bound_on_agressive_multiplier}{{\@@number {3.18}}{22}{Aggressive version}{equation.3.2.18}{}}
-\newlabel{eq:bound_for_i_aggressive}{{\@@number {3.19}}{22}{Aggressive version}{equation.3.2.19}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {\@@number {3.3}}prior distribution over tasks}{22}{section.3.3}}
-\@writefile{cot}{\contentsline {section}{\numberline {\@@number {3.3}}prior distribution over tasks}{22}{section.3.3}}
-\newlabel{bound_FO_SHAMPO_prior}{{4}{23}{prior distribution over tasks}{theorem.4}{}}
-\newlabel{thm:FO_bound_aggressive}{{\@@number {3.3}}{23}{prior distribution over tasks}{theorem.4}{}}
-\newlabel{step_3_in_proof_prior}{{\@@number {3.20}}{24}{prior distribution over tasks}{equation.3.3.20}{}}
-\newlabel{eq:bound_delta_prior}{{\@@number {3.21}}{24}{prior distribution over tasks}{equation.3.3.21}{}}
-\newlabel{eq:bound_D}{{\@@number {3.22}}{25}{prior distribution over tasks}{equation.3.3.22}{}}
-\newlabel{eq:bound_for_i}{{\@@number {3.23}}{25}{prior distribution over tasks}{equation.3.3.23}{}}
-\newlabel{eq:final_eq}{{\@@number {3.24}}{25}{prior distribution over tasks}{equation.3.3.24}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {\@@number {3.4}}Kernel-based SHAMPO}{25}{section.3.4}}
-\@writefile{cot}{\contentsline {section}{\numberline {\@@number {3.4}}Kernel-based SHAMPO}{25}{section.3.4}}
+\newlabel{bound_aggressive_FO_SHAMPO}{{3}{19}{Aggressive version}{theorem.3}{}}
+\newlabel{thm:FO_bound_aggressive}{{\@@number {3.2}}{19}{Aggressive version}{theorem.3}{}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {3.2}{\ignorespaces SHAMPO aggressive perceptron.}}{20}{algorithm.3.2}}
+\newlabel{alg:SHAMPO_FO_aggressive}{{3.2}{20}{Aggressive version}{algorithm.3.2}{}}
+\newlabel{eq:step_3_in_proof_agressive}{{\@@number {3.12}}{21}{Aggressive version}{equation.3.2.12}{}}
+\newlabel{step_3_in_proof_aggressive}{{\@@number {3.13}}{22}{Aggressive version}{equation.3.2.13}{}}
+\newlabel{eq:bound_on_agressive_multiplier}{{\@@number {3.14}}{22}{Aggressive version}{equation.3.2.14}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {\@@number {3.3}}prior distribution over tasks}{23}{section.3.3}}
+\@writefile{cot}{\contentsline {section}{\numberline {\@@number {3.3}}prior distribution over tasks}{23}{section.3.3}}
+\newlabel{bound_FO_SHAMPO_prior}{{4}{24}{prior distribution over tasks}{theorem.4}{}}
+\newlabel{thm:FO_bound_aggressive}{{\@@number {3.3}}{24}{prior distribution over tasks}{theorem.4}{}}
+\newlabel{step_3_in_proof_prior}{{\@@number {3.15}}{24}{prior distribution over tasks}{equation.3.3.15}{}}
+\newlabel{eq:bound_delta_prior}{{\@@number {3.16}}{25}{prior distribution over tasks}{equation.3.3.16}{}}
+\newlabel{eq:bound_D}{{\@@number {3.17}}{25}{prior distribution over tasks}{equation.3.3.17}{}}
+\newlabel{eq:bound_for_i}{{\@@number {3.18}}{25}{prior distribution over tasks}{equation.3.3.18}{}}
 \citation{cesa2006worst}
-\@writefile{toc}{\contentsline {section}{\numberline {\@@number {3.5}}SHAMPO perceptron with Adaptive $b$ parameter}{26}{section.3.5}}
-\@writefile{cot}{\contentsline {section}{\numberline {\@@number {3.5}}SHAMPO perceptron with Adaptive $b$ parameter}{26}{section.3.5}}
-\newlabel{alg:SHAMPO_adaptive}{{3.3}{27}{SHAMPO perceptron with Adaptive $b$ parameter}{algorithm.3.3}{}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {3.3}{\ignorespaces Adaptive SHAMPO algorithm }}{27}{algorithm.3.3}}
+\newlabel{eq:final_eq}{{\@@number {3.19}}{26}{prior distribution over tasks}{equation.3.3.19}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {\@@number {3.4}}Kernel-based SHAMPO}{26}{section.3.4}}
+\@writefile{cot}{\contentsline {section}{\numberline {\@@number {3.4}}Kernel-based SHAMPO}{26}{section.3.4}}
+\@writefile{toc}{\contentsline {section}{\numberline {\@@number {3.5}}SHAMPO perceptron with Adaptive $b$ parameter}{27}{section.3.5}}
+\@writefile{cot}{\contentsline {section}{\numberline {\@@number {3.5}}SHAMPO perceptron with Adaptive $b$ parameter}{27}{section.3.5}}
+\newlabel{alg:SHAMPO_adaptive}{{3.3}{28}{SHAMPO perceptron with Adaptive $b$ parameter}{algorithm.3.3}{}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {3.3}{\ignorespaces Adaptive SHAMPO algorithm }}{28}{algorithm.3.3}}
 \newlabel{thm:adaptive_bound}{{\@@number {3.5}}{28}{SHAMPO perceptron with Adaptive $b$ parameter}{theorem.5}{}}
-\newlabel{eq:adaptive_b_first_step}{{\@@number {3.25}}{28}{SHAMPO perceptron with Adaptive $b$ parameter}{equation.3.5.25}{}}
-\newlabel{eq:difference_of_norm_ineq}{{\@@number {3.26}}{29}{SHAMPO perceptron with Adaptive $b$ parameter}{equation.3.5.26}{}}
-\newlabel{eq:bound_on_w}{{\@@number {3.27}}{30}{SHAMPO perceptron with Adaptive $b$ parameter}{equation.3.5.27}{}}
-\newlabel{eq:difference_of_norm_ineq_2}{{\@@number {3.28}}{30}{SHAMPO perceptron with Adaptive $b$ parameter}{equation.3.5.28}{}}
-\newlabel{eq:first_sum}{{\@@number {3.29}}{31}{SHAMPO perceptron with Adaptive $b$ parameter}{equation.3.5.29}{}}
+\newlabel{eq:adaptive_b_first_step}{{\@@number {3.20}}{29}{SHAMPO perceptron with Adaptive $b$ parameter}{equation.3.5.20}{}}
+\newlabel{eq:difference_of_norm_ineq}{{\@@number {3.21}}{30}{SHAMPO perceptron with Adaptive $b$ parameter}{equation.3.5.21}{}}
+\newlabel{eq:bound_on_w}{{\@@number {3.22}}{30}{SHAMPO perceptron with Adaptive $b$ parameter}{equation.3.5.22}{}}
+\newlabel{eq:difference_of_norm_ineq_2}{{\@@number {3.23}}{30}{SHAMPO perceptron with Adaptive $b$ parameter}{equation.3.5.23}{}}
+\newlabel{eq:first_sum}{{\@@number {3.24}}{32}{SHAMPO perceptron with Adaptive $b$ parameter}{equation.3.5.24}{}}
 \citation{CesaBianchiCoGe05}
 \citation{hoerl1970ridge}
 \citation{Vovk97}
 \citation{AzouryWa01}
 \citation{forster2002relative}
-\citation{DBLP:journals/jmlr/Cesa-BianchiGZ06a}
+\citation{cesa2006worst}
 \citation{crammer2014doubly}
-\@writefile{toc}{\contentsline {section}{\numberline {\@@number {3.6}}Second Order SHAMPO}{35}{section.3.6}}
-\@writefile{cot}{\contentsline {section}{\numberline {\@@number {3.6}}Second Order SHAMPO}{35}{section.3.6}}
+\@writefile{toc}{\contentsline {section}{\numberline {\@@number {3.6}}Second Order SHAMPO}{36}{section.3.6}}
+\@writefile{cot}{\contentsline {section}{\numberline {\@@number {3.6}}Second Order SHAMPO}{36}{section.3.6}}
 \citation{Forster}
 \citation{cesa2006worst}
 \citation{crammer2014doubly}
-\newlabel{thm:SO_bound}{{\@@number {3.6}}{36}{Second Order SHAMPO}{theorem.6}{}}
-\newlabel{SO_update}{{\@@number {3.30}}{37}{Second Order SHAMPO}{equation.3.6.30}{}}
+\newlabel{thm:SO_bound}{{\@@number {3.6}}{37}{Second Order SHAMPO}{theorem.6}{}}
+\newlabel{SO_update}{{\@@number {3.25}}{37}{Second Order SHAMPO}{equation.3.6.25}{}}
 \@writefile{loa}{\contentsline {algorithm}{\numberline {3.4}{\ignorespaces Second order SHAMPO }}{37}{algorithm.3.4}}
 \newlabel{alg:SO_SHAMPO}{{3.4}{37}{Second Order SHAMPO}{algorithm.3.4}{}}
 \citation{Forster}
-\newlabel{eq:so_first_step}{{\@@number {3.31}}{38}{Second Order SHAMPO}{equation.3.6.31}{}}
-\newlabel{eq:so_second_step}{{\@@number {3.32}}{38}{Second Order SHAMPO}{equation.3.6.32}{}}
-\newlabel{eq:so_third_step}{{\@@number {3.33}}{38}{Second Order SHAMPO}{equation.3.6.33}{}}
+\newlabel{eq:so_first_step}{{\@@number {3.26}}{38}{Second Order SHAMPO}{equation.3.6.26}{}}
+\newlabel{eq:so_second_step}{{\@@number {3.27}}{38}{Second Order SHAMPO}{equation.3.6.27}{}}
+\newlabel{eq:so_third_step}{{\@@number {3.28}}{39}{Second Order SHAMPO}{equation.3.6.28}{}}
 \citation{crammer2014doubly}
 \@writefile{toc}{\contentsline {section}{\numberline {\@@number {3.7}}Second Order Adaptive SHAMPO}{40}{section.3.7}}
 \@writefile{cot}{\contentsline {section}{\numberline {\@@number {3.7}}Second Order Adaptive SHAMPO}{40}{section.3.7}}
-\newlabel{perc_update}{{\@@number {3.34}}{41}{Second Order Adaptive SHAMPO}{equation.3.7.34}{}}
+\newlabel{perc_update}{{\@@number {3.29}}{41}{Second Order Adaptive SHAMPO}{equation.3.7.29}{}}
 \@writefile{loa}{\contentsline {algorithm}{\numberline {3.5}{\ignorespaces Second order aggressive SHAMPO.}}{41}{algorithm.3.5}}
 \newlabel{alg:SHAMPO}{{3.5}{41}{Second Order Adaptive SHAMPO}{algorithm.3.5}{}}
 \citation{cesa2006worst}
-\newlabel{technical_inequality}{{\@@number {3.36}}{42}{Second Order Adaptive SHAMPO}{equation.3.7.36}{}}
-\newlabel{sec_order_1}{{\@@number {3.37}}{43}{Second Order Adaptive SHAMPO}{equation.3.7.37}{}}
-\newlabel{sec_order_2}{{\@@number {3.38}}{43}{Second Order Adaptive SHAMPO}{equation.3.7.38}{}}
-\newlabel{sec_order_2}{{\@@number {3.39}}{43}{Second Order Adaptive SHAMPO}{equation.3.7.39}{}}
+\newlabel{technical_inequality}{{\@@number {3.31}}{42}{Second Order Adaptive SHAMPO}{equation.3.7.31}{}}
+\newlabel{sec_order_1}{{\@@number {3.32}}{43}{Second Order Adaptive SHAMPO}{equation.3.7.32}{}}
+\newlabel{sec_order_2}{{\@@number {3.33}}{43}{Second Order Adaptive SHAMPO}{equation.3.7.33}{}}
+\newlabel{sec_order_2}{{\@@number {3.34}}{44}{Second Order Adaptive SHAMPO}{equation.3.7.34}{}}
 \citation{DBLP:conf/icml/YuM09,DBLP:conf/icml/AvnerMS12}
 \@writefile{toc}{\contentsline {chapter}{\numberline {4}From Multi-task to Contextual Bandits}{48}{chapter.4}}
 \@writefile{cot}{\contentsline {chapter}{\numberline {4}From Multi-task to Contextual Bandits}{48}{chapter.4}}
@@ -316,32 +313,31 @@
 \bibcite{AzouryWa01}{{5}{2001}{{Azoury and Warmuth}}{{}}}
 \bibcite{DBLP:journals/jmlr/CavallantiCG10}{{6}{2010}{{Cavallanti et~al.}}{{Cavallanti, Cesa-Bianchi, and Gentile}}}
 \bibcite{CesaBianchiCoGe05}{{7}{2005}{{Cesa-Bianchi et~al.}}{{Cesa-Bianchi, Conconi, and Gentile}}}
-\bibcite{DBLP:journals/jmlr/Cesa-BianchiGZ06a}{{8}{2006{a}}{{Cesa-Bianchi et~al.}}{{Cesa-Bianchi, Gentile, and Zaniboni}}}
-\bibcite{cesa2006incremental}{{9}{2006{b}}{{Cesa-Bianchi et~al.}}{{Cesa-Bianchi, Gentile, and Zaniboni}}}
-\bibcite{cesa2006worst}{{10}{2006{c}}{{Cesa-Bianchi et~al.}}{{Cesa-Bianchi, Gentile, and Zaniboni}}}
-\bibcite{cesa2009robust}{{11}{2009}{{Cesa-Bianchi et~al.}}{{Cesa-Bianchi, Gentile, and Orabona}}}
-\bibcite{crammer2014doubly}{{12}{2014}{{Crammer}}{{}}}
-\bibcite{DBLP:journals/ml/CrammerG13}{{13}{2013}{{Crammer and Gentile}}{{}}}
-\bibcite{NIPS2012_0706}{{14}{2012}{{Crammer and Mansour}}{{}}}
-\bibcite{Crammer:2012:CLC:2343676.2343704}{{15}{2012}{{Crammer et~al.}}{{Crammer, Dredze, and Pereira}}}
-\bibcite{Daume:2010:FES:1870526.1870534}{{16}{2010}{{Daum{\'e} et~al.}}{{Daum{\'e}, Kumar, and Saha}}}
-\bibcite{DBLP:conf/colt/DekelLS06}{{17}{2006}{{Dekel et~al.}}{{Dekel, Long, and Singer}}}
-\bibcite{dekel2010robust}{{18}{2010}{{Dekel et~al.}}{{Dekel, Gentile, and Sridharan}}}
-\bibcite{dietterich1995solving}{{19}{1995}{{Dietterich and Bakiri}}{{}}}
-\bibcite{Evgeniou:2004:RML:1014052.1014067}{{20}{2004}{{Evgeniou and Pontil}}{{}}}
-\bibcite{Forster}{{21}{1999}{{Forster}}{{}}}
-\bibcite{forster2002relative}{{22}{2002}{{Forster and Warmuth}}{{}}}
-\bibcite{DBLP:journals/jmlr/Furnkranz02}{{23}{2002}{{F{\"u}rnkranz}}{{}}}
-\bibcite{hazan2011newtron}{{24}{2011}{{Hazan and Kale}}{{}}}
-\bibcite{hoerl1970ridge}{{25}{1970}{{Hoerl and Kennard}}{{}}}
-\bibcite{kakade2008efficient}{{26}{2008}{{Kakade et~al.}}{{Kakade, Shalev-Shwartz, and Tewari}}}
-\bibcite{lin2009lose}{{27}{2009}{{Lin et~al.}}{{Lin, Bilmes, and Crammer}}}
-\bibcite{DBLP:conf/colt/LugosiPS09}{{28}{2009}{{Lugosi et~al.}}{{Lugosi, Papaspiliopoulos, and Stoltz}}}
-\bibcite{10.1109/TKDE.2009.191}{{29}{2010}{{Pan and Yang}}{{}}}
-\bibcite{DBLP:journals/corr/abs-1111-0712}{{30}{2011}{{Shivaswamy and Joachims}}{{}}}
-\bibcite{DBLP:conf/icml/TongK00}{{31}{2000}{{Tong and Koller}}{{}}}
-\bibcite{Vovk97}{{32}{1997}{{Vovk}}{{}}}
-\bibcite{DBLP:conf/icml/YuM09}{{33}{2009}{{Yu and Mannor}}{{}}}
-\bibcite{DBLP:conf/icml/YueJ11}{{34}{2011}{{Yue and Joachims}}{{}}}
-\bibcite{DBLP:conf/colt/YueBKJ09}{{35}{2009}{{Yue et~al.}}{{Yue, Broder, Kleinberg, and Joachims}}}
-\bibcite{DBLP:journals/jcss/YueBKJ12}{{36}{2012}{{Yue et~al.}}{{Yue, Broder, Kleinberg, and Joachims}}}
+\bibcite{cesa2006incremental}{{8}{2006{a}}{{Cesa-Bianchi et~al.}}{{Cesa-Bianchi, Gentile, and Zaniboni}}}
+\bibcite{cesa2006worst}{{9}{2006{b}}{{Cesa-Bianchi et~al.}}{{Cesa-Bianchi, Gentile, and Zaniboni}}}
+\bibcite{cesa2009robust}{{10}{2009}{{Cesa-Bianchi et~al.}}{{Cesa-Bianchi, Gentile, and Orabona}}}
+\bibcite{crammer2014doubly}{{11}{2014}{{Crammer}}{{}}}
+\bibcite{DBLP:journals/ml/CrammerG13}{{12}{2013}{{Crammer and Gentile}}{{}}}
+\bibcite{NIPS2012_0706}{{13}{2012}{{Crammer and Mansour}}{{}}}
+\bibcite{Crammer:2012:CLC:2343676.2343704}{{14}{2012}{{Crammer et~al.}}{{Crammer, Dredze, and Pereira}}}
+\bibcite{Daume:2010:FES:1870526.1870534}{{15}{2010}{{Daum{\'e} et~al.}}{{Daum{\'e}, Kumar, and Saha}}}
+\bibcite{DBLP:conf/colt/DekelLS06}{{16}{2006}{{Dekel et~al.}}{{Dekel, Long, and Singer}}}
+\bibcite{dekel2010robust}{{17}{2010}{{Dekel et~al.}}{{Dekel, Gentile, and Sridharan}}}
+\bibcite{dietterich1995solving}{{18}{1995}{{Dietterich and Bakiri}}{{}}}
+\bibcite{Evgeniou:2004:RML:1014052.1014067}{{19}{2004}{{Evgeniou and Pontil}}{{}}}
+\bibcite{Forster}{{20}{1999}{{Forster}}{{}}}
+\bibcite{forster2002relative}{{21}{2002}{{Forster and Warmuth}}{{}}}
+\bibcite{DBLP:journals/jmlr/Furnkranz02}{{22}{2002}{{F{\"u}rnkranz}}{{}}}
+\bibcite{hazan2011newtron}{{23}{2011}{{Hazan and Kale}}{{}}}
+\bibcite{hoerl1970ridge}{{24}{1970}{{Hoerl and Kennard}}{{}}}
+\bibcite{kakade2008efficient}{{25}{2008}{{Kakade et~al.}}{{Kakade, Shalev-Shwartz, and Tewari}}}
+\bibcite{lin2009lose}{{26}{2009}{{Lin et~al.}}{{Lin, Bilmes, and Crammer}}}
+\bibcite{DBLP:conf/colt/LugosiPS09}{{27}{2009}{{Lugosi et~al.}}{{Lugosi, Papaspiliopoulos, and Stoltz}}}
+\bibcite{10.1109/TKDE.2009.191}{{28}{2010}{{Pan and Yang}}{{}}}
+\bibcite{DBLP:journals/corr/abs-1111-0712}{{29}{2011}{{Shivaswamy and Joachims}}{{}}}
+\bibcite{DBLP:conf/icml/TongK00}{{30}{2000}{{Tong and Koller}}{{}}}
+\bibcite{Vovk97}{{31}{1997}{{Vovk}}{{}}}
+\bibcite{DBLP:conf/icml/YuM09}{{32}{2009}{{Yu and Mannor}}{{}}}
+\bibcite{DBLP:conf/icml/YueJ11}{{33}{2011}{{Yue and Joachims}}{{}}}
+\bibcite{DBLP:conf/colt/YueBKJ09}{{34}{2009}{{Yue et~al.}}{{Yue, Broder, Kleinberg, and Joachims}}}
+\bibcite{DBLP:journals/jcss/YueBKJ12}{{35}{2012}{{Yue et~al.}}{{Yue, Broder, Kleinberg, and Joachims}}}
