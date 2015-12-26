@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  26 DEC 2015 20:40
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  27 DEC 2015 00:47
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -464,29 +464,29 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 ) (./thesis.aux)
 \openout1 = `thesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for LHE/cmr/m/n on input line 45.
-LaTeX Font Info:    Try loading font information for LHE+cmr on input line 45.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for LHE/cmr/m/n on input line 44.
+LaTeX Font Info:    Try loading font information for LHE+cmr on input line 44.
 
 (/usr/local/texlive/2014/texmf-dist/tex/generic/babel-hebrew/lhecmr.fd
 File: lhecmr.fd 2005/05/20 v1.2c Hebrew default font (test version: still liabl
 e to change)
 )
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 45.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 44.
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
@@ -506,7 +506,7 @@ File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 \everyMPtoPDFconversion=\toks32
 )
 \AtBeginShipoutBox=\box34
-Package hyperref Info: Link coloring OFF on input line 45.
+Package hyperref Info: Link coloring OFF on input line 44.
  (/usr/local/texlive/2014/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
@@ -515,32 +515,32 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count139
 )
-LaTeX Info: Redefining \ref on input line 45.
-LaTeX Info: Redefining \pageref on input line 45.
-LaTeX Info: Redefining \nameref on input line 45.
+LaTeX Info: Redefining \ref on input line 44.
+LaTeX Info: Redefining \pageref on input line 44.
+LaTeX Info: Redefining \nameref on input line 44.
 
 (./thesis.out) (./thesis.out)
 \@outlinefile=\write4
 \openout4 = `thesis.out'.
 
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <24.88> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 65.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 64.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <17.28> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 65.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 64.
  [1
 
 {/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
-LaTeX Font Info:    Try loading font information for U+lasy on input line 65.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 64.
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 65.
+LaTeX Font Info:    Try loading font information for U+msa on input line 64.
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 65.
+LaTeX Font Info:    Try loading font information for U+msb on input line 64.
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -550,7 +550,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 [5
 
 ] [6]
-Underfull \hbox (badness 10000) in paragraph at lines 65--65
+Underfull \hbox (badness 10000) in paragraph at lines 64--64
 
  []
 
@@ -587,7 +587,7 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.88 \chapter
+l.87 \chapter
              *{Abbreviations and Notations} [1
 
 
@@ -647,7 +647,7 @@ ps-converted-to.pdf figs/SHAMPO_illustration.eps>
 (epstopdf)             \includegraphics on input line 80.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/SHAMPO_illustration-eps-converted-to.pdf, id=243, 766.865pt x 634.37pt>
+<figs/SHAMPO_illustration-eps-converted-to.pdf, id=244, 766.865pt x 634.37pt>
 File: figs/SHAMPO_illustration-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/SHAMPO_illustration-eps-converted-to.pdf>
@@ -705,7 +705,7 @@ to.pdf figs/margin.eps>
 (epstopdf)             \includegraphics on input line 66.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/margin-eps-converted-to.pdf, id=275, 250.9375pt x 203.76125pt>
+<figs/margin-eps-converted-to.pdf, id=276, 250.9375pt x 203.76125pt>
 File: figs/margin-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/margin-eps-converted-to.pdf>
@@ -756,7 +756,7 @@ rted-to.pdf figs/probability.eps>
 (epstopdf)             \includegraphics on input line 110.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/probability-eps-converted-to.pdf, id=296, 392.46625pt x 225.84375pt>
+<figs/probability-eps-converted-to.pdf, id=297, 392.46625pt x 225.84375pt>
 File: figs/probability-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/probability-eps-converted-to.pdf>
@@ -837,14 +837,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 707--710
 Underfull \hbox (badness 10000) in paragraph at lines 800--804
 
  []
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 813.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 813.
 
 [27]
 Overfull \hbox (3.71101pt too wide) in paragraph at lines 838--840
@@ -1097,28 +1089,24 @@ Chapter 5.
 [48
 
 ]
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 76.
-
-Underfull \hbox (badness 10000) in paragraph at lines 74--91
-[][]
- []
-
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[49] [50pdfTeX warning (ext4): destination with the same identifier (name{table
-.5.1}) has been already used, duplicate ignored
+[49]
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 97.
+ [50pdfTeX warning (ext4): destination with the same identifier (name{table.5.1
+}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.135 
+l.119 
       pdfTeX warning (ext4): destination with the same identifier (name{table.5
 .2}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.135 
+l.119 
       ]
 Package epstopdf Info: Source file: <figs/problem-9_4_2_2-1.eps>
 (epstopdf)                    date: 2014-06-05 05:39:22
@@ -1129,15 +1117,15 @@ f>
 (epstopdf)                    size: 7325 bytes
 (epstopdf)             Command: <repstopdf --outfile=figs/problem-9_4_2_2-1-eps
 -converted-to.pdf figs/problem-9_4_2_2-1.eps>
-(epstopdf)             \includegraphics on input line 138.
+(epstopdf)             \includegraphics on input line 159.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/problem-9_4_2_2-1-eps-converted-to.pdf, id=678, 502.87875pt x 405.515pt>
+<figs/problem-9_4_2_2-1-eps-converted-to.pdf, id=675, 502.87875pt x 405.515pt>
 File: figs/problem-9_4_2_2-1-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/problem-9_4_2_2-1-eps-converted-to.pdf>
 Package pdftex.def Info: figs/problem-9_4_2_2-1-eps-converted-to.pdf used on in
-put line 138.
+put line 159.
 (pdftex.def)             Requested size: 161.9989pt x 130.63371pt.
 Package epstopdf Info: Source file: <figs/problem-9_4_4_4-1.eps>
 (epstopdf)                    date: 2014-06-05 05:39:15
@@ -1148,29 +1136,34 @@ f>
 (epstopdf)                    size: 7989 bytes
 (epstopdf)             Command: <repstopdf --outfile=figs/problem-9_4_4_4-1-eps
 -converted-to.pdf figs/problem-9_4_4_4-1.eps>
-(epstopdf)             \includegraphics on input line 139.
+(epstopdf)             \includegraphics on input line 160.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/problem-9_4_4_4-1-eps-converted-to.pdf, id=679, 502.87875pt x 405.515pt>
+<figs/problem-9_4_4_4-1-eps-converted-to.pdf, id=676, 502.87875pt x 405.515pt>
 File: figs/problem-9_4_4_4-1-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/problem-9_4_4_4-1-eps-converted-to.pdf>
 Package pdftex.def Info: figs/problem-9_4_4_4-1-eps-converted-to.pdf used on in
-put line 139.
+put line 160.
 (pdftex.def)             Requested size: 161.9989pt x 130.63371pt.
- [51pdfTeX warning (ext4): destination with the same identifier (name{figure.5.
-1}) has been already used, duplicate ignored
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[51pdfTeX warning (ext4): destination with the same identifier (name{table.5.3}
+) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.182 
+l.180 
+      ] [52pdfTeX warning (ext4): destination with the same identifier (name{fi
+gure.5.1}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.200 
        <./figs/problem-9_4_2_2-1-eps-converted-to.pdf> <./figs/problem-9_4_4_4-
-1-eps-converted-to.pdf>]
-
-LaTeX Warning: Reference `thm:FO_bound' on page 52 undefined on input line 207.
-
-
-[52]
+1-eps-converted-to.pdf>] [53]
 Package epstopdf Info: Source file: <figs/VJ_three_methods.eps>
 (epstopdf)                    date: 2013-05-31 16:21:23
 (epstopdf)                    size: 18989 bytes
@@ -1180,14 +1173,14 @@ Package epstopdf Info: Source file: <figs/VJ_three_methods.eps>
 (epstopdf)                    size: 9103 bytes
 (epstopdf)             Command: <repstopdf --outfile=figs/VJ_three_methods-eps-
 converted-to.pdf figs/VJ_three_methods.eps>
-(epstopdf)             \includegraphics on input line 221.
+(epstopdf)             \includegraphics on input line 239.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/VJ_three_methods-eps-converted-to.pdf, id=704, 504.88625pt x 412.54124pt>
+<figs/VJ_three_methods-eps-converted-to.pdf, id=710, 504.88625pt x 412.54124pt>
 File: figs/VJ_three_methods-eps-converted-to.pdf Graphic file (type pdf)
 <use figs/VJ_three_methods-eps-converted-to.pdf>
 Package pdftex.def Info: figs/VJ_three_methods-eps-converted-to.pdf used on inp
-ut line 221.
+ut line 239.
 (pdftex.def)             Requested size: 251.9989pt x 205.9113pt.
 Package epstopdf Info: Source file: <figs/queried-m1.eps>
 (epstopdf)                    date: 2015-12-24 21:07:10
@@ -1197,15 +1190,15 @@ Package epstopdf Info: Source file: <figs/queried-m1.eps>
 (epstopdf)                    size: 6867 bytes
 (epstopdf)             Command: <repstopdf --outfile=figs/queried-m1-eps-conver
 ted-to.pdf figs/queried-m1.eps>
-(epstopdf)             \includegraphics on input line 229.
+(epstopdf)             \includegraphics on input line 247.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/queried-m1-eps-converted-to.pdf, id=705, 510.90875pt x 410.53375pt>
+<figs/queried-m1-eps-converted-to.pdf, id=711, 510.90875pt x 410.53375pt>
 File: figs/queried-m1-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/queried-m1-eps-converted-to.pdf>
 Package pdftex.def Info: figs/queried-m1-eps-converted-to.pdf used on input lin
-e 229.
+e 247.
 (pdftex.def)             Requested size: 133.19824pt x 107.0244pt.
 Package epstopdf Info: Source file: <figs/queried-mr.eps>
 (epstopdf)                    date: 2015-12-24 21:07:19
@@ -1215,15 +1208,15 @@ Package epstopdf Info: Source file: <figs/queried-mr.eps>
 (epstopdf)                    size: 6927 bytes
 (epstopdf)             Command: <repstopdf --outfile=figs/queried-mr-eps-conver
 ted-to.pdf figs/queried-mr.eps>
-(epstopdf)             \includegraphics on input line 230.
+(epstopdf)             \includegraphics on input line 248.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/queried-mr-eps-converted-to.pdf, id=706, 515.9275pt x 410.53375pt>
+<figs/queried-mr-eps-converted-to.pdf, id=712, 515.9275pt x 410.53375pt>
 File: figs/queried-mr-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/queried-mr-eps-converted-to.pdf>
 Package pdftex.def Info: figs/queried-mr-eps-converted-to.pdf used on input lin
-e 230.
+e 248.
 (pdftex.def)             Requested size: 133.19824pt x 105.98454pt.
 Package epstopdf Info: Source file: <figs/queried-u1.eps>
 (epstopdf)                    date: 2015-12-24 21:07:23
@@ -1233,15 +1226,15 @@ Package epstopdf Info: Source file: <figs/queried-u1.eps>
 (epstopdf)                    size: 7300 bytes
 (epstopdf)             Command: <repstopdf --outfile=figs/queried-u1-eps-conver
 ted-to.pdf figs/queried-u1.eps>
-(epstopdf)             \includegraphics on input line 231.
+(epstopdf)             \includegraphics on input line 249.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/queried-u1-eps-converted-to.pdf, id=707, 510.90875pt x 410.53375pt>
+<figs/queried-u1-eps-converted-to.pdf, id=713, 510.90875pt x 410.53375pt>
 File: figs/queried-u1-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/queried-u1-eps-converted-to.pdf>
 Package pdftex.def Info: figs/queried-u1-eps-converted-to.pdf used on input lin
-e 231.
+e 249.
 (pdftex.def)             Requested size: 133.19824pt x 107.0244pt.
 Package epstopdf Info: Source file: <figs/queried-ur.eps>
 (epstopdf)                    date: 2015-12-24 21:07:28
@@ -1251,15 +1244,15 @@ Package epstopdf Info: Source file: <figs/queried-ur.eps>
 (epstopdf)                    size: 7069 bytes
 (epstopdf)             Command: <repstopdf --outfile=figs/queried-ur-eps-conver
 ted-to.pdf figs/queried-ur.eps>
-(epstopdf)             \includegraphics on input line 232.
+(epstopdf)             \includegraphics on input line 250.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/queried-ur-eps-converted-to.pdf, id=708, 515.9275pt x 410.53375pt>
+<figs/queried-ur-eps-converted-to.pdf, id=714, 515.9275pt x 410.53375pt>
 File: figs/queried-ur-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/queried-ur-eps-converted-to.pdf>
 Package pdftex.def Info: figs/queried-ur-eps-converted-to.pdf used on input lin
-e 232.
+e 250.
 (pdftex.def)             Requested size: 133.19824pt x 105.98454pt.
 Package epstopdf Info: Source file: <figs/queried-v1.eps>
 (epstopdf)                    date: 2015-12-24 21:07:42
@@ -1269,15 +1262,15 @@ Package epstopdf Info: Source file: <figs/queried-v1.eps>
 (epstopdf)                    size: 6856 bytes
 (epstopdf)             Command: <repstopdf --outfile=figs/queried-v1-eps-conver
 ted-to.pdf figs/queried-v1.eps>
-(epstopdf)             \includegraphics on input line 233.
+(epstopdf)             \includegraphics on input line 251.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/queried-v1-eps-converted-to.pdf, id=709, 510.90875pt x 410.53375pt>
+<figs/queried-v1-eps-converted-to.pdf, id=715, 510.90875pt x 410.53375pt>
 File: figs/queried-v1-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/queried-v1-eps-converted-to.pdf>
 Package pdftex.def Info: figs/queried-v1-eps-converted-to.pdf used on input lin
-e 233.
+e 251.
 (pdftex.def)             Requested size: 133.19824pt x 107.0244pt.
 Package epstopdf Info: Source file: <figs/queried-vr.eps>
 (epstopdf)                    date: 2015-12-24 21:08:23
@@ -1287,15 +1280,15 @@ Package epstopdf Info: Source file: <figs/queried-vr.eps>
 (epstopdf)                    size: 7161 bytes
 (epstopdf)             Command: <repstopdf --outfile=figs/queried-vr-eps-conver
 ted-to.pdf figs/queried-vr.eps>
-(epstopdf)             \includegraphics on input line 234.
+(epstopdf)             \includegraphics on input line 252.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/queried-vr-eps-converted-to.pdf, id=710, 510.90875pt x 410.53375pt>
+<figs/queried-vr-eps-converted-to.pdf, id=716, 510.90875pt x 410.53375pt>
 File: figs/queried-vr-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/queried-vr-eps-converted-to.pdf>
 Package pdftex.def Info: figs/queried-vr-eps-converted-to.pdf used on input lin
-e 234.
+e 252.
 (pdftex.def)             Requested size: 133.19824pt x 107.0244pt.
 Package epstopdf Info: Source file: <figs/queried-n.eps>
 (epstopdf)                    date: 2015-12-24 21:08:33
@@ -1305,21 +1298,27 @@ Package epstopdf Info: Source file: <figs/queried-n.eps>
 (epstopdf)                    size: 7195 bytes
 (epstopdf)             Command: <repstopdf --outfile=figs/queried-n-eps-convert
 ed-to.pdf figs/queried-n.eps>
-(epstopdf)             \includegraphics on input line 235.
+(epstopdf)             \includegraphics on input line 253.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/queried-n-eps-converted-to.pdf, id=711, 510.90875pt x 410.53375pt>
+<figs/queried-n-eps-converted-to.pdf, id=717, 510.90875pt x 410.53375pt>
 File: figs/queried-n-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/queried-n-eps-converted-to.pdf>
 Package pdftex.def Info: figs/queried-n-eps-converted-to.pdf used on input line
- 235.
+ 253.
 (pdftex.def)             Requested size: 133.19824pt x 107.0244pt.
 
 
-LaTeX Warning: Float too large for page by 24.63654pt on input line 239.
+LaTeX Warning: Float too large for page by 24.63654pt on input line 257.
 
-[53]
+[54pdfTeX warning (ext4): destination with the same identifier (name{figure.5.2
+}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.278 
+       <./figs/VJ_three_methods-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <figs/test-m1.eps>
 (epstopdf)                    date: 2015-12-24 21:07:08
 (epstopdf)                    size: 15937 bytes
@@ -1328,14 +1327,15 @@ Package epstopdf Info: Source file: <figs/test-m1.eps>
 (epstopdf)                    size: 9063 bytes
 (epstopdf)             Command: <repstopdf --outfile=figs/test-m1-eps-converted
 -to.pdf figs/test-m1.eps>
-(epstopdf)             \includegraphics on input line 265.
+(epstopdf)             \includegraphics on input line 284.
 Package epstopdf Info: Output file is already uptodate.
- <figs/test-m1-eps-converted-to.pdf, id=717, 510.90875pt x 411.5375pt>
+
+<figs/test-m1-eps-converted-to.pdf, id=734, 510.90875pt x 411.5375pt>
 File: figs/test-m1-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/test-m1-eps-converted-to.pdf>
 Package pdftex.def Info: figs/test-m1-eps-converted-to.pdf used on input line 2
-65.
+84.
 (pdftex.def)             Requested size: 133.19824pt x 107.28609pt.
 Package epstopdf Info: Source file: <figs/test-mr.eps>
 (epstopdf)                    date: 2015-12-24 21:07:17
@@ -1345,15 +1345,15 @@ Package epstopdf Info: Source file: <figs/test-mr.eps>
 (epstopdf)                    size: 8795 bytes
 (epstopdf)             Command: <repstopdf --outfile=figs/test-mr-eps-converted
 -to.pdf figs/test-mr.eps>
-(epstopdf)             \includegraphics on input line 266.
+(epstopdf)             \includegraphics on input line 285.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/test-mr-eps-converted-to.pdf, id=718, 524.96124pt x 411.5375pt>
+<figs/test-mr-eps-converted-to.pdf, id=735, 524.96124pt x 411.5375pt>
 File: figs/test-mr-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/test-mr-eps-converted-to.pdf>
 Package pdftex.def Info: figs/test-mr-eps-converted-to.pdf used on input line 2
-66.
+85.
 (pdftex.def)             Requested size: 133.19824pt x 104.41632pt.
 Package epstopdf Info: Source file: <figs/test-u1.eps>
 (epstopdf)                    date: 2015-12-24 21:07:21
@@ -1363,15 +1363,15 @@ Package epstopdf Info: Source file: <figs/test-u1.eps>
 (epstopdf)                    size: 8316 bytes
 (epstopdf)             Command: <repstopdf --outfile=figs/test-u1-eps-converted
 -to.pdf figs/test-u1.eps>
-(epstopdf)             \includegraphics on input line 267.
+(epstopdf)             \includegraphics on input line 286.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/test-u1-eps-converted-to.pdf, id=719, 510.90875pt x 411.5375pt>
+<figs/test-u1-eps-converted-to.pdf, id=736, 510.90875pt x 411.5375pt>
 File: figs/test-u1-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/test-u1-eps-converted-to.pdf>
 Package pdftex.def Info: figs/test-u1-eps-converted-to.pdf used on input line 2
-67.
+86.
 (pdftex.def)             Requested size: 133.19824pt x 107.28609pt.
 Package epstopdf Info: Source file: <figs/test-ur.eps>
 (epstopdf)                    date: 2015-12-24 21:07:26
@@ -1381,15 +1381,15 @@ Package epstopdf Info: Source file: <figs/test-ur.eps>
 (epstopdf)                    size: 8452 bytes
 (epstopdf)             Command: <repstopdf --outfile=figs/test-ur-eps-converted
 -to.pdf figs/test-ur.eps>
-(epstopdf)             \includegraphics on input line 268.
+(epstopdf)             \includegraphics on input line 287.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/test-ur-eps-converted-to.pdf, id=720, 524.96124pt x 411.5375pt>
+<figs/test-ur-eps-converted-to.pdf, id=737, 524.96124pt x 411.5375pt>
 File: figs/test-ur-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/test-ur-eps-converted-to.pdf>
 Package pdftex.def Info: figs/test-ur-eps-converted-to.pdf used on input line 2
-68.
+87.
 (pdftex.def)             Requested size: 133.19824pt x 104.41632pt.
 Package epstopdf Info: Source file: <figs/test-v1.eps>
 (epstopdf)                    date: 2015-12-24 21:07:41
@@ -1399,15 +1399,15 @@ Package epstopdf Info: Source file: <figs/test-v1.eps>
 (epstopdf)                    size: 8509 bytes
 (epstopdf)             Command: <repstopdf --outfile=figs/test-v1-eps-converted
 -to.pdf figs/test-v1.eps>
-(epstopdf)             \includegraphics on input line 269.
+(epstopdf)             \includegraphics on input line 288.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/test-v1-eps-converted-to.pdf, id=721, 524.96124pt x 411.5375pt>
+<figs/test-v1-eps-converted-to.pdf, id=738, 524.96124pt x 411.5375pt>
 File: figs/test-v1-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/test-v1-eps-converted-to.pdf>
 Package pdftex.def Info: figs/test-v1-eps-converted-to.pdf used on input line 2
-69.
+88.
 (pdftex.def)             Requested size: 133.19824pt x 104.41632pt.
 Package epstopdf Info: Source file: <figs/test-vr.eps>
 (epstopdf)                    date: 2015-12-24 21:08:21
@@ -1417,15 +1417,15 @@ Package epstopdf Info: Source file: <figs/test-vr.eps>
 (epstopdf)                    size: 8464 bytes
 (epstopdf)             Command: <repstopdf --outfile=figs/test-vr-eps-converted
 -to.pdf figs/test-vr.eps>
-(epstopdf)             \includegraphics on input line 270.
+(epstopdf)             \includegraphics on input line 289.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/test-vr-eps-converted-to.pdf, id=722, 510.90875pt x 411.5375pt>
+<figs/test-vr-eps-converted-to.pdf, id=739, 510.90875pt x 411.5375pt>
 File: figs/test-vr-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/test-vr-eps-converted-to.pdf>
 Package pdftex.def Info: figs/test-vr-eps-converted-to.pdf used on input line 2
-70.
+89.
 (pdftex.def)             Requested size: 133.19824pt x 107.28609pt.
 Package epstopdf Info: Source file: <figs/test-n.eps>
 (epstopdf)                    date: 2015-12-24 21:08:26
@@ -1435,19 +1435,19 @@ Package epstopdf Info: Source file: <figs/test-n.eps>
 (epstopdf)                    size: 8468 bytes
 (epstopdf)             Command: <repstopdf --outfile=figs/test-n-eps-converted-
 to.pdf figs/test-n.eps>
-(epstopdf)             \includegraphics on input line 271.
+(epstopdf)             \includegraphics on input line 290.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/test-n-eps-converted-to.pdf, id=723, 510.90875pt x 411.5375pt>
+<figs/test-n-eps-converted-to.pdf, id=740, 510.90875pt x 411.5375pt>
 File: figs/test-n-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/test-n-eps-converted-to.pdf>
-Package pdftex.def Info: figs/test-n-eps-converted-to.pdf used on input line 27
-1.
+Package pdftex.def Info: figs/test-n-eps-converted-to.pdf used on input line 29
+0.
 (pdftex.def)             Requested size: 133.19824pt x 107.28609pt.
 
 
-LaTeX Warning: Float too large for page by 23.85338pt on input line 276.
+LaTeX Warning: Float too large for page by 23.85338pt on input line 295.
 
 Package epstopdf Info: Source file: <figs/train-m1.eps>
 (epstopdf)                    date: 2015-12-24 21:07:09
@@ -1457,14 +1457,14 @@ Package epstopdf Info: Source file: <figs/train-m1.eps>
 (epstopdf)                    size: 8553 bytes
 (epstopdf)             Command: <repstopdf --outfile=figs/train-m1-eps-converte
 d-to.pdf figs/train-m1.eps>
-(epstopdf)             \includegraphics on input line 280.
+(epstopdf)             \includegraphics on input line 299.
 Package epstopdf Info: Output file is already uptodate.
-<figs/train-m1-eps-converted-to.pdf, id=724, 510.90875pt x 411.5375pt>
+<figs/train-m1-eps-converted-to.pdf, id=741, 510.90875pt x 411.5375pt>
 File: figs/train-m1-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/train-m1-eps-converted-to.pdf>
 Package pdftex.def Info: figs/train-m1-eps-converted-to.pdf used on input line 
-280.
+299.
 (pdftex.def)             Requested size: 133.19824pt x 107.28609pt.
 Package epstopdf Info: Source file: <figs/train-mr.eps>
 (epstopdf)                    date: 2015-12-24 21:07:18
@@ -1474,15 +1474,15 @@ Package epstopdf Info: Source file: <figs/train-mr.eps>
 (epstopdf)                    size: 8764 bytes
 (epstopdf)             Command: <repstopdf --outfile=figs/train-mr-eps-converte
 d-to.pdf figs/train-mr.eps>
-(epstopdf)             \includegraphics on input line 281.
+(epstopdf)             \includegraphics on input line 300.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/train-mr-eps-converted-to.pdf, id=725, 515.9275pt x 411.5375pt>
+<figs/train-mr-eps-converted-to.pdf, id=742, 515.9275pt x 411.5375pt>
 File: figs/train-mr-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/train-mr-eps-converted-to.pdf>
 Package pdftex.def Info: figs/train-mr-eps-converted-to.pdf used on input line 
-281.
+300.
 (pdftex.def)             Requested size: 133.19824pt x 106.24368pt.
 Package epstopdf Info: Source file: <figs/train-u1.eps>
 (epstopdf)                    date: 2015-12-24 21:07:22
@@ -1492,15 +1492,15 @@ Package epstopdf Info: Source file: <figs/train-u1.eps>
 (epstopdf)                    size: 8743 bytes
 (epstopdf)             Command: <repstopdf --outfile=figs/train-u1-eps-converte
 d-to.pdf figs/train-u1.eps>
-(epstopdf)             \includegraphics on input line 282.
+(epstopdf)             \includegraphics on input line 301.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/train-u1-eps-converted-to.pdf, id=726, 510.90875pt x 411.5375pt>
+<figs/train-u1-eps-converted-to.pdf, id=743, 510.90875pt x 411.5375pt>
 File: figs/train-u1-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/train-u1-eps-converted-to.pdf>
 Package pdftex.def Info: figs/train-u1-eps-converted-to.pdf used on input line 
-282.
+301.
 (pdftex.def)             Requested size: 133.19824pt x 107.28609pt.
 Package epstopdf Info: Source file: <figs/train-ur.eps>
 (epstopdf)                    date: 2015-12-24 21:07:27
@@ -1510,15 +1510,15 @@ Package epstopdf Info: Source file: <figs/train-ur.eps>
 (epstopdf)                    size: 8443 bytes
 (epstopdf)             Command: <repstopdf --outfile=figs/train-ur-eps-converte
 d-to.pdf figs/train-ur.eps>
-(epstopdf)             \includegraphics on input line 283.
+(epstopdf)             \includegraphics on input line 302.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/train-ur-eps-converted-to.pdf, id=727, 515.9275pt x 412.54124pt>
+<figs/train-ur-eps-converted-to.pdf, id=744, 515.9275pt x 412.54124pt>
 File: figs/train-ur-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/train-ur-eps-converted-to.pdf>
 Package pdftex.def Info: figs/train-ur-eps-converted-to.pdf used on input line 
-283.
+302.
 (pdftex.def)             Requested size: 133.19824pt x 106.5028pt.
 Package epstopdf Info: Source file: <figs/train-v1.eps>
 (epstopdf)                    date: 2015-12-24 21:07:42
@@ -1528,15 +1528,15 @@ Package epstopdf Info: Source file: <figs/train-v1.eps>
 (epstopdf)                    size: 8606 bytes
 (epstopdf)             Command: <repstopdf --outfile=figs/train-v1-eps-converte
 d-to.pdf figs/train-v1.eps>
-(epstopdf)             \includegraphics on input line 284.
+(epstopdf)             \includegraphics on input line 303.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/train-v1-eps-converted-to.pdf, id=728, 515.9275pt x 411.5375pt>
+<figs/train-v1-eps-converted-to.pdf, id=745, 515.9275pt x 411.5375pt>
 File: figs/train-v1-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/train-v1-eps-converted-to.pdf>
 Package pdftex.def Info: figs/train-v1-eps-converted-to.pdf used on input line 
-284.
+303.
 (pdftex.def)             Requested size: 133.19824pt x 106.24368pt.
 Package epstopdf Info: Source file: <figs/train-vr.eps>
 (epstopdf)                    date: 2015-12-24 21:08:22
@@ -1546,15 +1546,15 @@ Package epstopdf Info: Source file: <figs/train-vr.eps>
 (epstopdf)                    size: 8401 bytes
 (epstopdf)             Command: <repstopdf --outfile=figs/train-vr-eps-converte
 d-to.pdf figs/train-vr.eps>
-(epstopdf)             \includegraphics on input line 285.
+(epstopdf)             \includegraphics on input line 304.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/train-vr-eps-converted-to.pdf, id=729, 510.90875pt x 411.5375pt>
+<figs/train-vr-eps-converted-to.pdf, id=746, 510.90875pt x 411.5375pt>
 File: figs/train-vr-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/train-vr-eps-converted-to.pdf>
 Package pdftex.def Info: figs/train-vr-eps-converted-to.pdf used on input line 
-285.
+304.
 (pdftex.def)             Requested size: 133.19824pt x 107.28609pt.
 Package epstopdf Info: Source file: <figs/train-n.eps>
 (epstopdf)                    date: 2015-12-24 21:08:29
@@ -1564,19 +1564,19 @@ Package epstopdf Info: Source file: <figs/train-n.eps>
 (epstopdf)                    size: 8918 bytes
 (epstopdf)             Command: <repstopdf --outfile=figs/train-n-eps-converted
 -to.pdf figs/train-n.eps>
-(epstopdf)             \includegraphics on input line 286.
+(epstopdf)             \includegraphics on input line 305.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/train-n-eps-converted-to.pdf, id=730, 510.90875pt x 411.5375pt>
+<figs/train-n-eps-converted-to.pdf, id=747, 510.90875pt x 411.5375pt>
 File: figs/train-n-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/train-n-eps-converted-to.pdf>
-Package pdftex.def Info: figs/train-n-eps-converted-to.pdf used on input line 2
-86.
+Package pdftex.def Info: figs/train-n-eps-converted-to.pdf used on input line 3
+05.
 (pdftex.def)             Requested size: 133.19824pt x 107.28609pt.
 
 
-LaTeX Warning: Float too large for page by 11.45438pt on input line 291.
+LaTeX Warning: Float too large for page by 11.45438pt on input line 310.
 
 Package epstopdf Info: Source file: <figs/scatter-m1.eps>
 (epstopdf)                    date: 2015-12-24 21:07:06
@@ -1586,14 +1586,14 @@ Package epstopdf Info: Source file: <figs/scatter-m1.eps>
 (epstopdf)                    size: 12561 bytes
 (epstopdf)             Command: <repstopdf --outfile=figs/scatter-m1-eps-conver
 ted-to.pdf figs/scatter-m1.eps>
-(epstopdf)             \includegraphics on input line 296.
+(epstopdf)             \includegraphics on input line 315.
 Package epstopdf Info: Output file is already uptodate.
-<figs/scatter-m1-eps-converted-to.pdf, id=731, 501.875pt x 405.515pt>
+<figs/scatter-m1-eps-converted-to.pdf, id=748, 501.875pt x 405.515pt>
 File: figs/scatter-m1-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/scatter-m1-eps-converted-to.pdf>
 Package pdftex.def Info: figs/scatter-m1-eps-converted-to.pdf used on input lin
-e 296.
+e 315.
 (pdftex.def)             Requested size: 133.19824pt x 107.62183pt.
 Package epstopdf Info: Source file: <figs/scatter-mr.eps>
 (epstopdf)                    date: 2015-12-24 21:07:13
@@ -1603,15 +1603,15 @@ Package epstopdf Info: Source file: <figs/scatter-mr.eps>
 (epstopdf)                    size: 8390 bytes
 (epstopdf)             Command: <repstopdf --outfile=figs/scatter-mr-eps-conver
 ted-to.pdf figs/scatter-mr.eps>
-(epstopdf)             \includegraphics on input line 297.
+(epstopdf)             \includegraphics on input line 316.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/scatter-mr-eps-converted-to.pdf, id=732, 501.875pt x 405.515pt>
+<figs/scatter-mr-eps-converted-to.pdf, id=749, 501.875pt x 405.515pt>
 File: figs/scatter-mr-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/scatter-mr-eps-converted-to.pdf>
 Package pdftex.def Info: figs/scatter-mr-eps-converted-to.pdf used on input lin
-e 297.
+e 316.
 (pdftex.def)             Requested size: 133.19824pt x 107.62183pt.
 Package epstopdf Info: Source file: <figs/scatter-u1.eps>
 (epstopdf)                    date: 2015-12-24 21:07:19
@@ -1621,15 +1621,15 @@ Package epstopdf Info: Source file: <figs/scatter-u1.eps>
 (epstopdf)                    size: 12454 bytes
 (epstopdf)             Command: <repstopdf --outfile=figs/scatter-u1-eps-conver
 ted-to.pdf figs/scatter-u1.eps>
-(epstopdf)             \includegraphics on input line 298.
+(epstopdf)             \includegraphics on input line 317.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/scatter-u1-eps-converted-to.pdf, id=733, 501.875pt x 405.515pt>
+<figs/scatter-u1-eps-converted-to.pdf, id=750, 501.875pt x 405.515pt>
 File: figs/scatter-u1-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/scatter-u1-eps-converted-to.pdf>
 Package pdftex.def Info: figs/scatter-u1-eps-converted-to.pdf used on input lin
-e 298.
+e 317.
 (pdftex.def)             Requested size: 133.19824pt x 107.62183pt.
 Package epstopdf Info: Source file: <figs/scatter-ur.eps>
 (epstopdf)                    date: 2015-12-24 21:07:24
@@ -1639,15 +1639,15 @@ Package epstopdf Info: Source file: <figs/scatter-ur.eps>
 (epstopdf)                    size: 8516 bytes
 (epstopdf)             Command: <repstopdf --outfile=figs/scatter-ur-eps-conver
 ted-to.pdf figs/scatter-ur.eps>
-(epstopdf)             \includegraphics on input line 299.
+(epstopdf)             \includegraphics on input line 318.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/scatter-ur-eps-converted-to.pdf, id=734, 501.875pt x 405.515pt>
+<figs/scatter-ur-eps-converted-to.pdf, id=751, 501.875pt x 405.515pt>
 File: figs/scatter-ur-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/scatter-ur-eps-converted-to.pdf>
 Package pdftex.def Info: figs/scatter-ur-eps-converted-to.pdf used on input lin
-e 299.
+e 318.
 (pdftex.def)             Requested size: 133.19824pt x 107.62183pt.
 Package epstopdf Info: Source file: <figs/scatter-v1.eps>
 (epstopdf)                    date: 2015-12-24 21:07:33
@@ -1657,15 +1657,15 @@ Package epstopdf Info: Source file: <figs/scatter-v1.eps>
 (epstopdf)                    size: 10635 bytes
 (epstopdf)             Command: <repstopdf --outfile=figs/scatter-v1-eps-conver
 ted-to.pdf figs/scatter-v1.eps>
-(epstopdf)             \includegraphics on input line 300.
+(epstopdf)             \includegraphics on input line 319.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/scatter-v1-eps-converted-to.pdf, id=735, 501.875pt x 405.515pt>
+<figs/scatter-v1-eps-converted-to.pdf, id=752, 501.875pt x 405.515pt>
 File: figs/scatter-v1-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/scatter-v1-eps-converted-to.pdf>
 Package pdftex.def Info: figs/scatter-v1-eps-converted-to.pdf used on input lin
-e 300.
+e 319.
 (pdftex.def)             Requested size: 133.19824pt x 107.62183pt.
 Package epstopdf Info: Source file: <figs/scatter-vr.eps>
 (epstopdf)                    date: 2015-12-24 21:07:58
@@ -1675,15 +1675,15 @@ Package epstopdf Info: Source file: <figs/scatter-vr.eps>
 (epstopdf)                    size: 8535 bytes
 (epstopdf)             Command: <repstopdf --outfile=figs/scatter-vr-eps-conver
 ted-to.pdf figs/scatter-vr.eps>
-(epstopdf)             \includegraphics on input line 301.
+(epstopdf)             \includegraphics on input line 320.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/scatter-vr-eps-converted-to.pdf, id=736, 501.875pt x 407.5225pt>
+<figs/scatter-vr-eps-converted-to.pdf, id=753, 501.875pt x 407.5225pt>
 File: figs/scatter-vr-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/scatter-vr-eps-converted-to.pdf>
 Package pdftex.def Info: figs/scatter-vr-eps-converted-to.pdf used on input lin
-e 301.
+e 320.
 (pdftex.def)             Requested size: 133.19824pt x 108.15462pt.
 Package epstopdf Info: Source file: <figs/scatter-n.eps>
 (epstopdf)                    date: 2015-12-24 21:08:24
@@ -1693,29 +1693,22 @@ Package epstopdf Info: Source file: <figs/scatter-n.eps>
 (epstopdf)                    size: 11409 bytes
 (epstopdf)             Command: <repstopdf --outfile=figs/scatter-n-eps-convert
 ed-to.pdf figs/scatter-n.eps>
-(epstopdf)             \includegraphics on input line 302.
+(epstopdf)             \includegraphics on input line 321.
 Package epstopdf Info: Output file is already uptodate.
 
-<figs/scatter-n-eps-converted-to.pdf, id=737, 501.875pt x 405.515pt>
+<figs/scatter-n-eps-converted-to.pdf, id=754, 501.875pt x 405.515pt>
 File: figs/scatter-n-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figs/scatter-n-eps-converted-to.pdf>
 Package pdftex.def Info: figs/scatter-n-eps-converted-to.pdf used on input line
- 302.
+ 321.
 (pdftex.def)             Requested size: 133.19824pt x 107.62183pt.
 
 
-LaTeX Warning: Float too large for page by 14.37253pt on input line 307.
+LaTeX Warning: Float too large for page by 14.37253pt on input line 326.
 
-[54pdfTeX warning (ext4): destination with the same identifier (name{figure.5.2
-}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.333 
-       <./figs/VJ_three_methods-eps-converted-to.pdf>]) (./related_work.tex
-[55] [56pdfTeX warning (ext4): destination with the same identifier (name{figur
-e.5.3}) has been already used, duplicate ignored
+[55]) (./related_work.tex [56] [57pdfTeX warning (ext4): destination with the s
+ame identifier (name{figure.5.3}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
@@ -1724,7 +1717,7 @@ l.1 \chapter
 ried-mr-eps-converted-to.pdf> <./figs/queried-u1-eps-converted-to.pdf> <./figs/
 queried-ur-eps-converted-to.pdf> <./figs/queried-v1-eps-converted-to.pdf> <./fi
 gs/queried-vr-eps-converted-to.pdf> <./figs/queried-n-eps-converted-to.pdf>]
-[57pdfTeX warning (ext4): destination with the same identifier (name{figure.5.4
+[58pdfTeX warning (ext4): destination with the same identifier (name{figure.5.4
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -1733,7 +1726,7 @@ l.1 \chapter
             {Related Work} <./figs/test-m1-eps-converted-to.pdf> <./figs/test-m
 r-eps-converted-to.pdf> <./figs/test-u1-eps-converted-to.pdf> <./figs/test-ur-e
 ps-converted-to.pdf> <./figs/test-v1-eps-converted-to.pdf> <./figs/test-vr-eps-
-converted-to.pdf> <./figs/test-n-eps-converted-to.pdf>] [58pdfTeX warning (ext4
+converted-to.pdf> <./figs/test-n-eps-converted-to.pdf>] [59pdfTeX warning (ext4
 ): destination with the same identifier (name{figure.5.5}) has been already use
 d, duplicate ignored
 
@@ -1743,7 +1736,7 @@ l.1 \chapter
             {Related Work} <./figs/train-m1-eps-converted-to.pdf> <./figs/train
 -mr-eps-converted-to.pdf> <./figs/train-u1-eps-converted-to.pdf> <./figs/train-
 ur-eps-converted-to.pdf> <./figs/train-v1-eps-converted-to.pdf> <./figs/train-v
-r-eps-converted-to.pdf> <./figs/train-n-eps-converted-to.pdf>] [59pdfTeX warnin
+r-eps-converted-to.pdf> <./figs/train-n-eps-converted-to.pdf>] [60pdfTeX warnin
 g (ext4): destination with the same identifier (name{figure.5.6}) has been alre
 ady used, duplicate ignored
 
@@ -1755,11 +1748,11 @@ tter-mr-eps-converted-to.pdf> <./figs/scatter-u1-eps-converted-to.pdf> <./figs/
 scatter-ur-eps-converted-to.pdf> <./figs/scatter-v1-eps-converted-to.pdf> <./fi
 gs/scatter-vr-eps-converted-to.pdf> <./figs/scatter-n-eps-converted-to.pdf>]
 Chapter 6.
-[60
+[61
 
-]) (./conclusions.tex [61]
+]) (./conclusions.tex [62]
 Chapter 7.
-) [62
+) [63
 
 ] (./thesis.bbl
 LaTeX Font Info:    Try loading font information for OT1+pcr on input line 15.
@@ -1772,7 +1765,7 @@ Underfull \hbox (badness 3965) in paragraph at lines 10--16
 Berke-ley, Oct
  []
 
-[63
+[64
 
 
 ]
@@ -1781,27 +1774,27 @@ Underfull \hbox (badness 4144) in paragraph at lines 89--93
 n-for-ma-tion Pro-cess-ing Sys-tems
  []
 
-[64] [65])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 128.
- [66]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 128.
+[65] [66])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 127.
+ [67]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 127.
  (./thesis.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 128.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 128.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 127.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 127.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: B374D5CAA1451B035519CF8CF93368A7;1533.
+(rerunfilecheck)             Checksum: 9498EC1F4C7A4F288F8F348E3ECACAB6;1521.
 
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 128.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 127.
  ) 
 Here is how much of TeX's memory you used:
- 10158 strings out of 493117
- 145732 string characters out of 6135433
- 255223 words of memory out of 5000000
- 13081 multiletter control sequences out of 15000+600000
- 38391 words of font info for 97 fonts, out of 8000000 for 9000
+ 10155 strings out of 493117
+ 145694 string characters out of 6135433
+ 255928 words of memory out of 5000000
+ 13078 multiletter control sequences out of 15000+600000
+ 37466 words of font info for 94 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,26n,40p,522b,499s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
@@ -1809,25 +1802,24 @@ exlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/te
 xlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texl
 ive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texli
 ve/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texliv
-e/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive
-/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2
-014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/201
-4/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/201
-4/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2014/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2014/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2014/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2014/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2014/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2014/texmf-dist/
-fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2014/texmf-d
-ist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2014/texmf-dist/font
-s/type1/urw/times/utmb8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/ur
-w/times/utmr8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/times/ut
-mri8a.pfb>
-Output written on ./thesis.pdf (79 pages, 596416 bytes).
+e/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/
+2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/20
+14/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/20
+14/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2014
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2014/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2014/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2014/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2014/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2014/texmf-dist
+/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2014/texmf-
+dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2014/texmf-dist/fon
+ts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/u
+rw/times/utmr8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/times/u
+tmri8a.pfb>
+Output written on ./thesis.pdf (80 pages, 592080 bytes).
 PDF statistics:
- 1254 PDF objects out of 1440 (max. 8388607)
- 1053 compressed objects within 11 object streams
- 261 named destinations out of 1000 (max. 500000)
+ 1259 PDF objects out of 1440 (max. 8388607)
+ 1058 compressed objects within 11 object streams
+ 263 named destinations out of 1000 (max. 500000)
  355 words of extra memory for PDF output out of 10000 (max. 10000000)
 

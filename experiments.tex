@@ -1,20 +1,7 @@
 \chapter{Experiments}
 
-
-
-%\begin{wrapfigure}{l}{8cm}
-%\vspace{-0.5cm}
-%\begin{centering}
-%\subfigure[Training mistakes vs b]{\includegraphics[width=0.27\textwidth]{figs/mnist1-eps-converted-to.pdf}\label{fig:mnist1}}
-%\subfigure[Test error vs no. of queries]{\includegraphics[width=0.27\textwidth]{figs/mnist2b-eps-converted-to.png}\label{fig:mnist2}}
-%\caption{Left: mean of fraction no. of mistakes SHAMPO made during training time on MNIST of all examples and only queried. Right: test error vs no. of queries is plotted for all MNIST one-vs-one problems.}
-%\end{centering}
-%%\vspace{-0.3cm}
-%\end{wrapfigure}
-
-
 We evaluated the SHAMPO algorithm using four different datasets: USPS, MNIST (both OCR), Vocal Joystick 
-(VJ, vowel recognition) and document classification (NLP). 
+(VJ, vowel recognition) and NLP dataset contains document classification and sentiment classification. 
 The USPS dataset, contains $7,291$ training examples and $2,007$ test examples, each one of them is a 
 $16\times16$ pixels gray-scale images converted to a $256$ dimensional vector. 
 The MNIST dataset with $28\times28$ gray-scale images, contains $60,000$ 
@@ -24,40 +11,74 @@ the $0$ to $9$ digits. The VJ project was built to enable individuals with motor
  electro-mechanical instruments (e.g., robotic arms, wireless home automation devices). The VJ tasks is to 
  predict a vowel from eight possible vowels. Each example is a frame of spoken value described with $13$ 
  MFCC coefficients transformed into 26 features. There are $572,911$ training examples and $236,680$ test 
- examples. We created binary tasks from these multi-class datasets using two reductions: One-vs-Rest 
+ examples. In order to allow comparing the the margin between examples, we scaled the example vectors by 
+ normalize the vectors. We tried to scale the vectors in to a unit ball, but normalization gives the best performance.
+ We also added a constant entry for each one of the vectors to represent the 
+ bias element. We created binary tasks from these multi-class datasets using two reductions: One-vs-Rest 
  setting and One-vs-One setting. For example, in both USPS and MNIST there are $10$ binary one-vs-rest 
  tasks and $45$ binary one-vs-one tasks.  The NLP document classification is one-vs-one  binary 
  classification include of spam filtering, news items and news-group classification, sentiment classification, 
  and product domain categorization. A total of $36$ binary prediction tasks over all, with a total of 
  $252,609$ examples, and input dimension varying between $8,768$ and $1,447,866$. 
  Details of the individual binary tasks can be found elsewhere~\cite{Crammer:2012:CLC:2343676.2343704}.
-This yielded seven collections (USPS, MNIST and VJ\@; each as one-vs-rest or one-vs-one) and document 
+Since the NLP dataset doesn't have a specific test set, we evaluated the algorithm performance using 
+10 folds cross validations. This yielded seven collections (USPS, MNIST and VJ\@; each as one-vs-rest or one-vs-one) and document 
 classification.
 
-\section{Hard and Easy Tasks }
-First, we wanted to show that indeed, the SHMAPO algorithms are optimal for different distributions of hard and
- easy tasks and also tasks from different domains and dimensions. For that reason, we created an eighth 
+\section{Hard and Easy Tasks Tradeoff}
+First, we wanted to show that indeed, the SHMAPO algorithms are optimal for different collections of hard and
+ easy tasks and also for tasks from different domains and dimensions. For that reason, we created an eighth 
  collection, named MIXED, which consists of $40$ tasks: $10$ random tasks from each one of the four 
- basic datasets (one-vs-one versions). Now, from each one of the eight dataset collections we generated 
+ basic datasets (one-vs-one versions). Then, from each one of the eight dataset collections we generated 
  between $6$ to $10$ combinations (or problems), each problem was created by sampling between 
  $2$ and $8$ tasks which yielded a total of $64$ multi-task problems. 
 We tried to diversify problems difficulty by including both hard and easy binary classification problems.
-For example, from the VJ dataset we generated 10 multitask problems with up to 5 tasks each, and different 
-number of hard and easy tasks : 1 (easy task) + 1 (hard task), 1+2, 1+3, 1+4, 2+1, 2+2, 2+3, 3+1, 3+2, 4+1.
+For example, from the VJ one-vs-one dataset we generated 10 multitask problems with up to 5 tasks each, and different 
+number of hard and easy tasks : 1 (easy task) + 1 (hard task),1+3, 1+5, 1+7, 3+1, 3+3, 3+5, 5+1, 5+3, 7+1.
 The hardness of a binary problem is evaluated by the number of mistakes the Perceptron algorithm performs 
-on the problem where for each multitask problem, we sample uniformly from each group of tasks 
-(hard and easy) .
+on each task, where for each multitask problem, we sample uniformly from each group of tasks 
+(hard and easy). The exact details on the sub data sets collection are collected 
+in \tabref{tab:collections}. The max tasks columns indicates the size of the largest sub multitask collection 
+for a certain dataset. The number of easy and hard group number is the size of 
+the group of tasks from which we sample the hard or easy task. The last column 
+is the number of multitask problems collections that were generated for the dataset (which sums up to 64) . 
+For example, from the data set VJ one-vs-Rest we generated 6 multitask problems, 
+with at most 5 tasks for a single multitask problem, when the easy tasks were 
+sampled from the first 4 easier tasks and the harder tasks were sampled from the 
+next 4 tasks, which are harder. It is important to point out that since we 
+sample the data sets (for some datasets, we don't count the hardest tasks), we should not compare the 
+results of this experiment with the results of experiments on the whole dataset tasks.
+
+\begin{table}[h]
+\centering
+\caption{The sub data sets collections details}
+\label{tab:collections}
+\begin{tabular}{|l|c|c|c|c|}
+\hline
+Dataset & \multicolumn{1}{l|}{Max Tasks} & \multicolumn{1}{l|}{Easy group \#} & \multicolumn{1}{l|}{Hard group \#} & \multicolumn{1}{l|}{Collections} \\ \hline
+VJ 1 vs 1 & 8 & 10 & 10 & 10 \\ \cline{1-1}
+VJ 1 vs Rest & 5 & 4 & 4 & 6 \\ \cline{1-1}
+USPS 1 vs 1 & 8 & 20 & 20 & 10 \\ \cline{1-1}
+USPS 1 vs Rest & 6 & 5 & 5 & 6 \\ \cline{1-1}
+MNIST 1 vs 1 & 8 & 10 & 10 & 10 \\ \cline{1-1}
+MNIST 1 vs Rest & 6 & 5 & 5 & 6 \\ \cline{1-1}
+NLP documents & 6 & 8 & 8 & 6 \\ \cline{1-1}
+MIXED & 8 & 10 & 10 & 10 \\ \hline
+\end{tabular}
+\end{table}
+
 
 We evaluated two baselines as well as our algorithm. Algorithm {\em uniform} picks a random task to be 
 queried and updated (corresponding to $b\rightarrow\infty$), {\em exploit} which picks the tasks with the 
 lowest absolute margin (i.e. the ``hardest instance''), this combination corresponds to $b \approx 0$ of 
 SHAMPO.\@ We tried for SHAMPO $13$ values for $b$, equally spaced on a logarithmic scale between 
 $10^{-7}$ and $10^{5}$. 
-All algorithms made a single pass over the training data.  We ran two versions of the our First Order algorithm: 
+All algorithms made a single pass over the training data. We ran two versions of the our First Order algorithm: 
 plain version, without aggressiveness (updates on mistakes only, $\lambda=0$) and an 
 Aggressive version $\lambda=b/2$ (we tried lower values of $\lambda$ as in the bound, 
 but we found that $\lambda=b/2$ gives better results), both with uniform prior ($a_i=1$). 
-We used separate training set and a test set, to build a model and evaluate it.
+We used separate training set and a test set, to build a model and evaluate it. We repeated this procedure 
+50 times and computed mean test error of all runs on all tasks for each dataset. 
 
 The results are evaluated using $2$ quantities. First, the average test error (over all the dataset combinations) 
 and the average score. For each combination we assigned a score of $1$ to the algorithm with the lowest 
@@ -87,10 +108,9 @@ the highest test error.
 \end{tabular}
 }
 \end{centering}
-\vspace{-0.5cm}
 \end{table}
 
-Results  are summarized in \tabref{tab:table1}.  In general {\em exploit} is better than {\em uniform}
+Results  are summarized in \tabref{tab:table1}.  In general, {\em exploit} is better than {\em uniform}
  (for majority of the datasets) and aggressive algorithm is better than non-aggressive one. 
  Aggressive SHAMPO yields the best results both evaluated as average 
 (over tasks per combination and over combinations). Remarkably, even in the mixed dataset 
@@ -99,7 +119,7 @@ uniform (4.45\% error) and the aggressive-exploit baseline (2.75\%), and achieve
 
 Indeed, \tabref{tab:table1} shows that aggressive SHAMPO outperforms better alternatives. Yet, we claim that a 
 good prior may improve results. We compute prior over the 45 USPS one-vs-one tasks and 10 
-USPS one-vs-rest, by running the perceptron algorithm on $1000$ examples and computing the number of mistakes.  
+USPS one-vs-rest, by running the perceptron algorithm on $1,000$ examples and computing the number of mistakes.  
 We set the prior to be proportional to this number. We then reran aggressive SHAMPO with prior, 
 comparing it to aggressive SHAMPO with no prior (i.e. $a_i=1$). 
 The results are summarized in \tabref{tab:table2}. The prior improves performance in the USPS 1 vs 1 
@@ -107,10 +127,10 @@ collection and USPS 1 vs Rest, when evaluated using score-rank, on averaged it i
 aggressive SHAMPO with not prior.
 Aggressive SHAMO with prior achieves average error of $1.47$ (vs. $2.73$ with no prior) on 1-vs-1 USPS 
 and $4.97$ (vs $4.93$) on one-vs-rest USPS, with score rank of 1.0 (vs 2.9) and 1.7 (vs 2.0) respectively.
-\figref{fig:tst_err_u1}  and \figref{fig:tst_err_ur} shows the test error for all values of $b$ we evaluated.
-A good prior is shown to outperform the case $a_i=1$ for most values of $b$. 
-Again, we chose a specific prior generator system, however, another method or 
-another prior knowledge may lead to better results.
+However, \figref{fig:tst_err_u1}  and \figref{fig:tst_err_ur} shows the test error of the non aggressive SHAMPO 
+algorithm wit prior for all values of $b$ we evaluated. The prior version results does not show a remarkable 
+improvement over the plain SHAMPO algorithm. Again, we chose here a specific prior generator system, 
+however, another method or another prior knowledge may lead to better results.
 
  \begin{table}[h]
    \begin{centering}
@@ -129,7 +149,8 @@ another prior knowledge may lead to better results.
  \end{table}
  
  \figref{fig:bars1} and \figref{fig:bars2} show the test error of the three algorithms on two of document 
-classification combinations, with four and eight tasks. Clearly, not only SHAMPO performs better, 
+classification combinations, with four and eight tasks. Three algorithms are evaluated: uniform, exploit, and 
+aggressive SHAMPO with $\lambda=b/2$. Clearly, not only SHAMPO performs better, 
 but it does so on each task individually. (Our analysis above bounds the total number of mistakes over all 
 tasks.)
  
@@ -138,20 +159,17 @@ tasks.)
 \subfigure[4 text classification tasks]{\includegraphics[width=0.45\textwidth]{figs/problem-9_4_2_2-1.eps}\label{fig:bars1}}
 \subfigure[8 text classification tasks]{\includegraphics[width=0.45\textwidth]{figs/problem-9_4_4_4-1.eps}\label{fig:bars2}}
  \caption{
- Test error of aggressive SHAMPO on (a) four and (b) eight binary text classification tasks. 
- Three algorithms are evaluated: uniform, exploit, and aggressive SHAMPO with $\lambda=b/2$. }
+ Test error of aggressive SHAMPO on (a) four and (b) eight binary text classification tasks.}
 \end{centering}
 \end{figure}
 
-
-\vspace{-0.1cm}
 \section{Multi-task Binary Classification}
 First, we evaluated all the mentioned variations of SHAMPO algorithms. We ran a 
 single pass over all of the training examples for all datasets and $11$ equally spaced values of b 
 between $10^{-5}$ and $10^5$. The algorithms performance was evaluated using 
 mean of accumulated training error of all tasks and the mean of test errors over 
 all of the tasks for each datasets. Since the NLP dataset doesn't have a test 
-set, we evaluated those quantities using 4 cross validation folds. We repeated 
+set, we evaluated those quantities using 10 cross validation folds. We repeated 
 the experiments 100 times and took the mean of all algorithm runs.
 For simplicity, we denote each one of those algorithms the  
 abbreviations: First Order (FO), First Order AGgressive (AG) with two different values of $\lambda$, 
@@ -161,7 +179,7 @@ Recall, in the adaptive algorithm the constant $b$ parameter is replaced with th
 $\beta$.
 
 \figref{fig:train_errors} shows the mean cumulative training errors over all tasks. The behavior is similar for 
-all of the datasets. We can see that as expected, in the exploration interval ($b\rightarrow\inf$) 
+all of the datasets. We can see that as expected, in the exploration interval ($b \gg 1$, since the vector are normalized) 
 all the algorithms shows high error rate, where in the vast majority, this is 
 also the highest error. In the exploitation interval ($b\rightarrow 0$), we  see 
 lower cumulative error than the exploration case for the most of the datasets. 
@@ -173,7 +191,7 @@ There are algorithms and datasets (e.g. VJ one-vs-one in \figref{fig:tst_err_v1}
 into the exploitation area, it may depends on the examples noise and the number of examples 
 in the dataset. As we claimed before, a pure exploitation approach may not be the best choice, at least on 
 the first online steps, especially for problem with small number of examples.
-can see the same phenomena in \figref{fig:test_errors} which shows the mean 
+We can see the same phenomena in \figref{fig:test_errors} which shows the mean 
 test error for all tasks and all round for different $b$ values and different 
 tasks. Here, we added one more algorithm, the Watch All algorithm (WA), which runs $K$ parallel online - 
 perceptron algorithms, one per task, while each one of them query and watches all of the tasks labels, without any limitation on the feedback.
@@ -204,7 +222,7 @@ $b$), here, the fraction of mistakes made on queried examples went up, while the
 went down. This indicates that the algorithm indeed focuses its queries on the harder inputs, which in turn, 
 improves overall training mistake. There is a sweet point of $b$ (that is changed between datasets), for 
 which SHAMPO is still focusing on the harder examples, yet reduces the total fraction of training mistakes even more. 
-The existence of such tradeoff is predicted by \thmref{thm:FO_bound}.  
+The existence of such tradeoff is predicted by \thmref{thm:FO_theorem}.  
 So far we saw algorithms and bounds that depends on the value 
 of $b$ and proof that an optimal value 
 that get a minimal accumulative train error exists. The inevitable question is: how to find such 
@@ -241,17 +259,18 @@ one-vs-one]{\includegraphics[width=0.37\textwidth]{figs/queried-m1.eps}\label{fi
 
 Another perspective of the phenomena is that for values of $b\ll \infty$ SHAMPO focuses on the harder 
 examples, is illustrated in \figref{fig:test_scatter} where test error vs number of queries is plotted for each 
-task in all the datasets. We show three cases: uniform, exploit and a mid-value of $b\approx 0.01$ which 
+task of all the datasets. We show three cases: uniform, exploit and a mid-value, the optimal one, which 
 tradeoffs exploration and exploitation. We take the MNIST one-vs-one data set as an example and 
 refer a few points. First performing uniform querying, all 
 tasks have about the same number of queries ($266$), close to the number of examples per problem 
 ($12,000$), divided by the number of problems ($45$). Second, when having a tradeoff between exploration 
-and exploitation, harder problems (as indicated by test error) get more queries than easier problems. 
+and exploitation ($b\approx 0.01$) , harder problems (as indicated by test error) get more queries than easier problems. 
 For example, the four problems with test error greater than $6\%$ get at least $400$ queries, which is 
-about twice the number of queries received by each of the $12$ problems with test error less than $1\%$. 
+about twice the number of queries received by each of the $10$ problems with test error less than $1\%$. 
 Third, as a consequence, SHAMPO performs equalization, giving the harder problems more labeled data, 
 and as a consequence, reduces the error of these problems, however, is not increasing the error of the 
-easier problems which gets less queries (in fact it reduces the test error of almost all 45 problems!). 
+easier problems which gets less queries (in fact it reduces the test error of almost all 45 problems compare 
+to the exploration method!). 
 The tradeoff mechanism of SHAMPO, reduces the test error of each problem by more than $40\%$ 
 compared to full exploration. Fourth, exploits performs similar equalization, yet in some hard tasks it 
 performs worse than SHAMPO. This could be because it overfits the training data, by focusing on 

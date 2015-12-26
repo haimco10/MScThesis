@@ -7,7 +7,7 @@ and continue to number of algorithms that extends the basic one. Two steps are
 yet to be specified: how to pick a task to be labeled at each round and how to
 perform an update, once the true label for that task is given.. 
 
-\section{SHAMPO perceptron}
+\section{First Order SHAMPO}
 
 We focus here on linear-functions of the form $f(\vx)=\sign(p)$ for the
 quantity $p=\vwt\vx$, $\vw\in\reals^d$,  which often called the
@@ -438,7 +438,7 @@ $\kappa=K$ we have $C(\kappa,K)>\ln(K+1)$, thus recovering the
 bound of $K$ Perceptron trained in parallel, with a sightly ($1/\ln(K+1)$)
 worse dependency in the number of tasks.
 
-\section{Kernel-based SHAMPO}
+\section{Kernel-Based SHAMPO}
 SHAMPO algorithm can also be used with Kernels in order to get a non linear 
 classifiers in case of non separated data set, by transforming the feature vector $\vx$ to $\Phi(\vx)$.
 Define the binary parameter $\alpha_{i,t} = Z_{i,t}M_{i,t}$, we can rewrite the weight vector $\vw_{i,t}$ in its 
@@ -460,7 +460,7 @@ Doing that, we get a new representation of the margin
 where $K(\vx,\vv)  = \tran{\Phi(\vx)}\Phi(\vv)$ is the kernel function that represents the inner product of 
 a high dimension space. 
 
-\section{Aggressive version}
+\section{Aggressive SHAMPO}
 
 So far we used the margin to build the distribution over the tasks,  but in the update stage,
 we used the same regular perceptron update rule, that makes an update only when there is a prediction 
@@ -658,7 +658,7 @@ Which concludes the proof
 \QED
 \end{proof}
 
-\section{prior distribution over tasks}
+\section{SHAMPO with Prior Knowledge}
 
 We saw before that $b$ is a tradeoff parameter between  exploitation and uniform  distribution over the 
 tasks (exploration). It is possible that we have prior knowledge about the tasks, which tasks are harder than 
@@ -810,7 +810,7 @@ $G_{i,t}=0,~~\forall i\in\braces{a,\cdots,K},t>0$ and we get the bound of  the o
 SHAMPO perceptron algorithm.
 
 
-\section{SHAMPO perceptron with Adaptive $b$ parameter}
+\section{Adaptive Parameter SHAMPO}
 
 As it has been proved in the analysis and will be shown in experiments, the algorithm parameter $b$ can tune 
 the distribution over the tasks between exploration and exploitation, yet, there is still a need to supply 

@@ -1,22 +1,22 @@
 \BOOKMARK [0][-]{chapter*.4}{Abstract}{}% 1
 \BOOKMARK [0][-]{chapter.1}{Introduction}{}% 2
-\BOOKMARK [1][-]{section.1.1}{Online learning}{chapter.1}% 3
+\BOOKMARK [1][-]{section.1.1}{Online Learning}{chapter.1}% 3
 \BOOKMARK [1][-]{section.1.2}{Selective Sampling}{chapter.1}% 4
-\BOOKMARK [1][-]{section.1.3}{Multi Task with Shared Annotator}{chapter.1}% 5
+\BOOKMARK [1][-]{section.1.3}{Multi-Task with Shared Annotator}{chapter.1}% 5
 \BOOKMARK [0][-]{chapter.2}{The Shared Annotator Setting}{}% 6
 \BOOKMARK [0][-]{chapter.3}{SHMPO \(SHared Annotator for Multiple Problems\) Algorithms}{}% 7
-\BOOKMARK [1][-]{section.3.1}{SHAMPO perceptron}{chapter.3}% 8
-\BOOKMARK [1][-]{section.3.2}{Kernel-based SHAMPO}{chapter.3}% 9
-\BOOKMARK [1][-]{section.3.3}{Aggressive version}{chapter.3}% 10
-\BOOKMARK [1][-]{section.3.4}{prior distribution over tasks}{chapter.3}% 11
-\BOOKMARK [1][-]{section.3.5}{SHAMPO perceptron with Adaptive b parameter}{chapter.3}% 12
+\BOOKMARK [1][-]{section.3.1}{First Order SHAMPO}{chapter.3}% 8
+\BOOKMARK [1][-]{section.3.2}{Kernel-Based SHAMPO}{chapter.3}% 9
+\BOOKMARK [1][-]{section.3.3}{Aggressive SHAMPO}{chapter.3}% 10
+\BOOKMARK [1][-]{section.3.4}{SHAMPO with Prior Knowledge}{chapter.3}% 11
+\BOOKMARK [1][-]{section.3.5}{Adaptive Parameter SHAMPO}{chapter.3}% 12
 \BOOKMARK [1][-]{section.3.6}{Second Order SHAMPO}{chapter.3}% 13
 \BOOKMARK [1][-]{section.3.7}{Second Order Aggressive SHAMPO}{chapter.3}% 14
 \BOOKMARK [0][-]{chapter.4}{From Multi-task to Contextual Bandits}{}% 15
 \BOOKMARK [1][-]{section.4.1}{One-vs-Rest}{chapter.4}% 16
 \BOOKMARK [1][-]{section.4.2}{One-vs-One}{chapter.4}% 17
 \BOOKMARK [0][-]{chapter.5}{Experiments}{}% 18
-\BOOKMARK [1][-]{section.5.1}{Hard and Easy Tasks }{chapter.5}% 19
+\BOOKMARK [1][-]{section.5.1}{Hard and Easy Tasks Tradeoff}{chapter.5}% 19
 \BOOKMARK [1][-]{section.5.2}{Multi-task Binary Classification}{chapter.5}% 20
 \BOOKMARK [1][-]{section.5.3}{Reduction of Multi-task to Contextual Bandits}{chapter.5}% 21
 \BOOKMARK [0][-]{chapter.6}{Related Work}{}% 22
