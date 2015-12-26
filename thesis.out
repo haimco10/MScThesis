@@ -11,7 +11,7 @@
 \BOOKMARK [1][-]{section.3.4}{prior distribution over tasks}{chapter.3}% 11
 \BOOKMARK [1][-]{section.3.5}{SHAMPO perceptron with Adaptive b parameter}{chapter.3}% 12
 \BOOKMARK [1][-]{section.3.6}{Second Order SHAMPO}{chapter.3}% 13
-\BOOKMARK [1][-]{section.3.7}{Second Order Adaptive SHAMPO}{chapter.3}% 14
+\BOOKMARK [1][-]{section.3.7}{Second Order Aggressive SHAMPO}{chapter.3}% 14
 \BOOKMARK [0][-]{chapter.4}{From Multi-task to Contextual Bandits}{}% 15
 \BOOKMARK [1][-]{section.4.1}{One-vs-Rest}{chapter.4}% 16
 \BOOKMARK [1][-]{section.4.2}{One-vs-One}{chapter.4}% 17
