@@ -4,15 +4,15 @@ Te second order version of the perceptron algorithm, was proposed and analyzed b
 settings from the ridge-regression (squared loss and Euclidean regularization) framework as described by 
 ~\cite{hoerl1970ridge} and ~\cite{Vovk97}, and further analyzed in ~\cite{AzouryWa01} and  ~\cite{forster2002relative}. 
 It was also shown that this variation has the effect of reducing the number of mistakes compare to the first order version. 
-~\cite{cesa2006worst} also adapted the second order 
-perceptron algorithm to the selective sampling case, which was extended later by ~\cite{crammer2014doubly}.
+\cite{cesa2006worst} also adapted the second order perceptron algorithm to the selective sampling case, 
+which was extended later by ~\cite{crammer2014doubly}.
 
-In this algorithm, we store and update two quantities per task instead of one, the matrix 
+In this algorithm, we store and update two model quantities per task instead of one, the matrix 
 $A_{i,t} = I+\sum_{t}M_{i,t}Z_{i,t}\vxiit\vxiit^T$ and the vector $\vwi{i,t} = \sum_{t}M_{i,t}Z_{i,t} \vxi{i,t}  \yi{i,t}$.
-Whereas, the probability to issue a query on task $i$ in time $t$ is similar to the first order SHAMPO algorithm,
-the update  that is done here in the case of queried mistake, is the second order perceptron update.  
-The pseudo code of the second order SHAMPO is shown in \algoref{alg:SO_SHAMPO}
-
+Whereas, the probability to issue a query on task $i$ in time $t$ is similar to the first order SHAMPO 
+algorithm (\eqref{eq:prob}),
+the update that is done here in the case of a queried mistake, is the second order perceptron update.  
+The pseudo code of the second order SHAMPO algorithm is shown in \algoref{alg:SO_SHAMPO}
 
 \begin{theorem}
   If second order SHAMPO algorithm runs on $K$ tasks with $K$ parallel example pair
@@ -28,11 +28,11 @@ The pseudo code of the second order SHAMPO is shown in \algoref{alg:SO_SHAMPO}
 \frac{\delta}{2b}\sum_{i=1}^{K}\sum_{k=1}^{d}\mathbb{E}\brackets{\ln\paren{1+\lambda_{i,k}}},
 \end{split}
 \end{equation*} 
- where $A_{i,n} = I+\sum_{t=1}^{n}M_{i,t}Z_{i,t}\vxiit\vxiit^T$ , $\lambda_{i,k}$ is the $i^th$ eigenvalue
+ where $A_{i,n} = I+\sum_{t=1}^{n}M_{i,t}Z_{i,t}\vxiit\vxiit^T$ , $\lambda_{i,k}$ is the $k^th$ eigenvalue
  of the matrix $A_{i,n}$ and the expectation is over the random choices of the algorithm.
 \end{theorem} \label{thm:SO_bound}
 
-\begin{algorithm}
+\begin{algorithm}[!h]
 \begin{algorithmic}
    \State \textbf{Parameters:}  $b\in\mathbb{R}>0$.
    \State \textbf{Initialize:} $\vwi{i,0}=\vzero$, $A_{i,0}=I$ \\
@@ -51,12 +51,12 @@ The pseudo code of the second order SHAMPO is shown in \algoref{alg:SO_SHAMPO}
      Where $m,i\in\{1,...,K\}$ and $D_t$ is the normalization factor. 
   \item Query the true label ,$\yi{J_t,t}\in\{-1,1\}$.
   \item Set the indicator $M_{J_t, t}=1$ iff $\yi{J_t,t} \neq \hyi{J_t,t}$.
-  \item Update with the perceptron rule:     
-     \item Update:
-     \begin{align}
-     &\vwi{J_t,t} = \vwi{J_t,t-1}+M_{J_t,t}\,  \vxi{J_t,t}  \yi{J_t,t}\,\label{SO_update}\\
-     &A_{J_t,t}=A_{J_t,t-1}+ M_{J_t,t}\vxi{J_t,t}\vxi{J_t,t}^T\nonumber
-     \end{align}
+  \item Update with the second order perceptron rule:     
+     \begin{align*}
+     &\vwi{J_t,t} = \vwi{J_t,t-1}+M_{J_t,t}\,  \vxi{J_t,t}  \yi{J_t,t}\\
+     &A_{J_t,t}=A_{J_t,t-1}+ M_{J_t,t}\vxi{J_t,t}\vxi{J_t,t}^T \\
+     &\vwi{i,t} = \vwi{i,t-1}, ~~ A_{i,t}=A_{i,t-1} ~~ \forall i\ne J_t
+     \end{align*}
      \end{enumerate}
    \EndFor  
    \State {\bf Output}: $\vwi{i,n}$ for $i=1 \comdots K$.
@@ -70,8 +70,11 @@ $i$ up to the round $t$ by
 \begin{equation*}
 \Phi_{i,t}(\vu_i)=\half\normt{\vu_i}+\half\sum_{s=1}^{t}{Z_{i,t}M_{i,t}\paren{y_{i,t}-\vu_i^T\vx_{i,t}}}^2.
 \end{equation*}
+
+\noindent
 It was proved by ~\cite{Forster} in the linear regression case and adopted by
-~\cite{cesa2006worst} and Crammer ~\cite{crammer2014doubly} for the second order classification that of the single task,
+~\cite{cesa2006worst} and Crammer ~\cite{crammer2014doubly} for the second order classification that of 
+the single task that,
 \begin{equation*}
 \begin{split}
 \half Z_{i,t}M_{i,t}\paren{y_{i,t}-\hat{p}_{i,t}}^{2}= &\inf_{\vu_i}{\Phi_{i,t+1}}(\vu_i)-\inf_{\vu_i}{\Phi_{i,t}}(\vu_i)
@@ -79,6 +82,8 @@ It was proved by ~\cite{Forster} in the linear regression case and adopted by
 &-\frac{Z_{i,t}M_{i,t}}{2}\vxiit^TA_{i,t-1}^{-1}\vxiit\hat{p}_{i,t}^2.
 \end{split}
 \end{equation*} 
+
+\noindent
 We can drop now the last term which is nonnegative because $A_{i,t-1}$ is 
 positive definite matrix and so that $A_{i,t-1}^{-1}$.
 Now, we sum up the equation over $t$ and get
@@ -105,6 +110,7 @@ inequality becomes
 \end{split}
 \end{equation} 
 
+\noindent
 Now we handle the right hand side of the inequality one by one. First we start by writing the two first terms 
 in the form 
 \begin{equation} \label{eq:so_second_step}
@@ -115,27 +121,33 @@ in the form
 \end{split}
 \end{equation} 
 % https://books.google.co.il/books?hl=en&lr=&id=Pd8bQNTjLEcC&oi=fnd&pg=PA269&ots=IU3lTn2wbb&sig=xFEXkSmP51J1rmXlFvCMa1SCXYU&redir_esc=y#v=onepage&q&f=false
-Denote the $k_i^{th}$ eigenvalue of the matrix $A_{i,n}$ by $1+\lambda_{i,k}$, as proved by ~\cite{Forster},
-we  bound the last term  by
 
+\noindent
+Denote the $k^{th}$ eigenvalue of the matrix $A_{i,n}$ by $1+\lambda_{i,k}$, we can bound the last term by
 \begin{equation} \label{eq:so_third_step}
 \begin{split}
   \half\sum_{t=1}^{n}Z_{i,t}M_{i,t}\vxiit^TA_{i,t}^{-1}\vxiit 
   &\le \half\sum_{t=1}^{n}\ln\paren{\frac{\det{A_{i,t}}}{\det{A_{i,t-1}}}} 
   &= \half\ln\paren{\frac{\det{A_{i,n}}}{\det{A_{i,0}}}}
-  &=\half\ln\paren{\det{A_{i,n}}} = \half\sum_{k=1}^{d}\ln\paren{1+\lambda_{i,k}}.
+  &=\half\ln\paren{\det{A_{i,n}}} = 
+  \half\sum_{k=1}^{d}\ln\paren{1+\lambda_{i,k}},
 \end{split}
 \end{equation} 
+as proved by ~\cite{Forster}.
 
-Plugging ~\eqref{eq:so_second_step} and ~\eqref{eq:so_third_step} back into ~\eqref{eq:so_first_step}  and dropping the positive term from 
+\noindent
+Plugging ~\eqref{eq:so_second_step} and ~\eqref{eq:so_third_step} back into ~\eqref{eq:so_first_step}  
+and dropping the positive term from 
 the left hand side, recall that on round when there is a mistake ($M_{i,t}=1$), $\hat{p}_{i,t}y_{i,t}\le0$ 
 , we obtain 
 \begin{equation*}
    \sum_{t=1}^{n}&Z_{i,t}M_{i,t}\paren{\abs{\hat{p}_{i,t}}+\vu_i^T\vx_{i,t}y_{i,t}}
    \le \half\vu_i^TA_{i,n}\vu_i+ \half\sum_{k=1}^{d}\ln\paren{1+\lambda_{i,k}}.
 \end{equation*} 
+
+\noindent
 By the definition of hinge loss, $\gamma-\lossp{\gamma,i,t}(\vu_i) \le y_{i,t}\vu_i^T\vxiit 
-$. Replacing the $vu_i$ with it's scaling $\frac{b}{\gamma}\vu_i$ yields 
+$. Replacing $\vu_i$ vectors with their scaling $\frac{b}{\gamma}\vu_i$, yields 
 \begin{equation*}
     \begin{split}
    \sum_{t=1}^{n}Z_{i,t}M_{i,t}&\paren{\abs{\hat{p}_{i,t}}+b}\\
@@ -143,6 +155,8 @@ $. Replacing the $vu_i$ with it's scaling $\frac{b}{\gamma}\vu_i$ yields
    + \frac{b^2}{2\gamma^2}\vu_i^TA_{i,n}\vu_i+ \half\sum_{k=1}^{d}\ln\paren{1+\lambda_{i,k}}.
   \end{split}
 \end{equation*} 
+
+\noindent
 Now, we subtract a non negative quantity $\sum_{t=1}^{n}M_{i,t}Z_{i,t}
 \min_j{\abs{\hat{p}_{j,t}}}$ from the left hand side and get,
 \begin{equation*}
@@ -152,12 +166,16 @@ Now, we subtract a non negative quantity $\sum_{t=1}^{n}M_{i,t}Z_{i,t}
    + \frac{b^2}{2\gamma^2}\vu_i^TA_{i,n}\vu_i+ \half\sum_{k=1}^{d}\ln\paren{1+\lambda_{i,k}}.
 \end{split}
 \end{equation*} 
-Now we take the expectation on both inequality sides. First we start from the 
-left side. As in the first order proof, 
+
+\noindent
+At this point, we take the expectation on both inequality sides. First we start from the 
+left side. As in \eqref{eq:FO_cond_exp} of the first order proof, 
 \begin{equation*}
    \mathbb{E}\brackets{\sum_{t=1}^{n}&Z_{i,t}M_{i,t}\paren{\abs{\hat{p}_{i,t}}-\min_j{\abs{\hat{p}_{j,t}}}+b}}
 =\mathbb{E}\brackets{\sum_{t=1}^{n}{\frac{M_{i,t}}{D_{t}}}}.
 \end{equation*} 
+
+\noindent
 Taking the expectation from the right hand side the equation becomes
 \begin{equation*}
   \begin{split}
@@ -166,7 +184,9 @@ Taking the expectation from the right hand side the equation becomes
    + \frac{b^2}{2\gamma^2}\vu_i^T\mathbb{E}\brackets{A_{i,n}}\vu_i+ \half\sum_{k=1}^{d}\mathbb{E}\brackets{\ln\paren{1+\lambda_{i,k}}}.
 \end{split}
 \end{equation*} 
-We use now ~\eqref{eq:introducing_delta} and get
+
+\noindent
+We use now ~\eqref{eq:FO_introducing_delta} and get
 \begin{equation*}
   \begin{split}
    \frac{b}{\delta_i}\mathbb{E}\brackets{\sum_{t=1}^{n}{M_{i,t}}}
@@ -175,6 +195,7 @@ We use now ~\eqref{eq:introducing_delta} and get
 \end{split}
 \end{equation*} 
 
+\noindent
 We conclude the proof by summing up the last inequality over all K tasks and setting $\delta = \max{\delta_i}$, 
 such that 
 
@@ -185,16 +206,6 @@ such that
 + \frac{b}{2\gamma^2}\sum_{i=1}^{K}\vu_i^T\mathbb{E}\brackets{A_{i,n}}\vu_i+ 
 \frac{1}{2b}\sum_{i=1}^{K}\sum_{k=1}^{d}\mathbb{E}\brackets{\ln\paren{1+\lambda_{i,k}}}.
 \end{split}
-\end{equation*} 
+\end{equation*}
+\QED 
 \end{proof}
-
-
-
-
-
-
-
-
-
-
-
