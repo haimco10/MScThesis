@@ -9,7 +9,7 @@ In the online settings, there are only a handful of work on multi-task learning.
 ~\cite{DBLP:conf/colt/DekelLS06} consider the setting where all algorithms are evaluated using a 
 global loss function, and all work towards the shared goal of minimizing it. 
 ~\cite{DBLP:conf/colt/LugosiPS09}, assume that there are constraints on the predictions of all 
-learners, and focus in the expert setting. ~\cite{Agarwal:EECS-2008-138}, formalize the 
+learners, and focus in the expert setting. \cite{Agarwal:EECS-2008-138}, formalize the 
 problem in the framework of stochastic convex programming with few matrix regularization, each 
 captures some assumption about the relation between the models. 
 ~\cite{DBLP:journals/jmlr/CavallantiCG10} and ~\cite{cesa2006incremental}, 
@@ -25,9 +25,9 @@ sampling (see also ~\cite{cesa2009robust,dekel2010robust,crammer2014doubly}), th
 binary decisions of whether to query, while our algorithm always query, and needs to decide for which task 
 to query on each round.
 Selective sampling algorithms such as first and second order selective sampling perceptron and   
-BBQ  of Cesa-Bianci et al~\cite{cesa2006worst,cesa2009robust} deals with binary selective 
-sampling algorithms. Dekel et al ~\cite{dekel2010robust} have also a multiple teachers selective sampling 
-algorithm, whit setting that is similar to SHAMPO with $\kappa$ updates per round , but is force all of the 
+BBQ  of ~\cite{cesa2006worst,cesa2009robust} deals with binary selective 
+sampling algorithms. ~\cite{dekel2010robust} have also a multiple teachers selective sampling 
+algorithm, with setting that is similar to SHAMPO with $\kappa$ updates per round , but is force all of the 
 inputs to be in the same space.
 
 %Finally, there have been recent work in contextual bandits,~\cite{kakade2008efficient,
