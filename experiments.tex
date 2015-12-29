@@ -198,6 +198,37 @@ perceptron algorithms, one per task, while each one of them query and watches al
 We show this algorithm here as a benchmark, to measure how much SHAMPO algorithms looses or gain 
 performance with respect to the algorithm that can watch all the labels. 
 
+\begin{figure}[h]
+\begin{centering}
+\subfigure[First Order]{\includegraphics[width=0.48\textwidth]{figs/Qr_step_usps1r_FO_1e-3.eps}\label{fig:qr_step_FO}}
+\subfigure[Second Order]{\includegraphics[width=0.48\textwidth]{figs/Qr_step_usps1r_SO_1e-3.eps}\label{fig:qr_step_SO}}
+\subfigure[Second Order Aggressive]{\includegraphics[width=0.48\textwidth]{figs/Qr_step_usps1r_SOAG_1e-3.eps}\label{fig:qr_step_SOAG}}
+\caption{Number of queries vs. time step, USPS one-vs-rest, all tasks}
+\label{fig:qr_step}
+\end{centering}
+\end{figure}
+
+\begin{figure}[h]
+\begin{centering}
+\subfigure[First Order]{\includegraphics[width=0.48\textwidth]{figs/Qr_Err_usps1r_FO_1e-3.eps}\label{fig:qr_er_FO}}
+\subfigure[Second Order]{\includegraphics[width=0.48\textwidth]{figs/Qr_Err_usps1r_SO_1e-3.eps}\label{fig:qr_er_SO}}
+\subfigure[Second Order Aggressive]{\includegraphics[width=0.48\textwidth]{figs/Qr_Err_usps1r_SOAG_1e-3.eps}\label{fig:qr_er_SOAG}}
+\caption{Number of queries vs. number of errors, USPS one-vs-rest, all tasks}
+\label{fig:qr_er}
+\end{centering}
+\end{figure}
+
+\begin{figure}[h]
+\begin{centering}
+\subfigure[First Order]{\includegraphics[width=0.48\textwidth]{figs/Qr_Err_frac_usps1r_FO_1e-3.eps}\label{fig:qr_er_frac_FO}}
+\subfigure[Second Order]{\includegraphics[width=0.48\textwidth]{figs/Qr_Err_frac_usps1r_SO_1e-3.eps}\label{fig:qr_er_frac_SO}}
+\subfigure[Second Order Aggressive]{\includegraphics[width=0.48\textwidth]{figs/Qr_Err_frac_usps1r_SOAG_1e-3.eps}\label{fig:qr_er_frac_SOAG}}
+\caption{${Queries}/{Mistakes}$, USPS one-vs-rest, all tasks}
+\label{fig:qr_er_frac}
+\end{centering}
+\end{figure}
+
+
 Wen we compare all of the algorithms, there is no such absolute winner, however, 
 it is obvious from results that the aggressive algorithms shows better 
 performance than the rest of them. For most of the algorithms, the aggressive version of the second order (SOAG) seems to preform better 
@@ -234,28 +265,6 @@ The value of $b$ which minimizes the mean test error, is about the point for whi
 queried examples (the only quantity SHAMPO observes), which provides a rough rule-of-thumb to pick 
 $b$ automatically on-the-fly.
 
-\begin{figure}[!ht]
-\begin{centering}
-\includegraphics[width=0.7\textwidth]{figs/VJ_three_methods.eps}\label{fig:mc_vj}
-\caption{Multi-class error on VJ data for three bandit reductions and the banditron.}
-\end{centering}
-\end{figure}
-
-\begin{figure}[!htb]
-\begin{centering}
-\subfigure[MNIST 
-one-vs-one]{\includegraphics[width=0.37\textwidth]{figs/queried-m1.eps}\label{fig:queried_m1}}\hfill
-\subfigure[MNIST one-vs-rest]{\includegraphics[width=0.37\textwidth]{figs/queried-mr.eps}\label{fig:queried_mr}}
-\subfigure[USPS one-vs-one]{\includegraphics[width=0.37\textwidth]{figs/queried-u1.eps}\label{fig:queried_u1}}\hfill
-\subfigure[USPS one-vs-rest]{\includegraphics[width=0.37\textwidth]{figs/queried-ur.eps}\label{fig:queried_ur}}
-\subfigure[VJ one-vs-one]{\includegraphics[width=0.37\textwidth]{figs/queried-v1.eps}\label{fig:queried_v1}}\hfill
-\subfigure[VJ one-vs-rest]{\includegraphics[width=0.37\textwidth]{figs/queried-vr.eps}\label{fig:queried_vr}}
-\subfigure[NLP one-vs-one]{\includegraphics[width=0.37\textwidth]{figs/queried-n.eps}\label{fig:queried_n}}
-\caption{Training error: queried vs all -FO algorithm, all datasets}
-\label{fig:queried}
-\end{centering}
-\end{figure}
-
 
 Another perspective of the phenomena is that for values of $b\ll \infty$ SHAMPO focuses on the harder 
 examples, is illustrated in \figref{fig:test_scatter} where test error vs number of queries is plotted for each 
@@ -275,10 +284,122 @@ The tradeoff mechanism of SHAMPO, reduces the test error of each problem by more
 compared to full exploration. Fourth, exploits performs similar equalization, yet in some hard tasks it 
 performs worse than SHAMPO. This could be because it overfits the training data, by focusing on 
 hard-examples too much, as SHAMPO has a randomness mechanism.
+\\
 
+\noindent
+In the past experiments, we concentrated on the final state of the algorithms: 
+the training or testing mistakes at the end of the learning process. We used 
+this final state to explain how the behavior of SHAMPO algorithms can exploit the use of the annotator and 
+manage the queries between tasks in a way that reduces the cumulative mistake ratio. Indeed, the most desired 
+property of such algorithm is reducing the cumulative mistake, yet, it is important to
+look into the learning process and see how the algorithm controls the queries 
+over the tasks and validate our hypothesis and anlysis. For this purpose, we chose the USPS one-vs-rest dataset, since it has a small number of 
+tasks and examples. We ran a single run of the algorithm and logged the 
+queries that each one of the tasks issued and the prediction mistake of the 
+algorithm for each one of the tasks at every time step. We chose to show here the 
+results of three algorithms: First Order, Second Order and Second Order Aggressive, in order to show 
+different behavior of those algorithms. The algorithms parameter was initialized to $b=10^{-3}$ 
+which is close to the optimal value for all of these algorithms, as shown in \eqref{fig:tst_err_ur}
+
+The cumulative number of queries that each task issued up to a certain time step is shown in 
+\eqref{fig:qr_step}. The FO algorithm run (\figref{fig:qr_step_FO}) ends with $100-1,400$ mistakes for each task and alternate 
+the preferred task to query (or not to query) on sharply. There are tasks that 
+issued a lot of queries in a short time interval, and then stopped querying for 
+another time intervals repeatedly. This probably shows that this algorithm is 
+less stable than the others. The SO algorithm run (\figref{fig:qr_step_SO})  ends with $50-2,000$ mistakes for each 
+task, yet it focuses mainly on two tasks while the rest didn't have more than $900$ 
+prediction mistakes. The SOAG algorithm (\figref{fig:qr_step_SOAG}) uses the exploration-exploitation remarkably. It 
+focuses more on (probably) harder tasks (expitation), since we see that it ends with $550-950$ mistakes for each 
+task. Yet, id does't leave tasks too much time without querying (exploration), so we see smooth curves.
+
+\eqref{fig:qr_er} shows the number of mistakes vs. number of queries. An expected 
+behavior of the algorithm it that when the number of mistakes goes up (harder 
+task), the number of queries will rise as well. In fact the relation between 
+margin and high number of mistakes may not strictly holds for each task and 
+dataset. We can see that the FO (\eqref{fig:qr_er_FO}) shows this trend, but it's 
+broken in the middle (there are intervals when the mistakes gown up, but no queries are 
+issues). This probably shows the intervals when the algorithm focuses on tasks 
+that had higher margin at the same point. The same phenomena (even stronger) is seen in the SO algorithm 
+(\eqref{fig:qr_er_SO}) since it focuses mainly on two tasks over the others. The SOAG (\eqref{fig:qr_er_SOAG}) 
+in the other hand, shows the desired property of SHAMPO algorithm along all of the run time. 
+
+We also evaluated the error-query ratio over time for these algorithms as in 
+\eqref{fig:qr_er_frac}. This measurement shows for each task, how many queries 
+it issues per error. When this value is too low for one task compare to the other tasks, it means that the algorithm 
+issue a lot of queries for the task, even though not many prediction mistakes  
+were done on the same task, which is a bad behavior. Saying that, this is not always a bad when this 
+measure is high. Recall in our settings we have to issue a query at every step, even wen the model 
+is converged and we don't make many mistakes, one of the tasks have to issue a query, which increases the 
+number of queries for the tasks, which in turn increase this ratio. In this case, we expect an exploration 
+which cause all the tasks to share 
+the same, or close error-query ratio. We can see this exact behavior for the SOAG algorithm 
+(\eqref{fig:qr_er_frac_SOAG}), when all the tasks show stable values in the 
+range ($2.5-5$) queries per mistake. However, low value of this measure is not desired as well, since it 
+means that the algorithm makes a lot of errors on a certain task, but does not 
+issue enough queries on that task in order to improve the model and decrease the number of 
+errors. We see in the FO (\eqref{fig:qr_er_frac_FO}) and even stronger in the SO 
+(\eqref{fig:qr_er_frac_SO}) algorithm that there is difference between the 
+task with the highest value and the task with the lowest value (1-7 for FO and 0.5-10 for 
+SO).
+
+In this experiment we saw that even that we want the algorithm to concentrate on 
+the more difficult tasks, the algorithm, should avoid the attraction to concentrate too much on a specific 
+tasks and ignore the rest of them, i.e. an exploitation without an exploration may not be a good 
+idea. We also noticed that the Second Order Aggressive algorithm gives high 
+performance, not only in sense of prediction mistakes, but also in the 
+explration exploitation manner.
 
  % In fact in the USPS dataset we found a good prior that can improves the performances.  In order to create this prior, we ran over the examples first simple perceptron algorithm with full feedback, and computes the prior as a fraction of the error from the initial run. The results are shown in \tabref{tab:table2} and as.  In addision, the results for the MIXED dataset support the claim that the tasks can comes from different fields and different dimensions.
 
+
+\section{Reduction of Multi-task to Contextual Bandits}
+
+\begin{figure}[!ht]
+\begin{centering}
+\includegraphics[width=0.7\textwidth]{figs/VJ_three_methods.eps}\label{fig:mc_vj}
+\caption{Multi-class error on VJ data for three bandit reductions and the banditron.}
+\end{centering}
+\end{figure}
+
+We also evaluated SHAMPO as a contextual bandit algorithm, by breaking a multi-class problem into few 
+binary tasks, and integrating their output into a single multi-class problem. 
+We focus on the VJ data, as there are many examples, and linear models perform relatively 
+well~\cite{lin2009lose}.  We implemented all three reductions
+mentioned in \chapref{chap:multiclass}, namely, {\em one-vs-rest}, {\em one-vs-one-random} which picks a 
+random label if the feedback is zero, {\em one-vs-one-weak} (which performs updates to increase 
+confidence when the feedback is zero), where we set $\eta=0.2$, and the 
+Banditron algorithm~\cite{kakade2008efficient}.
+%The results are summarized in \figref{fig:simulations}.
+All algorithms show the existence of a tradeoff between exploration and exploitation, 
+where {\em one-vs-one-random} is most sensitive to the choice of parameters, yet it also achieves the best 
+results, for a large range of values for $b$.
+The  {\em one-vs-rest} reduction and the Banditron have a test error of about $43.5\%$, and the 
+{\em one-vs-one-random} of about $42.5\%$.
+Finally, {\em one-vs-one-weak} achieves an error of $39.4\%$.
+ This is slightly worse than PLM
+~\cite{lin2009lose} with test error of $38.4\%$ (and higher than MLP with $32.8\%$), 
+yet all of these algorithms observe only one bit of feedback per example, while both MLP and PLM 
+observe $3$ bits (as class identity can be coded with $3$ bits for $8$ classes). We claim that our setting 
+can be easily used to adapt a system to individual user, as we only need to assume the ability to recognize 
+three words, such as three letters. Given an utterance of the user, the system may ask: 
+``Did you say (a) 'a' like 'bad' (b) 'o' like in 'book') (c) none''. The user can communicate the correct answer 
+with no need for a another person to key in the answer.
+
+
+\begin{figure}[!htb]
+\begin{centering}
+\subfigure[MNIST one-vs-one]{\includegraphics[width=0.37\textwidth]{figs/queried-m1.eps}\label{fig:queried_m1}}\hfill
+\subfigure[MNIST one-vs-rest]{\includegraphics[width=0.37\textwidth]{figs/queried-mr.eps}\label{fig:queried_mr}}
+\subfigure[USPS one-vs-one]{\includegraphics[width=0.37\textwidth]{figs/queried-u1.eps}\label{fig:queried_u1}}\hfill
+\subfigure[USPS one-vs-rest]{\includegraphics[width=0.37\textwidth]{figs/queried-ur.eps}\label{fig:queried_ur}}
+\subfigure[VJ one-vs-one]{\includegraphics[width=0.37\textwidth]{figs/queried-v1.eps}\label{fig:queried_v1}}\hfill
+\subfigure[VJ one-vs-rest]{\includegraphics[width=0.37\textwidth]{figs/queried-vr.eps}\label{fig:queried_vr}}
+\subfigure[NLP one-vs-one]{\includegraphics[width=0.37\textwidth]{figs/queried-n.eps}\label{fig:queried_n}}
+\caption{Training error: queried vs all - FO algorithm, all datasets}
+\label{fig:queried}
+\end{centering}
+\end{figure}
+ 
 \begin{figure}[t]
 \begin{centering}
 \subfigure[MNIST one-vs-one]{\includegraphics[width=0.37\textwidth]{figs/test-m1.eps}\label{fig:tst_err_m1}}\hfill
@@ -325,29 +446,5 @@ hard-examples too much, as SHAMPO has a randomness mechanism.
 \vspace{-0.5cm}
 \end{figure}
 
-\section{Reduction of Multi-task to Contextual Bandits}
-We also evaluated SHAMPO as a contextual bandit algorithm, by breaking a multi-class problem into few 
-binary tasks, and integrating their output into a single multi-class problem. 
-We focus on the VJ data, as there are many examples, and linear models perform relatively 
-well~\cite{lin2009lose}.  We implemented all three reductions
-mentioned in \chapref{chap:multiclass}, namely, {\em one-vs-rest}, {\em one-vs-one-random} which picks a 
-random label if the feedback is zero, {\em one-vs-one-weak} (which performs updates to increase 
-confidence when the feedback is zero), where we set $\eta=0.2$, and the 
-Banditron algorithm~\cite{kakade2008efficient}.
-%The results are summarized in \figref{fig:simulations}.
-All algorithms show the existence of a tradeoff between exploration and exploitation, 
-where {\em one-vs-one-random} is most sensitive to the choice of parameters, yet it also achieves the best 
-results, for a large range of values for $b$.
-The  {\em one-vs-rest} reduction and the Banditron have a test error of about $43.5\%$, and the 
-{\em one-vs-one-random} of about $42.5\%$.
-Finally, {\em one-vs-one-weak} achieves an error of $39.4\%$.
- This is slightly worse than PLM
-~\cite{lin2009lose} with test error of $38.4\%$ (and higher than MLP with $32.8\%$), 
-yet all of these algorithms observe only one bit of feedback per example, while both MLP and PLM 
-observe $3$ bits (as class identity can be coded with $3$ bits for $8$ classes). We claim that our setting 
-can be easily used to adapt a system to individual user, as we only need to assume the ability to recognize 
-three words, such as three letters. Given an utterance of the user, the system may ask: 
-``Did you say (a) 'a' like 'bad' (b) 'o' like in 'book') (c) none''. The user can communicate the correct answer 
-with no need for a another person to key in the answer.
 
 

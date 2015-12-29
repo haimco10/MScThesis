@@ -22,18 +22,18 @@ When the possible label values are from a discrete finite set, this learning pro
 \section{Online Learning}
 \label{sec:online_learning}
 
-One of the main features of the classification problem is the way how the data is been collected. 
-In some applications, the labeled data is been collected first, such that we have an access to entire training
+One of the main features of the classification problem is the way that the data is collected. 
+In some applications, the labeled data is collected first, so that we have an access to the entire training
  dataset at once. Then, we use this whole examples collection as an input to 
  a \textit{Batch learning} algorithm and learn a classification model about this problem. 
 However, in a lot of real life application this is not the case. In some problems like spam filtering, there is
-a flow of data that is transmitted in sequence and it takes time to collect the a large amount of data to learn
- from it, so we don't want to wait too long before we can have a decent prediction about the continuing
-  incoming examples. For those applications we use  \textit{Online Learning} based algorithms. 
+a flow of data that is transmitted in sequence, and it takes time to collect a large amount of data to learn
+ from, so we don't want to wait too long before we can have a decent prediction about the continuing 
+ incoming examples. For those applications we use  \textit{Online Learning} based algorithms. 
   In this setting, at any time we keep the learned model in memory, and update it when 
   a new labeled example is coming in.
-Unlike the \textit{Batch learning}, in \textit{Online Learning} at any time, 
-the learner perception about the classification task become stronger when the time is pass by.
+Unlike the \textit{Batch learning}, in the \textit{Online Learning}, 
+the learner perception about the classification task become stronger when time is passing by.
  
 %Assume you want to buy a house. There are two ways to do that. 
 %You can pay all the house cost at once and you get the house, or, 
@@ -60,14 +60,14 @@ is true. Then, the algorithm updates its decision rule, based on the past known 
 \section{Selective Sampling}
 \label{sec:selective_sampling}
 
-Usually, in an  online binary learning task setting,  we improve the prediction over the time, 
-which means that the algorithm  have less and lees prediction mistakes when it updates its model. 
+Usually, in an  online binary learning task setting, we improve the prediction over time, 
+and that means that the algorithm  have less and lees prediction mistakes when it updates its model. 
 Sometimes, annotating the data consume expensive resources, like time, money or manpower, 
 and we would like to avoid using those resources when we can. In other words, we would like 
 to avoid querying labels for the input examples when it is possible. For example, if we  update the 
 model only when there is a prediction mistake (as in Perceptron), we actually don't really 
 use the information about the correct label when there is no need to update. In such cases, 
-it will be helpful to assess every time how much we sure about our prediction, and no update should be done, 
+it will be helpful to assess every time how much we are sure about our prediction, and no update should be done, 
 so no query should be issued, or if we not sure about the prediction, hence we should issue a 
 query and update the model using the update rule and the correct label. 
 This approach, that queries labels only for selected examples is called \textit{Selective sampling.}
@@ -85,21 +85,21 @@ This approach, that queries labels only for selected examples is called \textit{
  annotator all the data to be annotated for each task a-priori. 
  
  Another aspect of this problem is the need to adapt systems to individual users, to this end, 
- such systems may query the user for the label of some input, yet, if few systems will do so 
+ such systems may query the user for the label of some input. Yet, if a few systems will do so 
  independently, the user will be flooded with queries, and will avoid interaction with those systems. 
  For example, sometimes there is a need to annotate news items from few agencies. One person cannot 
  handle all of them, and only some items can be annotated, which ones? Our setting is designed to handle 
  exactly this problem, and specifically, how to make best usage of annotation time.
  This settings can also handle the case when we want to limit the updates number, 
- for example if we have a lot of of clients that generate data, but only one server with a limited computation 
+ for example if we have a lot of clients that generate data, but only one server with a limited computation 
  power is allocated to process the received data and we want to limit the amount of updates for all tasks.
  
  We propose a new framework of online multi-task learning with a shared annotator. 
  Here, algorithms are learning few tasks simultaneously, yet they receive feedback using a central 
  mechanism that trades off the amount of feedback (or labels) each task receives. We derive a specific 
  set of algorithms based on the good-old Perceptron algorithm, called SHAMPO (SHared Annotator for Multiple 
- PrOblems) for binary classification and analyze it in the mistake bound model, showing that our algorithm 
- may perform well compared with methods that observe all annotated data. We then show how to reduce 
+ PrOblems) for binary classification, and analyze it in the mistake bound model, showing that our algorithm 
+ may perform well compared with methods that observe all annotated data. Then we show how to reduce 
  few contextual bandit problems into our framework, and provide specific bounds for such 
 settings. We evaluate our algorithm with four different datasets for OCR, vowel prediction (VJ) and 
 document classification, and show that it can improve performance either on average over all tasks, 

@@ -92,20 +92,33 @@ If $\Theta\paren{\abs{\hat{p}_{i,t}},r_{J_t,t}}} < 0$, than an aggressive update
 is been made, independent on the prediction value ,else, we update only when there is a prediction mistake 
 (i.e. $M_{J_t,t}=1$). 
 
+\begin{figure}[!h]
+\begin{centering}
+\includegraphics[width=0.7\textwidth]{figs/theta_plot.eps}
+\caption{$\Theta\paren{|\hat{p}_{i,t}|,r_{i,t}}$ vs.  $|\hat{p}_{i,t}|$ and $r_{i,t}$ }
+\label{fig:theta}
+\end{centering}
+\end{figure}
+
 \noindent
 To understand this update rule, we examine the behavior of $\Theta\paren{\abs{\hat{p}_{i,t}},r_{i,t}}}$ 
 function. This function, is quadratic in $\abs{\hat{p}_{J_t,t}}$, solving the 
 inequality $\Theta\paren{\abs{\hat{p}_{i,t}},r_{J_t,t}}} < 0$ for $\abs{\hat{p}_{J_t,t}}$ 
-leads to the folowing bound on the margin,
+leads to the following bound on the margin,
 \begin{equation*}
-  \abs{y_{i,t}\hat{p}_{i,t}} \le \frac{-1+\sqrt{1+r_{i,t}}}{1+r_{i,t}}.
+  \abs{\hat{p}_{i,t}} \le \frac{-1+\sqrt{1+r_{i,t}}}{1+r_{i,t}}.
 \end{equation*}
 
-This dynamic aggressive update threshold is actually upper bounded by a constant, since when $r_{i,t}$ is maximal, 
-($r_{i,t}=1$), this aggressive threshold gets its highest value, 
-$\frac{\sqrt{2}-1}{2}\approx 0.2$.
+\noindent
+This dynamic aggressive update threshold is actually upper bounded by a constant, since when 
+$r_{i,t}$ is maximal, ($r_{i,t}=1$), this aggressive threshold gets its highest value, 
+$\frac{\sqrt{2}-1}{2}\approx 0.2$. \figref{fig:theta} shows the value of $\Theta\paren{\abs{\hat{p}_{i,t}},r_{J_t,t}}}$ 
+vs.  $|\hat{p}_{i,t}|$ and $r_{i,t}$. The upper left area (deep blue) is the aggressive update  
+domain which happens when the margin is small. The aggressiveness threshold depends on 
+$r_{i,t}$ while high values gives us higher threshold since it is pointing on a high uncertainty. 
+
 We don't have a full analysis on the second order aggressive algorithm in the 
-sense of the mistake bounds yet, however, it was well analyzed in the selective 
+sense of the mistake bounds here, yet, it was well analyzed in the selective 
 sampling setting and shown remarkable empirical improvement over the rest of the algorithms in our 
 experiments.
 

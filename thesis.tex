@@ -71,27 +71,30 @@ each round, each of the $K$ learners receives an input, and makes a
 prediction about the label of that input. Then, a shared
 (stochastic) mechanism decides which of the $K$ inputs will be
 annotated. The learner that receives the feedback (label) may update
-its prediction rule, and we proceed to the next round. We develop 
+its prediction rule, and then we proceed to the next round. We develop 
 online algorithms for multi-task binary classification that learns in
 this setting, and bound its performances in the worst-case
-setting. The algorithms apply an exploration-exploitation approach in order to allocate the limited feedback in the way that reduces the total number of errors.  
+setting. The algorithms applys an exploration-exploitation approach in order to allocate the limited feedback in the way that reduces the total number of errors.  
 Additionally, we show that our algorithm can be used to
 solve two bandits problems: contextual bandits, and dueling bandits
 with context, both allowed to decouple exploration and
 exploitation. Empirical study with OCR data , vowel prediction (VJ
 project) and NLP -sentiment analysis data shows that our algorithms outperforms algorithms that use
-uniform allocation, and essentially makes more (accuracy) for the
+uniform allocation, and essentially produces better performance for the
 same labour of the annotator.
 \input{prela}
 
 \chapter*{Abbreviations and Notations}
 \begin{tabular}{lcl}
 $SHAMPO$ & --- & SHared Annotator for Multiple PrOblems\\
-$\Vert\vu \Vert$ & --- & $\ell_2$-norm of the vector $\vu$\\
 $ECOC$ & --- & Error COrrecting Code\\
 $OCR$ & --- & Optical Character Recognition\\
 $NLP$ & --- & Natural language processing\\
 $MFCC$ & --- & Mel-Frequency Cepstral Coefficients\\
+$(x)_+$ & --- & $\max\{x,0\}$\\
+$\mathbb{E}_{t-1}\brackets{x}$ & --- & $\mathbb{E}_{t}\brackets{x|Z_1,Z_2,\cdots,Z_{t-1}}$\\
+$\mathbb{I}\brackets{X}$ & --- & The indicator of event $X$\\
+$\Vert\vu \Vert$ & --- & $\ell_2$-norm of the vector $\vu$\\
 \end{tabular}
 
 %Or, if your tables are long, ``\usepackage{longtable}'' at the beginning, and then  ``\begin{longtable}[l]{lcl} ... \end{longtable}''
