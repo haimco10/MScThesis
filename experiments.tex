@@ -164,6 +164,71 @@ tasks.)
 \end{figure}
 
 \section{Multi-task Binary Classification}
+
+\begin{figure}[p]
+\begin{centering}
+\subfigure[MNIST one-vs-one]{\includegraphics[width=0.48\textwidth]{figs/test-m1.eps}\label{fig:tst_err_m1}}\hfill
+\subfigure[MNIST one-vs-rest]{\includegraphics[width=0.48\textwidth]{figs/test-mr.eps}\label{fig:tst_err_mr}}
+\subfigure[USPS one-vs-one]{\includegraphics[width=0.48\textwidth]{figs/test-u1.eps}\label{fig:tst_err_u1}}\hfill
+\subfigure[USPS one-vs-rest]{\includegraphics[width=0.48\textwidth]{figs/test-ur.eps}\label{fig:tst_err_ur}}
+\subfigure[VJ one-vs-one]{\includegraphics[width=0.48\textwidth]{figs/test-v1.eps}\label{fig:tst_err_v1}}\hfill
+\subfigure[VJ one-vs-rest]{\includegraphics[width=0.48\textwidth]{figs/test-vr.eps}\label{fig:tst_err_vr}}
+\captcont{Testing error - all datasets and algorithms}
+\label{fig:test_errors}
+\end{centering}
+\end{figure}
+
+\begin{figure}[t]
+\begin{centering}
+\subfigure[NLP ove-vs-one]{\includegraphics[width=0.48\textwidth]{figs/test-n.eps}\label{fig:tst_err_n}}
+\captcont*{Testing error - all datasets and algorithms (cont.)}
+\label{fig:test_errors_2}
+\end{centering}
+\end{figure}
+
+
+\begin{figure}[p]
+\begin{centering}
+\subfigure[MNIST one-vs-one]{\includegraphics[width=0.48\textwidth]{figs/train-m1.eps}\label{fig:trn_err_m1}}\hfill
+\subfigure[MNIST one-vs-rest]{\includegraphics[width=0.48\textwidth]{figs/train-mr.eps}\label{fig:trn_err_mr}}
+\subfigure[USPS one-vs-one]{\includegraphics[width=0.48\textwidth]{figs/train-u1.eps}\label{fig:trn_err_u1}}\hfill
+\subfigure[USPS one-vs-rest]{\includegraphics[width=0.48\textwidth]{figs/train-ur.eps}\label{fig:trn_err_ur}}
+\subfigure[VJ one-vs-one]{\includegraphics[width=0.48\textwidth]{figs/train-v1.eps}\label{fig:trn_err_v1}}\hfill
+\subfigure[VJ one-vs-rest]{\includegraphics[width=0.48\textwidth]{figs/train-vr.eps}\label{fig:trn_err_vr}}
+\captcont{Training error - all datasets and algorithms}
+\label{fig:train_errors}
+\end{centering}
+\end{figure}
+
+\begin{figure}[t]
+\begin{centering}
+\subfigure[NLP one-vs-one]{\includegraphics[width=0.48\textwidth]{figs/train-n.eps}\label{fig:trn_err_n}}
+\captcont*{Training error - all datasets and algorithms}
+\label{fig:train_errors_2}
+\end{centering}
+\end{figure}
+
+\begin{figure}[p]
+\begin{centering}
+\subfigure[MNIST one-vs-one]{\includegraphics[width=0.48\textwidth]{figs/queried-m1.eps}\label{fig:queried_m1}}\hfill
+\subfigure[MNIST one-vs-rest]{\includegraphics[width=0.48\textwidth]{figs/queried-mr.eps}\label{fig:queried_mr}}
+\subfigure[USPS one-vs-one]{\includegraphics[width=0.48\textwidth]{figs/queried-u1.eps}\label{fig:queried_u1}}\hfill
+\subfigure[USPS one-vs-rest]{\includegraphics[width=0.48\textwidth]{figs/queried-ur.eps}\label{fig:queried_ur}}
+\subfigure[VJ one-vs-one]{\includegraphics[width=0.48\textwidth]{figs/queried-v1.eps}\label{fig:queried_v1}}\hfill
+\subfigure[VJ one-vs-rest]{\includegraphics[width=0.48\textwidth]{figs/queried-vr.eps}\label{fig:queried_vr}}
+\captcont{Training error: queried vs all - FO algorithm, all datasets}
+\label{fig:queried}
+\end{centering}
+\end{figure}
+
+\begin{figure}[t]
+\begin{centering}
+\subfigure[NLP one-vs-one]{\includegraphics[width=0.48\textwidth]{figs/queried-n.eps}\label{fig:queried_n}}
+\captcont*{Training error: queried vs all - FO algorithm, all datasets  (cont.)}
+\label{fig:queried_2}
+\end{centering}
+\end{figure}
+
 First, we evaluated all the mentioned variations of SHAMPO algorithms. We ran a 
 single pass over all of the training examples for all datasets and $11$ equally spaced values of b 
 between $10^{-5}$ and $10^5$. The algorithms performance was evaluated using 
@@ -197,6 +262,8 @@ tasks. Here, we added one more algorithm, the Watch All algorithm (WA), which ru
 perceptron algorithms, one per task, while each one of them query and watches all of the tasks labels, without any limitation on the feedback.
 We show this algorithm here as a benchmark, to measure how much SHAMPO algorithms looses or gain 
 performance with respect to the algorithm that can watch all the labels. 
+
+
 
 \begin{figure}[h]
 \begin{centering}
@@ -284,7 +351,28 @@ The tradeoff mechanism of SHAMPO, reduces the test error of each problem by more
 compared to full exploration. Fourth, exploits performs similar equalization, yet in some hard tasks it 
 performs worse than SHAMPO. This could be because it overfits the training data, by focusing on 
 hard-examples too much, as SHAMPO has a randomness mechanism.
-\\
+
+\begin{figure}[p]
+\begin{centering}
+\subfigure[MNIST one-vs-one]{\includegraphics[width=0.48\textwidth]{figs/scatter-m1.eps}\label{fig:scatter_m1}}\hfill
+\subfigure[MNIST one-vs-rest]{\includegraphics[width=0.48\textwidth]{figs/scatter-mr.eps}\label{fig:scatter_mr}}
+\subfigure[USPS one-vs-one]{\includegraphics[width=0.48\textwidth]{figs/scatter-u1.eps}\label{fig:scatter_u1}}\hfill
+\subfigure[USPS one-vs-rest]{\includegraphics[width=0.48\textwidth]{figs/scatter-ur.eps}\label{fig:scatter_ur}}
+\subfigure[VJ one-vs-one]{\includegraphics[width=0.48\textwidth]{figs/scatter-v1.eps}\label{fig:scatter_v1}}\hfill
+\subfigure[VJ one-vs-rest]{\includegraphics[width=0.48\textwidth]{figs/scatter-vr.eps}\label{fig:scatter_vr}}
+\captcont{Queries vs. Testing error - all datasets and algorithms}
+\label{fig:test_scatter}
+\end{centering}
+\end{figure}
+
+\begin{figure}[t]
+\begin{centering}
+\subfigure[NLP one-vs-one]{\includegraphics[width=0.48\textwidth]{figs/scatter-n.eps}\label{fig:scatter_n}}
+\captcont*{Queries vs. Testing error - all datasets and algorithms (cont.)}
+\label{fig:test_scatter_2}
+\end{centering}
+\end{figure}
+
 
 \noindent
 In the past experiments, we concentrated on the final state of the algorithms: 
@@ -302,64 +390,58 @@ different behavior of those algorithms. The algorithms parameter was initialized
 which is close to the optimal value for all of these algorithms, as shown in \eqref{fig:tst_err_ur}
 
 The cumulative number of queries that each task issued up to a certain time step is shown in 
-\eqref{fig:qr_step}. The FO algorithm run (\figref{fig:qr_step_FO}) ends with $100-1,400$ mistakes for each task and alternate 
-the preferred task to query (or not to query) on sharply. There are tasks that 
+\eqref{fig:qr_step}. The FO algorithm run (\figref{fig:qr_step_FO}) ends with $100-1,400$ queries for each task and alternate 
+the preferred task to query (or not to query) on, sharply. There are tasks that 
 issued a lot of queries in a short time interval, and then stopped querying for 
-another time intervals repeatedly. This probably shows that this algorithm is 
-less stable than the others. The SO algorithm run (\figref{fig:qr_step_SO})  ends with $50-2,000$ mistakes for each 
-task, yet it focuses mainly on two tasks while the rest didn't have more than $900$ 
-prediction mistakes. The SOAG algorithm (\figref{fig:qr_step_SOAG}) uses the exploration-exploitation remarkably. It 
-focuses more on (probably) harder tasks (expitation), since we see that it ends with $550-950$ mistakes for each 
+another time intervals repeatedly. This shows that this algorithm is 
+less stable than the others. The SO algorithm run (\figref{fig:qr_step_SO})  ends with $50-2,000$ queries for each 
+task, yet it focuses mainly on two tasks while the rest didn't have issued than $900$ 
+queries. The SOAG algorithm (\figref{fig:qr_step_SOAG}) uses the exploration-exploitation remarkably. It 
+focuses more on (probably) harder tasks (expitation), since we see that it ends with $550-950$ queries for each 
 task. Yet, id does't leave tasks too much time without querying (exploration), so we see smooth curves.
 
 \eqref{fig:qr_er} shows the number of mistakes vs. number of queries. An expected 
-behavior of the algorithm it that when the number of mistakes goes up (harder 
+behavior of the algorithm is that when the number of mistakes goes up (harder 
 task), the number of queries will rise as well. In fact the relation between 
-margin and high number of mistakes may not strictly holds for each task and 
+margin and high number of mistakes may not strictly holds for any task and 
 dataset. We can see that the FO (\eqref{fig:qr_er_FO}) shows this trend, but it's 
 broken in the middle (there are intervals when the mistakes gown up, but no queries are 
 issues). This probably shows the intervals when the algorithm focuses on tasks 
 that had higher margin at the same point. The same phenomena (even stronger) is seen in the SO algorithm 
 (\eqref{fig:qr_er_SO}) since it focuses mainly on two tasks over the others. The SOAG (\eqref{fig:qr_er_SOAG}) 
-in the other hand, shows the desired property of SHAMPO algorithm along all of the run time. 
+in the other hand, shows the desired property of SHAMPO algorithm during all of the run time. 
 
 We also evaluated the error-query ratio over time for these algorithms as in 
 \eqref{fig:qr_er_frac}. This measurement shows for each task, how many queries 
 it issues per error. When this value is too low for one task compare to the other tasks, it means that the algorithm 
 issue a lot of queries for the task, even though not many prediction mistakes  
-were done on the same task, which is a bad behavior. Saying that, this is not always a bad when this 
+were done on the same task, which is a bad behavior. Saying that, this is not always bad when this 
 measure is high. Recall in our settings we have to issue a query at every step, even wen the model 
 is converged and we don't make many mistakes, one of the tasks have to issue a query, which increases the 
-number of queries for the tasks, which in turn increase this ratio. In this case, we expect an exploration 
-which cause all the tasks to share 
+number of queries for the tasks, which in turn, increase this ratio. In this case, we expect an 
+exploration, which cause all the tasks to share 
 the same, or close error-query ratio. We can see this exact behavior for the SOAG algorithm 
 (\eqref{fig:qr_er_frac_SOAG}), when all the tasks show stable values in the 
 range ($2.5-5$) queries per mistake. However, low value of this measure is not desired as well, since it 
-means that the algorithm makes a lot of errors on a certain task, but does not 
+means that the algorithm makes a lot of mistakes on a certain task, but does not 
 issue enough queries on that task in order to improve the model and decrease the number of 
-errors. We see in the FO (\eqref{fig:qr_er_frac_FO}) and even stronger in the SO 
-(\eqref{fig:qr_er_frac_SO}) algorithm that there is difference between the 
+mistakes. We see in the FO algorithm (\eqref{fig:qr_er_frac_FO}) and even stronger in the SO 
+(\eqref{fig:qr_er_frac_SO}) algorithm, that there is a difference between the 
 task with the highest value and the task with the lowest value (1-7 for FO and 0.5-10 for 
 SO).
 
-In this experiment we saw that even that we want the algorithm to concentrate on 
+In this experiment we saw that even though we want the algorithm to concentrate on 
 the more difficult tasks, the algorithm, should avoid the attraction to concentrate too much on a specific 
 tasks and ignore the rest of them, i.e. an exploitation without an exploration may not be a good 
-idea. We also noticed that the Second Order Aggressive algorithm gives high 
-performance, not only in sense of prediction mistakes, but also in the 
-explration exploitation manner.
+idea. We also noticed that the Second Order Aggressive algorithm produces high 
+performance, not only in the sense of prediction mistakes, but also in the 
+exploration-exploitation manner.
 
  % In fact in the USPS dataset we found a good prior that can improves the performances.  In order to create this prior, we ran over the examples first simple perceptron algorithm with full feedback, and computes the prior as a fraction of the error from the initial run. The results are shown in \tabref{tab:table2} and as.  In addision, the results for the MIXED dataset support the claim that the tasks can comes from different fields and different dimensions.
 
 
 \section{Reduction of Multi-task to Contextual Bandits}
 
-\begin{figure}[!ht]
-\begin{centering}
-\includegraphics[width=0.7\textwidth]{figs/VJ_three_methods.eps}\label{fig:mc_vj}
-\caption{Multi-class error on VJ data for three bandit reductions and the banditron.}
-\end{centering}
-\end{figure}
 
 We also evaluated SHAMPO as a contextual bandit algorithm, by breaking a multi-class problem into few 
 binary tasks, and integrating their output into a single multi-class problem. 
@@ -385,66 +467,10 @@ three words, such as three letters. Given an utterance of the user, the system m
 ``Did you say (a) 'a' like 'bad' (b) 'o' like in 'book') (c) none''. The user can communicate the correct answer 
 with no need for a another person to key in the answer.
 
-
-\begin{figure}[!htb]
+\begin{figure}[!ht]
 \begin{centering}
-\subfigure[MNIST one-vs-one]{\includegraphics[width=0.37\textwidth]{figs/queried-m1.eps}\label{fig:queried_m1}}\hfill
-\subfigure[MNIST one-vs-rest]{\includegraphics[width=0.37\textwidth]{figs/queried-mr.eps}\label{fig:queried_mr}}
-\subfigure[USPS one-vs-one]{\includegraphics[width=0.37\textwidth]{figs/queried-u1.eps}\label{fig:queried_u1}}\hfill
-\subfigure[USPS one-vs-rest]{\includegraphics[width=0.37\textwidth]{figs/queried-ur.eps}\label{fig:queried_ur}}
-\subfigure[VJ one-vs-one]{\includegraphics[width=0.37\textwidth]{figs/queried-v1.eps}\label{fig:queried_v1}}\hfill
-\subfigure[VJ one-vs-rest]{\includegraphics[width=0.37\textwidth]{figs/queried-vr.eps}\label{fig:queried_vr}}
-\subfigure[NLP one-vs-one]{\includegraphics[width=0.37\textwidth]{figs/queried-n.eps}\label{fig:queried_n}}
-\caption{Training error: queried vs all - FO algorithm, all datasets}
-\label{fig:queried}
+\includegraphics[width=0.7\textwidth]{figs/VJ_three_methods.eps}\label{fig:mc_vj}
+\caption{Multi-class error on VJ data for three bandit reductions and the banditron.}
 \end{centering}
 \end{figure}
- 
-\begin{figure}[t]
-\begin{centering}
-\subfigure[MNIST one-vs-one]{\includegraphics[width=0.37\textwidth]{figs/test-m1.eps}\label{fig:tst_err_m1}}\hfill
-\subfigure[MNIST one-vs-rest]{\includegraphics[width=0.37\textwidth]{figs/test-mr.eps}\label{fig:tst_err_mr}}
-\subfigure[USPS one-vs-one]{\includegraphics[width=0.37\textwidth]{figs/test-u1.eps}\label{fig:tst_err_u1}}\hfill
-\subfigure[USPS one-vs-rest]{\includegraphics[width=0.37\textwidth]{figs/test-ur.eps}\label{fig:tst_err_ur}}
-\subfigure[VJ one-vs-one]{\includegraphics[width=0.37\textwidth]{figs/test-v1.eps}\label{fig:tst_err_v1}}\hfill
-\subfigure[VJ one-vs-rest]{\includegraphics[width=0.37\textwidth]{figs/test-vr.eps}\label{fig:tst_err_vr}}
-\subfigure[NLP ove-vs-one]{\includegraphics[width=0.37\textwidth]{figs/test-n.eps}\label{fig:tst_err_n}}
-\caption{Testing error - all datasets and algorithms}
-\label{fig:test_errors}
-\end{centering}
-%\vspace{-0.5cm}
-\end{figure}
-
-\begin{figure}[!t]
-\begin{centering}
-\subfigure[MNIST one-vs-one]{\includegraphics[width=0.37\textwidth]{figs/train-m1.eps}\label{fig:trn_err_m1}}\hfill
-\subfigure[MNIST one-vs-rest]{\includegraphics[width=0.37\textwidth]{figs/train-mr.eps}\label{fig:trn_err_mr}}
-\subfigure[USPS one-vs-one]{\includegraphics[width=0.37\textwidth]{figs/train-u1.eps}\label{fig:trn_err_u1}}\hfill
-\subfigure[USPS one-vs-rest]{\includegraphics[width=0.37\textwidth]{figs/train-ur.eps}\label{fig:trn_err_ur}}
-\subfigure[VJ one-vs-one]{\includegraphics[width=0.37\textwidth]{figs/train-v1.eps}\label{fig:trn_err_v1}}\hfill
-\subfigure[VJ one-vs-rest]{\includegraphics[width=0.37\textwidth]{figs/train-vr.eps}\label{fig:trn_err_vr}}
-\subfigure[NLP one-vs-one]{\includegraphics[width=0.37\textwidth]{figs/train-n.eps}\label{fig:trn_err_n}}
-\caption{Training error - all datasets and algorithms}
-\label{fig:train_errors}
-\end{centering}
-\vspace{-0.5cm}
-\end{figure}
-
-
-\begin{figure}[!t]
-\begin{centering}
-\subfigure[MNIST one-vs-one]{\includegraphics[width=0.37\textwidth]{figs/scatter-m1.eps}\label{fig:scatter_m1}}\hfill
-\subfigure[MNIST one-vs-rest]{\includegraphics[width=0.37\textwidth]{figs/scatter-mr.eps}\label{fig:scatter_mr}}
-\subfigure[USPS one-vs-one]{\includegraphics[width=0.37\textwidth]{figs/scatter-u1.eps}\label{fig:scatter_u1}}\hfill
-\subfigure[USPS one-vs-rest]{\includegraphics[width=0.37\textwidth]{figs/scatter-ur.eps}\label{fig:scatter_ur}}
-\subfigure[VJ one-vs-one]{\includegraphics[width=0.37\textwidth]{figs/scatter-v1.eps}\label{fig:scatter_v1}}\hfill
-\subfigure[VJ one-vs-rest]{\includegraphics[width=0.37\textwidth]{figs/scatter-vr.eps}\label{fig:scatter_vr}}
-\subfigure[NLP one-vs-one]{\includegraphics[width=0.37\textwidth]{figs/scatter-n.eps}\label{fig:scatter_n}}
-\caption{Queries vs. Testing error - all datasets and algorithms}
-\label{fig:test_scatter}
-\end{centering}
-\vspace{-0.5cm}
-\end{figure}
-
-
 
