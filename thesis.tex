@@ -67,22 +67,30 @@ Thanks to my family for the support....}
 % The English abstract should be 200-500 words long.
 \abstractEnglish
 We introduce a new multi-task framework, in which $K$ online
-learners are sharing a single annotator with limited bandwidth. On
-each round, each of the $K$ learners receives an input, and makes a
+learners are sharing a single annotator with limited bandwidth. This limitation, does not allow the algorithm to 
+query the true label from more than one task at a time. On
+each round, each one of the $K$ learners receives an input example, and makes a
 prediction about the label of that input. Then, a shared
-(stochastic) mechanism decides which of the $K$ inputs will be
-annotated. The learner that receives the feedback (label) may update
-its prediction rule, and then we proceed to the next round. We develop 
-online algorithms for multi-task binary classification that learns in
+(stochastic) mechanism decides which one of the $K$ inputs will be
+annotated. This decision is based on the estimation of the nature of each task relative to the other and 
+exploited this diversity to focus on harder tasks over the easier. The learner that receives the feedback (label) may update
+its prediction rule, and then we proceed to the next round. 
+
+We develop 
+online algorithms set for multi-task binary classification that learns in
 this setting, and bound its performances in the worst-case
-setting. The algorithms applys an exploration-exploitation approach in order to allocate the limited feedback in the way that reduces the total number of errors.  
+setting. The algorithms applies an exploration-exploitation approach in order to allocate the limited 
+feedback in a way that focuses on the feedback of the harder tasks and as a result, reduces the total 
+number of prediction mistakes.  
+
 Additionally, we show that our algorithm can be used to
 solve two bandits problems: contextual bandits, and dueling bandits
 with context, both allowed to decouple exploration and
 exploitation. Empirical study with OCR data , vowel prediction (VJ
-project) and NLP -sentiment analysis data shows that our algorithms outperforms algorithms that use
+project) and NLP - sentiment analysis and document domain classification data shows that our algorithms outperforms algorithms that use
 uniform allocation, and essentially produces better performance for the
 same labour of the annotator.
+
 \input{prela}
 
 \chapter*{Abbreviations and Notations}

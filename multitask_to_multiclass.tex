@@ -42,7 +42,7 @@ where $\1{I}=1$ if the predicate $I$ is true, and zero otherwise.
 
 \noindent
 The corollary follows directly from \thmref{thm:FO_bound_aggressive_prior} by noting that, 
-$\1{Y_t \neq \hat{Y}_t} \leq \sum_i M_{i,t}$. That is, there is a multiclass mistake if there is at least one 
+$\1{Y_t \neq \hat{Y}_t} \leq \sum_i M_{i,t}$, Meaning, there is a multiclass mistake if there is at least one 
 prediction mistake of one of the one-vs-rest problems. The closest setting is contextual bandits, yet we 
 allow decoupling of exploration and exploitation. Ignoring this decoupling, the 
 Banditron algorithm~\cite{kakade2008efficient} is the closest to ours, 

@@ -27,7 +27,7 @@ classification.
 
 \section{Hard and Easy Tasks Tradeoff}
 First, we wanted to show that indeed, the SHMAPO algorithms are optimal for different collections of hard and
- easy tasks and also for tasks from different domains and dimensions. For that reason, we created an eighth 
+ easy tasks, and also for tasks from different domains and dimensions. For that reason, we created an eighth 
  collection, named MIXED, which consists of $40$ tasks: $10$ random tasks from each one of the four 
  basic datasets (one-vs-one versions). Then, from each one of the eight dataset collections we generated 
  between $6$ to $10$ combinations (or problems), each problem was created by sampling between 
@@ -68,12 +68,12 @@ MIXED & 8 & 10 & 10 & 10 \\ \hline
 \end{table}
 
 
-We evaluated two baselines as well as our algorithm. Algorithm {\em uniform} picks a random task to be 
+We evaluated two baselines in addition to our algorithm. Algorithm {\em uniform} picks a random task to be 
 queried and updated (corresponding to $b\rightarrow\infty$), {\em exploit} which picks the tasks with the 
 lowest absolute margin (i.e. the ``hardest instance''), this combination corresponds to $b \approx 0$ of 
 SHAMPO.\@ We tried for SHAMPO $13$ values for $b$, equally spaced on a logarithmic scale between 
 $10^{-7}$ and $10^{5}$. 
-All algorithms made a single pass over the training data. We ran two versions of the our First Order algorithm: 
+All algorithms made a single pass over the training data. We ran two versions of our First Order algorithm: 
 plain version, without aggressiveness (updates on mistakes only, $\lambda=0$) and an 
 Aggressive version $\lambda=b/2$ (we tried lower values of $\lambda$ as in the bound, 
 but we found that $\lambda=b/2$ gives better results), both with uniform prior ($a_i=1$). 
@@ -167,28 +167,6 @@ tasks.)
 
 \begin{figure}[p]
 \begin{centering}
-\subfigure[MNIST one-vs-one]{\includegraphics[width=0.48\textwidth]{figs/test-m1.eps}\label{fig:tst_err_m1}}\hfill
-\subfigure[MNIST one-vs-rest]{\includegraphics[width=0.48\textwidth]{figs/test-mr.eps}\label{fig:tst_err_mr}}
-\subfigure[USPS one-vs-one]{\includegraphics[width=0.48\textwidth]{figs/test-u1.eps}\label{fig:tst_err_u1}}\hfill
-\subfigure[USPS one-vs-rest]{\includegraphics[width=0.48\textwidth]{figs/test-ur.eps}\label{fig:tst_err_ur}}
-\subfigure[VJ one-vs-one]{\includegraphics[width=0.48\textwidth]{figs/test-v1.eps}\label{fig:tst_err_v1}}\hfill
-\subfigure[VJ one-vs-rest]{\includegraphics[width=0.48\textwidth]{figs/test-vr.eps}\label{fig:tst_err_vr}}
-\captcont{Testing error - all datasets and algorithms}
-\label{fig:test_errors}
-\end{centering}
-\end{figure}
-
-\begin{figure}[t]
-\begin{centering}
-\subfigure[NLP ove-vs-one]{\includegraphics[width=0.48\textwidth]{figs/test-n.eps}\label{fig:tst_err_n}}
-\captcont*{Testing error - all datasets and algorithms (cont.)}
-\label{fig:test_errors_2}
-\end{centering}
-\end{figure}
-
-
-\begin{figure}[p]
-\begin{centering}
 \subfigure[MNIST one-vs-one]{\includegraphics[width=0.48\textwidth]{figs/train-m1.eps}\label{fig:trn_err_m1}}\hfill
 \subfigure[MNIST one-vs-rest]{\includegraphics[width=0.48\textwidth]{figs/train-mr.eps}\label{fig:trn_err_mr}}
 \subfigure[USPS one-vs-one]{\includegraphics[width=0.48\textwidth]{figs/train-u1.eps}\label{fig:trn_err_u1}}\hfill
@@ -203,8 +181,29 @@ tasks.)
 \begin{figure}[t]
 \begin{centering}
 \subfigure[NLP one-vs-one]{\includegraphics[width=0.48\textwidth]{figs/train-n.eps}\label{fig:trn_err_n}}
-\captcont*{Training error - all datasets and algorithms}
+\caption{Training error - all datasets and algorithms (cont.)}
 \label{fig:train_errors_2}
+\end{centering}
+\end{figure}
+
+\begin{figure}[p]
+\begin{centering}
+\subfigure[MNIST one-vs-one]{\includegraphics[width=0.48\textwidth]{figs/test-m1.eps}\label{fig:tst_err_m1}}\hfill
+\subfigure[MNIST one-vs-rest]{\includegraphics[width=0.48\textwidth]{figs/test-mr.eps}\label{fig:tst_err_mr}}
+\subfigure[USPS one-vs-one]{\includegraphics[width=0.48\textwidth]{figs/test-u1.eps}\label{fig:tst_err_u1}}\hfill
+\subfigure[USPS one-vs-rest]{\includegraphics[width=0.48\textwidth]{figs/test-ur.eps}\label{fig:tst_err_ur}}
+\subfigure[VJ one-vs-one]{\includegraphics[width=0.48\textwidth]{figs/test-v1.eps}\label{fig:tst_err_v1}}\hfill
+\subfigure[VJ one-vs-rest]{\includegraphics[width=0.48\textwidth]{figs/test-vr.eps}\label{fig:tst_err_vr}}
+\captcont{Testing error - all datasets and algorithms}
+\label{fig:test_errors}
+\end{centering}
+\end{figure}
+
+\begin{figure}[t]
+\begin{centering}
+\subfigure[NLP ove-vs-one]{\includegraphics[width=0.48\textwidth]{figs/test-n.eps}\label{fig:tst_err_n}}
+\caption{Testing error - all datasets and algorithms (cont.)}
+\label{fig:test_errors_2}
 \end{centering}
 \end{figure}
 
@@ -216,7 +215,7 @@ tasks.)
 \subfigure[USPS one-vs-rest]{\includegraphics[width=0.48\textwidth]{figs/queried-ur.eps}\label{fig:queried_ur}}
 \subfigure[VJ one-vs-one]{\includegraphics[width=0.48\textwidth]{figs/queried-v1.eps}\label{fig:queried_v1}}\hfill
 \subfigure[VJ one-vs-rest]{\includegraphics[width=0.48\textwidth]{figs/queried-vr.eps}\label{fig:queried_vr}}
-\captcont{Training error: queried vs all - FO algorithm, all datasets}
+\captcont{Training error: queried vs. all - FO algorithm, all datasets}
 \label{fig:queried}
 \end{centering}
 \end{figure}
@@ -224,8 +223,29 @@ tasks.)
 \begin{figure}[t]
 \begin{centering}
 \subfigure[NLP one-vs-one]{\includegraphics[width=0.48\textwidth]{figs/queried-n.eps}\label{fig:queried_n}}
-\captcont*{Training error: queried vs all - FO algorithm, all datasets  (cont.)}
+\caption{Training error: queried vs. all - FO algorithm, all datasets  (cont.)}
 \label{fig:queried_2}
+\end{centering}
+\end{figure}
+
+\begin{figure}[p]
+\begin{centering}
+\subfigure[MNIST one-vs-one]{\includegraphics[width=0.48\textwidth]{figs/scatter-m1.eps}\label{fig:scatter_m1}}\hfill
+\subfigure[MNIST one-vs-rest]{\includegraphics[width=0.48\textwidth]{figs/scatter-mr.eps}\label{fig:scatter_mr}}
+\subfigure[USPS one-vs-one]{\includegraphics[width=0.48\textwidth]{figs/scatter-u1.eps}\label{fig:scatter_u1}}\hfill
+\subfigure[USPS one-vs-rest]{\includegraphics[width=0.48\textwidth]{figs/scatter-ur.eps}\label{fig:scatter_ur}}
+\subfigure[VJ one-vs-one]{\includegraphics[width=0.48\textwidth]{figs/scatter-v1.eps}\label{fig:scatter_v1}}\hfill
+\subfigure[VJ one-vs-rest]{\includegraphics[width=0.48\textwidth]{figs/scatter-vr.eps}\label{fig:scatter_vr}}
+\captcont{Queries vs. Testing error - all datasets and algorithms}
+\label{fig:test_scatter}
+\end{centering}
+\end{figure}
+
+\begin{figure}[t]
+\begin{centering}
+\subfigure[NLP one-vs-one]{\includegraphics[width=0.48\textwidth]{figs/scatter-n.eps}\label{fig:scatter_n}}
+\caption{Queries vs. Testing error - all datasets and algorithms (cont.)}
+\label{fig:test_scatter_2}
 \end{centering}
 \end{figure}
 
@@ -236,7 +256,7 @@ mean of accumulated training error of all tasks and the mean of test errors over
 all of the tasks for each datasets. Since the NLP dataset doesn't have a test 
 set, we evaluated those quantities using 10 cross validation folds. We repeated 
 the experiments 100 times and took the mean of all algorithm runs.
-For simplicity, we denote each one of those algorithms the  
+To simplify, we denote each one of those algorithms the  
 abbreviations: First Order (FO), First Order AGgressive (AG) with two different values of $\lambda$, 
 $\lambda = b/2$ and $\lambda = b/4$ , First Order with PRior (PR), First Order 
 ADaptive (AD), Second Order (SO) and Second Order AGgressive (SOAG). 
@@ -252,7 +272,7 @@ This makes sense, since we query (and update) more on the harder tasks.
 Between those two extreme cases, there is a point where cumulative error is 
 lower. This point is where $b$ gets its optimal value. This value can change 
 between datasets and algorithms and next we see a convenient experimental way to find it. 
-There are algorithms and datasets (e.g. VJ one-vs-one in \figref{fig:tst_err_v1}), that this point converges
+There are algorithms and datasets (e.g. VJ one-vs-one in \figref{fig:train_err_v1}), that this point converges
 into the exploitation area, it may depends on the examples noise and the number of examples 
 in the dataset. As we claimed before, a pure exploitation approach may not be the best choice, at least on 
 the first online steps, especially for problem with small number of examples.
@@ -280,7 +300,7 @@ performance with respect to the algorithm that can watch all the labels.
 \subfigure[First Order]{\includegraphics[width=0.48\textwidth]{figs/Qr_Err_usps1r_FO_1e-3.eps}\label{fig:qr_er_FO}}
 \subfigure[Second Order]{\includegraphics[width=0.48\textwidth]{figs/Qr_Err_usps1r_SO_1e-3.eps}\label{fig:qr_er_SO}}
 \subfigure[Second Order Aggressive]{\includegraphics[width=0.48\textwidth]{figs/Qr_Err_usps1r_SOAG_1e-3.eps}\label{fig:qr_er_SOAG}}
-\caption{Number of queries vs. number of errors, USPS one-vs-rest, all tasks}
+\caption{Number of queries vs. number of mistakes, USPS one-vs-rest, all tasks}
 \label{fig:qr_er}
 \end{centering}
 \end{figure}
@@ -296,7 +316,7 @@ performance with respect to the algorithm that can watch all the labels.
 \end{figure}
 
 
-Wen we compare all of the algorithms, there is no such absolute winner, however, 
+When we compare all of the algorithms, there is no such absolute winner, however, 
 it is obvious from results that the aggressive algorithms shows better 
 performance than the rest of them. For most of the algorithms, the aggressive version of the second order (SOAG) seems to preform better 
 then the rest. It is probably due to the fact that it draws tasks to query on, based on two measurements 
@@ -304,7 +324,7 @@ then the rest. It is probably due to the fact that it draws tasks to query on, b
 the first order aggressive algorithm (AG) which performs the best on a 
 limited $b$ interval because the aggressiveness depends strongly on $b$. The 
 first order algorithm with prior (PR) doesn't show an improvement over the ordinary first order (FO) algorithm. 
-In fact, we already mentioned before than better prior may lead to an improvements in the results. 
+In fact, we already mentioned before that better prior may lead to an improvements in the results. 
 The adaptive $b$ algorithm (AD), does not show an improvement over FO as well. 
 
 Now, we focus on the tasks that the algorithm chooses to annotate on each iteration for various values 
@@ -352,38 +372,15 @@ compared to full exploration. Fourth, exploits performs similar equalization, ye
 performs worse than SHAMPO. This could be because it overfits the training data, by focusing on 
 hard-examples too much, as SHAMPO has a randomness mechanism.
 
-\begin{figure}[p]
-\begin{centering}
-\subfigure[MNIST one-vs-one]{\includegraphics[width=0.48\textwidth]{figs/scatter-m1.eps}\label{fig:scatter_m1}}\hfill
-\subfigure[MNIST one-vs-rest]{\includegraphics[width=0.48\textwidth]{figs/scatter-mr.eps}\label{fig:scatter_mr}}
-\subfigure[USPS one-vs-one]{\includegraphics[width=0.48\textwidth]{figs/scatter-u1.eps}\label{fig:scatter_u1}}\hfill
-\subfigure[USPS one-vs-rest]{\includegraphics[width=0.48\textwidth]{figs/scatter-ur.eps}\label{fig:scatter_ur}}
-\subfigure[VJ one-vs-one]{\includegraphics[width=0.48\textwidth]{figs/scatter-v1.eps}\label{fig:scatter_v1}}\hfill
-\subfigure[VJ one-vs-rest]{\includegraphics[width=0.48\textwidth]{figs/scatter-vr.eps}\label{fig:scatter_vr}}
-\captcont{Queries vs. Testing error - all datasets and algorithms}
-\label{fig:test_scatter}
-\end{centering}
-\end{figure}
-
-\begin{figure}[t]
-\begin{centering}
-\subfigure[NLP one-vs-one]{\includegraphics[width=0.48\textwidth]{figs/scatter-n.eps}\label{fig:scatter_n}}
-\captcont*{Queries vs. Testing error - all datasets and algorithms (cont.)}
-\label{fig:test_scatter_2}
-\end{centering}
-\end{figure}
-
-
-\noindent
 In the past experiments, we concentrated on the final state of the algorithms: 
 the training or testing mistakes at the end of the learning process. We used 
 this final state to explain how the behavior of SHAMPO algorithms can exploit the use of the annotator and 
 manage the queries between tasks in a way that reduces the cumulative mistake ratio. Indeed, the most desired 
 property of such algorithm is reducing the cumulative mistake, yet, it is important to
 look into the learning process and see how the algorithm controls the queries 
-over the tasks and validate our hypothesis and anlysis. For this purpose, we chose the USPS one-vs-rest dataset, since it has a small number of 
+over the tasks and validate our hypothesis and analysis. For this purpose, we chose the USPS one-vs-rest dataset, since it has a small number of 
 tasks and examples. We ran a single run of the algorithm and logged the 
-queries that each one of the tasks issued and the prediction mistake of the 
+queries that each one of the tasks issued, and the prediction mistake of the 
 algorithm for each one of the tasks at every time step. We chose to show here the 
 results of three algorithms: First Order, Second Order and Second Order Aggressive, in order to show 
 different behavior of those algorithms. The algorithms parameter was initialized to $b=10^{-3}$ 
@@ -395,28 +392,28 @@ the preferred task to query (or not to query) on, sharply. There are tasks that
 issued a lot of queries in a short time interval, and then stopped querying for 
 another time intervals repeatedly. This shows that this algorithm is 
 less stable than the others. The SO algorithm run (\figref{fig:qr_step_SO})  ends with $50-2,000$ queries for each 
-task, yet it focuses mainly on two tasks while the rest didn't have issued than $900$ 
+task, yet it focuses mainly on two tasks while the rest didn't issue more than $900$ 
 queries. The SOAG algorithm (\figref{fig:qr_step_SOAG}) uses the exploration-exploitation remarkably. It 
 focuses more on (probably) harder tasks (expitation), since we see that it ends with $550-950$ queries for each 
-task. Yet, id does't leave tasks too much time without querying (exploration), so we see smooth curves.
+task. Yet, it does't leave tasks too much time without querying (exploration), so we see smooth curves.
 
 \eqref{fig:qr_er} shows the number of mistakes vs. number of queries. An expected 
 behavior of the algorithm is that when the number of mistakes goes up (harder 
 task), the number of queries will rise as well. In fact the relation between 
 margin and high number of mistakes may not strictly holds for any task and 
 dataset. We can see that the FO (\eqref{fig:qr_er_FO}) shows this trend, but it's 
-broken in the middle (there are intervals when the mistakes gown up, but no queries are 
-issues). This probably shows the intervals when the algorithm focuses on tasks 
-that had higher margin at the same point. The same phenomena (even stronger) is seen in the SO algorithm 
+broken in the middle (there are intervals when the mistakes goes up, but no queries are 
+issued). This probably shows the intervals when the algorithm focuses on tasks 
+that had higher margin at the same time. The same phenomena (even stronger) is seen in the SO algorithm 
 (\eqref{fig:qr_er_SO}) since it focuses mainly on two tasks over the others. The SOAG (\eqref{fig:qr_er_SOAG}) 
-in the other hand, shows the desired property of SHAMPO algorithm during all of the run time. 
+on the other hand, shows the desired property of SHAMPO algorithm during all of the run time. 
 
 We also evaluated the error-query ratio over time for these algorithms as in 
 \eqref{fig:qr_er_frac}. This measurement shows for each task, how many queries 
 it issues per error. When this value is too low for one task compare to the other tasks, it means that the algorithm 
 issue a lot of queries for the task, even though not many prediction mistakes  
 were done on the same task, which is a bad behavior. Saying that, this is not always bad when this 
-measure is high. Recall in our settings we have to issue a query at every step, even wen the model 
+measure is high. Recall in our setting we have to issue a query at every step, even when the model 
 is converged and we don't make many mistakes, one of the tasks have to issue a query, which increases the 
 number of queries for the tasks, which in turn, increase this ratio. In this case, we expect an 
 exploration, which cause all the tasks to share 
@@ -424,14 +421,14 @@ the same, or close error-query ratio. We can see this exact behavior for the SOA
 (\eqref{fig:qr_er_frac_SOAG}), when all the tasks show stable values in the 
 range ($2.5-5$) queries per mistake. However, low value of this measure is not desired as well, since it 
 means that the algorithm makes a lot of mistakes on a certain task, but does not 
-issue enough queries on that task in order to improve the model and decrease the number of 
+issue enough queries on that task, in order to improve the model and decrease the number of 
 mistakes. We see in the FO algorithm (\eqref{fig:qr_er_frac_FO}) and even stronger in the SO 
 (\eqref{fig:qr_er_frac_SO}) algorithm, that there is a difference between the 
 task with the highest value and the task with the lowest value (1-7 for FO and 0.5-10 for 
 SO).
 
 In this experiment we saw that even though we want the algorithm to concentrate on 
-the more difficult tasks, the algorithm, should avoid the attraction to concentrate too much on a specific 
+the difficult tasks, the algorithm, should avoid the attraction to concentrate too much on a specific 
 tasks and ignore the rest of them, i.e. an exploitation without an exploration may not be a good 
 idea. We also noticed that the Second Order Aggressive algorithm produces high 
 performance, not only in the sense of prediction mistakes, but also in the 
