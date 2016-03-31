@@ -1,0 +1,332 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE database SYSTEM "file:///System/Library/DTDs/CoreData.dtd">
+
+<database>
+    <databaseInfo>
+        <version>134481920</version>
+        <UUID>BBB3BC6E-CBE8-420E-8042-A83F41947A2D</UUID>
+        <nextObjectID>119</nextObjectID>
+        <metadata>
+            <plist version="1.0">
+                <dict>
+                    <key>NSPersistenceFrameworkVersion</key>
+                    <integer>641</integer>
+                    <key>NSStoreModelVersionHashes</key>
+                    <dict>
+                        <key>Bookmark</key>
+                        <data>
+		DomRcT1vfHnhCpD4hL1oyiuZNfU1acRc5Sa8FV4eSzw=
+		</data>
+                        <key>File</key>
+                        <data>
+		Ow+iGdBKIP6AijDPzNT2dGmjwrSu3RsK6bNp03vZ4jY=
+		</data>
+                        <key>Folder</key>
+                        <data>
+		Grij332X1rMYXqmN3lNQISkMHRf2/DdXELst812WKGE=
+		</data>
+                        <key>Project</key>
+                        <data>
+		WeS8dr2dP74D2G4eO7AvRrVbufOi0GR7gpB57bjBiG8=
+		</data>
+                        <key>ProjectItem</key>
+                        <data>
+		WtaPU9rm7J0aQWjjEf7sfCn2HZlql+cuYhRsDffn51Q=
+		</data>
+                        <key>Settings</key>
+                        <data>
+		XWN4f49S6jLtf2g0hZok72bJ408wwyCX3ADwssmzwt0=
+		</data>
+                        <key>TeXFile</key>
+                        <data>
+		6CluIfoPedvZZaGidwNyxpUQEVkzbR2uHZVaqhL5Vl8=
+		</data>
+                        <key>UISettings</key>
+                        <data>
+		LjQtSuAfnBkFegfHijDskbOlefBAUNYPeVWd6Ou9Ngw=
+		</data>
+                    </dict>
+                    <key>NSStoreModelVersionHashesVersion</key>
+                    <integer>3</integer>
+                    <key>NSStoreModelVersionIdentifiers</key>
+                    <array>
+                        <string>15</string>
+                    </array>
+                    <key>kMDItemKeywords</key>
+                    <array>
+                        <string>Exam_haim</string>
+                    </array>
+                </dict>
+            </plist>
+        </metadata>
+    </databaseInfo>
+    <object type="SETTINGS" id="z102">
+        <attribute name="stoponerror" type="bool">1</attribute>
+        <attribute name="showstatusbar" type="bool">1</attribute>
+        <attribute name="outputdirectory" type="string"></attribute>
+        <attribute name="openconsole" type="bool">0</attribute>
+        <attribute name="ncompile" type="int16">3</attribute>
+        <attribute name="language" type="string">en</attribute>
+        <attribute name="enginename" type="string">pdflatex</attribute>
+        <attribute name="dops2pdf" type="bool">1</attribute>
+        <attribute name="doliveupdate" type="bool">0</attribute>
+        <attribute name="dobibtex" type="bool">1</attribute>
+        <attribute name="bibtexcommand" type="string">bibtex</attribute>
+        <relationship name="project" type="1/1" destination="PROJECT" idrefs="z104"></relationship>
+    </object>
+    <object type="UISETTINGS" id="z103">
+        <attribute name="pdfviewscrollrect" type="string">{{0, 1789.7101449094478}, {371, 600.66666666647757}}</attribute>
+        <attribute name="showpdfthumbnails" type="bool">0</attribute>
+        <attribute name="selectedcontrolstab" type="int16">0</attribute>
+        <attribute name="maxoutlinedepth" type="int16">7</attribute>
+        <attribute name="logoutputlevel" type="int16">0</attribute>
+        <attribute name="editorwidth" type="float">483</attribute>
+        <attribute name="controlswidth" type="float">220</attribute>
+        <attribute name="consoleview" type="int16">0</attribute>
+        <relationship name="project" type="1/1" destination="PROJECT" idrefs="z104"></relationship>
+    </object>
+    <object type="PROJECT" id="z104">
+        <attribute name="type" type="string">PDFLaTeX</attribute>
+        <attribute name="name" type="string">Exam_haim</attribute>
+        <attribute name="folder" type="string">/Users/haimc/Dropbox/HaimKoby/MScThesis/Exam</attribute>
+        <relationship name="mainfile" type="1/1" destination="FILE" idrefs="z118"></relationship>
+        <relationship name="selected" type="1/1" destination="FILE" idrefs="z118"></relationship>
+        <relationship name="settings" type="1/1" destination="SETTINGS" idrefs="z102"></relationship>
+        <relationship name="uisettings" type="1/1" destination="UISETTINGS" idrefs="z103"></relationship>
+        <relationship name="items" type="0/0" destination="PROJECTITEM" idrefs="z109 z107 z111 z119 z113 z112 z114 z116 z118 z110 z115 z117 z108 z105 z106"></relationship>
+    </object>
+    <object type="FILE" id="z105">
+        <attribute name="wasopen" type="bool">6</attribute>
+        <attribute name="lasteditdate" type="date">480891551.38374400138854980469</attribute>
+        <attribute name="istext" type="bool">0</attribute>
+        <attribute name="fileloaddate" type="date">480891551.38374197483062744141</attribute>
+        <attribute name="extension" type="string">eps</attribute>
+        <attribute name="sortindex" type="int32">2</attribute>
+        <attribute name="name" type="string">Mean_test_error_adaptive_b_V2_2D.eps</attribute>
+        <attribute name="isexpanded" type="bool">0</attribute>
+        <attribute name="filepath" type="string">./figs/Mean_test_error_adaptive_b_V2_2D.eps</attribute>
+        <relationship name="parent" type="1/1" destination="PROJECTITEM" idrefs="z117"></relationship>
+        <relationship name="project" type="1/1" destination="PROJECT" idrefs="z104"></relationship>
+        <relationship name="mainfileofproject" type="1/1" destination="PROJECT"></relationship>
+        <relationship name="children" type="0/0" destination="PROJECTITEM"></relationship>
+        <relationship name="bookmarks" type="0/0" destination="BOOKMARK"></relationship>
+    </object>
+    <object type="FILE" id="z106">
+        <attribute name="wasopen" type="bool">9</attribute>
+        <attribute name="lasteditdate" type="date">480891551.32035797834396362305</attribute>
+        <attribute name="istext" type="bool">0</attribute>
+        <attribute name="fileloaddate" type="date">480891551.32035499811172485352</attribute>
+        <attribute name="extension" type="string">eps</attribute>
+        <attribute name="sortindex" type="int32">5</attribute>
+        <attribute name="name" type="string">margin.eps</attribute>
+        <attribute name="isexpanded" type="bool">0</attribute>
+        <attribute name="filepath" type="string">./figs/margin.eps</attribute>
+        <relationship name="parent" type="1/1" destination="PROJECTITEM" idrefs="z117"></relationship>
+        <relationship name="project" type="1/1" destination="PROJECT" idrefs="z104"></relationship>
+        <relationship name="mainfileofproject" type="1/1" destination="PROJECT"></relationship>
+        <relationship name="children" type="0/0" destination="PROJECTITEM"></relationship>
+        <relationship name="bookmarks" type="0/0" destination="BOOKMARK"></relationship>
+    </object>
+    <object type="TEXFILE" id="z107">
+        <attribute name="wasopen" type="bool">2</attribute>
+        <attribute name="lasteditdate" type="date">480891551.27746099233627319336</attribute>
+        <attribute name="istext" type="bool">1</attribute>
+        <attribute name="fileloaddate" type="date">480948040.18770098686218261719</attribute>
+        <attribute name="extension" type="string">tex</attribute>
+        <attribute name="sortindex" type="int32">14</attribute>
+        <attribute name="name" type="string">prela.tex</attribute>
+        <attribute name="isexpanded" type="bool">0</attribute>
+        <attribute name="filepath" type="string">./prela.tex</attribute>
+        <relationship name="parent" type="1/1" destination="PROJECTITEM"></relationship>
+        <relationship name="project" type="1/1" destination="PROJECT" idrefs="z104"></relationship>
+        <relationship name="mainfileofproject" type="1/1" destination="PROJECT"></relationship>
+        <relationship name="children" type="0/0" destination="PROJECTITEM"></relationship>
+        <relationship name="bookmarks" type="0/0" destination="BOOKMARK"></relationship>
+    </object>
+    <object type="FILE" id="z108">
+        <attribute name="wasopen" type="bool">12</attribute>
+        <attribute name="lasteditdate" type="date">480891551.31472098827362060547</attribute>
+        <attribute name="istext" type="bool">0</attribute>
+        <attribute name="fileloaddate" type="date">480891551.31471997499465942383</attribute>
+        <attribute name="extension" type="string">eps</attribute>
+        <attribute name="sortindex" type="int32">4</attribute>
+        <attribute name="name" type="string">Table_shampo.eps</attribute>
+        <attribute name="isexpanded" type="bool">0</attribute>
+        <attribute name="filepath" type="string">./figs/Table_shampo.eps</attribute>
+        <relationship name="parent" type="1/1" destination="PROJECTITEM" idrefs="z117"></relationship>
+        <relationship name="project" type="1/1" destination="PROJECT" idrefs="z104"></relationship>
+        <relationship name="mainfileofproject" type="1/1" destination="PROJECT"></relationship>
+        <relationship name="children" type="0/0" destination="PROJECTITEM"></relationship>
+        <relationship name="bookmarks" type="0/0" destination="BOOKMARK"></relationship>
+    </object>
+    <object type="FILE" id="z109">
+        <attribute name="wasopen" type="bool">10</attribute>
+        <attribute name="lasteditdate" type="date">480891551.32378900051116943359</attribute>
+        <attribute name="istext" type="bool">0</attribute>
+        <attribute name="fileloaddate" type="date">480891551.32378602027893066406</attribute>
+        <attribute name="extension" type="string">eps</attribute>
+        <attribute name="sortindex" type="int32">6</attribute>
+        <attribute name="name" type="string">probability.eps</attribute>
+        <attribute name="isexpanded" type="bool">0</attribute>
+        <attribute name="filepath" type="string">./figs/probability.eps</attribute>
+        <relationship name="parent" type="1/1" destination="PROJECTITEM" idrefs="z117"></relationship>
+        <relationship name="project" type="1/1" destination="PROJECT" idrefs="z104"></relationship>
+        <relationship name="mainfileofproject" type="1/1" destination="PROJECT"></relationship>
+        <relationship name="children" type="0/0" destination="PROJECTITEM"></relationship>
+        <relationship name="bookmarks" type="0/0" destination="BOOKMARK"></relationship>
+    </object>
+    <object type="FILE" id="z110">
+        <attribute name="wasopen" type="bool">0</attribute>
+        <attribute name="lasteditdate" type="date">480891551.37697398662567138672</attribute>
+        <attribute name="istext" type="bool">0</attribute>
+        <attribute name="fileloaddate" type="date">480891551.37696897983551025391</attribute>
+        <attribute name="extension" type="string">eps</attribute>
+        <attribute name="sortindex" type="int32">3</attribute>
+        <attribute name="name" type="string">test-v1.eps</attribute>
+        <attribute name="isexpanded" type="bool">0</attribute>
+        <attribute name="filepath" type="string">./figs/test-v1.eps</attribute>
+        <relationship name="parent" type="1/1" destination="PROJECTITEM" idrefs="z117"></relationship>
+        <relationship name="project" type="1/1" destination="PROJECT" idrefs="z104"></relationship>
+        <relationship name="mainfileofproject" type="1/1" destination="PROJECT"></relationship>
+        <relationship name="children" type="0/0" destination="PROJECTITEM"></relationship>
+        <relationship name="bookmarks" type="0/0" destination="BOOKMARK"></relationship>
+    </object>
+    <object type="FILE" id="z111">
+        <attribute name="wasopen" type="bool">4</attribute>
+        <attribute name="lasteditdate" type="date">480891551.38275700807571411133</attribute>
+        <attribute name="istext" type="bool">0</attribute>
+        <attribute name="fileloaddate" type="date">480891551.38275402784347534180</attribute>
+        <attribute name="extension" type="string">eps</attribute>
+        <attribute name="sortindex" type="int32">7</attribute>
+        <attribute name="name" type="string">Mean_test_error_adaptive_b_V2_3D.eps</attribute>
+        <attribute name="isexpanded" type="bool">0</attribute>
+        <attribute name="filepath" type="string">./figs/Mean_test_error_adaptive_b_V2_3D.eps</attribute>
+        <relationship name="parent" type="1/1" destination="PROJECTITEM" idrefs="z117"></relationship>
+        <relationship name="project" type="1/1" destination="PROJECT" idrefs="z104"></relationship>
+        <relationship name="mainfileofproject" type="1/1" destination="PROJECT"></relationship>
+        <relationship name="children" type="0/0" destination="PROJECTITEM"></relationship>
+        <relationship name="bookmarks" type="0/0" destination="BOOKMARK"></relationship>
+    </object>
+    <object type="FILE" id="z112">
+        <attribute name="wasopen" type="bool">13</attribute>
+        <attribute name="lasteditdate" type="date">480891551.31391501426696777344</attribute>
+        <attribute name="istext" type="bool">0</attribute>
+        <attribute name="fileloaddate" type="date">480891551.31391298770904541016</attribute>
+        <attribute name="extension" type="string">eps</attribute>
+        <attribute name="sortindex" type="int32">8</attribute>
+        <attribute name="name" type="string">Table_ss.eps</attribute>
+        <attribute name="isexpanded" type="bool">0</attribute>
+        <attribute name="filepath" type="string">./figs/Table_ss.eps</attribute>
+        <relationship name="parent" type="1/1" destination="PROJECTITEM" idrefs="z117"></relationship>
+        <relationship name="project" type="1/1" destination="PROJECT" idrefs="z104"></relationship>
+        <relationship name="mainfileofproject" type="1/1" destination="PROJECT"></relationship>
+        <relationship name="children" type="0/0" destination="PROJECTITEM"></relationship>
+        <relationship name="bookmarks" type="0/0" destination="BOOKMARK"></relationship>
+    </object>
+    <object type="FILE" id="z113">
+        <attribute name="wasopen" type="bool">7</attribute>
+        <attribute name="lasteditdate" type="date">480891551.34679698944091796875</attribute>
+        <attribute name="istext" type="bool">0</attribute>
+        <attribute name="fileloaddate" type="date">480891551.34679299592971801758</attribute>
+        <attribute name="extension" type="string">eps</attribute>
+        <attribute name="sortindex" type="int32">9</attribute>
+        <attribute name="name" type="string">confidence.eps</attribute>
+        <attribute name="isexpanded" type="bool">0</attribute>
+        <attribute name="filepath" type="string">./figs/confidence.eps</attribute>
+        <relationship name="parent" type="1/1" destination="PROJECTITEM" idrefs="z117"></relationship>
+        <relationship name="project" type="1/1" destination="PROJECT" idrefs="z104"></relationship>
+        <relationship name="mainfileofproject" type="1/1" destination="PROJECT"></relationship>
+        <relationship name="children" type="0/0" destination="PROJECTITEM"></relationship>
+        <relationship name="bookmarks" type="0/0" destination="BOOKMARK"></relationship>
+    </object>
+    <object type="FILE" id="z114">
+        <attribute name="wasopen" type="bool">5</attribute>
+        <attribute name="lasteditdate" type="date">480891551.31013202667236328125</attribute>
+        <attribute name="istext" type="bool">0</attribute>
+        <attribute name="fileloaddate" type="date">480891551.31012797355651855469</attribute>
+        <attribute name="extension" type="string">eps</attribute>
+        <attribute name="sortindex" type="int32">11</attribute>
+        <attribute name="name" type="string">SHAMPO_illustration.eps</attribute>
+        <attribute name="isexpanded" type="bool">0</attribute>
+        <attribute name="filepath" type="string">./figs/SHAMPO_illustration.eps</attribute>
+        <relationship name="parent" type="1/1" destination="PROJECTITEM" idrefs="z117"></relationship>
+        <relationship name="project" type="1/1" destination="PROJECT" idrefs="z104"></relationship>
+        <relationship name="mainfileofproject" type="1/1" destination="PROJECT"></relationship>
+        <relationship name="children" type="0/0" destination="PROJECTITEM"></relationship>
+        <relationship name="bookmarks" type="0/0" destination="BOOKMARK"></relationship>
+    </object>
+    <object type="FILE" id="z115">
+        <attribute name="wasopen" type="bool">11</attribute>
+        <attribute name="lasteditdate" type="date">480891551.38006502389907836914</attribute>
+        <attribute name="istext" type="bool">0</attribute>
+        <attribute name="fileloaddate" type="date">480891551.38006097078323364258</attribute>
+        <attribute name="extension" type="string">eps</attribute>
+        <attribute name="sortindex" type="int32">10</attribute>
+        <attribute name="name" type="string">NLP_SO_3_2_mean_error.eps</attribute>
+        <attribute name="isexpanded" type="bool">0</attribute>
+        <attribute name="filepath" type="string">./figs/NLP_SO_3_2_mean_error.eps</attribute>
+        <relationship name="parent" type="1/1" destination="PROJECTITEM" idrefs="z117"></relationship>
+        <relationship name="project" type="1/1" destination="PROJECT" idrefs="z104"></relationship>
+        <relationship name="mainfileofproject" type="1/1" destination="PROJECT"></relationship>
+        <relationship name="children" type="0/0" destination="PROJECTITEM"></relationship>
+        <relationship name="bookmarks" type="0/0" destination="BOOKMARK"></relationship>
+    </object>
+    <object type="FILE" id="z116">
+        <attribute name="wasopen" type="bool">3</attribute>
+        <attribute name="lasteditdate" type="date">480891551.37164497375488281250</attribute>
+        <attribute name="istext" type="bool">0</attribute>
+        <attribute name="fileloaddate" type="date">480891551.37164002656936645508</attribute>
+        <attribute name="extension" type="string">eps</attribute>
+        <attribute name="sortindex" type="int32">12</attribute>
+        <attribute name="name" type="string">mnist2b.eps</attribute>
+        <attribute name="isexpanded" type="bool">0</attribute>
+        <attribute name="filepath" type="string">./figs/mnist2b.eps</attribute>
+        <relationship name="parent" type="1/1" destination="PROJECTITEM" idrefs="z117"></relationship>
+        <relationship name="project" type="1/1" destination="PROJECT" idrefs="z104"></relationship>
+        <relationship name="mainfileofproject" type="1/1" destination="PROJECT"></relationship>
+        <relationship name="children" type="0/0" destination="PROJECTITEM"></relationship>
+        <relationship name="bookmarks" type="0/0" destination="BOOKMARK"></relationship>
+    </object>
+    <object type="FOLDER" id="z117">
+        <attribute name="sortindex" type="int32">1</attribute>
+        <attribute name="name" type="string">figs</attribute>
+        <attribute name="isexpanded" type="bool">0</attribute>
+        <relationship name="parent" type="1/1" destination="PROJECTITEM"></relationship>
+        <relationship name="project" type="1/1" destination="PROJECT" idrefs="z104"></relationship>
+        <relationship name="children" type="0/0" destination="PROJECTITEM" idrefs="z105 z110 z108 z106 z109 z111 z112 z113 z115 z114 z116 z119"></relationship>
+    </object>
+    <object type="TEXFILE" id="z118">
+        <attribute name="wasopen" type="bool">1</attribute>
+        <attribute name="visiblerect" type="string">{{0, 12672}, {455, 509}}</attribute>
+        <attribute name="lasteditdate" type="date">481016584.02655297517776489258</attribute>
+        <attribute name="istext" type="bool">1</attribute>
+        <attribute name="fileloaddate" type="date">481016587.52045798301696777344</attribute>
+        <attribute name="extension" type="string">tex</attribute>
+        <attribute name="cursor" type="string">{30710, 0}</attribute>
+        <attribute name="sortindex" type="int32">0</attribute>
+        <attribute name="name" type="string">Exam_haim.tex</attribute>
+        <attribute name="isexpanded" type="bool">0</attribute>
+        <attribute name="filepath" type="string">./Exam_haim.tex</attribute>
+        <relationship name="parent" type="1/1" destination="PROJECTITEM"></relationship>
+        <relationship name="project" type="1/1" destination="PROJECT" idrefs="z104"></relationship>
+        <relationship name="mainfileofproject" type="1/1" destination="PROJECT" idrefs="z104"></relationship>
+        <relationship name="children" type="0/0" destination="PROJECTITEM"></relationship>
+        <relationship name="bookmarks" type="0/0" destination="BOOKMARK"></relationship>
+    </object>
+    <object type="FILE" id="z119">
+        <attribute name="wasopen" type="bool">8</attribute>
+        <attribute name="lasteditdate" type="date">480891551.34826999902725219727</attribute>
+        <attribute name="istext" type="bool">0</attribute>
+        <attribute name="fileloaddate" type="date">480891551.34826797246932983398</attribute>
+        <attribute name="extension" type="string">eps</attribute>
+        <attribute name="sortindex" type="int32">13</attribute>
+        <attribute name="name" type="string">confidence2.eps</attribute>
+        <attribute name="isexpanded" type="bool">0</attribute>
+        <attribute name="filepath" type="string">./figs/confidence2.eps</attribute>
+        <relationship name="parent" type="1/1" destination="PROJECTITEM" idrefs="z117"></relationship>
+        <relationship name="project" type="1/1" destination="PROJECT" idrefs="z104"></relationship>
+        <relationship name="mainfileofproject" type="1/1" destination="PROJECT"></relationship>
+        <relationship name="children" type="0/0" destination="PROJECTITEM"></relationship>
+        <relationship name="bookmarks" type="0/0" destination="BOOKMARK"></relationship>
+    </object>
+</database>
