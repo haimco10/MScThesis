@@ -436,6 +436,17 @@ exploration-exploitation manner.
 
  % In fact in the USPS dataset we found a good prior that can improves the performances.  In order to create this prior, we ran over the examples first simple perceptron algorithm with full feedback, and computes the prior as a fraction of the error from the initial run. The results are shown in \tabref{tab:table2} and as.  In addision, the results for the MIXED dataset support the claim that the tasks can comes from different fields and different dimensions.
 
+\subsection{How to choose the tradeoff parameter}
+In all SHAMPO versions, there is a tradeoff parameter that need to be defined.  We analyzed the performance 
+of all algorithm on different datasets and shown how the cummulative classification error changes with this
+parameter. Yet, there is one inevitable question: how to choose this value?\\
+We shown one option of adaptive way of an adaptive $b$ parameter that changes 
+with time, however, in this case there is different parameter for each task and 
+yet we need to initialize $\beta$ first. 
+The algorithm start with pure exploration since the weights are far from the 
+A possible way to coose $b$ empirically is to set the 
+
+
 
 \section{Reduction of Multi-task to Contextual Bandits}
 
@@ -470,4 +481,39 @@ with no need for a another person to key in the answer.
 \caption{Multi-class error on VJ data for three bandit reductions and the banditron.}
 \end{centering}
 \end{figure}
+
+\section{SHAMPO's Weaknesses}
+We discussed about the advantages of the SHAMPO algorithm with a tradoff value that control 
+exploration-expoitation and  provided analysis of the cummulative mistake 
+bounds. We also supplied experiments that support the intuition.  However, the 
+SHAMPO algorithms not always works better than the other options (pure exploration or pure 
+exploitation). 
+
+One of the assumptions of  the SHAMPO algorithms is that we can 
+compare margins of different tasks. In order to comply with this  assumption 
+a scaling of the input vector is required. Yet, when in one or more tasks 
+where  the norm of one vector is very big with respect to the majority of the 
+vectors. When we scale the vectors in this setting into a ball, we can't longer compare the 
+margin, because the margins of the tasks with the she high  norm are much lower 
+than the margin of the rest tasks and the SHAMPO algorithms may not work properly. 
+This problem can be solved by just a scaling, but normalizing all the input 
+vectors onto a unit ball.
+
+Another reason that using the SHAMPO algorithm can lead to a failure, can be 
+when an adversary is involved. In the first order SHAMPO for example, when we 
+set the $b$ parameter to a low value ($b \rightarrow 0$), the SHAMPO algorithm 
+is not stochastic any more and an adversary can expliot this case and choose 
+every iterations, examples that don't add information to the algorithm. In order to select an uninformative 
+examples, the adversary can choose  examples that are similar to the examples 
+that the algorithm got feedback before. As we shown before, using the second order agressive 
+SHAMPO with the confidence measure $r_{i,t}$ could help to solve this problem.
+ In fact, the adversary can select the 
+uninformative example which cause a low margin and in turn will lead to an update, while for the rest 
+of the task, the adversary can choose any example, since no update will be done on those 
+tasks due to a delta distribution. Another option that the adversary can act, is 
+choosing an example that the algorithm will predict a correct prediction on it, 
+but will result with a small margin. For the rest of the tasks, the adversary 
+can choose examples that lead to wrong prediction (with slightly higher margins), because no update will be 
+made on those tasks any way. The adversary can also choose  examples with very high margin for all of the tasks, 
+which may decrease the learning rate. 
 
