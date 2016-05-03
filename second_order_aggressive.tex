@@ -63,7 +63,7 @@ r_{i,t} = \vxiit^{T}A_{i,t-1}^{-1}\vxiit
 We can think about this quantity as an uncertainty measure. Where large values of $r_{i,t}$ 
 represent high uncertainty, whereas small value of the same quantity are related 
 to low uncertainty, since the algorithm already received labeled examples that are close 
-to $\vxiit$. In the edge case, when the example $\vxiit$ is orthogonal to all 
+to $\vxiit$. In the edge case, for $\Vert\vxiit\Vert \le 1$, when the example $\vxiit$ is orthogonal to all 
 previous queried examples that came from the same task, $r_{i,t}=1$. 
 
 \noindent

@@ -51,7 +51,7 @@ results of this experiment with the results of experiments on the whole dataset 
 
 \begin{table}[h]
 \centering
-\caption{The sub data sets collections details}
+\caption{The data subset collections details}
 \label{tab:collections}
 \begin{tabular}{|l|c|c|c|c|}
 \hline
@@ -117,7 +117,7 @@ Results  are summarized in \tabref{tab:table1}.  In general, {\em exploit} is be
 (where tasks are of different nature: images, audio and documents), the aggressive SHAPO improves over 
 uniform (4.45\% error) and the aggressive-exploit baseline (2.75\%), and achieves a mean test error of 2.06\%.
 
-Indeed, \tabref{tab:table1} shows that aggressive SHAMPO outperforms better alternatives. Yet, we claim that a 
+Indeed, \tabref{tab:table1} shows that aggressive SHAMPO outperforms other alternatives. Yet, we claim that a 
 good prior may improve results. We compute prior over the 45 USPS one-vs-one tasks and 10 
 USPS one-vs-rest, by running the perceptron algorithm on $1,000$ examples and computing the number of mistakes.  
 We set the prior to be proportional to this number. We then reran aggressive SHAMPO with prior, 
@@ -128,7 +128,7 @@ aggressive SHAMPO with not prior.
 Aggressive SHAMO with prior achieves average error of $1.47$ (vs. $2.73$ with no prior) on 1-vs-1 USPS 
 and $4.97$ (vs $4.93$) on one-vs-rest USPS, with score rank of 1.0 (vs 2.9) and 1.7 (vs 2.0) respectively.
 However, \figref{fig:tst_err_u1}  and \figref{fig:tst_err_ur} shows the test error of the non aggressive SHAMPO 
-algorithm wit prior for all values of $b$ we evaluated. The prior version results does not show a remarkable 
+algorithm with prior for all values of $b$ we evaluated. The prior version results does not show a remarkable 
 improvement over the plain SHAMPO algorithm. Again, we chose here a specific prior generator system, 
 however, another method or another prior knowledge may lead to better results.
 
@@ -261,7 +261,8 @@ abbreviations: First Order (FO), First Order AGgressive (AG) with two different 
 $\lambda = b/2$ and $\lambda = b/4$ , First Order with PRior (PR), First Order 
 ADaptive (AD), Second Order (SO) and Second Order AGgressive (SOAG). 
 Recall, in the adaptive algorithm the constant $b$ parameter is replaced with the constant 
-$\beta$.
+$\beta$. We added confidence intervals only in the test error figures
+\figref{fig:test_errors}, since in the rest experiments the confidence intervals are very small.
 
 \figref{fig:train_errors} shows the mean cumulative training errors over all tasks. The behavior is similar for 
 all of the datasets. We can see that as expected, in the exploration interval ($b \gg 1$, since the vector are normalized) 
@@ -272,13 +273,14 @@ This makes sense, since we query (and update) more on the harder tasks.
 Between those two extreme cases, there is a point where cumulative error is 
 lower. This point is where $b$ gets its optimal value. This value can change 
 between datasets and algorithms and next we see a convenient experimental way to find it. 
-There are algorithms and datasets (e.g. VJ one-vs-one in \figref{fig:train_err_v1}), that this point converges
+There are algorithms and datasets (e.g. VJ one-vs-one in \figref{fig:trn_err_v1}), that this point converges
 into the exploitation area, it may depends on the examples noise and the number of examples 
 in the dataset. As we claimed before, a pure exploitation approach may not be the best choice, at least on 
 the first online steps, especially for problem with small number of examples.
 We can see the same phenomena in \figref{fig:test_errors} which shows the mean 
 test error for all tasks and all round for different $b$ values and different 
-tasks. Here, we added one more algorithm, the Watch All algorithm (WA), which runs $K$ parallel online - 
+tasks. This figure shows the actual prediction error on a new unseen data which can help us to estimate our 
+performace with respect to other algorithms on the same dataset. Here, we added one more algorithm, the Watch All algorithm (WA), which runs $K$ parallel online - 
 perceptron algorithms, one per task, while each one of them query and watches all of the tasks labels, without any limitation on the feedback.
 We show this algorithm here as a benchmark, to measure how much SHAMPO algorithms looses or gain 
 performance with respect to the algorithm that can watch all the labels. 
@@ -353,7 +355,7 @@ queried examples (the only quantity SHAMPO observes), which provides a rough rul
 $b$ automatically on-the-fly.
 
 
-Another perspective of the phenomena is that for values of $b\ll \infty$ SHAMPO focuses on the harder 
+Another perspective of the phenomena is that for values of $b\ll 1$ SHAMPO focuses on the harder 
 examples, is illustrated in \figref{fig:test_scatter} where test error vs number of queries is plotted for each 
 task of all the datasets. We show three cases: uniform, exploit and a mid-value, the optimal one, which 
 tradeoffs exploration and exploitation. We take the MNIST one-vs-one data set as an example and 
@@ -436,16 +438,37 @@ exploration-exploitation manner.
 
  % In fact in the USPS dataset we found a good prior that can improves the performances.  In order to create this prior, we ran over the examples first simple perceptron algorithm with full feedback, and computes the prior as a fraction of the error from the initial run. The results are shown in \tabref{tab:table2} and as.  In addision, the results for the MIXED dataset support the claim that the tasks can comes from different fields and different dimensions.
 
-\subsection{How to choose the tradeoff parameter}
-In all SHAMPO versions, there is a tradeoff parameter that need to be defined.  We analyzed the performance 
-of all algorithm on different datasets and shown how the cummulative classification error changes with this
-parameter. Yet, there is one inevitable question: how to choose this value?\\
-We shown one option of adaptive way of an adaptive $b$ parameter that changes 
-with time, however, in this case there is different parameter for each task and 
-yet we need to initialize $\beta$ first. 
-The algorithm start with pure exploration since the weights are far from the 
-A possible way to coose $b$ empirically is to set the 
+\subsection{Choosing the Tradeoff Parameter}
+In all SHAMPO versions, there is a tradeoff parameter that need to be initialized.  We analyzed the performance 
+of all of SHAMPO algorithms on different datasets and shown how the cummulative classification error changes with this
+parameter. Yet, there is one inevitable question: how to choose the optimal value?
+An optimal parameter $b^*$ is the one that minimize the cummulative error, i.e.
+\[
+b^* = \argmin{b}{\mathbb{E}\brackets{\sum_{i=1}^{K}\sum_{t=1}^{n}{M_{i,t}}}.
+\]
 
+We have shown in \secref{sec:adaptive} a version of an adaptive $b$ parameter that changes 
+with time, however, in this case there is different parameter for each task, and
+yet, we need to initialize $\beta$ first. 
+
+We discussed already in \thmref {thm:FO_theorem} that the optimal value can't be calculated from the the 
+bound, but we can write an optimal value as a function of  $L_{\gamma,n}$ . 
+In fact, the cummulative error is unknown during runtime so we have to find an 
+empircal way to compute $b$.  Recall the intuition behind SHAMPO algorithm, we 
+would like to query on a tasks that related to wrong predictions.
+In \figref{fig:queried} we see that for all datasets, the lowest error rate of the queried tasks 
+occurs on high values of $b$, which indicates a high error rate on the overall cummulative mistakes 
+rate. When we decrease $b$ gradually, we see that the queried error increases 
+continiously, and then, stay on a constant value. One can notice 
+that the optimal $b$ and it's close vicinity lies in the ''knee''  area of the  queried tasks 
+error. Now, the question is how to find this point?
+We can initialize our algorithm with high value of $b = b_0$ (pure exploration), a logarithmic step size - $s$ and 
+minimal number of examples -  $m$. Then, we wait $m$ iteration, compute 
+the mean errors and set $b = b_0/s$,  run the algorithm for $m$ more 
+iterations and compute the derivative betewen the last two computed mean errors o  a logarithmic scale. We 
+continue with this method  until we find the area where the derivative hit 
+$-1$ for the second time, then we keep this value unchanged. The final value of $b$ 
+is possibly close to the optimal.
 
 
 \section{Reduction of Multi-task to Contextual Bandits}
@@ -482,7 +505,7 @@ with no need for a another person to key in the answer.
 \end{centering}
 \end{figure}
 
-\section{SHAMPO's Weaknesses}
+\section{SHAMPO Edge Cases}
 We discussed about the advantages of the SHAMPO algorithm with a tradoff value that control 
 exploration-expoitation and  provided analysis of the cummulative mistake 
 bounds. We also supplied experiments that support the intuition.  However, the 

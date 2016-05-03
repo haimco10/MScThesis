@@ -18,7 +18,7 @@ updates its models. The reduction we perform is by introducing $K$ tasks, one pe
 The problem of the learning algorithm for task $i$ is to decide whether the true label is class $i$ or not. 
 Given the output of all the binary classifiers, the algorithm generates a single multi-class prediction to be the 
 single label for which the output of the corresponding binary classifier is positive. If such class does not 
-exist, or there are more than one classes  as such, a random prediction is used, i.e., given an input $\vxi{t}$ 
+exist, or there are more than one, a random prediction is used, i.e., given an input $\vxi{t}$ 
 we define $\hat{Y}_t = \arg\max_i \hyi{i,t}$, where ties are broken arbitrarily. The label to be queried is 
 $\bar{Y}_t=J_t$, i.e. the problem index that SHAMPO is querying. We analyze the performance of this 
 reduction as a multiclass prediction algorithm.
@@ -26,7 +26,8 @@ reduction as a multiclass prediction algorithm.
 \begin{corollary}
 Assume the first order aggressive SHAMPO with prior algorithm is executed with $K=C$ one-vs-rest 
 problems, on a sequence 
-$(\vx_1,Y_1),\ldots,(\vx_n,Y_n)\in\mathbb{R}^d\times\{1,...,C\}$, and input parameter $b>0$  and prior 
+$(\vx_1,Y_1),\ldots,(\vx_n,Y_n)\in\mathbb{R}^d\times\{1,...,C\}$, and input parameter $b>0$,  
+$0 \le \lambda \le b/2$  and prior 
 $1\le a_i~\forall i$. Then for all $\gamma>0$ and all $\vui{i}\in\mathbb{R}^d$, there 
 exists $0<\delta\le \sum_{i=1}^{C}a_{i}$ such that the expected number of multi-class errors is bounded as follows
  \[
@@ -40,10 +41,19 @@ exists $0<\delta\le \sum_{i=1}^{C}a_{i}$ such that the expected number of multi-
 where $\1{I}=1$ if the predicate $I$ is true, and zero otherwise.
 \end{corollary}
 
+\begin{proof}
+ The corollary follows directly from \thmref{thm:FO_bound_aggressive_prior} by noting that,
+ \begin{equation*} 
+\1{Y_t \neq \hat{Y}_t} \leq \sum_{i=1}^{K} M_{i,t}.
+ \end{equation*}
+Meaning, there is a multiclass mistake if there is at least one 
+prediction mistake of one of the one-vs-rest tasks, since when all the binary 
+prediction are correct, the multiclass prediction is correct as well.
+\QED
+\end{proof}
+
 \noindent
-The corollary follows directly from \thmref{thm:FO_bound_aggressive_prior} by noting that, 
-$\1{Y_t \neq \hat{Y}_t} \leq \sum_i M_{i,t}$, Meaning, there is a multiclass mistake if there is at least one 
-prediction mistake of one of the one-vs-rest problems. The closest setting is contextual bandits, yet we 
+ The closest setting is contextual bandits, yet we 
 allow decoupling of exploration and exploitation. Ignoring this decoupling, the 
 Banditron algorithm~\cite{kakade2008efficient} is the closest to ours, 
 with a regret of $O(T^{2/3})$. Hazan et al~\cite{hazan2011newtron} proposed an algorithm 
@@ -68,7 +78,7 @@ We now analyze the performance of this reduction as a multiclass prediction algo
 \begin{corollary}
 Assume the first order aggressive SHAMPO with prior algorithm is executed , with $K={C \choose 2}$ one-vs-one problems, 
 on a sequence $(\vx_1,Y_1),\ldots,(\vx_n,Y_n)\in\mathbb{R}^d\times\{1,\ldots,C\}$, and input parameter 
-$b>0$ and prior $1\le a_i~\forall i$ . Then for all $\gamma>0$ and all $\vui{i}\in\mathbb{R}^d$, 
+$b>0$ , $0 \le \lambda \le b/2$ and prior $1\le a_i~\forall i$ . Then for all $\gamma>0$ and all $\vui{i}\in\mathbb{R}^d$, 
 there exists $0<\delta\le \sum_{i=1}^{C \choose 2}a_{i}$ such that the expected number of multi-class 
 errors can be bounded as follows
  \[
@@ -80,6 +90,8 @@ errors can be bounded as follows
 
 %where $\1{I}=1$ if the predicate $I$ is true, and zero otherwise.
 \end{corollary}
+
+\begin{proof}
 The corollary follows directly from \thmref{thm:FO_bound_aggressive_prior} by noting that the  multiclass error 
 is bounded by the multitask errors with a constant factor as following, 
 \[
@@ -87,9 +99,15 @@ is bounded by the multitask errors with a constant factor as following,
 \]
 The last fact is derived from ~\cite{allwein2001reducing} analysis of the training error 
 with the corresponding hamming distance of the ECOC matrix for the One-vs-One 
-setting. Note, that the bound is essentially  independent of $C$ as the coefficient in the bound is upper 
+setting $\rho = ({C \choose 2}-1)/2+1$ combined with the fact that the ECOC can't correct $\rho/2$ errors as in 
+\cite{dietterich1995solving}. As a result, we get  $\1{Y_t \neq \hat{Y}_t} \leq \frac{2}{\rho} 
+\sum_{i=1}^KM_{i,t}$.
+Plugging $\rho$ and $K$ conclude the proof.
+\QED
+\end{proof}
+
+Note, that the bound is essentially  independent of $C$ as the coefficient in the bound is upper 
 bounded by $4$.
-% as in Allwin et al. in 
 
 We conclude this section with two algorithmic modifications, we employed in this setting. 
 Currently, when the feedback is zero, there is no update of the weights, because there are no errors.

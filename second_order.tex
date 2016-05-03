@@ -1,7 +1,6 @@
 \section{Second Order SHAMPO}
 The second order version of the perceptron algorithm, was proposed and analyzed by 
-~\cite{CesaBianchiCoGe05}. This algorithm was adopted to the online binary classification 
-settings from the ridge-regression (squared loss and Euclidean regularization) framework as described by 
+~\cite{CesaBianchiCoGe05}. This algorithm was adopted to the online binary classification-settings from the ridge-regression (squared loss and Euclidean regularization) framework as described by 
 ~\cite{hoerl1970ridge} and ~\cite{Vovk97}, and further analyzed in ~\cite{AzouryWa01} and  ~\cite{forster2002relative}. 
 It was also shown that this variation has the effect of reducing the number of mistakes compare to the first order version. 
 \cite{cesa2006worst} also adapted the second order perceptron algorithm to the selective sampling case, 
@@ -70,6 +69,12 @@ $i$ up to the round $t$ by
 \begin{equation*}
 \Phi_{i,t}(\vu_i)=\half\normt{\vu_i}+\half\sum_{s=1}^{t}{Z_{i,t}M_{i,t}\paren{y_{i,t}-\vu_i^T\vx_{i,t}}}^2.
 \end{equation*}
+We now show that the algorithm incurs on each mistakentrial a square loss  $\paren{y_{i,t}-\hat{p}_{i,t}}^{2}$ bounded by the difference 
+$\inf_{\vu_i}{\Phi_{i,t+1}}(\vu_i)-\inf_{\vu_i}{\Phi_{i,t}}(\vu_i)$ plus a quadraticterm involving $A_{i,t}^{-1}$. Then, we sum the inequality over mistaken rounds and bound the difference 
+telescopes and the sum of the quadratic terms using known results. Then, the margin we use in the probabilistic analysis 
+is obtained as cross-term when the square loss is expanded. Finally, we sum both 
+sides over all tasks and apply the expectation using the correspondance 
+probability.
 
 \noindent
 It was proved by ~\cite{Forster} in the linear regression case and adopted by

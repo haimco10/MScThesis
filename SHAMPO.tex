@@ -5,7 +5,7 @@ a shared annotator setting, that uses linear models. We start with a basic first
 which is based on the perceptron algorithm 
 and continue to number of algorithms that extends the basic one. Two steps are
 yet to be specified: how to pick a task to be labeled at each round and how to
-perform an update, once the true label for that task is given.. 
+perform an update, once the true label for that task is given.
 
 \section{First Order SHAMPO}
 
@@ -51,7 +51,7 @@ Similar argument was used by ~\cite{DBLP:conf/icml/TongK00} for picking an examp
 batch active learning. 
 Example for the using of the margin as a certainty measure is shown in \figref{fig:margin} which illustrated 
 a state of a linear binary classification algorithm of two dimensional problem. 
-The circles and crosses represent two different classes, and the separate hyperplane is shown. 
+The circles and crosses represent two different classes, and the separator hyperplane is shown. 
 One of the circles examples have lower margin than the other, so its label can easily been replaced 
 with the other one.
 Prima facie, under this claim, at each point we should query the true label for the task
@@ -120,7 +120,7 @@ that is $\vwi{J_t,t} = \vwi{J_t,t-1}+M_{J_t,t} \, \yi{J_t,t}\,
 For simplicity of presentation we write the update for all of the tasks in one term  as, $\vwi{i,t} =
 \vwi{i,t-1} + Z_{i,t}\, M_{i,t} \, \yi{i,t}\, \vxi{i,t}$. One can notice that although
 this notation uses labels for all tasks,  %(via $M_{i,t}$)
-onlythe label of the task $J_t$ is used in practice, as for other tasks $Z_{i,t}=0$.
+only the label of the task $J_t$ is used in practice, as for other tasks $Z_{i,t}=0$.
 We call this algorithm {\em SHAMPO} for SHared Annotator for Multiple PrOblems. 
 The pseudo-code of this algorithm appears  in ~\algoref{alg:SHAMPO_FO}.
 
@@ -176,6 +176,14 @@ D_t &=
 \end{algorithm}
 
 \begin{proof}
+In this proof we extend the proof of the bound on selective sampling perceptron algorithm  of 
+\cite{DBLP:journals/jmlr/Cesa-BianchiGZ06a}, which was based on the standard proof 
+of the Percetron mistake bound, with a few modifications. First, we subtruct a 
+non-negative quantity from the left hand side, which make the bound a little bit 
+more loose. Then, we sum the inequality on all the tasks and iterations and exploit the dependency of 
+the query selection between tasks, based on the derived probability $\pr{J_t=j} $. In addition, 
+we add a bound on the scaling quantity, $D_t$, that appeares in the bound.
+
 Fix $n$ examples sequences, $(\vxi{i,1},y_{i,1}),\ldots,(\vxi{i,n},y_{i,n})$ for each one of the $K$ tasks. 
 Let $t$ be certain trial and $i$ to be an update task on this trial, such that $M_{i,t}=1$. 
 We can write,
@@ -466,7 +474,7 @@ a high dimension space.
 So far, we used the margin to build the distribution over the tasks, but in the update stage,
 we used the same regular perceptron update rule, that makes an update only when there is a prediction 
 mistake. However, we already said that the margin can tells us about the uncertainty in the prediction, 
-so it may be helpful to proceed with this approach in the update stage as well and make the sharp update 
+so it may be helpful to proceed with this approach in the update stage as well and make the strict update 
 threshold a little bit softer. 
 
 In this  version of SHAMPO algorithm, the update is been preformed not only when there is a mistake, 
@@ -483,7 +491,7 @@ when no update has been made.
 
 \begin{algorithm}[h]
 \begin{algorithmic}
-   \State \textbf{Parameters:}  $b, \lambda \in\mathbb{R}>0$.
+   \State \textbf{Parameters:}  $b, 0 \le \lambda \in\mathbb{R} \le b/2$.
    \State \textbf{Initialize:}  $\vwi{i,0}=\vzero$ for $i=1\comdots K$ \\
    \For {$t=1,2,\ldots, n$} 
 \begin{enumerate}
@@ -553,7 +561,13 @@ This discrimination actually shows  that there is a sweet point where $0<\lambda
 bound will be the  tightest as this bound allows . 
 
 \begin{proof}
-We follow the proof of $\thmref{thm:FO_theorem}$ on an update trial, reminding that now the update 
+This proof is derived from the proof of the non-aggressive algorithm, when now, 
+we exploit the fact that expectation is additive and split the expectation on 
+the left hand side to the mistake update part and aggressive update part, which we restrict to be non-nagative 
+such that it may lead to a bound that is tighter than the one of the non-aggressive 
+version.
+
+We follow the proof of \thmref{thm:FO_theorem} on an update trial, reminding that now the update 
 indicator is  $U_{i,t}=1, $ until we get,  
 
 \begin{align*}
@@ -661,7 +675,7 @@ Which concludes the proof
 
 \section{SHAMPO with Prior Knowledge}
 
-We saw before that $b$ is a tradeoff parameter between  exploitation and uniform  distribution over the 
+We saw before, that $b$ is a tradeoff parameter between  exploitation and uniform  distribution over the 
 tasks (exploration). It is possible that we have prior knowledge about the tasks (which tasks are harder than 
 the others). In this case, we would like to add this prior knowledge to the distribution such that the 
 exploration will be done with a prior distribution. This is especially important in the first steps of the 
@@ -683,12 +697,12 @@ bound of the SHAMPO aggressive perceptron algorithm.
   sequences
   $(\vxi{i,1},y_{i,1}),\ldots,(\vxi{i,n},y_{i,n})\in\mathbb{R}^d\times\{-1,1\}$,
   $i=1,...,K$ with input parameters $b>0$, and $\lambda>0$  and $a_i>1~\forall i\in\braces{1,\cdots,K}$ then for all $\gamma>0$, all
-  $\vui{i}\in\mathbb{R}^d$ and all $n\ge1$,
+  $\vui{i}\in\mathbb{R}^d$ and all $n\ge1$, there exists $0<\delta\le \sum_{j=1}^Ka_{j}$, such that,
   
 \begin{displaymath}
 \begin{split}
 \mathbb{E}\left[ \sum_{i=1}^{K}\sum_{t=1}^{n}{M_{i,t}} \right]
-\le\frac{\sum_{j=1}^Ka_{j}}{\gamma}\brackets{\left(1+\frac{X^2}{2b} \right){\bar L}_{\gamma,n}+
+\le\frac{\delta}{\gamma}\brackets{\left(1+\frac{X^2}{2b} \right){\bar L}_{\gamma,n}+
 \frac{\left({2b+X^2}\right)^2\tilde{U}^2}{8{\gamma}b}}\\ 
 +
 \paren{2\frac{\lambda}{b}-1}\mathbb{E}\brackets{\sum_{i=1}^{K}\sum_{t=1}^{n}{a_{i}G_{i,t}}},
@@ -710,6 +724,11 @@ This bound brings an advantage and disadvantage. We can reduce the last term in 
 \\
 
 \begin{proof}
+Here we extend the proof of   ~\thmref{bound_aggressive_FO_SHAMPO}, while now, 
+the expectation of the random variable is affected by the prior variables, which may  lead to a bound which is 
+even tighter than the one of the aggressive algorithm due to the prior coeffitients that increases the 
+effect of the aggressiveness term.  
+
 We follow the proof of ~\thmref{bound_aggressive_FO_SHAMPO} until ~\eqref{eq:step_3_in_proof_agressive}, 
 than we take the expectation of this term. First, we take the expectation of the left hand side 
 where now the conditional expectation of $Z_{i,t}$ changed to 
@@ -804,14 +823,14 @@ which concludes the proof.
 \end{proof}
 
 \noindent
-We see that when this  bound is a global bound for the last two algorithms. 
+We see that this  bound is a global bound for the last two algorithms. 
 If we set $a_i=1, ~~\forall i\in\braces{1,\cdots,K}$ we get the same bound as  SHAMPO aggressive 
 algorithm and if we update only when a prediction mistake occurs, it means that 
 $G_{i,t}=0,~~\forall i\in\braces{a,\cdots,K},t>0$ and we get the bound of  the ordinary 
 SHAMPO perceptron algorithm.
 
 
-\section{Adaptive Parameter SHAMPO}
+\section{Adaptive Parameter SHAMPO}\label{sec:adaptive}
 
 As it has been proved in the analysis and will be shown in experiments, the algorithm parameter $b$ can tune 
 the distribution over the tasks between exploration and exploitation, yet, there is still a need to supply 
@@ -842,7 +861,7 @@ b_{i,t-1}=\beta X_{i,t} \sqrt{1+N_{i,t-1}}
 \begin{algorithm}[!h]
 \begin{algorithmic}
    \State \textbf{Parameters:}  $\beta\in\mathbb{R}>0$.
-   \State \textbf{Initialize:} $\vwi{i,0}=\vzero$ for $i=1\comdots K$\\
+   \State \textbf{Initialize:} $\vwi{i,0}=\vzero, N_{i,0}=0, \tilde{X}_{i,0}=0$ for $i=1\comdots K$\\
    \For {$t=1,2, ..., n$} 
    \begin{enumerate}
 \nolineskips
@@ -891,7 +910,13 @@ random choices of the algorithm.
 
  \noindent
  \begin{proof}
-The proof here is an extended version of the proof in \thmref{thm:FO_theorem} . 
+The proof here is an extended version of the proof in \thmref{thm:FO_theorem}. As in 
+\cite{DBLP:conf/nips/Cesa-BianchiGZ04}, we replace the scaling variable with a 
+time varying variable while we start with a bound on a single task, which is similar to the selective sampling
+proof, and we continue by summing both sides of the inequality over all tasks. 
+The expectation here is with respect to the new probabilty that is built of $K$ 
+different $b$ values, on for each task. 
+
 We start here from ~\eqref{eq:FO_introducing_alpha} and replace the constant scaling parameter, 
 formerly $\alpha$, with a time varying factor $c_{i,t-1}/\gamma$, where $c_{i,t}\ge0$  is defined as following 
 \begin{equation*}
